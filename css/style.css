@@ -8,9 +8,12 @@ a{
     text-decoration: none;
     color: rgb(30,30,30);
 }
+li{
+    list-style: none;
+}
 .wrap{
     background-color: rgb(220,220,220);
-    height: 500px;
+    height: 100%;
 }
 .layout{
     width: 76%;
@@ -25,9 +28,9 @@ a{
     justify-content: space-between;
 }
 .logo{
-    margin-left: 30px;
     margin-top: 20px;
     padding: 10px;
+    margin-left: 35px;
 }
 .logo a{
     font-size: 30px;
@@ -41,4 +44,43 @@ a{
 .name a{
     font-size: 20px;
     font-weight: 600;
+}
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.menu{
+    width: 300px;
+    height: 100%;
+    border-right: 0.5px solid rgb(220,220,220);;
+}
+.posts{
+    height: 100%;
+}
+.profile{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(30,30,30);
+    margin-left: 15%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.project{
+    width: 100%;
+    border-top: 0.5px solid rgb(220,220,220);
+    padding: 0;
+}
+.project h3,.project a{
+    margin-left: 55%;
+}
+
+
+
+
+@media (max-width: 1300px){
+    .layout{
+        width: 100%;
+        margin-left: 0;
+    }
 }
