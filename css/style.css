@@ -56,13 +56,15 @@ li{
     border-right: 0.5px solid rgb(220,220,220);;
 }
 .posts{
-    height: 100%;
+    background-color: gray;
+    width: 80%;
+    height: 1200px;
 }
 .profile{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     background-color: rgb(30,30,30);
-    margin-left: 15%;
+    margin-left: 35%;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -70,17 +72,78 @@ li{
     width: 100%;
     border-top: 0.5px solid rgb(220,220,220);
     padding: 0;
+    text-align: right;
 }
 .project h3,.project a{
-    margin-left: 55%;
+    margin-right: 50px;
+}
+.about_me{
+    display: flex;
+    background-color: rgb(30,30,30);
+    height: 300px;
+    width: 100%;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.introducing1{
+    width: 500px;
+    height: 300px;
+    background-color: skyblue;
+    margin-left: 3%;
+}
+.introducing2{
+    width: 450px;
+    height: 300px;
+    background-color: skyblue;
+    margin-right: 3%;
 }
 
 
 
 
+@media (max-width: 1750px){
+    .about_me{
+        flex-direction: column;
+    }
+    .introducing1{
+        width: 80%;
+        margin-left: 10%;
+        background-color: skyblue;
+    }
+    .introducing2{
+        margin-top: 30px;
+        width: 80%;
+        margin-left: 10%;
+        background-color: skyblue;
+    }
+    .about_me{
+        height: 600px;
+    }
+}
 @media (max-width: 1300px){
     .layout{
         width: 100%;
         margin-left: 0;
     }
+}
+@media (max-width: 800px){
+    .main{
+        flex-direction: column;
+    }
+    .menu{
+        width: 100%;
+    }
+    .profile{
+        display:none;
+    }
+    .project{
+        text-align: left;
+    }
+    .project h3,.project a{
+        margin-left: 50px;
+    }
+    .project :first-child{
+        border-top: 0;
+    }
+
 }
