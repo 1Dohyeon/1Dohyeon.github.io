@@ -113,13 +113,13 @@ li{
     font-family: 'Black Han Sans', sans-serif;
 }
 
-@media (max-width: 1200px){
+@media screen and (max-width: 1200px){
     .profile_contents{
         margin-left: 25%;
         width: 50%;
     }
 }
-@media (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     .header_contents{
         flex-direction: column;
     }
