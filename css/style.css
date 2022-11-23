@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-@import url();
 body{
     margin: 0;
 }
@@ -55,6 +54,10 @@ li{
     font-size: 20px;
     font-weight: 700;
 }
+.menu a:hover{
+    font-size: 24px;
+    transition: 0.15s;
+}
 .menu_toggleBtn{
     display: none;
     position: absolute;
@@ -73,6 +76,19 @@ li{
     margin-left: 30%;
     margin-top: 30px;
     background-color: rgba(30,30,30,0.7);
+}
+.image_box{
+    width: 40%;
+    height: 240px;
+    position: absolute;
+}
+.image{
+    width: 190px;
+    height: 190px;
+    text-align: center;
+    background-color: blue;
+    margin:0 auto;
+    margin-top: 25px;
 }
 .about_me{
     width: 100%;
@@ -118,6 +134,9 @@ li{
         margin-left: 25%;
         width: 50%;
     }
+    .image_box{
+        width: 50%;
+    }
 }
 @media screen and (max-width: 1000px) {
     .header_contents{
@@ -133,7 +152,11 @@ li{
         top: 70px;
         background-color: rgba(225, 225, 225,0.8);
         border-radius: 15px;
-        border: 3px inset rgb(30,30,30)
+        border: 3px inset rgb(30,30,30);
+        display: none;
+    }
+    .menu.active{
+        display: block;
     }
     .menu a{
         color: rgb(30,30,30);
@@ -143,6 +166,9 @@ li{
     }
     .profile_contents{
         margin-left: 0;
+        width: 100%;
+    }
+    .image_box{
         width: 100%;
     }
 }
