@@ -126,8 +126,8 @@ li{
     .menu{
         flex-direction: column;
         margin: none;
-        text-align: end;
-        width: 30%;
+        text-align: center;
+        width: 35%;
         position: absolute;
         right: 32px;
         top: 70px;
