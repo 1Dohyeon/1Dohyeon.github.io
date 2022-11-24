@@ -1,0 +1,14 @@
+.project_photo{
+    background-color: aqua;
+    width: 50%;
+    margin-left: 25%;
+    height: 800px;
+    margin-top: 120px;   
+}
+.project_explain{
+    background-color: blue;
+    width: 80%;
+    margin-left: 10%;
+    height: 300px;
+    margin-top: 120px; 
+}
