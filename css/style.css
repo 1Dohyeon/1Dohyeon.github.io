@@ -344,13 +344,15 @@ li{
 }
 @media  screen and (max-width:550px){
     .about_me i{
-        margin-top: 34px;
-        font-size: 26px;
+        font-size: 28px;
     }
     .mine_h2{
         font-size: 12px;
         font-weight: 600;
-        margin-top: 20px;
+        margin-top: 17px;
+    }
+    .mine1_box, .mine2_box, .mine3_box, .mine4_box, .mine5_box{
+        height: 100%;
     }
     
 }
