@@ -342,4 +342,16 @@ li{
         border: none;
     }
 }
+@media  screen and (max-width:550px){
+    .about_me i{
+        margin-top: 37px;
+        font-size: 22px;
+    }
+    .mine_h2{
+        margin-top: 17px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+}
 
