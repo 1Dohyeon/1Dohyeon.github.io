@@ -345,10 +345,10 @@ li{
 @media  screen and (max-width:550px){
     .about_me i{
         margin-top: 37px;
-        font-size: 22px;
+        font-size: 24px;
     }
     .mine_h2{
-        margin-top: 20px;
+        margin-top: 21px;
         font-size: 12px;
         font-weight: 600;
     }
