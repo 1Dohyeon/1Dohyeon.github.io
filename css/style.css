@@ -344,15 +344,11 @@ li{
 }
 @media  screen and (max-width:550px){
     .about_me i{
-        margin-top: 35px;
-        font-size: 22px;
-        text-align: center;
+        font-size: 26px;
     }
     .mine_h2{
-        margin-top: 20px;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 600;
-        text-align: center;
     }
     
 }
