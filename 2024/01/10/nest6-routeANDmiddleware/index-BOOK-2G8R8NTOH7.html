@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"1dohyeon.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="8.1 RouteRoute 는 웹 애플리케이션에서 특정 URL 경로에 대한 요청을 처리하는 방법을 정의한다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NestJS-Route, Middleware(미들웨어)">
+<meta property="og:url" content="https://1dohyeon.github.io/2024/01/10/nest6-routeANDmiddleware/index.html">
+<meta property="og:site_name" content="Dohyeon">
+<meta property="og:description" content="8.1 RouteRoute 는 웹 애플리케이션에서 특정 URL 경로에 대한 요청을 처리하는 방법을 정의한다.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://docs.nestjs.com/assets/Middlewares_1.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/middlewareIMG.png?raw=true">
+<meta property="og:image" content="https://blog.logrocket.com/wp-content/uploads/2023/03/incoming-request-flow-guards.png">
+<meta property="article:published_time" content="2024-01-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-16T05:05:02.445Z">
+<meta property="article:author" content="Dohyeon Won">
+<meta property="article:tag" content="study">
+<meta property="article:tag" content="NestJS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://docs.nestjs.com/assets/Middlewares_1.png">
+
+<link rel="canonical" href="https://1dohyeon.github.io/2024/01/10/nest6-routeANDmiddleware/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>NestJS-Route, Middleware(미들웨어) | Dohyeon</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dohyeon</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A student of university</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/aboutMe/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/myTags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">3</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/01/10/nest6-routeANDmiddleware/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dohyeon Won">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dohyeon">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NestJS-Route, Middleware(미들웨어)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-01-10 12:00:00" itemprop="dateCreated datePublished" datetime="2024-01-10T12:00:00+09:00">2024-01-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NestJS/" itemprop="url" rel="index"><span itemprop="name">NestJS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="8-1-Route"><a href="#8-1-Route" class="headerlink" title="8.1 Route"></a>8.1 Route</h3><p><strong>Route</strong> 는 웹 애플리케이션에서 <strong>특정 URL 경로에 대한 요청을 처리하는 방법</strong>을 정의한다.</p>
+<span id="more"></span>
+
+<p>각 라우트는 특정 URL 패턴에 매칭되고, 해당 URL에 대한 요청이 있을 때 실행될 코드를 결정한다. 라우트는 서버에 들어오는 요청을 적절한 <strong>Route Handler</strong> 로 라우팅하는 역할을 한다.</p>
+<h3 id="8-2-Route-Handler"><a href="#8-2-Route-Handler" class="headerlink" title="8.2 Route Handler"></a>8.2 Route Handler</h3><p><strong>Route Handler</strong> 는 특정 URL에 대한 요청을 처리하는 함수 또는 메서드이다. 각 라우트는 특정 URL에 대한 요청이 발생했을 때 실행될 라우트 핸들러를 지정한다.</p>
+<p>즉, 라우터 핸들러는 단순히 특정 URL 경로에 대한 요청을 처리하는 함수 또는 메서드를 가리키는 일반적인 용어이다.</p>
+<p>컨트롤러는 특정 URL에 대한 요청을 처리하는 역할을 수행하는데, 이때 해당 URL에 대한 처리 로직을 구현하는 부분이 컨트롤러 내의 메서드(라우트 핸들러)이다.</p>
+<p>따라서 <strong>Controller는 라우트 핸들러(Route Handler)의 한 형태</strong>로 볼 수 있다.</p>
+<h3 id="8-3-Routing-Map"><a href="#8-3-Routing-Map" class="headerlink" title="8.3 Routing Map"></a>8.3 Routing Map</h3><p><strong>라우팅 맵(Routing Map)</strong> 은 웹 애플리케이션에서 어떤 URL 경로에 대한 요청이 어떤 핸들러(컨트롤러 또는 함수)로 전달되어야 하는지를 나타내는 구조임을 알 수 있다.</p>
+<h3 id="8-4-Middleware-정의"><a href="#8-4-Middleware-정의" class="headerlink" title="8.4 Middleware 정의"></a>8.4 Middleware 정의</h3><p><img src="https://docs.nestjs.com/assets/Middlewares_1.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/middlewareIMG.png?raw=true" alt="middlewareIMG.png"></p>
+<p><strong>미들웨어(Middleware)</strong> 는 클라이언트의 요청과 서버의 응답 사이에 위치하는 함수이다. 미들웨어는 요청이 라우트 핸들러에 도달하기 전에 중간에서 특정 작업을 수행할 수 있다.</p>
+<p><strong>왜 바로 Router Handler 로 요청을 보내지 않고 번거롭게 Middleware 를 거쳐야할까?</strong></p>
+<p>미들웨어는 클라이언트의 요청이 라우트 핸들러에 도달하기 전에 실행되기 때문에 이를 통해 요청을 전처리하고, 필요한 변경을 가하거나 검증을 수행할 수 있다는 장점이 있다.</p>
+<p>또한 response 를 클라이언트에게 보내기 전에 middleware 를 통하여 응답을 변조하거나 수정할 수 있다.</p>
+<p>예를 들어, 요청 로깅, 인증, 데이터 변환 등의 작업을 미들웨어에서 처리할 수 있다. 이는 웹 애플리케이션의 구조와 로직을 조직화하고 유연하게 처리하기 위해 사용된다.</p>
+<p>위 그림 외에도 아래 그림처럼 여러 단계를 거치게 된다.</p>
+<p><img src="https://blog.logrocket.com/wp-content/uploads/2023/03/incoming-request-flow-guards.png" alt="Where guards fit into the incoming request flow"><br><a target="_blank" rel="noopener" href="https://blog.logrocket.com/understanding-guards-nestjs/">이미지 출처 URL</a></p>
+<p>위 그림에는 Exception filters 이 없어서 NestJS 의 Request lifecycle 을 작성해보았다. 이 사이클에 있는 Guard, Interceptor, pipes, Exception filters 에 대해서는 다음에 공부할 계획이다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">1. Incoming request</span><br><span class="line"></span><br><span class="line">2. Middleware</span><br><span class="line">  2.1. Globally bound middleware</span><br><span class="line">  2.2. Module bound middleware</span><br><span class="line"></span><br><span class="line">3. Guards</span><br><span class="line">  3.1 Global guards</span><br><span class="line">  3.2 Controller guards</span><br><span class="line">  3.3 Route guards</span><br><span class="line"></span><br><span class="line">4. Interceptors (pre-controller)</span><br><span class="line">  4.1 Global interceptors</span><br><span class="line">  4.2 Controller interceptors</span><br><span class="line">  4.3 Route interceptors</span><br><span class="line"></span><br><span class="line">5. Pipes</span><br><span class="line">  5.1 Global pipes</span><br><span class="line">  5.2 Controller pipes</span><br><span class="line">  5.3 Route pipes</span><br><span class="line">  5.4 Route parameter pipes</span><br><span class="line"></span><br><span class="line">6. Controller (method handler)</span><br><span class="line"></span><br><span class="line">7. Service (if exists)</span><br><span class="line"></span><br><span class="line">8. Interceptors (post-request)</span><br><span class="line">  8.1 Route interceptor</span><br><span class="line">  8.2 Controller interceptor</span><br><span class="line">  8.3 Global interceptor</span><br><span class="line"></span><br><span class="line">9. Exception filters</span><br><span class="line">  9.1 route</span><br><span class="line">  9.2 controller</span><br><span class="line">  9.3 global</span><br><span class="line"></span><br><span class="line">10. Server response</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://docs.nestjs.com/faq/request-lifecycle">참고 URL</a></p>
+<h3 id="8-5-Middleware-예제"><a href="#8-5-Middleware-예제" class="headerlink" title="8.5 Middleware 예제"></a>8.5 Middleware 예제</h3><blockquote>
+<p>Nest 에서 middleware 는 express 에서의 middleware와 같다.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nest g middleware name</span><br></pre></td></tr></table></figure>
+
+<p>위 명령어를 통해서 middleware 파일을 생성할 수 있다. 기본적으로는 아래와 같이 생성된다 :</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Injectable</span>, <span class="title class_">NestMiddleware</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@nestjs/common&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LoggerMiddleware</span> <span class="keyword">implements</span> <span class="title class_">NestMiddleware</span> &#123;</span><br><span class="line">  <span class="title function_">use</span>(<span class="params">req: <span class="built_in">any</span>, res: <span class="built_in">any</span>, next: () = &gt; <span class="built_in">void</span></span>) &#123;</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이제 위 파일 내용을 <code>express</code> 의 <code>&#123;Request, Response, Nextfunction&#125;</code> 타이핑 처리를 해준다 :</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Injectable</span>, <span class="title class_">NestMiddleware</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@nestjs/common&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NextFunction</span>, <span class="title class_">Request</span>, <span class="title class_">Response</span> &#125; <span class="keyword">from</span> <span class="string">&quot;express&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LoggerMiddleware</span> <span class="keyword">implements</span> <span class="title class_">NestMiddleware</span> &#123;</span><br><span class="line">  <span class="title function_">use</span>(<span class="params">req: Request, res: Response, next: NextFunction</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">ip</span>);</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>참고로 <code>Request</code> 에는 요청하는 모든 정보가 담겨있다. 이제 middleware를 연결해주어야 한다. 하지만 middleware 는 <code>@Module</code> 에서 연결을 할 수 없다. 따라서 <code>configure()</code> 모듈 클래스의 메서드를 사용하여 설정해야 한다. 아래 코드는 <code>app.module.ts</code> 의 일부이다. 이곳에서 <code>configure</code> 메서드를 통해서 사용할 수 있다.</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppModule</span> <span class="keyword">implements</span> <span class="title class_">NestModule</span> &#123;</span><br><span class="line">  <span class="title function_">configure</span>(<span class="params">consumer: MiddlewareConsumer</span>) &#123;</span><br><span class="line">    consumer.<span class="title function_">apply</span>(<span class="title class_">LoggerMiddleware</span>).<span class="title function_">forRoutes</span>(<span class="string">&quot;cats&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 코드에서 <code>NestModule</code> 는 인터페이스이다.</p>
+<ul>
+<li><code>MiddlewareConsumer</code> : <code>import &#123; MiddlewareConsumer, Module, NestModule &#125; from &#39;@nestjs/common&#39;;</code> 를 통해서 가져온 소비자 타입이다.</li>
+<li><code>consumer.apply(LoggerMiddleware).forRoutes(&#39;cats&#39;);</code> : 위에서 만든 <code>LoggerMiddleware</code> 클래스를 연결하고 <code>cats</code>라우터에 바인딩을 시켜준 것이다. 따라서 <code>cats</code> 엔드포인트에 대해서 <code>LoggerMiddleware</code>가 실행이 된다는 의미이다.</li>
+</ul>
+<p>이제 <code>LoggerMiddleware</code> 활용할 수 있도록 작성해준다 :</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Injectable</span>, <span class="title class_">Logger</span>, <span class="title class_">NestMiddleware</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@nestjs/common&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NextFunction</span>, <span class="title class_">Request</span>, <span class="title class_">Response</span> &#125; <span class="keyword">from</span> <span class="string">&quot;express&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LoggerMiddleware</span> <span class="keyword">implements</span> <span class="title class_">NestMiddleware</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> logger = <span class="keyword">new</span> <span class="title class_">Logger</span>(<span class="string">&quot;HTTP&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">use</span>(<span class="params">req: Request, res: Response, next: NextFunction</span>) &#123;</span><br><span class="line">    res.<span class="title function_">on</span>(<span class="string">&quot;finish&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">logger</span>.<span class="title function_">log</span>(</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;req.ip&#125;</span> <span class="subst">$&#123;req.method&#125;</span> <span class="subst">$&#123;res.statusCode&#125;</span>`</span>,</span><br><span class="line">        req.<span class="property">originalUrl</span></span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    res.<span class="property">statusCode</span>;</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>private logger = new Logger(&#39;HTTP&#39;);</code> : NesJS 에서는 로깅을 할 때 <code>Logger</code> 라는 클래스를 사용한다. 이 코드는 <code>HTTP</code> 에 관한 로거를 사용할 수 있도록 한다. 이를 이용해서 <code>console.log</code> 대신 <code>logger.log</code>를 사용할 수 있다.</li>
+<li><code>res.on(&#39;finish&#39;, () =&gt; &#123; ... &#125;)</code> : 응답이 완료 되었을 때 <code>&#123; ... &#125;</code> 실행. 위 코드에서는 이 안에서 <code>req</code>의 ip주소, 메서드, url 이 작성되고 응답 상태 코드가 작성된다.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/study/" rel="tag"># study</a>
+              <a href="/tags/NestJS/" rel="tag"># NestJS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/01/09/dataStructure5/" rel="prev" title="자료구조(data structure) - Hash">
+      <i class="fa fa-chevron-left"></i> 자료구조(data structure) - Hash
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/01/10/dataStructure6/" rel="next" title="자료구조(data structure) - Sort">
+      자료구조(data structure) - Sort <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-Route"><span class="nav-number">1.</span> <span class="nav-text">8.1 Route</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-Route-Handler"><span class="nav-number">2.</span> <span class="nav-text">8.2 Route Handler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-Routing-Map"><span class="nav-number">3.</span> <span class="nav-text">8.3 Routing Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-Middleware-%EC%A0%95%EC%9D%98"><span class="nav-number">4.</span> <span class="nav-text">8.4 Middleware 정의</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-Middleware-%EC%98%88%EC%A0%9C"><span class="nav-number">5.</span> <span class="nav-text">8.5 Middleware 예제</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dohyeon Won</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/myCategories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/myTags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1Dohyeon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1Dohyeon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dohyeon Won</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
