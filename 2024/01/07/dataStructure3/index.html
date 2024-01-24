@@ -27,18 +27,18 @@
 <meta property="og:site_name" content="Dohyeon">
 <meta property="og:description" content="3.1 Binary Search Tree3.1.1 개념 Binary Search Tree(이진 검색 트리) 는 1. DynamicArray AND LinkedList 의 1.2.1 에서 설명한 노드를 next가 아닌 left, right 두가지로 노드들을 연결한 자료구조이다.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true">
-<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC%EC%82%AD%EC%A0%9C%EC%98%88%EC%A0%9C.png?raw=true">
-<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LLcase.png?raw=true">
-<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LRcase.png?raw=true">
-<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LLcase%EC%BD%94%EB%93%9C%EB%8C%80%EB%A1%9C%EC%8B%A4%ED%96%89%EC%98%88%EC%A0%9C.png?raw=true">
+<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true">
+<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC%EC%82%AD%EC%A0%9C%EC%98%88%EC%A0%9C.png?raw=true">
+<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LLcase.png?raw=true">
+<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LRcase.png?raw=true">
+<meta property="og:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LLcase%EC%BD%94%EB%93%9C%EB%8C%80%EB%A1%9C%EC%8B%A4%ED%96%89%EC%98%88%EC%A0%9C.png?raw=true">
 <meta property="article:published_time" content="2024-01-07T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-16T05:07:47.000Z">
+<meta property="article:modified_time" content="2024-01-24T08:25:38.800Z">
 <meta property="article:author" content="Dohyeon Won">
 <meta property="article:tag" content="study">
 <meta property="article:tag" content="data structure">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true">
+<meta name="twitter:image" content="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true">
 
 <link rel="canonical" href="https://1dohyeon.github.io/2024/01/07/dataStructure3/">
 
@@ -249,7 +249,7 @@
 <span id="more"></span>
 
 <p>즉, 데이터를 이진 검색 트리에 삽입한다면 아래와 같은 모양의 자료구조를 갖는다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="BST 예제 이미지.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="BST 예제 이미지.png"></p>
 <p>또한 이진 검색 트리는 위 그림에서처럼 부모 노드보다 크다면 <code>right</code> , 부모노드보다 작으면 <code>left</code> 로 이동하여 자리를 잡는다.</p>
 <p><strong>3.1.2 class Node</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node</span>&lt;Key <span class="keyword">extends</span> <span class="title class_">Comparable</span>&lt;Key&gt;, Value&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> Key id;</span><br><span class="line">    <span class="keyword">private</span> Value name;</span><br><span class="line">    <span class="keyword">private</span> Node&lt;Key, Value&gt; left, right;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생략</span></span><br></pre></td></tr></table></figure>
@@ -279,7 +279,7 @@
 <p><code>p</code> : 삭제하려는 노드<br><code>s</code> : <code>p</code> 의 부모 노드<br><code>x</code> : <code>p</code> 의 왼쪽 자식 노드<br><code>y</code> : <code>p</code> 의 오른쪽 자식 노드</p>
 <p>위와 같이 정의할 경우 각 노드의 키값은 다음과 같이 정의된다 : <code>x</code> &lt; <code>p</code> &lt; <code>y</code>. 이때 <code>y</code>의 최솟값 노드의 키값 <code>y_min</code> 은 <code>x</code> 의 키값보다 크다.</p>
 <p>즉, <code>p</code>의 키값보다 바로 다음단계로 큰 노드의 키값은 <code>y_min</code>이란 소리이다. 따라서 (아래 그림처럼) <code>y_min</code> 을 <code>p</code> 의 위치로 옮기고 <code>y_min</code> 의 <code>left</code> , <code>right</code> 를 기존 <code>p</code> 의 <code>left</code> , <code>right</code> 와 연결시키면 된다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC%EC%82%AD%EC%A0%9C%EC%98%88%EC%A0%9C.png?raw=true" alt="이진검색트리 삭제 예제.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC%EC%82%AD%EC%A0%9C%EC%98%88%EC%A0%9C.png?raw=true" alt="이진검색트리 삭제 예제.png"></p>
 <ul>
 <li>기존 <code>y_min</code> 은 삭제해야한다.</li>
 </ul>
@@ -297,15 +297,15 @@
 <h3 id="3-3-AVL-트리"><a href="#3-3-AVL-트리" class="headerlink" title="3.3 AVL 트리"></a>3.3 AVL 트리</h3><p><strong>3.3.1 개념</strong></p>
 <p>3.1 에서의 이진탐색트리에 15, 13, 11, 9, 7 과 같이 계속 작은 수를 삽입하게 되면 왼쪽으로 치우쳐진 형태의 트리 모습을 갖게 된다. 큰수를 계속 삽입한다면 반대로 오른쪽으로 치우쳐지게 될 것이다.</p>
 <p>이러한 문제점을 해결하기 위해서 한쪽으로 치우쳐지면 트리를 회전시키는 것이 AVL 알고리즘이다. 이런 알고리즘을 지닌 트리를 AVL 트리 자료구조라고 한다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LLcase.png?raw=true" alt="LLcase.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LLcase.png?raw=true" alt="LLcase.png"></p>
 <p>15 -&gt; 10 -&gt; 7 순으로 채워져서 트리가 왼쪽으로 치우쳐진 모양이라고 가정해보자. 이때 루트 노드이 왼쪽 자식인 10, 즉 중간 노드를 기준으로 오른쪽으로 회전시킨다. 우회전을 했다고 하여 Right Rotation 이라고 부른다.</p>
 <p>하지만 이런 케이스는 왼쪽 자식의 왼쪽 자식 때문에 회전이 일어났으므로 Left Left Case, 즉 <strong>LL case</strong> 라고 부른다. 반대로 오른쪽으로 치우쳐져 있다면 위와 반대로 생각하면 쉽다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LRcase.png?raw=true" alt="LRcase.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LRcase.png?raw=true" alt="LRcase.png"></p>
 <p>이번에는 15 -&gt; 10 -&gt; 12 순서로 들어왔다고 가정하자. 이때 왼쪽 자식의 오른쪽 자식에 의해서 트리 균형이 맞지 않음을 알 수 있다. 따라서 Left Right case, 줄여서 LR case 라고 한다. 오른쪽으로 치우쳐진 것을 회복하기 위해 왼쪽으로 먼저 회전시키고, 오른쪽으로 다시 회전시켜 균형을 맞춘다.</p>
 <p><strong>3.3.2 Right Rotation</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Node&lt;Key, Value&gt; <span class="title function_">rotateRight</span><span class="params">(Node&lt;Key, Value&gt; n)</span> &#123;</span><br><span class="line">       Node&lt;Key, Value&gt; x = n.left;</span><br><span class="line">       n.left = x.right;</span><br><span class="line">       x.right = n;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 높이 갱신</span></span><br><span class="line">       n.height = tallerHeight(height(n.left), height(n.right)) + <span class="number">1</span>;</span><br><span class="line">       x.height = tallerHeight(height(x.left), height(x.right)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> x;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LLcase%EC%BD%94%EB%93%9C%EB%8C%80%EB%A1%9C%EC%8B%A4%ED%96%89%EC%98%88%EC%A0%9C.png?raw=true" alt="LLcase 코드대로 실행 예제.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LLcase%EC%BD%94%EB%93%9C%EB%8C%80%EB%A1%9C%EC%8B%A4%ED%96%89%EC%98%88%EC%A0%9C.png?raw=true" alt="LLcase 코드대로 실행 예제.png"></p>
 <p>3.3.1 에서 예를 든 것처럼 15 -&gt; 10 -&gt; 7 순서로 숫자가 들어왔다고 가정. 이때 15가 n 노드가 된다. <strong>n 노드에서 좌우 불균형을 발견</strong>했기 때문이다. 다음은 코드대로 실행하면 된다.</p>
 <p>n의 왼쪽 자식을 x라고 두고, n의 왼쪽 자식 위치로 x의 오른쪽 자식을 옮긴다. x의 오른쪽 자식은 없으므로 null. 그다음 x의 오른쪽 자식에 n을 위치시키면 마치 트리가 회전한 것처럼 보인다.</p>
 <p>왼쪽으로 회전은 위와 반대로 작동한다. <strong>tallerHeight()</strong> 메서드는 n과 x의 위치가 변했기 때문에 높이를 갱신해준 것이다. 왼쪽 오른쪽 자식의 높이차이가 2이상 나면 회전을 해야하기 때문이다.</p>

@@ -9,7 +9,7 @@
 
 <p>N(선형) 시간이 걸리는 알고리즘은 N 개의 원소 각각을 한 번씩만 보는 알고리즘으로 <a href="https://github.com/1Dohyeon/Study-DataStructure/blob/master/06_sort_with_java/D1_Sort/Quick.java">퀵 정렬(Quick Sort)</a> 을 기반으로 하는 알고리즘이다.</p>
 <p><strong>2.1.2 알고리즘 예시</strong></p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%ED%80%B5%EC%A0%95%EB%A0%AC%EC%9D%B4%EC%9A%A9%EC%84%A0%ED%83%9D%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.png?raw=true" alt="퀵정렬이용선택알고리즘.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%ED%80%B5%EC%A0%95%EB%A0%AC%EC%9D%B4%EC%9A%A9%EC%84%A0%ED%83%9D%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.png?raw=true" alt="퀵정렬이용선택알고리즘.png"></p>
 <p>예를 들어 2 번째로 작은 원소를 찾는다고 가정해보자:</p>
 <ul>
 <li>퀵 정렬의 기준 원소를 기준으로 왼쪽에는 기준보다 작은 값, 오른쪽은 기준보다 큰 값을 둔다.</li>
@@ -71,7 +71,9 @@
     <title>알고리즘(Algorithms) - 2-3Tree, B트리, 레드블랙트리(red-black tree)</title>
     <url>/2024/01/24/Algorithms3/</url>
     <content><![CDATA[<h3 id="3-1-2-3트리"><a href="#3-1-2-3트리" class="headerlink" title="3.1 2-3트리"></a>3.1 2-3트리</h3><p><strong>3.1.1 정의</strong></p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/2-3%EC%98%88%EC%A0%9C.png?raw=true" alt="[2-3예제.png]"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/2-3%EC%98%88%EC%A0%9C.png?raw=true" alt="[2-3예제.png]"></p>
+<span id="more"></span>
+
 <ol>
 <li>완전 균형 트리(Completely Balanced Tree)<ul>
 <li>완전한 균형을 유지하기 때문에, root에서 leaf에 이르는 모든 경로의 길이가 완전히 동일함</li>
@@ -83,12 +85,10 @@
 </ul>
 </li>
 </ol>
-<span id="more"></span>
-
 <p><strong>3.1.2 Insertion(삽입): split</strong></p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/2-3%EC%82%BD%EC%9E%85.png?raw=true" alt="[2-3삽입.png]"><br>삽입을 통해서 노드 안에 key가 세개가 된다면 중앙값을 위로 올리고 3노드를 2노드로 분리한다.</p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/2-3%EC%82%BD%EC%9E%85.png?raw=true" alt="[2-3삽입.png]"><br>삽입을 통해서 노드 안에 key가 세개가 된다면 중앙값을 위로 올리고 3노드를 2노드로 분리한다.</p>
 <p><strong>3.1.3 Deletion: share(형제 노드에 여유가 있는 경우), join(여유있는 형제 노드가 없는 경우)</strong></p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/2-3%EC%82%AD%EC%A0%9C.png?raw=true" alt="[2-3삭제.png]"><br>삭제 후 형제 트리에 공간이 있을 경우 share하여 값을 옮긴다. 이때 트리의 조건에 맞추기 위해서 부모의 원소를 내리고 자식 원소를 올린다.</p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/2-3%EC%82%AD%EC%A0%9C.png?raw=true" alt="[2-3삭제.png]"><br>삭제 후 형제 트리에 공간이 있을 경우 share하여 값을 옮긴다. 이때 트리의 조건에 맞추기 위해서 부모의 원소를 내리고 자식 원소를 올린다.</p>
 <p>join은 부모 원소를 자식 노드에 옮겨서 빈자리를 매꾸는 방식이다.</p>
 <h3 id="3-2-B트리"><a href="#3-2-B트리" class="headerlink" title="3.2 B트리"></a>3.2 B트리</h3><p><strong>3.2.1 정의</strong></p>
 <ul>
@@ -98,15 +98,15 @@
 <li>모든 리프 노드는 같은 깊이를 가진다</li>
 </ul>
 </li>
-<li><p>B-트리의 노드 구조<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/b%ED%8A%B8%EB%A6%AC%EC%98%88%EC%A0%9C.png?raw=true" alt="[b트리예제.png]"></p>
+<li><p>B-트리의 노드 구조<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/b%ED%8A%B8%EB%A6%AC%EC%98%88%EC%A0%9C.png?raw=true" alt="[b트리예제.png]"></p>
 </li>
 <li><p>B-트리의 삽입 삭제시에, 2-3트리와 비슷하게 split과 join을 한다.</p>
 </li>
 </ul>
 <p><strong>3.2.2 Insertion(삽입)</strong></p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/b%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%851.png?raw=true" alt="[b트리삽입1.png]"><br>오버플로우가 발생하면 형제노드를 살펴보고 형제노드가 포화상태가 아니라면 형제 노드에 원래 노드의 최댓값 or 최솟값을 넘겨준다. 그 다음 형제 노드의 최댓값 or 최솟값을 부모 노드 최댓값 or 최솟값과 바꾼다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/b%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%852.png?raw=true" alt="[b트리삽입2.png]"><br>위 그림에서는 39를 삽입하자 오버플로우가 발생하고 형제 노드도 포화 상태임을 알 수 있다. 이때 split을 하고 중앙값을 부모 노드로 올린다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/b%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%853.png?raw=true" alt="[b트리삽입3.png]"><br>위 그림을 보면 32를 삽입하고 오버플로우가 나서 split 후에 부모 노드로 중앙값을 올렸지만, 부모노드도 오버플로우가 난 것을 알 수 있다. 부모 노드의 형제노드가 없으므로 이때 부모노드를 split하면 된다.</p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/b%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%851.png?raw=true" alt="[b트리삽입1.png]"><br>오버플로우가 발생하면 형제노드를 살펴보고 형제노드가 포화상태가 아니라면 형제 노드에 원래 노드의 최댓값 or 최솟값을 넘겨준다. 그 다음 형제 노드의 최댓값 or 최솟값을 부모 노드 최댓값 or 최솟값과 바꾼다.</p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/b%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%852.png?raw=true" alt="[b트리삽입2.png]"><br>위 그림에서는 39를 삽입하자 오버플로우가 발생하고 형제 노드도 포화 상태임을 알 수 있다. 이때 split을 하고 중앙값을 부모 노드로 올린다.</p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/b%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%853.png?raw=true" alt="[b트리삽입3.png]"><br>위 그림을 보면 32를 삽입하고 오버플로우가 나서 split 후에 부모 노드로 중앙값을 올렸지만, 부모노드도 오버플로우가 난 것을 알 수 있다. 부모 노드의 형제노드가 없으므로 이때 부모노드를 split하면 된다.</p>
 <h3 id="3-3-레드블랙트리"><a href="#3-3-레드블랙트리" class="headerlink" title="3.3 레드블랙트리"></a>3.3 레드블랙트리</h3><p><strong>3.3.1 정의</strong></p>
 <ul>
 <li>Red와 Black의 색상을 이용해서 트리의 균형을 유지</li>
@@ -118,18 +118,18 @@
 </ol>
 </li>
 </ul>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%98%88%EC%A0%9C.png?raw=true" alt="[레드블랙트리예제.png]"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%98%88%EC%A0%9C.png?raw=true" alt="[레드블랙트리예제.png]"></p>
 <p>바로 위와 같이 생긴 트리가 레드블랙트리의 조건을 만족한다. 여기서 리프 노드가 빨간색인데 어떻게 만족하는지에 대한 의문을 가질 수도 있다.</p>
 <p>자식이 없는 모든 노드는 NIL(블랙) 노드를 자식으로 가지기 때문에 사실상, 2번 조건은 무시해도 된다.</p>
 <p><strong>3.3.2 삽입</strong></p>
 <p>삽입의 경우 여러가지 경우가 있다. 우선, 삽입할 노드 x(레드)의 부모 노드 p가 블랙이라면 아무런 문제가 없다.</p>
-<p>두번째 경우로 삽입할 노드 x(레드)의 부모 노드 p가 레드라면 또 여러가지를 고려해야한다. 첫번째 경우는 아래 그림과 같다.<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%851.png?raw=true" alt="[레드블랙트리삽입1.png]"></p>
+<p>두번째 경우로 삽입할 노드 x(레드)의 부모 노드 p가 레드라면 또 여러가지를 고려해야한다. 첫번째 경우는 아래 그림과 같다.<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%851.png?raw=true" alt="[레드블랙트리삽입1.png]"></p>
 <p>이때는 바로 저 흰색 부분의 색깔에 의해서 경우가 나누어진다. 흰색 부분을 s라고 할때, 흰색 노드가 레드라면 LLr 조건이다.</p>
 <p>LLr 조건을 설명하자면, p의 부모노드를 pp라고 할 때, pp로부터 왼쪽 노드, 그리고 그 왼쪽 노드로 삽입되었을 경우 LL 이고, pp의 오른쪽 자식이 레드일경우 r, 블랙일 경우 b이다.</p>
 <p>따라서 x가 p의 오른쪽 자식으로 들어왔다면 LRr이 될 수 있음을 유추할 수 있다. 그리고 p가 pp의 오른쪽 자식이고 또 p의 오른쪽 자식으로 노드 x를 삽입했을 경우 RR임을 알 수 있다.</p>
 <p>이렇게 앞에 두 대문자가 방향을 표시하고 뒤에 소문자가 삽입 노드의 부모 노드의 형제 색을 표시한다. 이 부모의 형제 노드에 의해서 CASE가 나누어지고, LL이든 RR이든 반대로 회전만 하면 되므로 설명은 한 번만 하겠다.</p>
-<p>s가 레드일 경우 그냥 색만 바꾸면 된다. p와 s를 블랙, pp를 레드로 바꾸면 된다.<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%852.png?raw=true" alt="[레드블랙트리삽입2.png]"></p>
-<p>s가 블랙일 경우는 <a href="https://github.com/1Dohyeon/Study-DataStructure/tree/master/03_Tree_with_java">AVL 트리(3.3)</a>처럼 회전을 시킨 후 색을 바꾸면 된다.<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%853.png?raw=true" alt="[레드블랙트리삽입3.png]"><br>색을 바꾸는데에는 상수시간, 색을 바꿔야할 곳까지 탐색하는 것은 트리의 높이에 비례함을 알 수 있다. 따라서 위 알고리즘의 시간복잡도는 log2N 임을 알 수 있다.</p>
+<p>s가 레드일 경우 그냥 색만 바꾸면 된다. p와 s를 블랙, pp를 레드로 바꾸면 된다.<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%852.png?raw=true" alt="[레드블랙트리삽입2.png]"></p>
+<p>s가 블랙일 경우는 <a href="https://github.com/1Dohyeon/Study-DataStructure/tree/master/03_Tree_with_java">AVL 트리(3.3)</a>처럼 회전을 시킨 후 색을 바꾸면 된다.<br><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EB%A0%88%EB%93%9C%EB%B8%94%EB%9E%99%ED%8A%B8%EB%A6%AC%EC%82%BD%EC%9E%853.png?raw=true" alt="[레드블랙트리삽입3.png]"><br>색을 바꾸는데에는 상수시간, 색을 바꿔야할 곳까지 탐색하는 것은 트리의 높이에 비례함을 알 수 있다. 따라서 위 알고리즘의 시간복잡도는 log2N 임을 알 수 있다.</p>
 ]]></content>
       <categories>
         <category>Algorithms</category>
@@ -243,7 +243,7 @@
 <p>위 개념을 이용하는 자료구조가 바로 해시이다. 하지만 위처럼 key를 바로 인덱스로 매핑시키는 것이 아니라 해싱(Hashing)을 key값을 변환한다. Hashing이란 간단한 함수를 통해서 키를 변환 후 그 값을 인덱스로 하는 배열의 위치에 항목을 저장하는 것이다.</p>
 <span id="more"></span>
 
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%ED%95%B4%EC%8B%B1%EC%98%88%EC%8B%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="해싱 예시 이미지.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%ED%95%B4%EC%8B%B1%EC%98%88%EC%8B%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="해싱 예시 이미지.png"></p>
 <p>키를 변환하는 함수를 해시 함수라고 하고, 해시값(Hash Value) 가 해시 함수가 계산을 하여 반환한 값이다. 이 값을 인덱스로 하는 배열이 바로 해시테이블(Hash Table) 이다.</p>
 <p>하지만 만약에 서로 다른 키들이 같은 해시값을 갖게 되면 어떻게 될까? 바로 충돌(Collision) 이 발생한다. 해시함수들은 키들을 균등하게 해시테이블의 인덱스로 변환하여 충돌을 줄여야한다. 5.1과 5.2에서는 충돌된 키를 처리하는 과정을 설명한다.</p>
 <h3 id="5-1-Open-Addressing"><a href="#5-1-Open-Addressing" class="headerlink" title="5.1 Open Addressing"></a>5.1 Open Addressing</h3><p>Open Addressing 은 개방주소방식이라고 하며 해시테이블 전체를 열린 공간으로 가정하고 충돌된 키를 일정한 방식에 따라서 찾아낸 빈 공간에 저장한다.</p>
@@ -513,7 +513,7 @@
 <p>하지만, 이렇게만 해놓으면 key값이 가장 낮은 값이 root에 있다는 보장을 할 수 없다. 따라서 downheap 이라는 연산을 해야한다.</p>
 <p><strong>4.1.4 downheap</strong><br>완전이진트리의 형태라고 하였지만, 코드 설명은 <code>Key</code> 와 <code>Value</code> 로 구성된 <code>Entry</code> 배열 로 설명하겠다.</p>
 <p>우선 설명하기 전에 배열의 구조부터 설명하겠다. 우선순위가 가장 높은 <code>root</code> 노드는 배열 <code>a</code> 의 1번 인덱스에 저장된다. <code>root</code> 의 왼쪽 자식은 2, 오른쪽은 3에 저장된다. 2번에 저장된 노드의 왼쪽 자식은 그 다음 순번인 4, 오른쪽 자식은 그 다음 순번인 5에 채워진다. 완전이진트리의 형태이기 때문에 중간이 빌 수가 없다. 따라서 아래와 같은 형태를 갖게 된다 :</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90%EC%98%88%EC%8B%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="우선순위큐예시이미지.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90%EC%98%88%EC%8B%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="우선순위큐예시이미지.png"></p>
 <p>아래는 downheap 을 구현한 자바 코드이다 :</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BHeap</span>&lt;K <span class="keyword">extends</span> <span class="title class_">Comparable</span>&lt;K&gt;, V&gt; &#123; <span class="comment">// 이진(최소) 힙</span></span><br><span class="line">    <span class="keyword">private</span> Entry&lt;K, V&gt;[] a; <span class="comment">// a[0]은 사용 안함</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> N; <span class="comment">// 힙의 크기</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">downheap</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">2</span> * i &lt;= N) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span> * i; <span class="comment">// i의 왼쪽 자식을 k</span></span><br><span class="line">            <span class="comment">// 오른쪽 자식이 있으면 오른쪽 자식과 비교</span></span><br><span class="line">            <span class="keyword">if</span> (k &lt; N &amp;&amp; greater(k, k + <span class="number">1</span>)) &#123;</span><br><span class="line">                k++;</span><br><span class="line">            &#125; <span class="comment">// 더 작은 값을 k로 설정</span></span><br><span class="line">            <span class="keyword">if</span> (!greater(i, k)) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(i, k); <span class="comment">// i와 k 위치를 바꿈</span></span><br><span class="line">            i = k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
@@ -577,7 +577,7 @@
 <span id="more"></span>
 
 <p>즉, 데이터를 이진 검색 트리에 삽입한다면 아래와 같은 모양의 자료구조를 갖는다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="BST 예제 이미지.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/BST%EC%98%88%EC%A0%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.png?raw=true" alt="BST 예제 이미지.png"></p>
 <p>또한 이진 검색 트리는 위 그림에서처럼 부모 노드보다 크다면 <code>right</code> , 부모노드보다 작으면 <code>left</code> 로 이동하여 자리를 잡는다.</p>
 <p><strong>3.1.2 class Node</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node</span>&lt;Key <span class="keyword">extends</span> <span class="title class_">Comparable</span>&lt;Key&gt;, Value&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> Key id;</span><br><span class="line">    <span class="keyword">private</span> Value name;</span><br><span class="line">    <span class="keyword">private</span> Node&lt;Key, Value&gt; left, right;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생략</span></span><br></pre></td></tr></table></figure>
@@ -607,7 +607,7 @@
 <p><code>p</code> : 삭제하려는 노드<br><code>s</code> : <code>p</code> 의 부모 노드<br><code>x</code> : <code>p</code> 의 왼쪽 자식 노드<br><code>y</code> : <code>p</code> 의 오른쪽 자식 노드</p>
 <p>위와 같이 정의할 경우 각 노드의 키값은 다음과 같이 정의된다 : <code>x</code> &lt; <code>p</code> &lt; <code>y</code>. 이때 <code>y</code>의 최솟값 노드의 키값 <code>y_min</code> 은 <code>x</code> 의 키값보다 크다.</p>
 <p>즉, <code>p</code>의 키값보다 바로 다음단계로 큰 노드의 키값은 <code>y_min</code>이란 소리이다. 따라서 (아래 그림처럼) <code>y_min</code> 을 <code>p</code> 의 위치로 옮기고 <code>y_min</code> 의 <code>left</code> , <code>right</code> 를 기존 <code>p</code> 의 <code>left</code> , <code>right</code> 와 연결시키면 된다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC%EC%82%AD%EC%A0%9C%EC%98%88%EC%A0%9C.png?raw=true" alt="이진검색트리 삭제 예제.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC%EC%82%AD%EC%A0%9C%EC%98%88%EC%A0%9C.png?raw=true" alt="이진검색트리 삭제 예제.png"></p>
 <ul>
 <li>기존 <code>y_min</code> 은 삭제해야한다.</li>
 </ul>
@@ -625,15 +625,15 @@
 <h3 id="3-3-AVL-트리"><a href="#3-3-AVL-트리" class="headerlink" title="3.3 AVL 트리"></a>3.3 AVL 트리</h3><p><strong>3.3.1 개념</strong></p>
 <p>3.1 에서의 이진탐색트리에 15, 13, 11, 9, 7 과 같이 계속 작은 수를 삽입하게 되면 왼쪽으로 치우쳐진 형태의 트리 모습을 갖게 된다. 큰수를 계속 삽입한다면 반대로 오른쪽으로 치우쳐지게 될 것이다.</p>
 <p>이러한 문제점을 해결하기 위해서 한쪽으로 치우쳐지면 트리를 회전시키는 것이 AVL 알고리즘이다. 이런 알고리즘을 지닌 트리를 AVL 트리 자료구조라고 한다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LLcase.png?raw=true" alt="LLcase.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LLcase.png?raw=true" alt="LLcase.png"></p>
 <p>15 -&gt; 10 -&gt; 7 순으로 채워져서 트리가 왼쪽으로 치우쳐진 모양이라고 가정해보자. 이때 루트 노드이 왼쪽 자식인 10, 즉 중간 노드를 기준으로 오른쪽으로 회전시킨다. 우회전을 했다고 하여 Right Rotation 이라고 부른다.</p>
 <p>하지만 이런 케이스는 왼쪽 자식의 왼쪽 자식 때문에 회전이 일어났으므로 Left Left Case, 즉 <strong>LL case</strong> 라고 부른다. 반대로 오른쪽으로 치우쳐져 있다면 위와 반대로 생각하면 쉽다.</p>
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LRcase.png?raw=true" alt="LRcase.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LRcase.png?raw=true" alt="LRcase.png"></p>
 <p>이번에는 15 -&gt; 10 -&gt; 12 순서로 들어왔다고 가정하자. 이때 왼쪽 자식의 오른쪽 자식에 의해서 트리 균형이 맞지 않음을 알 수 있다. 따라서 Left Right case, 줄여서 LR case 라고 한다. 오른쪽으로 치우쳐진 것을 회복하기 위해 왼쪽으로 먼저 회전시키고, 오른쪽으로 다시 회전시켜 균형을 맞춘다.</p>
 <p><strong>3.3.2 Right Rotation</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Node&lt;Key, Value&gt; <span class="title function_">rotateRight</span><span class="params">(Node&lt;Key, Value&gt; n)</span> &#123;</span><br><span class="line">       Node&lt;Key, Value&gt; x = n.left;</span><br><span class="line">       n.left = x.right;</span><br><span class="line">       x.right = n;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 높이 갱신</span></span><br><span class="line">       n.height = tallerHeight(height(n.left), height(n.right)) + <span class="number">1</span>;</span><br><span class="line">       x.height = tallerHeight(height(x.left), height(x.right)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> x;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/imgs/LLcase%EC%BD%94%EB%93%9C%EB%8C%80%EB%A1%9C%EC%8B%A4%ED%96%89%EC%98%88%EC%A0%9C.png?raw=true" alt="LLcase 코드대로 실행 예제.png"></p>
+<p><img src="https://github.com/1Dohyeon/blogIMG/blob/master/nest1-datastructure-algorithms/LLcase%EC%BD%94%EB%93%9C%EB%8C%80%EB%A1%9C%EC%8B%A4%ED%96%89%EC%98%88%EC%A0%9C.png?raw=true" alt="LLcase 코드대로 실행 예제.png"></p>
 <p>3.3.1 에서 예를 든 것처럼 15 -&gt; 10 -&gt; 7 순서로 숫자가 들어왔다고 가정. 이때 15가 n 노드가 된다. <strong>n 노드에서 좌우 불균형을 발견</strong>했기 때문이다. 다음은 코드대로 실행하면 된다.</p>
 <p>n의 왼쪽 자식을 x라고 두고, n의 왼쪽 자식 위치로 x의 오른쪽 자식을 옮긴다. x의 오른쪽 자식은 없으므로 null. 그다음 x의 오른쪽 자식에 n을 위치시키면 마치 트리가 회전한 것처럼 보인다.</p>
 <p>왼쪽으로 회전은 위와 반대로 작동한다. <strong>tallerHeight()</strong> 메서드는 n과 x의 위치가 변했기 때문에 높이를 갱신해준 것이다. 왼쪽 오른쪽 자식의 높이차이가 2이상 나면 회전을 해야하기 때문이다.</p>
