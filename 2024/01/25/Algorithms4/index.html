@@ -20,19 +20,26 @@
     var CONFIG = {"hostname":"1dohyeon.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="최소 신장 트리4.1 Prim 알고리즘4.2 Kruskal 알고리즘 위상정렬4.3 TopologicalSort 알고리즘">
+  <meta name="description" content="최소 신장 트리4.1 Prim 알고리즘프림(Prim) 알고리즘은 최소신장트리(Minimum Spanning Trees)를 구하는 알고리즘이다. Minimum Spanning Trees 는 모든 꼭짓점을 사이클 없이 가능한 최소 총 가중치로 연결하는 알고리즘이다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="알고리즘(Algorithms) - 그래프 알고리즘(최소 신장 트리(Prim, Kruskal), 위상정렬(TopologicalSort))">
 <meta property="og:url" content="https://1dohyeon.github.io/2024/01/25/Algorithms4/index.html">
 <meta property="og:site_name" content="Dohyeon">
-<meta property="og:description" content="최소 신장 트리4.1 Prim 알고리즘4.2 Kruskal 알고리즘 위상정렬4.3 TopologicalSort 알고리즘">
+<meta property="og:description" content="최소 신장 트리4.1 Prim 알고리즘프림(Prim) 알고리즘은 최소신장트리(Minimum Spanning Trees)를 구하는 알고리즘이다. Minimum Spanning Trees 는 모든 꼭짓점을 사이클 없이 가능한 최소 총 가중치로 연결하는 알고리즘이다.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%84%EB%A6%BC1.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%84%EB%A6%BC2.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%81%AC%EB%A3%A8%EC%8A%A4%EC%B9%BC1.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%81%AC%EB%A3%A8%EC%8A%A4%EC%B9%BC2.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC.png">
 <meta property="article:published_time" content="2024-01-25T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-25T11:23:26.919Z">
+<meta property="article:modified_time" content="2024-01-25T12:50:44.084Z">
 <meta property="article:author" content="Dohyeon Won">
 <meta property="article:tag" content="study">
 <meta property="article:tag" content="Algorithms">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%84%EB%A6%BC1.png">
 
 <link rel="canonical" href="https://1dohyeon.github.io/2024/01/25/Algorithms4/">
 
@@ -238,8 +245,98 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="최소-신장-트리"><a href="#최소-신장-트리" class="headerlink" title="최소 신장 트리"></a>최소 신장 트리</h2><h3 id="4-1-Prim-알고리즘"><a href="#4-1-Prim-알고리즘" class="headerlink" title="4.1 Prim 알고리즘"></a>4.1 Prim 알고리즘</h3><h3 id="4-2-Kruskal-알고리즘"><a href="#4-2-Kruskal-알고리즘" class="headerlink" title="4.2 Kruskal 알고리즘"></a>4.2 Kruskal 알고리즘</h3><hr>
-<h2 id="위상정렬"><a href="#위상정렬" class="headerlink" title="위상정렬"></a>위상정렬</h2><h3 id="4-3-TopologicalSort-알고리즘"><a href="#4-3-TopologicalSort-알고리즘" class="headerlink" title="4.3 TopologicalSort 알고리즘"></a>4.3 TopologicalSort 알고리즘</h3>
+        <h2 id="최소-신장-트리"><a href="#최소-신장-트리" class="headerlink" title="최소 신장 트리"></a>최소 신장 트리</h2><h3 id="4-1-Prim-알고리즘"><a href="#4-1-Prim-알고리즘" class="headerlink" title="4.1 Prim 알고리즘"></a>4.1 Prim 알고리즘</h3><p>프림(Prim) 알고리즘은 최소신장트리(Minimum Spanning Trees)를 구하는 알고리즘이다. Minimum Spanning Trees 는 모든 꼭짓점을 사이클 없이 가능한 <strong>최소</strong> 총 가중치로 연결하는 알고리즘이다.</p>
+<span id="more"></span>
+
+<p>이때 트리는 싸이클이 없는 연결 그래프여야한다. 또한 무향 연결 그래프(connected graph)여야 한다. 이는 모든 정점간에 경로가 존재하는 그래프를 의미한다.</p>
+<p><strong>pseudocode</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Prim(G, r)</span><br><span class="line">▷ G=(V, E): 주어진 그래프</span><br><span class="line">▷ r: 시작으로 삼을 정점</span><br><span class="line">&#123;</span><br><span class="line">	S ← Ф ; ▷ S : 정점 집합</span><br><span class="line">	for each u∈V</span><br><span class="line">		du ← ∞ ;</span><br><span class="line"></span><br><span class="line">	dr ← 0 ;</span><br><span class="line">	while (S≠V)&#123; ▷ n회 순환된다</span><br><span class="line">		u ← extractMin(V-S, d);</span><br><span class="line">		S ← S ∪&#123;u&#125;;</span><br><span class="line">		for each v∈L(u) ▷ L(u) : u로부터 연결된 정점들의 집합</span><br><span class="line">			if (v∈V-S and wuv&lt;dv) then dv ← wuv;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extractMin(Q, d)</span><br><span class="line">&#123;</span><br><span class="line">	집합 Q에서 d값이 가장 작은 정점 u를 리턴한다;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행시간: O(|E|log|V|): - 힙 이용</p>
+</blockquote>
+<ol>
+<li>방문한 정점을 담을 배열 <code>S</code>를 선언, 초기는 당연히 공집합</li>
+<li>반복문을 돌며 모든 정점을 무한대로 설정 -&gt; 나중에 비교 후 최솟값으로 결정내기 위함</li>
+<li>순환을 하기 위한 첫번째 정점 <code>dr</code> 은 당연히 0으로 설정</li>
+<li><code>S</code>가 모든 정점 <code>V</code>를 포함할 때까지 다음을 반복 :<ol>
+<li><code>V-S</code>에서 <code>du</code> 값이 가장 작은 정점 <code>u</code>를 찾아내고, 이를 <code>S</code>에 추가</li>
+<li><code>u</code>의 모든 인접 정점 <code>v</code>에 대해 <code>v</code>가 <code>V-S</code>에 속하고, <code>wuv</code>가 <code>dv</code>보다 작으면 <code>dv</code> 값을 갱신</li>
+</ol>
+</li>
+<li>최소 신장 트리를 찾을 때까지 계속 반복(<code>extractMin(Q, d)</code> 함수는 주어진 집합 <code>Q</code>에서 <code>d</code> 값이 가장 작은 정점 <code>u</code>를 찾아 리턴하는 함수이다. 이 함수는 Prim 알고리즘에서 사용되어 <code>V-S</code>에서 최소 <code>du</code> 값을 갖는 정점 <code>u</code>를 찾아내기 위해 호출된다.)</li>
+</ol>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%84%EB%A6%BC1.png" alt="[프림1.png]"><br><code>r</code> 부터 시작해서 <code>S</code> 집합에 있는 정점 중 다른 정점으로 갈 수 있는 경우 중 작은 경우를 <code>S</code> 배열 안에 담음.<br><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%84%EB%A6%BC2.png" alt="[프림2.png]"></p>
+<h3 id="4-2-Kruskal-알고리즘"><a href="#4-2-Kruskal-알고리즘" class="headerlink" title="4.2 Kruskal 알고리즘"></a>4.2 Kruskal 알고리즘</h3><p>Kruskal 알고리즘도 Prim 알고리즘처럼 최소신장트리를 구하는 알고리즘이다. Kruskal은 Prim과 달리 정점과 연결된 간선의 가중치를 비교하는 것이 아니라 정점과 연결이 되어있든 말든 가장 작은 가중치를 가진 간선을 찾는 방식으로 진행한다.</p>
+<p><strong>pseudocode</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Kruskal (G, r)</span><br><span class="line">&#123;</span><br><span class="line">	1. T ← Ф ; ▷ T : 신장트리</span><br><span class="line">	2. 단 하나의 정점만으로 이루어진 n 개의 집합을 초기화한다;</span><br><span class="line">	3. 간선 집합 Q(=E)를 가중치가 작은 순으로 정렬한다;</span><br><span class="line"></span><br><span class="line">	4. while (T의 간선수 &lt; n-1) &#123;</span><br><span class="line">		Q에서 최소비용 간선 (u, v)를 제거한다;</span><br><span class="line">		정점 u와 정점 v가 서로 다른 집합에 속하면 &#123;</span><br><span class="line">			두 집합을 하나로 합친다;</span><br><span class="line">			T ← T∪&#123;(u, v)&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행시간: O(ElogV)</p>
+</blockquote>
+<ol>
+<li><code>T</code>: 최소 신장 트리를 나타내는 변수를 빈 집합으로 초기화한다.</li>
+<li>각 정점을 단일 원소로 가지는 n개의 집합을 초기화한다. 이는 처음에는 모든 정점이 독립된 집합에 속해 있다는 것을 의미함.</li>
+<li>간선 집합 <code>Q</code>(&#x3D;E)을 가중치가 작은 순으로 정렬한다.</li>
+<li><code>T</code>에 포함된 간선의 수가 <code>n-1</code>이 될 때까지 다음을 반복 :<ol>
+<li><code>Q</code>에서 최소 비용 간선 <code>(u, v)</code>를 제거합니다.</li>
+<li>만약 정점 <code>u</code>와 정점 <code>v</code>가 서로 다른 집합에 속한다면(즉, 서로 연결되지 않은 집합에 속한다면), 두 집합을 하나로 합친다. 이를 통해 두 정점이 같은 최소 신장 트리에 속하게 되며, <code>T</code>에 해당 간선을 추가한다.</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%81%AC%EB%A3%A8%EC%8A%A4%EC%B9%BC1.png" alt="[크루스칼1.png]"></p>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%81%AC%EB%A3%A8%EC%8A%A4%EC%B9%BC2.png" alt="[크루스칼2.png]"></p>
+<p>주의할 점은 f-&gt;g 과정처럼 간선을 찾았는데 만약 순회가 생긴다면 제외시킨다.</p>
+<hr>
+<h2 id="위상정렬"><a href="#위상정렬" class="headerlink" title="위상정렬"></a>위상정렬</h2><h3 id="4-3-TopologicalSort-알고리즘"><a href="#4-3-TopologicalSort-알고리즘" class="headerlink" title="4.3 TopologicalSort 알고리즘"></a>4.3 TopologicalSort 알고리즘</h3><p>위상정렬(TopologicalSort)이란 <strong>싸이클이 없는 유향 그래프</strong>에서 각 정점들을 정렬하는 것이다. 이때 정점 x에서 정점 y로 가는 간선이 있으면 x는 반드시 y보다 앞에 위치해야한다.</p>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC.png" alt="[위상정렬.png]"></p>
+<p>위상정렬 알고리즘으로는 2가지가 대표적이다. 우선 첫번 째 알고리즘의 pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">topologicalSort1(G, v) &#123;</span><br><span class="line">	for ← 1 to n &#123;</span><br><span class="line">		진입간선이 없는 정점 u를 선택한다;</span><br><span class="line">		A[i] ← u;</span><br><span class="line">		정점 u와, u의 진출간선을 모두 제거한다;</span><br><span class="line">	&#125;</span><br><span class="line">	▷ 이 시점에 배열 A[1…n]에는 정점들이 위상정렬되어 있다</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행 시간: Θ(|V|+|E|)</p>
+</blockquote>
+<ol>
+<li><code>for i ← 1 to n</code>: 이 반복문은 총 n번 반복된다. 여기서 n은 그래프 G의 정점의 수를 나타낸다.</li>
+<li><code>진입간선이 없는 정점 u를 선택한다</code>: 진입간선이 없는 정점은 해당 정점으로 들어오는 간선이 없는 정점을 의미한다. 즉, 해당 정점으로 들어오는 선행 작업이 없는 정점이다.</li>
+<li><code>A[i] ← u</code>: 현재 인덱스 i에 해당하는 배열 A의 원소에 선택한 정점 u를 할당한다. 이는 위상 정렬된 순서를 저장하는 배열이다.</li>
+<li><code>정점 u와, u의 진출간선을 모두 제거한다</code>: 선택한 정점 u와 u에서 나가는 모든 간선을 그래프에서 제거한다. 이는 다음 반복에서 u가 선택되지 않도록 진행된 간선들을 제거하는 것을 의미한다.</li>
+<li>반복이 끝나면 배열 A[1…n]에는 그래프의 정점들이 위상 정렬된 순서대로 저장된다. 배열 A는 그래프의 위상 정렬 결과를 나타낸다.</li>
+</ol>
+<p>두번 째 방법의 pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">topologicalSort2(G)</span><br><span class="line">&#123;</span><br><span class="line">	for each v∈V</span><br><span class="line">		visited[v] ← NO;</span><br><span class="line">	for each v∈V ▷ 정점의 순서는 무관</span><br><span class="line">		if (visited[v] = NO) then DFS-TS(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DFS-TS(v)</span><br><span class="line">&#123;</span><br><span class="line">	visited[v] ← YES;</span><br><span class="line">	for each x∈L(v) ▷ L(v): v의 인접 리스트</span><br><span class="line">		if (visited[x] = NO) then DFS-TS(x);</span><br><span class="line">	연결 리스트 R의 맨 앞에 정점 v를 삽입한다;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행 시간: Θ(|V|+|E|)<br>알고리즘이 끝나고 나면 연결 리스트 R에는 정점들이 위상정렬된 순서로 매달려 있다.</p>
+</blockquote>
+<blockquote>
+<p><code>topologicalSort2(G)</code> 함수 :</p>
+</blockquote>
+<ol>
+<li><code>visited[v] ← NO:</code> 모든 정점에 대해 방문 여부를 나타내는 배열 <code>visited</code>를 초기화한다. 처음에는 모든 정점이 방문되지 않은 상태이다.</li>
+<li>만약 정점 <code>v</code>가 아직 방문되지 않았다면(<code>visited[v] = NO</code>라면), <code>DFS-TS(v)</code> 함수를 호출하여 해당 정점을 시작으로 깊이 우선 탐색을 수행한다.<blockquote>
+<p><code>DFS-TS(v)</code> 함수 :</p>
+</blockquote>
+</li>
+<li><code>visited[v] ← YES:</code> 현재 정점 <code>v</code>를 방문했다고 표시한다.</li>
+<li><code>for each x∈L(v):</code> 정점 <code>v</code>의 인접 리스트 <code>L(v)</code>에 속하는 모든 정점 <code>x</code>에 대해 다음을 반복한다.<ol>
+<li>만약 정점 <code>x</code>가 아직 방문되지 않았다면(<code>visited[x] = NO</code>), <code>DFS-TS(x)</code> 함수를 재귀적으로 호출하여 깊이 우선 탐색을 수행한다.</li>
+</ol>
+</li>
+<li><code>연결 리스트 R의 맨 앞에 정점 v를 삽입한다:</code> DFS가 끝난 후, 현재 정점 <code>v</code>를 연결 리스트 <code>R</code>의 맨 앞에 삽입한다. 이렇게 하면 <code>R</code>에는 위상 정렬된 순서대로 정점들이 저장된다.</li>
+</ol>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC.png" alt="[위상정렬.png]"><br>위 그림의 (b)를 생각하면 된다.</p>
+<ol>
+<li>a부터 dfs 탐색을 시작하면 c를 마주하게 된다. c를 방문했다고 표시한다.</li>
+<li>돌아가서 다시 dfs를 하면 e-&gt;f를 지나게 되므로 f, e 순으로 방문을 했다고 표시한다.</li>
+<li>다시 b로 돌아가면 더이상 이동할 곳이 없게 되므로 g를 진행시킨다: g-&gt;d-&gt;e … <strong>e는 방문을 했기때문에 d와 g 순으로 방문했다고 표시</strong>한다.</li>
+<li>다시 b로 돌아와서 방문했다고 표시하고, a도 표시한다.</li>
+<li>이렇게 되면 c, f, e, d, g, b, a 순으로 표시를 한것이고, 이것들을 <strong>뒤집으면 (b) 형태</strong>가 나오게 된다. 위상정렬1 과는 다르게 <strong>거꾸로 올라가면서 순서를 정렬</strong>한다.</li>
+</ol>
+<hr>
+<h2 id="최단경로"><a href="#최단경로" class="headerlink" title="최단경로"></a>최단경로</h2><h3 id="4-4-Dijkstra-알고리즘"><a href="#4-4-Dijkstra-알고리즘" class="headerlink" title="4.4 Dijkstra 알고리즘"></a>4.4 Dijkstra 알고리즘</h3><h2 id="4-5-Bellman-Ford-알고리즘"><a href="#4-5-Bellman-Ford-알고리즘" class="headerlink" title="4.5 Bellman-Ford 알고리즘"></a>4.5 Bellman-Ford 알고리즘</h2><h3 id="4-6-Floyd-Warshall-알고리즘"><a href="#4-6-Floyd-Warshall-알고리즘" class="headerlink" title="4.6 Floyd-Warshall 알고리즘"></a>4.6 Floyd-Warshall 알고리즘</h3><hr>
+<h2 id="싸이클이-없는-그래프에서의-최단-경로"><a href="#싸이클이-없는-그래프에서의-최단-경로" class="headerlink" title="싸이클이 없는 그래프에서의 최단 경로"></a>싸이클이 없는 그래프에서의 최단 경로</h2><h3 id="4-7-DAT"><a href="#4-7-DAT" class="headerlink" title="4.7 DAT"></a>4.7 DAT</h3><hr>
+<h2 id="강연결요소"><a href="#강연결요소" class="headerlink" title="강연결요소"></a>강연결요소</h2><h3 id="4-8-StronglyConnectedComponent-알고리즘"><a href="#4-8-StronglyConnectedComponent-알고리즘" class="headerlink" title="4.8 StronglyConnectedComponent 알고리즘"></a>4.8 StronglyConnectedComponent 알고리즘</h3>
     </div>
 
     
@@ -323,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B5%9C%EC%86%8C-%EC%8B%A0%EC%9E%A5-%ED%8A%B8%EB%A6%AC"><span class="nav-number">1.</span> <span class="nav-text">최소 신장 트리</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Prim-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">1.1.</span> <span class="nav-text">4.1 Prim 알고리즘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Kruskal-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">1.2.</span> <span class="nav-text">4.2 Kruskal 알고리즘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC"><span class="nav-number">2.</span> <span class="nav-text">위상정렬</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-TopologicalSort-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">2.1.</span> <span class="nav-text">4.3 TopologicalSort 알고리즘</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B5%9C%EC%86%8C-%EC%8B%A0%EC%9E%A5-%ED%8A%B8%EB%A6%AC"><span class="nav-number">1.</span> <span class="nav-text">최소 신장 트리</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Prim-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">1.1.</span> <span class="nav-text">4.1 Prim 알고리즘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Kruskal-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">1.2.</span> <span class="nav-text">4.2 Kruskal 알고리즘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC"><span class="nav-number">2.</span> <span class="nav-text">위상정렬</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-TopologicalSort-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">2.1.</span> <span class="nav-text">4.3 TopologicalSort 알고리즘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B5%9C%EB%8B%A8%EA%B2%BD%EB%A1%9C"><span class="nav-number">3.</span> <span class="nav-text">최단경로</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Dijkstra-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">3.1.</span> <span class="nav-text">4.4 Dijkstra 알고리즘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-Bellman-Ford-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">4.</span> <span class="nav-text">4.5 Bellman-Ford 알고리즘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Floyd-Warshall-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">4.1.</span> <span class="nav-text">4.6 Floyd-Warshall 알고리즘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%8B%B8%EC%9D%B4%ED%81%B4%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90%EC%84%9C%EC%9D%98-%EC%B5%9C%EB%8B%A8-%EA%B2%BD%EB%A1%9C"><span class="nav-number">5.</span> <span class="nav-text">싸이클이 없는 그래프에서의 최단 경로</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-DAT"><span class="nav-number">5.1.</span> <span class="nav-text">4.7 DAT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B0%95%EC%97%B0%EA%B2%B0%EC%9A%94%EC%86%8C"><span class="nav-number">6.</span> <span class="nav-text">강연결요소</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-StronglyConnectedComponent-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">6.1.</span> <span class="nav-text">4.8 StronglyConnectedComponent 알고리즘</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

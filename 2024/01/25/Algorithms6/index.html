@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/huffmancode.png">
 <meta property="article:published_time" content="2024-01-25T05:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-25T11:22:56.426Z">
+<meta property="article:modified_time" content="2024-01-25T11:25:43.012Z">
 <meta property="article:author" content="Dohyeon Won">
 <meta property="article:tag" content="study">
 <meta property="article:tag" content="Algorithms">
@@ -244,7 +244,7 @@
 <span id="more"></span>
 
 <p><a target="_blank" rel="noopener" href="https://github.com/1Dohyeon/Study-Algorithms/blob/main/Graph.md">프림Prim 알고리즘</a>으로 예를 들자면 이 알고리즘은 간단하게 설명하면 간선간에 가중치가 있는 그래프에서 최소 신장의 트리를 찾기 위한 알고리즘이다.</p>
-<p><strong>수도 코드</strong></p>
+<p><strong>pseudocode</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Prim ( G, r)</span><br><span class="line">&#123;</span><br><span class="line">	S ← Ф ; 정점 r을 방문되었다고 표시하고, 집합 S에 포함시킨다;</span><br><span class="line">	while ( S≠ V) &#123;</span><br><span class="line">		S에서 V- S를 연결하는 간선들 중 최소길이의 간선 ( x, y)를 찾는다; ▷ ( x∈ S, y∈ V-S)</span><br><span class="line">		정점 y를 방문되었다고 표시하고, 집합 S에 포함시킨다;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>위 수도 코드에서 <code>S에서 V- S를 연결하는 간선들 중 최소길이의 간선 ( x, y)를 찾는다;</code> 이 부분이 그리디한 부분이다. 현재 상황에서 최소 길이를 찾기 때문이다.</p>
