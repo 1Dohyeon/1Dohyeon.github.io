@@ -1160,11 +1160,6 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/01/25/Algorithms4/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>알고리즘(Algorithms) - Dynamic Programming, LCS 알고리즘 문제</title>
     <url>/2024/01/25/Algorithms5/</url>
     <content><![CDATA[<h3 id="5-1-Dynamic-Programming"><a href="#5-1-Dynamic-Programming" class="headerlink" title="5.1 Dynamic Programming"></a>5.1 Dynamic Programming</h3><p>동적 프로그래밍(Dynamic Programming)은 큰 문제를 작은 문제로 나누어서 그 결과를 저장하여 다시 큰 문제를 해결하는 방법이다. 즉, 큰 문제를 작은 문제로 쪼개고 작은 문제의 답을 저장하여 <strong>재활용</strong>하는 방법이다.</p>
@@ -1195,6 +1190,8 @@
     <title>알고리즘(Algorithms) - Greedy (그리디 알고리즘)</title>
     <url>/2024/01/25/Algorithms6/</url>
     <content><![CDATA[<h3 id="6-1-Greedy-그리디-알고리즘"><a href="#6-1-Greedy-그리디-알고리즘" class="headerlink" title="6.1 Greedy (그리디 알고리즘)"></a>6.1 Greedy (그리디 알고리즘)</h3><p>그리디 알고리즘의 “그리디(Greedy)” 는 직역하면 “탐욕”, “욕심” 이라는 뜻을 가지고 있다. 이 의미 그대로 그리디 알고리즘은 이전 이후를 고려하지 않고 당장 현재 상태에서 최적의 해를 찾는 알고리즘이다.</p>
+<span id="more"></span>
+
 <p><a href="https://github.com/1Dohyeon/Study-Algorithms/blob/main/Graph.md">프림Prim 알고리즘</a>으로 예를 들자면 이 알고리즘은 간단하게 설명하면 간선간에 가중치가 있는 그래프에서 최소 신장의 트리를 찾기 위한 알고리즘이다.</p>
 <p><strong>수도 코드</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Prim ( G, r)</span><br><span class="line">&#123;</span><br><span class="line">	S ← Ф ; 정점 r을 방문되었다고 표시하고, 집합 S에 포함시킨다;</span><br><span class="line">	while ( S≠ V) &#123;</span><br><span class="line">		S에서 V- S를 연결하는 간선들 중 최소길이의 간선 ( x, y)를 찾는다; ▷ ( x∈ S, y∈ V-S)</span><br><span class="line">		정점 y를 방문되었다고 표시하고, 집합 S에 포함시킨다;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1244,6 +1241,19 @@
 </ol>
 <p>여기서 가장 작은 값을 선택하는 과정이 그리디 요소라고 볼 수 있다.</p>
 ]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>study</tag>
+        <tag>Algorithms</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>알고리즘(Algorithms) - 그래프 알고리즘(최소 신장 트리(Prim, Kruskal), 위상정렬(TopologicalSort))</title>
+    <url>/2024/01/25/Algorithms4/</url>
+    <content><![CDATA[<h2 id="최소-신장-트리"><a href="#최소-신장-트리" class="headerlink" title="최소 신장 트리"></a>최소 신장 트리</h2><h3 id="4-1-Prim-알고리즘"><a href="#4-1-Prim-알고리즘" class="headerlink" title="4.1 Prim 알고리즘"></a>4.1 Prim 알고리즘</h3><h3 id="4-2-Kruskal-알고리즘"><a href="#4-2-Kruskal-알고리즘" class="headerlink" title="4.2 Kruskal 알고리즘"></a>4.2 Kruskal 알고리즘</h3><hr>
+<h2 id="위상정렬"><a href="#위상정렬" class="headerlink" title="위상정렬"></a>위상정렬</h2><h3 id="4-3-TopologicalSort-알고리즘"><a href="#4-3-TopologicalSort-알고리즘" class="headerlink" title="4.3 TopologicalSort 알고리즘"></a>4.3 TopologicalSort 알고리즘</h3>]]></content>
       <categories>
         <category>Algorithms</category>
       </categories>

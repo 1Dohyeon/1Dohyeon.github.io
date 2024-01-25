@@ -185,63 +185,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/01/25/Algorithms4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dohyeon Won">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dohyeon">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/01/25/Algorithms4/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-01-25 19:53:45" itemprop="dateCreated datePublished" datetime="2024-01-25T19:53:45+09:00">2024-01-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/01/25/Algorithms6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -266,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2024-01-25 13:00:00" itemprop="dateCreated datePublished" datetime="2024-01-25T13:00:00+09:00">2024-01-25</time>
+              <time title="Created: 2024-01-25 14:00:00" itemprop="dateCreated datePublished" datetime="2024-01-25T14:00:00+09:00">2024-01-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,55 +233,14 @@
 
       
           <h3 id="6-1-Greedy-그리디-알고리즘"><a href="#6-1-Greedy-그리디-알고리즘" class="headerlink" title="6.1 Greedy (그리디 알고리즘)"></a>6.1 Greedy (그리디 알고리즘)</h3><p>그리디 알고리즘의 “그리디(Greedy)” 는 직역하면 “탐욕”, “욕심” 이라는 뜻을 가지고 있다. 이 의미 그대로 그리디 알고리즘은 이전 이후를 고려하지 않고 당장 현재 상태에서 최적의 해를 찾는 알고리즘이다.</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/1Dohyeon/Study-Algorithms/blob/main/Graph.md">프림Prim 알고리즘</a>으로 예를 들자면 이 알고리즘은 간단하게 설명하면 간선간에 가중치가 있는 그래프에서 최소 신장의 트리를 찾기 위한 알고리즘이다.</p>
-<p><strong>수도 코드</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Prim ( G, r)</span><br><span class="line">&#123;</span><br><span class="line">	S ← Ф ; 정점 r을 방문되었다고 표시하고, 집합 S에 포함시킨다;</span><br><span class="line">	while ( S≠ V) &#123;</span><br><span class="line">		S에서 V- S를 연결하는 간선들 중 최소길이의 간선 ( x, y)를 찾는다; ▷ ( x∈ S, y∈ V-S)</span><br><span class="line">		정점 y를 방문되었다고 표시하고, 집합 S에 포함시킨다;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>위 수도 코드에서 <code>S에서 V- S를 연결하는 간선들 중 최소길이의 간선 ( x, y)를 찾는다;</code> 이 부분이 그리디한 부분이다. 현재 상황에서 최소 길이를 찾기 때문이다.</p>
-<p>이렇게 그리디 알고리즘을 적용해야하는 문제는 보통 현재 최적의 해를 찾고 이 알고리즘을 반복하는 행위를 한다.</p>
-<h3 id="6-2-회의실-배정"><a href="#6-2-회의실-배정" class="headerlink" title="6.2 회의실 배정"></a>6.2 회의실 배정</h3><p>회의실 배정 문제는 그리디 알고리즘 예제 문제 중 대표적인 문제이다. 여기서는 백준: 회의실 배정](<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1931">https://www.acmicpc.net/problem/1931</a>) 문제의 풀이과정을 다룬다.</p>
-<p><strong>문제</strong><br>한 개의 회의실이 있는데 이를 사용하고자 하는 N개의 회의에 대하여 회의실 사용표를 만들려고 한다. 각 회의 I에 대해 시작시간과 끝나는 시간이 주어져 있고, 각 회의가 겹치지 않게 하면서 회의실을 사용할 수 있는 회의의 최대 개수를 찾아보자.<br>단, 회의는 한번 시작하면 중간에 중단될 수 없으며 한 회의가 끝나는 것과 동시에 다음 회의가 시작될 수 있다. 회의의 시작시간과 끝나는 시간이 같을 수도 있다. 이 경우에는 시작하자마자 끝나는 것으로 생각하면 된다.</p>
-<p><strong>입력</strong><br>첫째 줄에 회의의 수 N(1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N+1 줄까지 각 회의의 정보가 주어지는데 이것은 공백을 사이에 두고 회의의 시작시간과 끝나는 시간이 주어진다. 시작 시간과 끝나는 시간은 231-1보다 작거나 같은 자연수 또는 0이다.</p>
-<p><strong>출력</strong><br>첫째 줄에 최대 사용할 수 있는 회의의 최대 개수를 출력한다.</p>
-<p><strong>예제 입력</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">11</span><br><span class="line">1 4</span><br><span class="line">3 5</span><br><span class="line">0 6</span><br><span class="line">5 7</span><br><span class="line">3 8</span><br><span class="line">5 9</span><br><span class="line">6 10</span><br><span class="line">8 11</span><br><span class="line">8 12</span><br><span class="line">2 13</span><br><span class="line">12 14</span><br></pre></td></tr></table></figure>
-
-<p><strong>예제 출력</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
-
-<p>위 문제를 보면 회의실 이용시간이 긴 회의는 안고르는게 좋다고 생각이 들거다.<br>또한 가장 짧은 회의순을 우선으로 둬야겠다고 생각할 수도 있다.</p>
-<p>하지만 이는 좋은 접근법이 아니다. 회의중인 회의실이 있을 때, 그 이후에 많은 회의를 할 수 있게 하려면 어떻게 해야할까?</p>
-<p>바로 지금 회의중인 회의를 빨리 끝내야 한다. 즉, 종료 시간이 가장 이른 것이 그리디한 요소이다. 그 이후에 생각해야 할 요소는 종료시간이 같은 경우이다. <code>[5, 5]</code>와 <code>[4, 5]</code>가 있을 때 <code>[4, 5]</code>를 택하고, 그 다음으로 <code>[5, 5]</code>도 회의를 할 수 있다.</p>
-<p>파이썬을 통해서 위 알고리즘을 아래와 같이 설계하였다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solution</span>(<span class="params">arr</span>): <span class="comment"># [[1,2], [3,4], ...] 형태의 2차원 배열로 입력받음.</span></span><br><span class="line">    cnt = <span class="number">1</span></span><br><span class="line">    arr.sort(key = <span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    arr.sort(key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    end = room[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">        <span class="keyword">if</span> room[i][<span class="number">0</span>] &gt;= end:</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">            end = room[i][<span class="number">1</span>]</span><br><span class="line">           </span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 입출력</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>()) <span class="comment"># 회의실을 사용하려는 회의의 갯수</span></span><br><span class="line">room = []        <span class="comment"># 회의 시간을 담을 2차원 배열</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    a, b = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    room.append([a, b])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(solution(room))</span><br></pre></td></tr></table></figure>
-
-<p>위 코드를 봐보면 우선 <code>arr.sort(key = lambda x: x[0])</code> 후에 <code>arr.sort(key = lambda x: x[1])</code>를 실행한 것을 알 수 있다.</p>
-<p>끝시간이 우선이지만 시작 시간을 기준으로 먼저 정렬하였다. 위에서 설명했듯이 끝나는 시간이 동일할 경우 시작하는 시간을 먼저 앞세우기 위함이다.</p>
-<p>첫번째 끝 시간은 당연히 <code>end[0][1]</code>로 설정한다. 그 후 반복문을 통해서 모든 회의실 갯수를 한번씩만 탐색한다.</p>
-<p>반복문을 실행하면서 이 다음 회의의 시작시간이 지금 회의 중인 회의의 끝나는 시간보다 같거나 크다면 <code>cnt</code> 값을 올려주고, 끝나는 시간을 다음 회의시간의 끝나는 시간으로 갱신한다.</p>
-<h3 id="6-3-Huffman-Code-알고리즘"><a href="#6-3-Huffman-Code-알고리즘" class="headerlink" title="6.3 Huffman Code 알고리즘"></a>6.3 Huffman Code 알고리즘</h3><p>Huffman code는 문자열을 효율적으로 코드화하는 알고리즘이다. 우리가 사용하는 문자 abcd와 같은 알파벳은 사실상 2진수로 표현된다. a&#x3D;01, b&#x3D;10, … 이렇게 비트로 컴퓨터는 알파벳을 읽는다.</p>
-<p>이러한 코드의 비트 수가 적으면 적을 수록 컴퓨터 메모리는 이득을 볼 것이다. 이를 위해서 문자열을 효율적으로 코드화할 필요있고, 이와 같은 알고리즘이 나오게 되었다.</p>
-<blockquote>
-<p>효율성을 좋게 하려고 구성할 때, <strong>반드시 encoding과 decoding 에 오차가 있으면 안된다.</strong> 예를들어, 같은 100101010 을 어떤것은 abc 로 읽을 수도 있고, bcb 로 읽을수도 있으면 안된다는 뜻이다.</p>
-</blockquote>
-<p>a가 16번, b가 10번, c가 2번 나온다고 가정하자. 길이가 고정된 그냥 이진 코드라면 16 _ 2 + 10 _ 2 + 2 * 2 &#x3D; 56개의 비트가 필요하다.</p>
-<p>Huffman code는 문자열을 포함하는 코드인 0과 1의 나타냄을 최소로 하여 위보다 적은 메모리 공간을 사용하게 하는 알고리즘이다.</p>
-<p>따라서 Huffman code는 <strong>가장 많이 나오는 문자열에 가장 짧은 코드를 부여하는 방법</strong>을 선택하였다.</p>
-<p>Huffman Code 알고리즘의 pseudocode 는 다음과 같다 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">huffman(C, prob) &#123;</span><br><span class="line">	for each(x in C) &#123;</span><br><span class="line">		add x to Q sorted by prob[x]</span><br><span class="line">	&#125;</span><br><span class="line">	for (i=1 to |c|-1) &#123;</span><br><span class="line">		z = new internal tree node</span><br><span class="line">		left[z] = x = extract-min from Q</span><br><span class="line">		right[z] = y = extract min from Q</span><br><span class="line">		prob[z] = prob[x] + prob[y]</span><br><span class="line">		insert z into Q</span><br><span class="line">	&#125;</span><br><span class="line">	return the last element left in Q as the root</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>시간복잡도: O(NlogN)</p>
-<p>이 알고리즘의 핵심은 큐에 빈도수가 최소인 것을 담아서 큐에 있는 값으로 트리르 만드는 것이다.</p>
-<p>예제를 이용해서 설명하자면 a: 05, b:48, c: 07, d:17, e:10, f,:13 이라고 주어질 때 다음과 같이 실행된다.</p>
-<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/huffmancode.png" alt="Alt text"></p>
-<ol>
-<li>빈도수가 가장 작은 값 두개(a, c)를 구하고, 그 합(12)을 부모 노드로 설정하고 두 값을 자식으로 둔다.</li>
-<li>12보다 빈도수가 작은 문자열을 탐색하고 발견하면 12와 그 문자열(e)를 자식으로 하는 노드를 생성하고, 그 부모노드의 값은 위처럼 둘의 합(22)으로 이루어진다.</li>
-<li>다시 22보다 빈도수가 작은 문자열을 탐색하고, 두개가 나오면 그 두개를 가지고 다른 트리를 만든다. 그 후 둘을 연결한다.</li>
-<li>위와 같은 과정을 반복하면 아래의 그림이 나온다. 트리의 각 노드의 왼쪽 자식 연결은 0 오른쪽은 1로 두어서 각 문자열의 코드를 부여한다.</li>
-</ol>
-<p>여기서 가장 작은 값을 선택하는 과정이 그리디 요소라고 볼 수 있다.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/01/25/Algorithms6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -381,7 +283,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2024-01-25 12:00:00" itemprop="dateCreated datePublished" datetime="2024-01-25T12:00:00+09:00">2024-01-25</time>
+              <time title="Created: 2024-01-25 13:00:00" itemprop="dateCreated datePublished" datetime="2024-01-25T13:00:00+09:00">2024-01-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -413,6 +315,73 @@
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/01/25/Algorithms4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dohyeon Won">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dohyeon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/01/25/Algorithms4/" class="post-title-link" itemprop="url">알고리즘(Algorithms) - 그래프 알고리즘(최소 신장 트리(Prim, Kruskal), 위상정렬(TopologicalSort))</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-01-25 12:00:00" itemprop="dateCreated datePublished" datetime="2024-01-25T12:00:00+09:00">2024-01-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="최소-신장-트리"><a href="#최소-신장-트리" class="headerlink" title="최소 신장 트리"></a>최소 신장 트리</h2><h3 id="4-1-Prim-알고리즘"><a href="#4-1-Prim-알고리즘" class="headerlink" title="4.1 Prim 알고리즘"></a>4.1 Prim 알고리즘</h3><h3 id="4-2-Kruskal-알고리즘"><a href="#4-2-Kruskal-알고리즘" class="headerlink" title="4.2 Kruskal 알고리즘"></a>4.2 Kruskal 알고리즘</h3><hr>
+<h2 id="위상정렬"><a href="#위상정렬" class="headerlink" title="위상정렬"></a>위상정렬</h2><h3 id="4-3-TopologicalSort-알고리즘"><a href="#4-3-TopologicalSort-알고리즘" class="headerlink" title="4.3 TopologicalSort 알고리즘"></a>4.3 TopologicalSort 알고리즘</h3>
       
     </div>
 
