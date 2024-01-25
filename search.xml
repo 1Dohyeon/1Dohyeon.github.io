@@ -1192,7 +1192,7 @@
       </tags>
   </entry>
   <entry>
-    <title>알고리즘(Algorithms) - Dynamic Programming, LCS 알고리즘 문제</title>
+    <title>알고리즘(Algorithms) - Greedy (그리디 알고리즘)</title>
     <url>/2024/01/25/Algorithms6/</url>
     <content><![CDATA[<h3 id="6-1-Greedy-그리디-알고리즘"><a href="#6-1-Greedy-그리디-알고리즘" class="headerlink" title="6.1 Greedy (그리디 알고리즘)"></a>6.1 Greedy (그리디 알고리즘)</h3><p>그리디 알고리즘의 “그리디(Greedy)” 는 직역하면 “탐욕”, “욕심” 이라는 뜻을 가지고 있다. 이 의미 그대로 그리디 알고리즘은 이전 이후를 고려하지 않고 당장 현재 상태에서 최적의 해를 찾는 알고리즘이다.</p>
 <p><a href="https://github.com/1Dohyeon/Study-Algorithms/blob/main/Graph.md">프림Prim 알고리즘</a>으로 예를 들자면 이 알고리즘은 간단하게 설명하면 간선간에 가중치가 있는 그래프에서 최소 신장의 트리를 찾기 위한 알고리즘이다.</p>
