@@ -1341,9 +1341,109 @@
 <li>이렇게 되면 c, f, e, d, g, b, a 순으로 표시를 한것이고, 이것들을 <strong>뒤집으면 (b) 형태</strong>가 나오게 된다. 위상정렬1 과는 다르게 <strong>거꾸로 올라가면서 순서를 정렬</strong>한다.</li>
 </ol>
 <hr>
-<h2 id="최단경로"><a href="#최단경로" class="headerlink" title="최단경로"></a>최단경로</h2><h3 id="4-4-Dijkstra-알고리즘"><a href="#4-4-Dijkstra-알고리즘" class="headerlink" title="4.4 Dijkstra 알고리즘"></a>4.4 Dijkstra 알고리즘</h3><h2 id="4-5-Bellman-Ford-알고리즘"><a href="#4-5-Bellman-Ford-알고리즘" class="headerlink" title="4.5 Bellman-Ford 알고리즘"></a>4.5 Bellman-Ford 알고리즘</h2><h3 id="4-6-Floyd-Warshall-알고리즘"><a href="#4-6-Floyd-Warshall-알고리즘" class="headerlink" title="4.6 Floyd-Warshall 알고리즘"></a>4.6 Floyd-Warshall 알고리즘</h3><hr>
-<h2 id="싸이클이-없는-그래프에서의-최단-경로"><a href="#싸이클이-없는-그래프에서의-최단-경로" class="headerlink" title="싸이클이 없는 그래프에서의 최단 경로"></a>싸이클이 없는 그래프에서의 최단 경로</h2><h3 id="4-7-DAT"><a href="#4-7-DAT" class="headerlink" title="4.7 DAT"></a>4.7 DAT</h3><hr>
-<h2 id="강연결요소"><a href="#강연결요소" class="headerlink" title="강연결요소"></a>강연결요소</h2><h3 id="4-8-StronglyConnectedComponent-알고리즘"><a href="#4-8-StronglyConnectedComponent-알고리즘" class="headerlink" title="4.8 StronglyConnectedComponent 알고리즘"></a>4.8 StronglyConnectedComponent 알고리즘</h3>]]></content>
+<h2 id="최단경로"><a href="#최단경로" class="headerlink" title="최단경로"></a>최단경로</h2><p>그래프에서 최단 거리란 말 그대로 노드 A에서 노드 B까지의 거리들 중 가장 가중치가 적은 경로를 의미한다.</p>
+<h3 id="4-4-Floyd-Warshall-알고리즘"><a href="#4-4-Floyd-Warshall-알고리즘" class="headerlink" title="4.4 Floyd-Warshall 알고리즘"></a>4.4 Floyd-Warshall 알고리즘</h3><p>Floyd-Warshall 알고리즘도 모든 정점들간의 최단 거리를 구하는 알고리즘이다. 이 알고리즘은 그래프에 싸이클(순환)이 있어도 사용 가능하다. pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FloydWarshall(G)</span><br><span class="line">&#123;</span><br><span class="line">	for i ← 1 to n</span><br><span class="line">		for j ← 1 to n</span><br><span class="line">			d0ij ← wij;</span><br><span class="line">	for k ← 1 to n ▷ 중간정점 집합 &#123;1, 2, …, k&#125;</span><br><span class="line">		for i ← 1 to n ▷ i : 시작 정점</span><br><span class="line">			for j ← 1 to n ▷ j : 마지막 정점</span><br><span class="line">				dkij ← min &#123;dk-1ij , dk-1ik + dk-1kj&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행시간: Θ(|V|^3), 문제의 총 수 Θ(|V|^3), 각 문제의 계산에 Θ(1)</p>
+</blockquote>
+<p>플로이드-워셜 알고리즘은 다익스트라 알고리즘과는 다르게 음의 간선도 사용할 수 있다. 벨만-포드 알고리즘이 무한루프에 빠진다면 이 방법을 사용하면 된다.</p>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%83%AC1.png" alt="[플로이드워샬1.png]"><br><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%83%AC2.png" alt="[플로이드워샬2.png]"></p>
+<ol>
+<li><strong>D(0)</strong> 은 각 정점과 1단계로만 연결된 정점 사이의 가중치들을 전부 matrix안에 담는다. 즉 1행에는 정점1이 갈 수 있는 곳까지의 가중치로 채워진 것이고, 2행에는 정점2가 갈 수 있는 곳의 가중치가 채워진 것이다. 다른 행들도 똑같은 방식으로 채워진 것이다.</li>
+<li>D(1)은 1을 거쳐서 가는 경우를 채워준다. 1을 거칠 수 있는 노드는 4밖에 없고, 4가 1을 거치고 갈 수 있는 노드는 2, 5, 3이다. <code>4-&gt;1-&gt;2</code>의 가중치는 5이니까 <code>D[4][2]</code>를 5로 채운다.</li>
+<li><code>4-&gt;1-&gt;3</code>의 가중치는 10이고, <code>D[4][3]</code>은 이미 10보다 작은 값이므로 냅둔다.</li>
+<li><code>4-&gt;1-&gt;5</code>의 가중치는 -2이고, <code>D[4][5]</code>는 원래 비었으니 채워준다.</li>
+<li>이렇게 D(2)는 2를 거쳐서, D(3)은 3을 중간노드로 거쳐서, … , 마지막 5를 거치는거까지 계산하면 된다. 이미 작은값이면 갱신할 필요가 없다.</li>
+</ol>
+<hr>
+<h2 id="싸이클이-없는-그래프-DAG-에서의-최단-경로"><a href="#싸이클이-없는-그래프-DAG-에서의-최단-경로" class="headerlink" title="싸이클이 없는 그래프(DAG)에서의 최단 경로"></a>싸이클이 없는 그래프(DAG)에서의 최단 경로</h2><p>DAG란 Directed Acyclic Graph의 약자로 싸이클이 없는 유향 그래프를 의미한다.</p>
+<h3 id="4-5-Dijkstra-알고리즘"><a href="#4-5-Dijkstra-알고리즘" class="headerlink" title="4.5 Dijkstra 알고리즘"></a>4.5 Dijkstra 알고리즘</h3><p>Dijkstra의 알고리즘은 시작 정점으로부터 출발하여 각 단계에서 최단 거리를 가진 정점을 선택하고, 그 정점을 통해 도달할 수 있는 &#x3D;&#x3D;다른 정점들의 최단 거리를 업데이트&#x3D;&#x3D;하는 알고리즘이다.</p>
+<p>Dijkstra의 알고리즘의 pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Dijkstra(G, r)</span><br><span class="line">▷ G=(V, E): 주어진 그래프</span><br><span class="line">▷ r: 시작으로 삼을 정점</span><br><span class="line">&#123;</span><br><span class="line">	S ← Ф ;  ▷ S : 정점 집합</span><br><span class="line">	for each u∈V</span><br><span class="line">		d[u] ← ∞ ;</span><br><span class="line">	d[r] ← 0 ;</span><br><span class="line"></span><br><span class="line">	while (S≠V)&#123; ▷ n회 순환된다</span><br><span class="line">		u ← extractMin(V-S, d);</span><br><span class="line">		S ← S ∪&#123;u&#125;;</span><br><span class="line">		for each v∈L(u) ▷ L(u) : u로부터 연결된 정점들의 집합</span><br><span class="line">			if (v∈V-S and d[u]+w[u, v] &lt; d[v] ) then &#123;</span><br><span class="line">				d[v] ← d[u] + w[u, v];</span><br><span class="line">				prev[v] ← u;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">extractMin(Q, d[])</span><br><span class="line">&#123;</span><br><span class="line">	집합 Q에서 d값이 가장 작은 정점 u를 리턴한다;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행 시간: O(|E|log|V|) - 힙 이용</p>
+</blockquote>
+<ol>
+<li><code>S</code>: 이미 최단 경로를 찾은 정점들의 집합을 나타내는 변수를 빈 집합으로 초기화한다.</li>
+<li><code>d[u]</code>: 시작 정점 <code>r</code>로부터 정점 <code>u</code>까지의 현재까지의 최단 거리를 나타내는 배열을 무한대로 초기화한다. 시작 정점의 최단 거리는 0으로 초기화한다.</li>
+<li><code>while (S ≠ V)</code>: 최단 경로를 찾지 않은 정점들이 남아있는 동안 다음을 반복한다.<ol>
+<li><code>u ← extractMin(V-S, d)</code>: 아직 최단 경로를 찾지 않은 정점 중에서 최단 거리를 가진 정점 <code>u</code>를 선택한다.</li>
+<li><code>S ← S ∪ &#123;u&#125;</code>: 선택한 정점 <code>u</code>를 이미 최단 경로를 찾은 정점들의 집합에 추가한다.</li>
+<li><code>for each v ∈ L(u)</code>: 정점 <code>u</code>로부터 연결된 모든 정점 <code>v</code>에 대해 다음을 수행한다.<ol>
+<li>만약 <code>v</code>가 아직 최단 경로를 찾지 않은 정점이고, <code>d[u] + w[u, v] &lt; d[v]</code>라면, <code>d[v]</code> 값을 업데이트하고, <code>prev[v]</code> 값을 <code>u</code>로 설정한다. 이 과정은 더 짧은 경로를 찾은 경우 최단 거리와 이전 정점을 업데이트한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code>extractMin(Q, d[])</code>: 주어진 집합 <code>Q</code>에서 최소 <code>d</code> 값을 갖는 정점 <code>u</code>를 찾아 리턴하는 함수이다.</li>
+</ol>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC.png" alt="[다익스트라.png]"></p>
+<p>예제를 통해서 설명하자면 먼저 시작 노드를 제외한 모든 노드의 거리를 나타내는 배열을 무한대로 설정한다. <code>[0, -, -, -, -, -, -, -]</code></p>
+<p>시작 노드로부터 이동할 수 있는 정점까지의 경로를 업데이트한다.<br><code>[0, 8, 11, 9, -, -, -, -]</code></p>
+<p>업데이트 된 노드 중 가장 작은 값을 선택하여, 그 노드에서 이동할 수 있는 정점까지 또 거리를 업데이트 한다. <code>[0, 8, 11, 9, 18, -, -, -]</code> 이때 선택된 가장 작은 값은 다른 값으로 변하지 않는다.</p>
+<p>위 과정을 반복하여 가장 작은값을 찾아나가면 된다.</p>
+<h3 id="4-6-Bellman-Ford-알고리즘"><a href="#4-6-Bellman-Ford-알고리즘" class="headerlink" title="4.6 Bellman-Ford 알고리즘"></a>4.6 Bellman-Ford 알고리즘</h3><p>Bellman-Ford 알고리즘은 여러번의 루프를 통해 각 정점까지의 최단 경로를 찾는다. <strong>음의 가중치 간선이 포함되어 있을 때도 사용할 수 있다.</strong> 하지만 Bellman-Ford 알고리즘의 시간 복잡도는 O(VxE) 이므로 정점과 간선의 수가 매우 많을 때 비효율적일 수 있다.</p>
+<p>Bellman-Ford 알고리즘의 pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BellmanFord(G, r)</span><br><span class="line">&#123;</span><br><span class="line">	for each u∈V</span><br><span class="line">		du← ∞;</span><br><span class="line">	d[r] ← 0;</span><br><span class="line"></span><br><span class="line">	for i ← 1 to |V|-1</span><br><span class="line">		for each (u, v) ∈E</span><br><span class="line">			if (d[u] + w[u, v] &lt; d[v]v ) then &#123;</span><br><span class="line">				d[v] ← d[u] + w[u, v];</span><br><span class="line">				prev[ v] ← u;</span><br><span class="line">			&#125;</span><br><span class="line">	▷ 음의 싸이클 존재 여부 확인</span><br><span class="line">	for each (u, v) ∈E</span><br><span class="line">		if (d[u] + w[u, v] &lt; d[v]v ) output “해없음”;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행 시간: Θ(|E||V|)</p>
+</blockquote>
+<ol>
+<li><code>for each u ∈ V</code>: 모든 정점에 대해 다음을 반복한다.<ol>
+<li><code>du ← ∞</code>: 시작 정점 <code>r</code>로부터 정점 <code>u</code>까지의 최단 거리를 무한대로 초기화한다.</li>
+<li><code>d[r] ← 0</code>: 시작 정점의 최단 거리는 0으로 초기화한다.</li>
+</ol>
+</li>
+<li><code>for i ← 1 to |V| - 1</code>: (정점의 수 - 1)만큼 반복한다. 이는 최단 경로의 길이가 최대 (정점의 수 - 1)임을 고려한 반복이다. 왜냐하면 그래프에서 모든 정점을 방문하는 최단 경로는 최대 (정점의 수 - 1)개의 간선을 가지기 때문이다.<ol>
+<li><code>for each (u, v) ∈ E</code>: 그래프의 간선에 대해 다음을 반복한다.<ol>
+<li>만약 <code>d[u] + w[u, v] &lt; d[v]</code>이면 ( <strong><code>w[u, v]</code>는 간선 <code>(u, v)</code>의 가중치를 나타낸다</strong> ), <code>d[v] ← d[u] + w[u, v]</code>로 업데이트하고, <code>prev[v] ← u</code>로 이전 정점을 저장한다. 이렇게 함으로써 현재까지 찾은 최단 경로를 업데이트한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code>음의 싸이클 존재 여부 확인</code>:<ol>
+<li>모든 간선에 대해 다시 한 번 검사하여 음의 싸이클이 존재하는지 확인한다. 음의 싸이클이 존재하면 최단 경로를 찾을 수 없다. 만약 <code>d[u] + w[u, v] &lt; d[v]</code>이면 음의 싸이클이 존재한다는 것을 나타내고 “해없음”을 출력한다.</li>
+</ol>
+</li>
+</ol>
+<p>다음 반복에 변화가 없다면 음의 사이클이 있어도 최솟값을 이미 다 구했다는 의미이므로 종료한다.</p>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EB%B2%A8%EB%A7%8C%ED%8F%AC%EB%93%9C.png" alt="[벨만포드.png]"></p>
+<p>처음에는 Dijkstra 알고리즘처럼 시작 정점을 제외한 나머지 정점을 무한대로 초기화하고, 진행할 수 있는 정점의 값을 가중치에 따라 업데이트한다.</p>
+<p>업데이트 된 정점을 표시해두고, 그 정점들로 다른 정점을 업데이트 할 수 있다면 다른 정점도 업데이트한다.(이때 업데이트 이전 값이 더 작다면 그대로두면 된다.)</p>
+<p>위 과정을 반복하여 업데이트된 정점이 이제 없다면 반복문을 탈출하면 된다.</p>
+<h3 id="4-7-위상정렬을-이용한-알고리즘"><a href="#4-7-위상정렬을-이용한-알고리즘" class="headerlink" title="4.7 위상정렬을 이용한 알고리즘"></a>4.7 위상정렬을 이용한 알고리즘</h3><p>DAG에서의 최단경로는 위상 정렬의 순서를 이용 하여 선형시간에 간단히 구할 수 있다. 이 알고리즘의 pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DAG-ShortestPath(G, r)</span><br><span class="line">&#123;</span><br><span class="line">	for each u∈V</span><br><span class="line">		du ← ∞;</span><br><span class="line">	dr ← 0;</span><br><span class="line">	G의 정점들을 위상정렬한다;</span><br><span class="line">	for each u∈V (위상정렬 순서로)</span><br><span class="line">		for each v∈L(u) ▷ L(u) : 정점 u로부터 연결된 정점들의 집합</span><br><span class="line">			if (du + wu,v &lt; dv ) then dv ← du + wu,v ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행시간: Θ(|V|+|E|)</p>
+</blockquote>
+<ol>
+<li>모든 노드들의 가중치를 무한대로 초기화한다.</li>
+<li>시작 지점 <code>r</code>은 0의 가중치를 둔다.</li>
+<li>위상정렬(4.3 참고)을 한다.</li>
+<li><code>r</code>부터 시작하여 <code>r</code>과 연결된 노드들에 간선 가중치만큼 부여한다.</li>
+<li><code>r</code>의 바로 다음단계부터 또 <code>4</code>번 과정을 반복한다. 이때 가중치가 작아지면 값을 갱신한다.</li>
+</ol>
+<hr>
+<h2 id="강연결요소"><a href="#강연결요소" class="headerlink" title="강연결요소"></a>강연결요소</h2><h3 id="4-8-StronglyConnectedComponent-알고리즘"><a href="#4-8-StronglyConnectedComponent-알고리즘" class="headerlink" title="4.8 StronglyConnectedComponent 알고리즘"></a>4.8 StronglyConnectedComponent 알고리즘</h3><p>이 알고리즘은 그래프에서 가장 긴 순환을 구해서 따로 집합을 만드는 알고리즘이다. pseudocode는 다음과 같다 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stronglyConnectedComponent(G)</span><br><span class="line">&#123;</span><br><span class="line">	1. 그래프 G에 대해 DFS를 수행하여 각 정점 v의 완료시간 f [v] 를 계산한다.</span><br><span class="line">	2. G의 모든 간선들의 방향을 뒤집어 GR을 만든다.</span><br><span class="line">	3. DFS(GR)를 수행하되 시작점을 택할 때, &#x27;1.&#x27; 에서 구한 f [v]가 가장 큰 정점으로 잡는다.</span><br><span class="line">	4. 앞의 에서 만들어진 분리된 트리들 각각을 강연결요소로 리턴한다.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>수행 시간: Θ(|V|+|E|)</p>
+</blockquote>
+<p><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EA%B0%95%EC%97%B0%EA%B2%B01.png" alt="[강연결1.png]"><br><img src="https://github.com/1Dohyeon/Study-Algorithms/raw/main/imgs/%EA%B0%95%EC%97%B0%EA%B2%B02.png" alt="[강연결2.png]"></p>
+<ol>
+<li>(a) -&gt; (b)과정은 맨 왼쪽 아래서부터 dfs탐색을 실행한다. 대각선 아래방향으로 순환을 찾았다. 하지만 1이랑은 연결 안됨을 확인.</li>
+<li>번호 4까지 나왔으므로 다시 5부터 순환을 찾음. 중간층 1 5 6 7 8 순환을 찾았다. 2 3 4 순환, 1 5 6 7 8순환 두개를 찾은 단계이다.</li>
+<li>(b) -&gt; (c) 과정은 나머지 순환인 9와 10을 찾았다.(9 따로 10 따로임)</li>
+<li>(c) -&gt; (d) 과정은 순환을 뒤집는 과정이다. 이때 1과 4를 바꾸었다. 시작은 기존 1에서 했지만 첫 순환은 아래 2-&gt;3-&gt;4 이기에 뒤집으면서 1-&gt;2-&gt;3 순환으로 바꾸었다.</li>
+<li>순환끼리 그룹을 짓는다.</li>
+</ol>
+]]></content>
       <categories>
         <category>Algorithms</category>
       </categories>
