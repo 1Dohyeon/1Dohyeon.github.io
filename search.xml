@@ -99,6 +99,35 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode 2677. Chunk Array, slice 함수</title>
+    <url>/2024/02/06/js/Leetcode%202677.Chunk%20Array-slice/</url>
+    <content><![CDATA[<p>맨날 알고리즘 문제를 파이썬 또는 자바로만 풀다가 처음 leetcode에서 자바스크립트를 통해서 풀게 되었다. <a href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">2677. Chunk Array, slice 함수</a> 문제는 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제인데, 처음에는 <code>slice()</code> 라는 함수의 존재 여부도 모르고 문제를 풀었다. 다른 사람들의 풀이를 보다가 <code>slice()</code> 라는 메서드의 존재 여부를 알게되었다. 따라서 이번 글에서는 이 문제의 풀이와 <code>slice()</code> 메서드의 작동방식을 비슷하게 구현해볼 것이다.</p>
+<span id="more"></span>
+
+<h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>문제는 <a href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">여기(Leetcode 2677)</a>에서 확인할 수 있다. 이 문제는 앞서 언급했듯이 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제이다.</p>
+<p>예를 들어 설명하자면 배열과 분할 할 때 원하는 크기를 다음과 같이 입력 받았다고 가정하자.(<code>arr = [1,9,6,3,2], size = 3</code>)</p>
+<p>이때 output으로는 <code>[[1,9,6],[3,2]]</code> 가 반환이 된다. 이 예시처럼 size 대로 분할하고 모자르면 모자른 대로 그룹을 만들면 된다. 만약 <code>size&gt;=arr.length</code> 라면 <code>arr</code>을 그대로 담은 배열(즉, 2차원 배열)을 반환하면 된다.</p>
+<h3 id="풀이-코드와-문제-접근"><a href="#풀이-코드와-문제-접근" class="headerlink" title="풀이 코드와 문제 접근"></a>풀이 코드와 문제 접근</h3><p>풀이 코드부터 바로 보자면 다음과 같다 :</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">size</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Array</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> chunk = <span class="keyword">function</span> (<span class="params">arr, size</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i += size) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(arr.<span class="title function_">slice</span>(i, i + size));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>문제의 핵심 요소는 반복문을 돌 때 <code>i</code>를 1씩 증가하는 것이 아니라 <code>size</code> 만큼 증가시켜서 하나하나 계산하지 않고, <code>i</code> ~ <code>i+size</code> 까지만 배열에 담는 것이다.</p>
+<p>이때 나는 <code>slice()</code> 라는 메서드의 개념을 몰라서 아래와 같이 코드를 짰었다 :</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">size</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Array</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chunk = <span class="keyword">function</span> (<span class="params">arr, size</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i += size) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(<span class="title function_">arrSlice</span>(arr, i, i + size));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrSlice</span> = (<span class="params">arr, start, end</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> output = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt; end; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] != <span class="literal">null</span>) output.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> output;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>처음에는 <code>if (arr[i] != null)</code> 없이 그냥 <code>push</code> 했지만, <code>null</code>이 배열에 담기는 상황을 보고 조건을 추가하였다. 완벽하게 <code>slice</code> 를 구현한 것은 아니지만, 문제 풀이에 지장이 없을 정도로만 비슷하게 구현하였다.</p>
+<hr>
+<h3 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h3><p>블로그에 작성된 글은 공부한 것을 바탐으로 저만의 방식으로 이해하여 쓴 글입니다. 따라서 틀린 정보가 공유될 수도 있으니 <strong>꼭 공식문서를 통해서 공부하시길 바랍니다!</strong></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>algorithm</tag>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>비동기 함수(async function), Promise 란?</title>
     <url>/2024/01/31/js/async/</url>
     <content><![CDATA[<p>자바스크립트를 공부하다 보면 비동기함수, Promise 라는 단어를 많이 들어봤을 것이다. 나는 NestJS를 공부하면서 비동기 함수를 접하게 되었는 되었는데, 이때 “백그라운드에서 실행되는 메서드” 라는 간단한 개념만 인지한채로 공부하였다.</p>
@@ -142,37 +171,6 @@
       <tags>
         <tag>javascript</tag>
         <tag>async</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode 2677. Chunk Array, slice 함수</title>
-    <url>/2024/02/06/js/Leetcode%202677.Chunk%20Array-slice/</url>
-    <content><![CDATA[<p>맨날 알고리즘 문제를 파이썬 또는 자바로만 풀다가 처음 leetcode에서 자바스크립트를 통해서 풀게 되었다. <a href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">2677. Chunk Array, slice 함수</a> 문제는 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제인데, 처음에는 <code>slice()</code> 라는 함수의 존재 여부도 모르고 문제를 풀었다. 다른 사람들의 풀이를 보다가 <code>slice()</code> 라는 메서드의 존재 여부를 알게되었다. 따라서 이번 글에서는 이 문제의 풀이와 <code>slice()</code> 메서드의 작동방식을 비슷하게 구현해볼 것이다.</p>
-<span id="more"></span>
-
-<h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>문제는 <a href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">여기(Leetcode 2677)</a>에서 확인할 수 있다. 이 문제는 앞서 언급했듯이 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제이다.</p>
-<p>예를 들어 설명하자면 배열과 분할 할 때 원하는 크기를 다음과 같이 입력 받았다고 가정하자.(<code>arr = [1,9,6,3,2], size = 3</code>)</p>
-<p>이때 output으로는 <code>[[1,9,6],[3,2]]</code> 가 반환이 된다. 이 예시처럼 size 대로 분할하고 모자르면 모자른 대로 그룹을 만들면 된다. 만약 <code>size&gt;=arr.length</code> 라면 <code>arr</code>을 그대로 담은 배열(즉, 2차원 배열)을 반환하면 된다.</p>
-<h3 id="풀이-코드와-문제-접근"><a href="#풀이-코드와-문제-접근" class="headerlink" title="풀이 코드와 문제 접근"></a>풀이 코드와 문제 접근</h3><p>풀이 코드부터 바로 보자면 다음과 같다 :</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">size</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Array</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> chunk = <span class="keyword">function</span> (<span class="params">arr, size</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i += size) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(arr.<span class="title function_">slice</span>(i, i + size));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>문제의 핵심 요소는 반복문을 돌 때 <code>i</code>를 1씩 증가하는 것이 아니라 <code>size</code> 만큼 증가시켜서 하나하나 계산하지 않고, <code>i</code> ~ <code>i+size</code> 까지만 배열에 담는 것이다.</p>
-<p>이때 나는 <code>slice()</code> 라는 메서드의 개념을 몰라서 아래와 같이 코드를 짰었다 :</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">size</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Array</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chunk = <span class="keyword">function</span> (<span class="params">arr, size</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i += size) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(<span class="title function_">arrSlice</span>(arr, i, i + size));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrSlice</span> = (<span class="params">arr, start, end</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> output = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt; end; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] != <span class="literal">null</span>) output.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> output;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>처음에는 <code>if (arr[i] != null)</code> 없이 그냥 <code>push</code> 했지만, <code>null</code>이 배열에 담기는 상황을 보고 조건을 추가하였다. 완벽하게 <code>slice</code> 를 구현한 것은 아니지만, 문제 풀이에 지장이 없을 정도로만 비슷하게 구현하였다.</p>
-<hr>
-<h3 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h3><p>블로그에 작성된 글은 공부한 것을 바탐으로 저만의 방식으로 이해하여 쓴 글입니다. 따라서 틀린 정보가 공유될 수도 있으니 <strong>꼭 공식문서를 통해서 공부하시길 바랍니다!</strong></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-        <category>leetcode</category>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-        <tag>algorithm</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
