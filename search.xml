@@ -142,7 +142,7 @@
   </entry>
   <entry>
     <title>Leetcode 2677. Chunk Array, slice 함수</title>
-    <url>/2024/02/06/js/dd/</url>
+    <url>/2024/02/06/js/Leetcode%202677.Chunk%20Array-slice/</url>
     <content><![CDATA[<p>맨날 알고리즘 문제를 파이썬 또는 자바로만 풀다가 처음 leetcode에서 자바스크립트를 통해서 풀게 되었다. <a href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">2677. Chunk Array, slice 함수</a> 문제는 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제인데, 처음에는 <code>slice()</code> 라는 함수의 존재 여부도 모르고 문제를 풀었다. 다른 사람들의 풀이를 보다가 <code>slice()</code> 라는 메서드의 존재 여부를 알게되었다. 따라서 이번 글에서는 이 문제의 풀이와 <code>slice()</code> 메서드의 작동방식을 비슷하게 구현해볼 것이다.</p>
 <h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>문제는 <a href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">여기(Leetcode 2677)</a>에서 확인할 수 있다. 이 문제는 앞서 언급했듯이 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제이다.</p>
 <p>예를 들어 설명하자면 배열과 분할 할 때 원하는 크기를 다음과 같이 입력 받았다고 가정하자.(<code>arr = [1,9,6,3,2], size = 3</code>)</p>
