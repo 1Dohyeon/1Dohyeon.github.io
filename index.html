@@ -124,12 +124,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/myTags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">10</span></a>
+    <a href="/myTags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">3</span></a>
+    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">4</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -183,6 +183,90 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/02/06/js/dd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dohyeon Won">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dohyeon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/02/06/js/dd/" class="post-title-link" itemprop="url">Leetcode 2677. Chunk Array, slice 함수</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-02-06 12:00:00" itemprop="dateCreated datePublished" datetime="2024-02-06T12:00:00+09:00">2024-02-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>맨날 알고리즘 문제를 파이썬 또는 자바로만 풀다가 처음 leetcode에서 자바스크립트를 통해서 풀게 되었다. <a target="_blank" rel="noopener" href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">2677. Chunk Array, slice 함수</a> 문제는 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제인데, 처음에는 <code>slice()</code> 라는 함수의 존재 여부도 모르고 문제를 풀었다. 다른 사람들의 풀이를 보다가 <code>slice()</code> 라는 메서드의 존재 여부를 알게되었다. 따라서 이번 글에서는 이 문제의 풀이와 <code>slice()</code> 메서드의 작동방식을 비슷하게 구현해볼 것이다.</p>
+<h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>문제는 <a target="_blank" rel="noopener" href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">여기(Leetcode 2677)</a>에서 확인할 수 있다. 이 문제는 앞서 언급했듯이 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제이다.</p>
+<p>예를 들어 설명하자면 배열과 분할 할 때 원하는 크기를 다음과 같이 입력 받았다고 가정하자.(<code>arr = [1,9,6,3,2], size = 3</code>)</p>
+<p>이때 output으로는 <code>[[1,9,6],[3,2]]</code> 가 반환이 된다. 이 예시처럼 size 대로 분할하고 모자르면 모자른 대로 그룹을 만들면 된다. 만약 <code>size&gt;=arr.length</code> 라면 <code>arr</code>을 그대로 담은 배열(즉, 2차원 배열)을 반환하면 된다.</p>
+<h3 id="풀이-코드와-문제-접근"><a href="#풀이-코드와-문제-접근" class="headerlink" title="풀이 코드와 문제 접근"></a>풀이 코드와 문제 접근</h3><p>풀이 코드부터 바로 보자면 다음과 같다 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">size</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Array</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> chunk = <span class="keyword">function</span> (<span class="params">arr, size</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i += size) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(arr.<span class="title function_">slice</span>(i, i + size));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>문제의 핵심 요소는 반복문을 돌 때 <code>i</code>를 1씩 증가하는 것이 아니라 <code>size</code> 만큼 증가시켜서 하나하나 계산하지 않고, <code>i</code> ~ <code>i+size</code> 까지만 배열에 담는 것이다.</p>
+<p>이때 나는 <code>slice()</code> 라는 메서드의 개념을 몰라서 아래와 같이 코드를 짰었다 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">size</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Array</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chunk = <span class="keyword">function</span> (<span class="params">arr, size</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i += size) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(<span class="title function_">arrSlice</span>(arr, i, i + size));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrSlice</span> = (<span class="params">arr, start, end</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> output = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt; end; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] != <span class="literal">null</span>) output.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> output;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>처음에는 <code>if (arr[i] != null)</code> 없이 그냥 <code>push</code> 했지만, <code>null</code>이 배열에 담기는 상황을 보고 조건을 추가하였다. 완벽하게 <code>slice</code> 를 구현한 것은 아니지만, 문제 풀이에 지장이 없을 정도로만 비슷하게 구현하였다.</p>
+<hr>
+<h3 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h3><p>블로그에 작성된 글은 공부한 것을 바탐으로 저만의 방식으로 이해하여 쓴 글입니다. 따라서 틀린 정보가 공유될 수도 있으니 <strong>꼭 공식문서를 통해서 공부하시길 바랍니다!</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -542,20 +626,20 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/myCategories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/myTags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
