@@ -30,7 +30,7 @@
 <meta property="og:description" content="자바스크립트를 공부하다 보면 비동기함수, Promise 라는 단어를 많이 들어봤을 것이다. 나는 NestJS를 공부하면서 비동기 함수를 접하게 되었는 되었는데, 이때 “백그라운드에서 실행되는 메서드” 라는 간단한 개념만 인지한채로 공부하였다. 그러다가 DB에서 데이터를 요청하는 repository 파일에 코드를 작성하던 중 async existsByEmai">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-31T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-06T06:15:30.161Z">
+<meta property="article:modified_time" content="2024-02-06T06:43:38.467Z">
 <meta property="article:author" content="Dohyeon Won">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="async">
@@ -103,7 +103,7 @@
       <h1 class="site-title">Dohyeon</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">A student of university</p>
+      <p class="site-subtitle" itemprop="description">Hi, I'm a student</p>
   </div>
 
   <div class="site-nav-right">
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">4</span></a>
+    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -242,6 +242,8 @@
       
         <p>자바스크립트를 공부하다 보면 비동기함수, Promise 라는 단어를 많이 들어봤을 것이다. 나는 NestJS를 공부하면서 비동기 함수를 접하게 되었는 되었는데, 이때 “백그라운드에서 실행되는 메서드” 라는 간단한 개념만 인지한채로 공부하였다.</p>
 <p>그러다가 DB에서 데이터를 요청하는 repository 파일에 코드를 작성하던 중 <code>async existsByEmail(email: string): Promise&lt;boolean&gt; ~</code> 와 같은 비동기 함수를 많이 접하게 되었다. 이때부터 비동기 함수와 이 함수를 따라다니는 Promise가 무엇인지 제대로 파악할 필요를 느꼈다.</p>
+<span id="more"></span>
+
 <hr>
 <h3 id="비동기란"><a href="#비동기란" class="headerlink" title="비동기란?"></a>비동기란?</h3><p>비동기에 대해 알기 전에 “동기”의 뜻을 먼저 설명하자면, 동기란 프로그램이 직렬적으로 수행되는 과정이라고 보면 된다. 요청이 오면 요청에 대한 응답을 받은 후에 다음 동작이 이루어진다. 이때 다른 프로그램은 대기하게 되는데 이러한 방식을 동기라고 한다.</p>
 <p>비동기는 위와 반대로 병렬로 프로그램이 실행된다고 보면 된다. 요청의 응답 여부와는 상관없이 다른 프로그램이 동작한다. 이렇게 이론적인 설명만 들으면 비동기 방식이 동기적인 패턴에 비해서 시간면으로도 이득 같아 보인다.</p>
@@ -376,7 +378,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/myCategories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

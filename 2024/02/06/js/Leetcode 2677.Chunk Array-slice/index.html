@@ -30,7 +30,7 @@
 <meta property="og:description" content="맨날 알고리즘 문제를 파이썬 또는 자바로만 풀다가 처음 leetcode에서 자바스크립트를 통해서 풀게 되었다. 2677. Chunk Array, slice 함수 문제는 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제인데, 처음에는 slice() 라는 함수의 존재 여부도 모르고 문제를 풀었다. 다른 사람들의 풀이를 보다가 slice() 라는 메서드의">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-06T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-06T06:41:33.775Z">
+<meta property="article:modified_time" content="2024-02-06T06:43:29.637Z">
 <meta property="article:author" content="Dohyeon Won">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="algorithm">
@@ -104,7 +104,7 @@
       <h1 class="site-title">Dohyeon</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">A student of university</p>
+      <p class="site-subtitle" itemprop="description">Hi, I'm a student</p>
   </div>
 
   <div class="site-nav-right">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">4</span></a>
+    <a href="/myCategories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -226,11 +226,15 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+                  <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                  <a href="/categories/algorithm/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/leetcode/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
                 </span>
             </span>
 
@@ -246,6 +250,8 @@
 
       
         <p>맨날 알고리즘 문제를 파이썬 또는 자바로만 풀다가 처음 leetcode에서 자바스크립트를 통해서 풀게 되었다. <a target="_blank" rel="noopener" href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">2677. Chunk Array, slice 함수</a> 문제는 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제인데, 처음에는 <code>slice()</code> 라는 함수의 존재 여부도 모르고 문제를 풀었다. 다른 사람들의 풀이를 보다가 <code>slice()</code> 라는 메서드의 존재 여부를 알게되었다. 따라서 이번 글에서는 이 문제의 풀이와 <code>slice()</code> 메서드의 작동방식을 비슷하게 구현해볼 것이다.</p>
+<span id="more"></span>
+
 <h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>문제는 <a target="_blank" rel="noopener" href="https://leetcode.com/problems/chunk-array/?envType=study-plan-v2&envId=30-days-of-javascript">여기(Leetcode 2677)</a>에서 확인할 수 있다. 이 문제는 앞서 언급했듯이 배열을 원하는 크기 만큼 분할하여 배열에 저장하는 문제이다.</p>
 <p>예를 들어 설명하자면 배열과 분할 할 때 원하는 크기를 다음과 같이 입력 받았다고 가정하자.(<code>arr = [1,9,6,3,2], size = 3</code>)</p>
 <p>이때 output으로는 <code>[[1,9,6],[3,2]]</code> 가 반환이 된다. 이 예시처럼 size 대로 분할하고 모자르면 모자른 대로 그룹을 만들면 된다. 만약 <code>size&gt;=arr.length</code> 라면 <code>arr</code>을 그대로 담은 배열(즉, 2차원 배열)을 반환하면 된다.</p>
@@ -361,7 +367,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/myCategories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
