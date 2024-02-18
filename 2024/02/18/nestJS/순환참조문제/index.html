@@ -22,21 +22,24 @@
 
 
   <meta name="google-site-verification" content="gnd9SYszRKXb6P5Qi65Bss9PftHss6npbLEDmr6ZUDk" />
-  <meta name="description" content="블로그를 시작한 이유개발 블로그를 작성하시는 많은 분들은 여러가지 이유로 블로그를 시작하셨을 것이다. 공부한 것을 공유하기 위해서, 테크 지식을 물어보기 위해서, 여러 사람들과 소통하기 위해서 등 여러 이유가 존재할 것이다.">
+  <meta name="description" content="NestJS 프레임워크를 공부하기 위해서 개인 프로젝트 개발에 도전하였다. 가볍게 대중적인 게시판 만들기부터 시작하였다. 이 게시판 개인 프로젝트에서 articles 모듈과, users 모듈 사이에 순환 참조 문제가 발생하여 어떻게 해결할지 고민했던 과거를 공유하고자 글을 작성하게 되었다.  기존 프로젝트 모듈 구조개인 프로젝트에서 처음에는 크게 3가지 모">
 <meta property="og:type" content="article">
-<meta property="og:title" content="개발 블로그를 해야할까?">
-<meta property="og:url" content="https://1dohyeon.github.io/2024/01/04/firstpost/index.html">
+<meta property="og:title" content="비동기 함수(async function), Promise 란?">
+<meta property="og:url" content="https://1dohyeon.github.io/2024/02/18/nestJS/%EC%88%9C%ED%99%98%EC%B0%B8%EC%A1%B0%EB%AC%B8%EC%A0%9C/index.html">
 <meta property="og:site_name" content="Dohyeon">
-<meta property="og:description" content="블로그를 시작한 이유개발 블로그를 작성하시는 많은 분들은 여러가지 이유로 블로그를 시작하셨을 것이다. 공부한 것을 공유하기 위해서, 테크 지식을 물어보기 위해서, 여러 사람들과 소통하기 위해서 등 여러 이유가 존재할 것이다.">
+<meta property="og:description" content="NestJS 프레임워크를 공부하기 위해서 개인 프로젝트 개발에 도전하였다. 가볍게 대중적인 게시판 만들기부터 시작하였다. 이 게시판 개인 프로젝트에서 articles 모듈과, users 모듈 사이에 순환 참조 문제가 발생하여 어떻게 해결할지 고민했던 과거를 공유하고자 글을 작성하게 되었다.  기존 프로젝트 모듈 구조개인 프로젝트에서 처음에는 크게 3가지 모">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-01-04T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-06T06:11:55.572Z">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B02.png">
+<meta property="og:image" content="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B01.png">
+<meta property="article:published_time" content="2024-02-18T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-18T14:59:47.356Z">
 <meta property="article:author" content="Dohyeon Won">
-<meta property="article:tag" content="journal">
-<meta property="article:tag" content="first post">
+<meta property="article:tag" content="nestJS">
+<meta property="article:tag" content="circular-reference">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B02.png">
 
-<link rel="canonical" href="https://1dohyeon.github.io/2024/01/04/firstpost/">
+<link rel="canonical" href="https://1dohyeon.github.io/2024/02/18/nestJS/%EC%88%9C%ED%99%98%EC%B0%B8%EC%A1%B0%EB%AC%B8%EC%A0%9C/">
 
 
 <script id="page-configurations">
@@ -49,7 +52,7 @@
   };
 </script>
 
-  <title>개발 블로그를 해야할까? | Dohyeon</title>
+  <title>비동기 함수(async function), Promise 란? | Dohyeon</title>
   
 
 
@@ -194,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/01/04/firstpost/">
+    <link itemprop="mainEntityOfPage" href="https://1dohyeon.github.io/2024/02/18/nestJS/%EC%88%9C%ED%99%98%EC%B0%B8%EC%A1%B0%EB%AC%B8%EC%A0%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          개발 블로그를 해야할까?
+          비동기 함수(async function), Promise 란?
         </h1>
 
         <div class="post-meta">
@@ -217,7 +220,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2024-01-04 12:00:00" itemprop="dateCreated datePublished" datetime="2024-01-04T12:00:00+09:00">2024-01-04</time>
+              <time title="Created: 2024-02-18 12:00:00" itemprop="dateCreated datePublished" datetime="2024-02-18T12:00:00+09:00">2024-02-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,7 +228,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/journal/" itemprop="url" rel="index"><span itemprop="name">journal</span></a>
+                  <a href="/categories/nestJS/" itemprop="url" rel="index"><span itemprop="name">nestJS</span></a>
                 </span>
             </span>
 
@@ -240,18 +243,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="블로그를-시작한-이유"><a href="#블로그를-시작한-이유" class="headerlink" title="블로그를 시작한 이유"></a>블로그를 시작한 이유</h3><p>개발 블로그를 작성하시는 많은 분들은 여러가지 이유로 블로그를 시작하셨을 것이다. 공부한 것을 공유하기 위해서, 테크 지식을 물어보기 위해서, 여러 사람들과 소통하기 위해서 등 여러 이유가 존재할 것이다.</p>
-<span id="more"></span>
-
-<p>내가 블로그를 시작한 이유는 <strong>“공부한 것을 공유하기 위해서”</strong> 에 가깝다. 나는 개발자가 아니다. 이 글을 작성하는 기준으로, <strong>아직은</strong> 개발자가 아니다. 지금의 나는 백엔드 개발자를 꿈꾸는 전공생이다.</p>
-<p>학교에서 공부를 하고, 공식문서 웹 사이트를 참고하면서 공부를 해왔다. 그러다 이해가 안되면 여러 블로그 글들을 참고하여 공부를 하는 등 블로그의 도움을 많이 받았다. 이렇게 공부를 하다보니 나도 블로그를 통해서 공부한 내용을 공유하고 싶다는 마음이 들기 시작했다.</p>
-<h3 id="블로그는-어떻게-작성해야-할까"><a href="#블로그는-어떻게-작성해야-할까" class="headerlink" title="블로그는 어떻게 작성해야 할까?"></a>블로그는 어떻게 작성해야 할까?</h3><p>공부하여 정리한 내용을 단순히 복붙하는 식으로 블로그를 작성하게 된다면 글의 수만 늘어날 뿐 좋은 글을 만들 수 없다고 생각이 들었다. 공부한 파일을 잃어버리지 않기 위해서 이미 드라이브에 저장, 깃헙 레파지토리에 커밋을 하고 있는데, 이걸 중복하여 블로그에 복붙하게 되면 그냥 글을 쓰는 공장과 같은 기분이 들 것 같았다.</p>
-<p>따라서 나는 공부하다가 어려웠던 부분, 막혔던 부분을 해결하고, 그 과정을 블로그에 담아볼 생각이다. 또한 영어공부를 위해서 읽기 좋았던 문서를 시간날 때 번역하여 블로그에 글을 작성할 계획이다.</p>
+        <p>NestJS 프레임워크를 공부하기 위해서 개인 프로젝트 개발에 도전하였다. 가볍게 대중적인 게시판 만들기부터 시작하였다. 이 게시판 개인 프로젝트에서 articles 모듈과, users 모듈 사이에 순환 참조 문제가 발생하여 어떻게 해결할지 고민했던 과거를 공유하고자 글을 작성하게 되었다.</p>
 <hr>
-<h3 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h3><p>앞서 언급했듯 블로그에 작성된 글은 공식문서를 포함한 여러 웹 사이트에서 공부한 것을 저만의 방식으로 이해하여 쓴 글입니다. 따라서 틀린 정보가 공유될 수도 있으니 <strong>꼭 공식문서를 통해서 공부하시길 바랍니다!</strong></p>
-<blockquote>
-<p>잘 부탁드립니다!</p>
-</blockquote>
+<h3 id="기존-프로젝트-모듈-구조"><a href="#기존-프로젝트-모듈-구조" class="headerlink" title="기존 프로젝트 모듈 구조"></a>기존 프로젝트 모듈 구조</h3><p>개인 프로젝트에서 처음에는 크게 3가지 모듈을 나누어 작업을 하였다. 모듈은 다음과 같은 기능을 한다 :</p>
+<ul>
+<li><strong>AuthModule</strong> : JWT 인증을 위한 모듈. 회원가입, 로그인을 담당함. 회원가입 시에 <code> @Post(&#39;/register&#39;)</code> 엔드포인트에서 UsersModule에 접근하여 User 객체 생성.</li>
+<li><strong>UsersModule</strong> : 직접적으로 User 객체를 생성. Repository 디자인 패턴을 이용함.</li>
+<li><strong>ArticlesModule</strong> : 직접적으로 Article 객체를 생성. <code>@Post(&#39;/article&#39;)</code> 엔드포인트를 통해서 ArticlesModule에 접근하여 Article 객체 생성. Repository 디자인 패턴을 이용함.</li>
+</ul>
+<p>ArticlesModule의 <code>@Post(&#39;/article&#39;)</code>에서 article 객체를 생성한다. article 객체를 생성할 때, 하나의 article 인스턴스는 authorId 정보를 갖게 되는데, 이는 article 객체를 생성한 user의 id 정보이다. 따라서 ArticlesModule는 UsersModule을 import 해야하는 상황이 되었다.</p>
+<p>ArticlesModule이 UsersModule을 참조하는 것은 문제가 되지 않지만, 기존에 UsersModule 또한 ArticlesModule을 import 하고 있었다. user 인스턴스는 자신이 만든 aritlce의 <del>아이디들(지금은 삭제)</del> 갯수를 저장하고 있기 때문이다.</p>
+<p><img src="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B02.png" alt="[모듈구조2.png]"></p>
+<p>따라서 순환 참조 문제가 발생하여 문제를 해결하기 위해서 두 모듈 사이의 상호작용을 처리하는 모듈인 <strong>UserArticleInteractionModule</strong> 을 만들기 시작했다.</p>
+<hr>
+<h3 id="순환-참조-문제-해결"><a href="#순환-참조-문제-해결" class="headerlink" title="순환 참조 문제 해결"></a>순환 참조 문제 해결</h3><p>이 모듈은 다른 두 모듈의 repository에 직접적으로 접근하지 않고, service에 접근하여 aritlce 생성 시에 userId 정보를 넘기고, user 에 PRIVATE or PUBLIC article 의 갯수 정보를 넘긴다.</p>
+<p><img src="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B01.png" alt="[모듈구조1.png]"></p>
+<p>쉽게 말해서 UserArticleInteractionModule에서만 ArticlesModule, UsersModule를 import하고, UserArticleInteractionService에서는 각 ArticlesService, UsersService를 불러와서 순환 참조를 없애었다.(ArticlesModule, UsersModule은 이제 서로를 import하지 않음.)</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">UserArticleInteractionService</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">    <span class="keyword">private</span> <span class="keyword">readonly</span> usersService: UsersService,</span></span><br><span class="line"><span class="params">    <span class="keyword">private</span> <span class="keyword">readonly</span> articlesService: ArticlesService,</span></span><br><span class="line"><span class="params">  </span>) &#123;&#125;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>따라서 기존에 article 객체를 직접적으로 생성하는 것을 ArticleModule에서 했지만, 순환 모듈 없이 userId와 articleId를 공유하기 위해서 아래와 같이 에서 article CRUD를 만들게 되었다.</p>
+<p>article CREATE :</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">async</span> <span class="title function_">createArticleForUser</span>(<span class="params"></span></span><br><span class="line"><span class="params">    userId: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">    createArticleDto: CreateArticleDto,</span></span><br><span class="line"><span class="params">  </span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> newArticle = <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="property">articlesService</span>.<span class="title function_">create</span>(createArticleDto);</span><br><span class="line">    <span class="keyword">if</span> (newArticle) &#123;</span><br><span class="line">      <span class="comment">// service</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArticle;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>각 모듈은 독립적으로 책임을 분리하는 것이 원칙적으로 좋지만, 어쩔 수 없는 경우는 순환 참조를 피하기 위해서 두 개의 모듈이 상호작용을 하는 또 다른 모듈을 만드는 방법을 사용하는 것도 개인적으로 나쁘지 않은 것 같다.</p>
 
     </div>
 
@@ -261,8 +275,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/journal/" rel="tag"># journal</a>
-              <a href="/tags/first-post/" rel="tag"># first post</a>
+              <a href="/tags/nestJS/" rel="tag"># nestJS</a>
+              <a href="/tags/circular-reference/" rel="tag"># circular-reference</a>
           </div>
 
         
@@ -270,11 +284,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/01/31/js/async/" rel="next" title="비동기 함수(async function), Promise 란?">
-      비동기 함수(async function), Promise 란? <i class="fa fa-chevron-right"></i>
+    <a href="/2024/02/06/js/Leetcode%202677.Chunk%20Array-slice/" rel="prev" title="Leetcode 2677. Chunk Array, slice 함수">
+      <i class="fa fa-chevron-left"></i> Leetcode 2677. Chunk Array, slice 함수
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -333,7 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EC%8B%9C%EC%9E%91%ED%95%9C-%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">블로그를 시작한 이유</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EC%84%B1%ED%95%B4%EC%95%BC-%ED%95%A0%EA%B9%8C"><span class="nav-number">2.</span> <span class="nav-text">블로그는 어떻게 작성해야 할까?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A7%88%EB%AC%B4%EB%A6%AC"><span class="nav-number">3.</span> <span class="nav-text">마무리</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B8%B0%EC%A1%B4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%AA%A8%EB%93%88-%EA%B5%AC%EC%A1%B0"><span class="nav-number">1.</span> <span class="nav-text">기존 프로젝트 모듈 구조</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%88%9C%ED%99%98-%EC%B0%B8%EC%A1%B0-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0"><span class="nav-number">2.</span> <span class="nav-text">순환 참조 문제 해결</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
