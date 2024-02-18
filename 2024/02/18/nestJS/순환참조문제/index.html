@@ -24,7 +24,7 @@
   <meta name="google-site-verification" content="gnd9SYszRKXb6P5Qi65Bss9PftHss6npbLEDmr6ZUDk" />
   <meta name="description" content="NestJS 프레임워크를 공부하기 위해서 개인 프로젝트 개발에 도전하였다. 가볍게 대중적인 게시판 만들기부터 시작하였다. 이 게시판 개인 프로젝트에서 articles 모듈과, users 모듈 사이에 순환 참조 문제가 발생하여 어떻게 해결할지 고민했던 과거를 공유하고자 글을 작성하게 되었다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="비동기 함수(async function), Promise 란?">
+<meta property="og:title" content="순환 참조 문제 해결(NestJS)">
 <meta property="og:url" content="https://1dohyeon.github.io/2024/02/18/nestJS/%EC%88%9C%ED%99%98%EC%B0%B8%EC%A1%B0%EB%AC%B8%EC%A0%9C/index.html">
 <meta property="og:site_name" content="Dohyeon">
 <meta property="og:description" content="NestJS 프레임워크를 공부하기 위해서 개인 프로젝트 개발에 도전하였다. 가볍게 대중적인 게시판 만들기부터 시작하였다. 이 게시판 개인 프로젝트에서 articles 모듈과, users 모듈 사이에 순환 참조 문제가 발생하여 어떻게 해결할지 고민했던 과거를 공유하고자 글을 작성하게 되었다.">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B02.png">
 <meta property="og:image" content="https://github.com/1Dohyeon/Study-NestJS/raw/main/01_Docs/imgs/%EB%AA%A8%EB%93%88%EA%B5%AC%EC%A1%B01.png">
 <meta property="article:published_time" content="2024-02-18T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-18T15:00:37.435Z">
+<meta property="article:modified_time" content="2024-02-18T15:03:04.154Z">
 <meta property="article:author" content="Dohyeon Won">
 <meta property="article:tag" content="nestJS">
 <meta property="article:tag" content="circular-reference">
@@ -52,7 +52,7 @@
   };
 </script>
 
-  <title>비동기 함수(async function), Promise 란? | Dohyeon</title>
+  <title>순환 참조 문제 해결(NestJS) | Dohyeon</title>
   
 
 
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/myTags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a>
+    <a href="/myTags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          비동기 함수(async function), Promise 란?
+          순환 참조 문제 해결(NestJS)
         </h1>
 
         <div class="post-meta">
@@ -290,7 +290,10 @@
     <a href="/2024/02/06/js/Leetcode%202677.Chunk%20Array-slice/" rel="prev" title="Leetcode 2677. Chunk Array, slice 함수">
       <i class="fa fa-chevron-left"></i> Leetcode 2677. Chunk Array, slice 함수
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/02/19/nestJS/nestjs-react-connact/" rel="next" title="프론트와 백엔드 연결하기(NestJS, React)">
+      프론트와 백엔드 연결하기(NestJS, React) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -362,7 +365,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -375,7 +378,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/myTags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

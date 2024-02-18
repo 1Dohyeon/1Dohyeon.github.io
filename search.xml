@@ -174,7 +174,7 @@
       </tags>
   </entry>
   <entry>
-    <title>비동기 함수(async function), Promise 란?</title>
+    <title>순환 참조 문제 해결(NestJS)</title>
     <url>/2024/02/18/nestJS/%EC%88%9C%ED%99%98%EC%B0%B8%EC%A1%B0%EB%AC%B8%EC%A0%9C/</url>
     <content><![CDATA[<p>NestJS 프레임워크를 공부하기 위해서 개인 프로젝트 개발에 도전하였다. 가볍게 대중적인 게시판 만들기부터 시작하였다. 이 게시판 개인 프로젝트에서 articles 모듈과, users 모듈 사이에 순환 참조 문제가 발생하여 어떻게 해결할지 고민했던 과거를 공유하고자 글을 작성하게 되었다.</p>
 <span id="more"></span>
@@ -208,6 +208,18 @@
       <tags>
         <tag>nestJS</tag>
         <tag>circular-reference</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>프론트와 백엔드 연결하기(NestJS, React)</title>
+    <url>/2024/02/19/nestJS/nestjs-react-connact/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>nestJS</category>
+      </categories>
+      <tags>
+        <tag>nestJS</tag>
+        <tag>react</tag>
       </tags>
   </entry>
 </search>
