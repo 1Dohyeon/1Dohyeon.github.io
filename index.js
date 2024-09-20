@@ -23,9 +23,9 @@ mainCircle.addEventListener("mouseover", function () {
   label.style.top = `${mainCirclePosition.y + circleSize - 20}px`; // 원 바로 아래에 표시
 });
 
-// 중심 원 클릭 시 페이지 새로고침
+// 중심 원 클릭 시 메인페이지로 이동 (새로고침)
 mainCircle.addEventListener("click", function () {
-  window.location.reload(); // 페이지 새로고침
+  window.location.href = "/"; // 메인 페이지로 이동 (새로고침)
 });
 
 mainCircle.addEventListener("mouseout", function () {
