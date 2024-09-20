@@ -25,7 +25,7 @@ mainCircle.addEventListener("mouseover", function () {
 
 // 중심 원 클릭 시 index.html로 이동 (새로고침)
 mainCircle.addEventListener("click", function () {
-  window.location.href = "index.html"; // 메인 페이지로 이동 (새로고침)
+  window.location.href = "/"; // 메인 페이지로 이동 (새로고침)
 });
 
 mainCircle.addEventListener("mouseout", function () {

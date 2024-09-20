@@ -15,10 +15,10 @@ small,
 strong,
 ul,
 li {
-  margin: 0;
-  padding: 0;
   color: #2d2d2d;
   text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
