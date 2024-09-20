@@ -66,6 +66,10 @@ header {
   align-items: end;
 }
 
+.header-logo {
+  cursor: pointer;
+}
+
 .header-menu {
   display: flex;
 }
