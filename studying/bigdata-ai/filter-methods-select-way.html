@@ -1,0 +1,75 @@
+<!-- studying의 자식 폴더 내에 작성 -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Methods에서의 특징 선택 과정</title>
+    <link rel="stylesheet" href="../studying-sub.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Filter Methods에서의 특징 선택 과정</h2>
+        <h4
+          id="set-of-all-features-selecting-the-best-subset-learning-algorithm-performance"
+        >
+          set of all features -&gt; selecting the best subset -&gt; learning
+          algorithm -&gt; performance
+        </h4>
+        <p><strong>Set of all features</strong>:</p>
+        <ul>
+          <li>
+            이 단계에서는 데이터셋에 있는 모든 특징(변수)이 준비된 상태다. 즉,
+            원래 데이터에 포함된 전체 특징들이 포함된다.
+          </li>
+        </ul>
+        <p><strong>Selecting the best subset</strong>:</p>
+        <ul>
+          <li>
+            이 단계는 <strong>특징 선택(Feature Selection)</strong> 과정이다.
+            여기서 모든 특징 중에서
+            <strong>가장 중요한 특징들만 골라낸다</strong>. 필터 방법, 래퍼
+            방법, 임베디드 방법 중 하나를 사용해 가장 예측에 도움이 되는
+            특징들의 하위 집합을 선택하는 것이다.
+          </li>
+        </ul>
+        <p><strong>Learning algorithm</strong>:</p>
+        <ul>
+          <li>
+            선택된 특징들로 머신러닝 알고리즘을 훈련하는 단계다. 이 알고리즘은
+            <strong
+              >주어진 데이터를 학습해, 목표 변수(예측하고자 하는 값)를 예측하는
+              모델을 만든다.</strong
+            >
+          </li>
+        </ul>
+        <p><strong>Performance</strong>:</p>
+        <ul>
+          <li>
+            마지막으로, <strong>학습된 모델의 성능을 평가</strong>한다. 성능
+            평가는 일반적으로 정확도, 정밀도, 재현율 등의 지표를 사용해
+            이루어진다. 여기서 선택된 특징들이 모델 성능에 얼마나 긍정적인
+            영향을 미쳤는지 확인할 수 있다.
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>

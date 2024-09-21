@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi-square Test</title>
+    <link rel="stylesheet" href="../studying-sub.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Chi-square Test(카이제곱 검정)</h2>
+        <p>카이제곱 검정은 데이터셋에서 범주형 특징에 사용된다.</p>
+        <ul>
+          <li>
+            범주형 특징의 그룹에 적용되어, 이들의 빈도 분포를 사용해 상관관계나
+            연관 가능성을 평가한다.
+          </li>
+          <li>
+            상관관계(Correlation)의 범주형 데이터 버전(categorical data
+            version)이라고 생각할 수 있다.
+          </li>
+        </ul>
+        <img
+          src="../imgs/Pasted image 20240920171548.png"
+          alt="Chi-square Formula"
+        />
+        <ul>
+          <li>
+            <strong>χ2</strong>: 카이제곱 통계량으로, 관찰된 데이터와 기대되는
+            데이터 간의 차이를 측정하는 값이다.
+          </li>
+          <li>
+            <strong>Oij​</strong>: <strong>관찰값(Observed value)</strong>,
+            실제로 관찰된 값이다.
+          </li>
+          <li>
+            <strong>Eij</strong>: <strong>기대값(Expected value)</strong>, 두
+            변수 간의 독립을 가정했을 때 기대되는 값이다.
+          </li>
+          <li>
+            <strong>(Oij−Eij)^2/Eij​</strong>: 관찰값과 기대값의 차이를 제곱한
+            뒤, 기대값으로 나눈 값이다. 이는 각 범주의 기여도를 나타낸다.
+          </li>
+          <li>
+            <strong>∑ i=1~m, ∑ j=1~k</strong>: 이중 합으로, 모든 행(m)과 열(k)에
+            대해 각각의 기여도를 더한다는 의미이다.
+          </li>
+        </ul>
+        <p>
+          <strong>카이제곱 검정의 의미</strong> 관찰된 데이터와 기대되는 데이터
+          간의 차이가 통계적으로 유의미한지 판단하는 데 사용된다.
+          <strong>카이제곱 값이 클수록</strong> 관찰된 데이터와 기대된 데이터
+          사이의 차이가 크다는 뜻이며, 이는 두 변수 간에 연관성이 있을 가능성을
+          시사한다. 반대로 값이 작으면 변수들이 독립적일 가능성이 높다.
+        </p>
+        <p><strong>예시</strong></p>
+        <img
+          src="../imgs/Pasted image 20240920171933.png"
+          alt="Chi-square Example"
+        />
+        <ul>
+          <li>날씨 또는 바람이 테니스 플레이 여부와 연관이 있는지?</li>
+        </ul>
+        <p><strong>카이제곱 검정 예시</strong></p>
+        <img
+          src="../imgs/Pasted image 20240920172016.png"
+          alt="Chi-square Test Example"
+        />
+        <ul>
+          <li>날씨 또는 바람이 테니스 경기 여부에 영향을 미칠까?</li>
+          <li>
+            첫 번째 항목: 맑은 날에 테니스를 한 경우 (관찰값 2, 기대값 3.21)
+          </li>
+          <li>
+            두 번째 항목: 맑은 날에 테니스를 안 한 경우 (관찰값 3, 기대값 1.79)
+          </li>
+          <li>
+            세 번째 항목: 흐린 날에 테니스를 한 경우 (관찰값 4, 기대값 2.57)
+          </li>
+          <li>
+            네 번째 항목: 흐린 날에 테니스를 안 한 경우 (관찰값 0, 기대값 1.43)
+          </li>
+          <li>
+            다섯 번째 항목: 비 오는 날에 테니스를 한 경우 (관찰값 3, 기대값
+            3.21)
+          </li>
+          <li>
+            여섯 번째 항목: 비 오는 날에 테니스를 안 한 경우 (관찰값 2, 기대값
+            1.79)
+          </li>
+        </ul>
+        <p><strong>결론</strong></p>
+        <img
+          src="../imgs/Pasted image 20240920172101.png"
+          alt="Chi-square Test Conclusion"
+        />
+        <ul>
+          <li>바람이 날씨보다 테니스 경기 여부와 더 큰 연관성이 있다.</li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
