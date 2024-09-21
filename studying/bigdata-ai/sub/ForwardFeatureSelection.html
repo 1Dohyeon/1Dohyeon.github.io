@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forward Feature Selection</title>
+    <link rel="stylesheet" href="../../studying-sub.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Forward Feature Selection</h2>
+        <h3 id="-">개념</h3>
+        <p>
+          전진 선택은 반복적인 방법으로, 모델에
+          <strong>아무런 특징도 포함하지 않은 상태에서 시작</strong>한다.
+          <strong
+            >각 반복마다 모델의 성능을 가장 크게 향상시키는 특징을 추가</strong
+          >한다. 즉, <strong>그리디 방식</strong>으로
+          <strong>현재 상태에서만 최선의 특징을 선택</strong>하기에,
+          <strong>최종적으로 봤을 때 최선은 보장할 수 없다.</strong> 새로운
+          변수를 추가해도 더 이상 모델 성능이 향상되지 않을 때까지 이 과정을
+          반복한다.
+        </p>
+        <hr />
+        <h3 id="-">절차</h3>
+        <ol>
+          <li>S = ∅ (빈 집합)으로 시작한다.</li>
+          <li>모델 점수를 가장 크게 향상시키는 단일 특징을 S에 추가한다.</li>
+          <li>1-2 단계를 반복한다.</li>
+        </ol>
+        <p>
+          이 방법의 계산 복잡도는 특징 수에 대해 대략 이차적이며, 경우에 따라 더
+          적은 계산이 필요하다.
+        </p>
+        <hr />
+        <h3 id="-">예시</h3>
+        <h4 id="-">가정</h4>
+        <ul>
+          <li>
+            <strong>Training Data</strong>: 4개의 특징 (<code>f1</code>,
+            <code>f2</code>, <code>f3</code>, <code>f4</code>)가 포함된 데이터.
+          </li>
+          <li>
+            <strong>목표</strong>: 모델의 성능을 최적화하기 위해 가장 유용한
+            특징들을 선택하는 것.
+          </li>
+        </ul>
+        <h4 id="-">첫 번째 반복:</h4>
+        <ul>
+          <li>
+            <strong>Step 1</strong>:
+            <ul>
+              <li>
+                처음에는 어떤 특징도 선택되지 않음. 즉, <code>S = ∅</code>로
+                시작한다.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Step 2</strong>:
+            <ul>
+              <li>
+                각 특징에 대해 모델을 학습하고, 해당 특징이 성능에 얼마나
+                기여하는지 평가한다.
+                <ul>
+                  <li>
+                    <code>f1</code>을 사용한 모델:<br />
+                    y=a0+(a1xf1)
+                    <ul>
+                      <li>
+                        이 모델을 학습한 후, 검증 데이터를 사용해
+                        <strong>평가 지표(Evaluation Metric)</strong> 를
+                        계산한다.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <code>f2</code>를 사용한 모델:<br />
+                    y=a0+(a2xf2)
+                  </li>
+                  <li>
+                    <code>f3</code>를 사용한 모델:<br />
+                    y=a0+(a3xf3)
+                  </li>
+                  <li>
+                    <code>f4</code>를 사용한 모델:<br />
+                    y=a0+(a4xf4)
+                  </li>
+                </ul>
+              </li>
+              <li>
+                각 모델의 <strong>평가 지표(Evaluation Metric)</strong> 를
+                계산하여 가장 높은 성능을 보인 특징을 선택한다. 예를 들어,
+                <code>f1</code>이 가장 높은 성능을 보였다고 가정하면,
+                <code>S = {f1}</code>로 선택한다.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <blockquote>
+          <p>
+            여기서 <strong>a0</strong>와 <strong>a1</strong>은
+            <strong>회귀 계수(Regression Coefficients)</strong> 를 의미한다.
+            이들은 모델이 학습을 통해 각 특징에 할당하는 가중치로, 다음과 같이
+            설명할 수 있다:
+          </p>
+          <ul>
+            <li>
+              <p>
+                <strong>a0</strong>: <strong>절편(Intercept)</strong> 으로, 모든
+                특징 값이 0일 때 목표 변수가 가질 값이다. 즉, 모델에서 아무런
+                특징도 반영되지 않을 때(특징 값이 모두 0일 때) 예측되는 목표
+                변수의 기본 값이다.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>a1, a2, a3, ...</strong>: 각각의 특징(f1, f2, f3, ...)에
+                해당하는 <strong>회귀 계수</strong> 또는
+                <strong>가중치</strong>이다. 각 특징이 목표 변수에 미치는 영향을
+                나타낸다. 예를 들어, <strong>a1</strong>은 <strong>f1</strong>이
+                목표 변수에 얼마나 영향을 미치는지를 나타내는 값이다. 이 값이
+                클수록 해당 특징이 목표 변수에 미치는 영향이 크다고 볼 수 있다.
+              </p>
+            </li>
+          </ul>
+          <p>회귀식의 예 : <strong>y=a0+a1xf1+a2xf2</strong></p>
+          <h4 id="-">두 번째 반복:</h4>
+          <ul>
+            <li>
+              <strong>Step 1</strong>:
+              <ul>
+                <li>현재 <code>S = {f1}</code>.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Step 2</strong>:
+              <ul>
+                <li>
+                  다음으로 <code>f2</code>, <code>f3</code>, <code>f4</code> 중
+                  하나를 추가한 모델을 학습하고 평가한다.
+                  <ul>
+                    <li>
+                      <code>f1</code>과 <code>f2</code>를 사용한 모델:<br />
+                      y=a0+a1xf1+a2xf2
+                    </li>
+                    <li>
+                      <code>f1</code>과 <code>f3</code>을 사용한 모델:<br />
+                      y=a0+a1xf1+a3xf3
+                    </li>
+                    <li>
+                      <code>f1</code>과 <code>f4</code>를 사용한 모델:<br />
+                      y=a0+a1xf1+a4xf4
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  이 중 가장 성능이 좋은 모델을 선택한다. 예를 들어,
+                  <code>f1</code>과 <code>f3</code>이 조합된 모델이 가장 좋다면,
+                  <code>S = {f1, f3}</code>로 업데이트한다.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </blockquote>
+        <h4 id="-">세 번째 반복:</h4>
+        <ul>
+          <li>
+            <strong>Step 1</strong>:
+            <ul>
+              <li>현재 <code>S = {f1, f3}</code>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Step 2</strong>:
+            <ul>
+              <li>
+                남은 특징 <code>f2</code>, <code>f4</code> 중 하나를 추가하여
+                평가한다.
+                <ul>
+                  <li>
+                    <code>f1</code>, <code>f3</code>, <code>f2</code>를 사용한
+                    모델:<br />
+                    y=a0+a1xf1+a3xf3+a2xf2
+                  </li>
+                  <li>
+                    <code>f1</code>, <code>f3</code>, <code>f4</code>를 사용한
+                    모델:<br />
+                    y=a0+a1xf1+a3xf3+a4xf4
+                  </li>
+                </ul>
+              </li>
+              <li>
+                평가 후 성능이 더 이상 향상되지 않으면 특징 추가를 중단하고 최종
+                모델을 선택한다.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>즉, 현시점에서 최선의 경우를 선택한다.</p>
+        <h4 id="-">검증 및 평가:</h4>
+        <p>
+          최종적으로 선택된 특징들이 포함된 모델을 사용해 검증 데이터를
+          평가하고, 최종 <strong>평가 지표</strong> (예:
+          <strong>정확도(Accuracy)</strong>, <strong>정밀도(Precision)</strong>,
+          <strong>재현율(Recall)</strong>)를 계산한다.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

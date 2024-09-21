@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variance Threshold(분산 임계값)</title>
+    <link rel="stylesheet" href="../../studying-sub.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Variance Threshold(분산 임계값)</h2>
+        <p>
+          분산 임계값 기법은 특정 기준 이하로
+          <strong>변동성이 작은 특징을 제거하는 방식</strong>이다. 변동이 적은
+          특징은 예측에 큰 도움이 되지 않을 수 있기 때문에, 이런 특징을
+          제거함으로써 모델 성능을 높일 수 있다. 다만,
+          <strong
+            >이 방법은 특징과 목표 변수 간의 관계를 고려하지 않기 때문에, 단순히
+            분산만 보고 중요한 정보를 놓칠 가능성도 있다.</strong
+          >
+        </p>
+        <ul>
+          <li>
+            <strong>분산이 특정 임계값을 충족하지 않는 모든 특징을 제거</strong
+            >한다.
+          </li>
+          <li>
+            모든 샘플에서 큰 변화가 없는 특징이 목표(target) 예측에 도움을 줄까?
+            <ul>
+              <li>분산이 큰 특징이 더 유용한 정보를 가지고 있다고 가정한다.</li>
+              <li>
+                하지만 목표(target) 또는 특징(feature) 간의 관계는 고려하지
+                않는다.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>평균 절대 차이(MAD)</strong> 도 비슷하게 사용할 수 있다.
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>

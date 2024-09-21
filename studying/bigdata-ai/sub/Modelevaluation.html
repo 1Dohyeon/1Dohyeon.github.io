@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model evaluation(모델 평가)</title>
+    <link rel="stylesheet" href="../../studying-sub.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Model evaluation(모델 평가)</h2>
+        <h4>종류</h4>
+        <ul>
+          <li><strong>훈련 세트(Training set)</strong>: 모델 파라미터 추정.</li>
+          <li><strong>검증 세트(Validation set)</strong>: 모델 선택.</li>
+          <li><strong>테스트 세트(Test set)</strong>: 최종 평가.</li>
+        </ul>
+        <p>
+          각 데이터 세트는 머신러닝 모델을 학습하고, 검증하고, 최종 성능을
+          평가하는 데 사용된다.
+        </p>
+        <h4>기본적인 훈련-테스트 구조</h4>
+        <img
+          src="../../bigdata-ai/imgs/Pasted image 20240920181858.png"
+          alt="Training-Test Structure"
+        />
+        <h4>기본적인 훈련-테스트 구조</h4>
+        <p><strong>Training set ← Model → Test set</strong>:</p>
+        <ul>
+          <li>
+            이 부분은 가장 기본적인 모델 학습 및 평가 방법이다.
+            <strong>훈련 세트(Training set)</strong>에서 모델을 학습한 후,
+            <strong>테스트 세트(Test set)</strong>에서 모델의 성능을 평가하는
+            방식이다.
+          </li>
+        </ul>
+        <h4>훈련-검증-테스트 구조</h4>
+        <p>
+          <strong>Training set ← Model → Validation set → Test set</strong>:
+        </p>
+        <ul>
+          <li>
+            여기서는 모델을 <strong>훈련 세트</strong>에서 학습한 후,
+            <strong>검증 세트(Validation set)</strong>로 성능을 확인하고 모델을
+            최적화한 뒤, 마지막으로 <strong>테스트 세트</strong>에서 성능을
+            평가한다. 검증 세트는 과적합을 방지하고 최적의 하이퍼파라미터를
+            선택하는 데 사용된다.
+          </li>
+        </ul>
+        <h4>교차 검증(K-fold Cross-Validation)</h4>
+        <p><strong>K-fold CV</strong>:</p>
+        <ul>
+          <li>
+            이 부분은 <strong>K-겹 교차 검증(K-fold Cross-Validation)</strong>을
+            보여준다. 데이터를 여러 개의 부분으로 나누고, 각 부분을 한 번씩
+            <strong>검증 세트</strong>로 사용하며 나머지 부분을
+            <strong>훈련 세트</strong>로 사용한다. 이렇게 모든 부분이 검증
+            세트로 사용될 때까지 이 과정을 반복한다. 이 방법은 데이터가 적을 때
+            모델 성능을 더 정확하게 평가할 수 있는 방법이다.
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>

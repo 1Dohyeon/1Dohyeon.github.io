@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dimensionality-Reduction-1</title>
-    <link rel="stylesheet" href="../studying-sub.css" />
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- marked.js 추가 -->
+    <link rel="stylesheet" href="../../studying-sub.css" />
   </head>
   <body>
     <div class="layout">
@@ -14,13 +12,13 @@
         <h1 class="header-logo"><a href="/" class="header-logo-a">1Dohyeon</a></h1>
         <ul class="header-menu">
           <li class="header-menu-item">
-            <a href="../../about-me/about-me.html">About me</a>
+            <a href="../../../about-me/about-me.html">About me</a>
           </li>
           <li class="header-menu-item header-menu-item-studying">
-            <a href="../../studying/studying.html">Studying</a>
+            <a href="../../../studying/studying.html">Studying</a>
           </li>
           <li class="header-menu-item">
-            <a href="../../projects/projects.html">Projects</a>
+            <a href="../../../projects/projects.html">Projects</a>
           </li>
         </ul>
       </header>
@@ -104,15 +102,15 @@
 <li>데이터를 분석하기 전, 통계적 방법으로 <strong>가장 의미 있는 특징을 선택</strong>하는 것이다. 이 방법은 빠르고 계산 비용이 적지만, 모델의 예측 성능을 크게 높이는 데는 제한적일 수 있다. 그래서 주로 데이터를 준비할 때 많이 사용된다.
 <ul>
 <li><strong>통계적 점수를 기반으로 특징을 선택</strong>한다.</li>
-<li><a href="../bigdata-ai/filter-methods-select-way.html">Filter Methods에서의 특징 선택 과정</a>은 보통 다음과 같다 :</li>
+<li><a href="../../bigdata-ai/sub/filter-methods-select-way.html">Filter Methods에서의 특징 선택 과정</a>은 보통 다음과 같다 :</li>
 <li>set of all features -> selecting the best subset -> learning algorithm -> performance</li>
 </ul>
 </li>
 <li>정확도는 낮지만 계산이 빠름, 따라서 다음 상황에서 사용된다 :</li>
 <ul>
-<li><a href="../bigdata-ai/Correlation-Coefficient.html">Correlation Coefficient(상관 계수)</a> : 변수 간의 상관관계를 측정해 중요한 변수를 고른다.</li>
-<li><a href="../bigdata-ai/chi-squareTest.html">Chi-square Test(카이제곱 검정)</a> : 범주형 변수 간의 독립성을 테스트해 특징을 선택한다.</li>
-<li><a href="#">Variance Threshold(분산 임계값)</a> : 분산이 작은 변수를 제거한다. 이는 그 변수가 큰 변화를 주지 않기 때문이다.</li>
+<li><a href="../../bigdata-ai/sub/Correlation-Coefficient.html">Correlation Coefficient(상관 계수)</a> : 변수 간의 상관관계를 측정해 중요한 변수를 고른다.</li>
+<li><a href="../../bigdata-ai/sub/chi-squareTest.html">Chi-square Test(카이제곱 검정)</a> : 범주형 변수 간의 독립성을 테스트해 특징을 선택한다.</li>
+<li><a href="../../bigdata-ai/sub/VarianceThreshold.html">Variance Threshold(분산 임계값)</a> : 분산이 작은 변수를 제거한다. 이는 그 변수가 큰 변화를 주지 않기 때문이다.</li>
 </ul>
 </li>
 </ul>
@@ -128,15 +126,15 @@
 <li><strong>set of all features -> Generate a subset -> learning algorithm -> performance</strong> 순서지만, Generate a subset -> learning algorithm 이 과정을 반복한다.</li>
 <li>이 방법은 모델을 실제로 여러 번 실행해보면서 가장 좋은 성능을 내는 변수 조합을 찾는 것이다. 단점은 <strong>시간이 오래 걸리지만, 변수 간의 상호작용을 잘 반영할 수 있다</strong>는 점에서 유리하다.
 <ul>
-<li>그렇다면 어떻게 성능을 평가한다는 것일까? <a href="#">성능 평가 기준 (Performance Criteria)</a></li>
-<li><a href="#">Model evaluation(모델 평가)</a></li>
+<li>그렇다면 어떻게 성능을 평가한다는 것일까? <a href="../../bigdata-ai/sub/PerformanceCriteria.html">성능 평가 기준 (Performance Criteria)</a></li>
+<li><a href="../../bigdata-ai/sub/Modelevaluation.html">Model evaluation(모델 평가)</a></li>
 </ul>
 </li>
 <li>다음 상황에서 사용된다 :
 <ul>
-<li><a href="#">Exhaustive Feature Selection(전수 탐색)</a> : 가능한 모든 변수 조합을 시도해 최적의 조합을 찾는다. <strong>즉, 모든 경우의 수를 하나씩 다 확인하는 방식이다.</strong></li>
-<li><a href="#">Forward Feature Selection(전진 특징 선택)</a> : 변수를 하나씩 추가하면서 모델 성능이 좋아지는지를 확인한다. <strong>즉, 처음엔 아무 변수도 없지만, 가장 중요한 것부터 하나씩 더해가는 방식이다.</strong> (그리디 방식)</li>
-<li><a href="#">Backward Feature Elimination</a> : 처음엔 모든 변수를 포함한 후, 하나씩 제거하면서 성능에 미치는 영향을 본다. <strong>즉, 다 가지고 시작해서 덜 중요한 것들을 차례로 빼는 방식이다.</strong></li>
+<li><a href="../../bigdata-ai/sub/ExhaustiveFeatureSelection.html">Exhaustive Feature Selection(전수 탐색)</a> : 가능한 모든 변수 조합을 시도해 최적의 조합을 찾는다. <strong>즉, 모든 경우의 수를 하나씩 다 확인하는 방식이다.</strong></li>
+<li><a href="../../bigdata-ai/sub/ForwardFeatureSelection.html">Forward Feature Selection(전진 특징 선택)</a> : 변수를 하나씩 추가하면서 모델 성능이 좋아지는지를 확인한다. <strong>즉, 처음엔 아무 변수도 없지만, 가장 중요한 것부터 하나씩 더해가는 방식이다.</strong> (그리디 방식)</li>
+<li><a href="../../bigdata-ai/sub/BackwardFeatureElimination.html">Backward Feature Elimination</a> : 처음엔 모든 변수를 포함한 후, 하나씩 제거하면서 성능에 미치는 영향을 본다. <strong>즉, 다 가지고 시작해서 덜 중요한 것들을 차례로 빼는 방식이다.</strong></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backward Feature Elimination</title>
+    <link rel="stylesheet" href="../../studying-sub.css" />
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Backward Feature Elimination</h2>
+        <h3>개념</h3>
+        <p>
+          후진 제거는 <strong>모든 특징을 포함한 상태에서 시작</strong>하여, 각
+          반복마다 모델
+          <strong>성능을 가장 적게 향상시키는 특징을 제거</strong>한다. 이
+          과정을 반복하여 특징을 제거해도 성능이 더 이상 개선되지 않을 때까지
+          계속한다.
+        </p>
+        <hr />
+        <h3>절차</h3>
+        <ol>
+          <li>S = {1,...,p} (모든 특징이 포함된 상태)로 시작한다.</li>
+          <li>모델 점수를 가장 적게 감소시키는 단일 특징을 S에서 제거한다.</li>
+          <li>1-2 단계를 반복한다.</li>
+        </ol>
+        <p>
+          이 방법의 계산 복잡도는 특징 수에 대해 이차적이며, 경우에 따라 더 적은
+          계산이 필요하다.
+        </p>
+        <hr />
+        <h3>예시</h3>
+        <h4>가정</h4>
+        <ul>
+          <li>
+            <strong>Training Data</strong>: 4개의 특징 (<code>f1</code>,
+            <code>f2</code>, <code>f3</code>, <code>f4</code>)가 포함된 데이터.
+          </li>
+          <li>
+            <strong>목표</strong>: 모델의 성능을 최적화하기 위해 가장 유용한
+            특징들을 선택하는 것.
+          </li>
+        </ul>
+        <h4>첫 번째 모델:</h4>
+        <p><strong>y = a0+a1f1+a2f2+a3f3+a4f4</strong></p>
+        <ul>
+          <li>
+            모델이 모든 특징을 포함한 상태로 시작한다. 이 모델의 성능 평가 지표
+            R<sup>2</sup>는 0.75로 계산되었다. 이후, 가장 덜 중요한 특징을 찾아
+            제거하기 시작한다.
+          </li>
+        </ul>
+        <h4>두 번째 모델:</h4>
+        <ul>
+          <li>
+            모델에서 <strong>f1</strong> 또는 <strong>f2</strong>와 같은 덜
+            중요한 특징을 제거하여 새로운 모델을 만든다.
+          </li>
+          <li>
+            예를 들어, <code>f1</code>을 제거한 모델:
+            <strong>y = a0+a2f2+a3f3+a4f4</strong>
+          </li>
+          <li>
+            이 모델의 평가 지표 R<sup>2</sup>는 0.72로 계산되었다. 성능이 조금
+            떨어졌으나, 다른 특징 조합을 시도해가며 계속 평가한다.
+          </li>
+        </ul>
+        <h4>세 번째 모델:</h4>
+        <ul>
+          <li>
+            <strong>f2</strong>를 제거하고 <code>f1</code>, <code>f3</code>,
+            <code>f4</code>만 남긴다. <strong>y = a0+a1f1+a3f3+a4f4</strong>
+          </li>
+          <li>
+            이 모델의 R<sup>2</sup>는 0.75로 측정되었다. 성능이 이전보다
+            유지되거나 약간 향상되었다.
+          </li>
+        </ul>
+        <h4>마지막 모델:</h4>
+        <ul>
+          <li>
+            최종적으로 <strong>f1</strong>과 <strong>f3</strong>만 남긴다:
+            <strong>y = a0+a1f1+a3f3</strong>
+          </li>
+          <li>
+            이 모델은 R<sup>2</sup> 값이 0.83으로, 성능이 가장 높게 나왔다.
+            따라서 <strong>f1</strong>과 <strong>f3</strong>가 최적의 조합이라는
+            결론에 도달한다.
+          </li>
+        </ul>
+        <h4>요약:</h4>
+        <ul>
+          <li>
+            후진 제거 방법은 먼저 모든 특징을 사용한 상태에서 시작하고, 각
+            단계에서 성능에 가장 적은 영향을 주는 특징을 제거해 나간다.
+            최종적으로 가장 중요한 특징들만 남겨서 최적의 모델을 만든다.
+          </li>
+          <li>
+            이 예시에서는 <code>f1</code>과 <code>f3</code>만 남은 상태에서
+            모델의 성능이 가장 좋았다는 결과가 나왔다.
+          </li>
+          <li>
+            이 방식도
+            <a href="../bigdata-ai/ForwardFeatureSelection.html"
+              >Forward Feature Selection(전진 특징 선택)</a
+            >처럼 그리디 방식이기에 모든 경우에서의 최선의 선택인지 보장할 수는
+            없다.
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>

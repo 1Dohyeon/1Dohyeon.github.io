@@ -1,0 +1,54 @@
+<!-- studying의 sub 폴더 내에 작성 -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exhaustive Feature Selection(전수 탐색)</title>
+    <link rel="stylesheet" href="../../studying-sub.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <h2 class="studying-title">Exhaustive Feature Selection(전수 탐색)</h2>
+        <p>
+          Exhaustive Feature Selection는 전수 탐색이라고 하며
+          <strong>모든 특징 조합을 탐색</strong>한다. 따라서
+          <strong
+            >가장 좋은 특징 하위 집합(feature subset)을 찾을 수 있다.</strong
+          >
+        </p>
+        <p>
+          예를 들어 <code>f1, f2, f3</code> 데이터가 있다고 가정하자. 우선
+          각각의 acc(정확도, accuracy)를 구한다. 그 다음 <code>f1, f2</code> /
+          <code>f1, f3</code> / <code>f2, f3</code> / <code>f1, f2, f3</code> 와
+          같이 <strong>모든 조합의 acc를 구한다.</strong>
+        </p>
+        <p>
+          하지만 이 탐색은 모든 조합을 시도하기 때문에 계산 자원이 많이 소모될
+          수 있다. 즉,
+          <strong
+            >특징이 많아질수록 모든 조합을 계산하는 데 필요한 시간이 크게
+            증가</strong
+          >한다. 따라서 <strong>연산 시간이 매우 많이 증가</strong>하게 된다.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
