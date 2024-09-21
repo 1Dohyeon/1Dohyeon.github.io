@@ -132,6 +132,7 @@ header {
 .header-menu-item a {
   cursor: pointer;
   color: #757575;
+  text-decoration: none;
 }
 
 .header-menu-item a:hover {
