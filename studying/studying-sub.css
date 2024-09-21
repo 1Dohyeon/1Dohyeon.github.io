@@ -21,8 +21,18 @@ li {
   text-decoration: none;
 }
 
+/* 여기서부터는 markdown 게시글을 위한 css */
+
 h1 {
   font-size: 32px;
+}
+
+.studying-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #d2d2d2;
+  width: 75%;
 }
 
 h2 {
@@ -30,14 +40,44 @@ h2 {
 }
 
 h3 {
-  margin-top: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: rgb(0, 81, 255);
+}
+
+a {
+  color: rgb(0, 81, 255);
+}
+
+.header-logo-a {
+  color: #2d2d2d;
+}
+
+strong {
+  color: #ff7c7c;
+}
+
+ul {
+  margin-left: 5%;
+}
+
+li > ul {
+  margin-left: 30px;
+}
+
+p {
+  margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 24px;
 }
 
 h4 {
-  font-size: 22px;
+  font-size: 18px;
+  margin-top: 20px;
+  color: rgb(0, 134, 45);
 }
+
+/* 여기까지 */
 
 h5 {
   font-size: 20px;
@@ -48,12 +88,13 @@ h6 {
 }
 
 li {
-  list-style: none;
   height: 100%;
 }
 
 .layout {
-  max-width: 1024px;
+  max-width: 1000px;
+  padding-left: 12px;
+  padding-right: 12px;
   min-height: 100vh;
   margin: 0 auto;
 }
@@ -78,6 +119,7 @@ header {
 
 .header-menu-item {
   padding: 0px 20px;
+  list-style: none;
 }
 
 .header-menu-item a {

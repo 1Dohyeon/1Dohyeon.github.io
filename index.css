@@ -51,7 +51,9 @@ li {
 }
 
 .layout {
-  max-width: 1024px;
+  max-width: 1000px;
+  padding-left: 12px;
+  padding-right: 12px;
   min-height: 100vh;
   margin: 0 auto;
 }
@@ -76,6 +78,7 @@ header {
 
 .header-menu-item {
   padding: 0px 20px;
+  list-style: none;
 }
 
 .header-menu-item a {
