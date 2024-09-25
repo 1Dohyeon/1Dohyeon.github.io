@@ -134,15 +134,143 @@
             <ul class="studying-section1-content1-sub-list">
               <li class="studying-section1-content1-sub-list-item">
                 <a
-                  href="../studying/bigdata-ai/main/dimensionality-Reduction-1.html"
+                  href="../studying/bigdata-ai/main/dimensionality-Reduction.html"
                 >
-                  Dimensionality Reduction_1</a
+                  Dimensionality Reduction(차원 축소)</a
                 >
               </li>
             </ul>
           </li>
           <li class="studying-section1-content1-item"><a>인공지능</a></li>
           <li class="studying-section1-content1-item"><a>머신러닝</a></li>
+        </ul>
+        <h3>Dimensionality Reduction</h3>
+
+        <p>
+          <a href="03_1_Dimensionality%20Reduction_1">차원 축소</a>란 고차원의
+          데이터를 저차원으로 변환해 데이터의 중요한 특성을 유지하면서 복잡도를
+          줄이는 기법이다.
+        </p>
+
+        <p>
+          주로 데이터 시각화, 전처리, 과적합 방지, 메모리 및 계산 효율성 향상에
+          사용된다.
+        </p>
+
+        <hr />
+
+        <h3>(Preliminary) Geometric interpretation of Linear combination</h3>
+
+        <h4>선형 결합의 개념</h4>
+        <p>
+          벡터 공간에서 선형 결합은 여러 벡터를 특정 가중치(스칼라)를 사용하여
+          결합하는 과정을 말한다. 주어진 벡터들을 스칼라 값으로 곱하고 더해서
+          새로운 벡터를 만드는 것이다.
+        </p>
+
+        <p>
+          예를 들어, 두 벡터 v1<sub>v_1</sub>와 v2<sub>v_2</sub>가 있을 때, a와
+          b가 스칼라(숫자)라고 하면: <code>v = av1 + bv2</code>.
+        </p>
+
+        <p>
+          이렇게 만들어진 벡터 <code>v</code>가 <code>v1</code>와
+          <code>v2</code>의 선형 결합이다.
+        </p>
+
+        <h4>기하학적 해석</h4>
+        <p>
+          기하학적으로 해석하면, 두 벡터 <code>v1</code>와 <code>v2</code>의
+          선형 결합은 이 두 벡터를 시작점으로 하는 평면이나 직선 상의 모든
+          벡터를 나타낸다.
+        </p>
+
+        <p>
+          즉, 여러 벡터의 선형 결합을 통해 해당 벡터들이 펼칠 수 있는 공간을
+          정의할 수 있는 것이다.
+        </p>
+
+        <p>
+          예를 들어, 2차원 평면에서 두 벡터 <code>v1</code>와 <code>v2</code>가
+          서로 평행하지 않으면, 그 두 벡터의 모든 선형 결합은 2차원 평면 전체를
+          표현할 수 있게 된다.
+        </p>
+
+        <h4>스팬(Span)</h4>
+        <p>
+          스팬은 주어진 벡터들의 모든 선형 결합으로 만들어지는 공간을 의미한다.
+          주어진 벡터 <code>v1</code>와 <code>v2</code>가 있다고 할 때, 이 두
+          벡터의 스팬은 <code>av1 + bv2</code>와 같이 <code>a</code>와
+          <code>b</code>가 모든 실수 값을 가질 때 만들어지는 모든 벡터의
+          집합이다.
+        </p>
+
+        <ul>
+          <li>
+            만약 <code>v1</code>와 <code>v2</code>가 2차원 공간의 벡터라면,
+            이들의 스팬은 해당 2차원 공간 전체가 된다.
+          </li>
+          <li>
+            반대로 <code>v1</code>와 <code>v2</code>가 같은 직선 위에 놓여 있는
+            경우라면, 이들의 스팬은 그 직선 자체만을 포함한다.
+          </li>
+        </ul>
+
+        <h4>기저(Basis)</h4>
+        <p>
+          기저란 벡터 공간을 표현하는 최소한의 벡터 집합이다. 벡터 공간을 이루는
+          벡터 중 선형적으로 독립적인 최소한의 벡터들을 선택하여 그 공간을
+          표현할 수 있다면, 이 벡터들의 집합을 기저라고 한다.
+        </p>
+
+        <p>
+          예를 들어, 2차원 공간에서 벡터 <code>i=(1, 0)</code>와
+          <code>j=(0,1)</code>는 이 공간을 표현하는 기저이다. 이 두 벡터를 선형
+          결합하면 2차원 공간의 모든 벡터를 표현할 수 있다.
+        </p>
+
+        <p>
+          기저는 항상 벡터 공간의 차원과 같은 수의 벡터를 포함한다. 3차원 공간의
+          기저는 세 개의 벡터를 포함하며, 각각이 서로 선형적으로 독립적이다.
+          이는 기저 벡터들이 서로 평행하지 않고 독립적인 방향을 갖는다는
+          의미이다.
+        </p>
+
+        <h4>차원 축소의 목표</h4>
+        <p>
+          차원 축소의 목표는 데이터의 축을 찾아내어 표현하는 것이다. 데이터가
+          고차원 공간에 분포되어 있을 때, 이 데이터의 변동성을 가장 잘 설명하는
+          축을 찾고 해당 축을 따라 데이터를 저차원으로 표현하는 것이 차원 축소의
+          핵심이다.
+        </p>
+
+        <p>
+          이러한 과정을 통해 일부 정보 손실이 있을 수 있지만, 데이터의 핵심
+          구조와 중요한 패턴을 유지하면서 더 낮은 차원으로 데이터를 압축할 수
+          있다.
+        </p>
+
+        <p>
+          결국, 차원 축소는 원래 고차원 데이터가 가진 복잡성을 줄이고, 중요한
+          정보만을 담아 효율적으로 표현하는 것이 목표이다.
+        </p>
+
+        <p>차원 축소의 방법은 다음과 같다:</p>
+        <ul>
+          <li>
+            <a href="PCA(Principal%20component%20analysis)"
+              >PCA(Principal component analysis)</a
+            >: 데이터의 분산이 가장 큰 방향을 찾는 것으로, 데이터를 몇 가지
+            주성분을 기반으로 표현함으로써 차원을 축소.
+          </li>
+          <li>
+            <a href="SVD(Singular%20Value%20Decomposition)"
+              >SVD(Singular Value Decomposition)</a
+            >: 모든 행렬을 세 개의 행렬 <code>U</code>, <code>Σ</code>,
+            <code>VT</code>의 곱으로 분해하는 방법. 데이터의 근사치를 제공하며,
+            가장 큰 특이값만을 사용해 데이터의 주요한 정보만 남기고 나머지를
+            버림으로써 차원을 축소.
+          </li>
         </ul>
       </section>
     </div>
