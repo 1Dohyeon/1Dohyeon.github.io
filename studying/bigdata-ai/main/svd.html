@@ -28,7 +28,243 @@
         <div class="studying-section1-header">
           <h3>SVD(Singular Value Decomposition)</h3>
         </div>
-        <!-- 이곳에 markdown to html 한 결과 -->
+        <h3>1. SVD의 개요</h3>
+
+        <p>
+          특이값 분해(SVD)는 모든 행렬을 세 개의 행렬 <code>U</code>,
+          <code>Σ</code>, <code>VT</code>의 곱으로 분해하는 방법이다. 이를 통해
+          차원 축소, 데이터 압축, 노이즈 제거 등 다양한 분야에 활용할 수 있다.
+        </p>
+
+        <p>SVD는 아래와 같은 형식으로 행렬 X를 분해한다:</p>
+        <img
+          src="../imgs/Pasted image 20240925233519.png"
+          alt="SVD decomposition"
+        />
+
+        <p>X = 7x5 행렬일 경우 :</p>
+        <ul>
+          <li>
+            <strong>U</strong>: 원래 행렬의 행에 대한 정보(좌측 특이벡터)로
+            이루어진 행렬 (7x7)
+          </li>
+          <li>
+            <strong>Σ</strong>: 원래 행렬의 특이값들(singular values)이 대각선에
+            위치한 대각행렬 (7x5)
+          </li>
+          <li>
+            <strong>VT</strong>: 원래 행렬의 열에 대한 정보(우측 특이벡터)로
+            이루어진 전치 행렬 (5x5)
+          </li>
+        </ul>
+        <p>
+          &gt;
+          <a href="../sub/singular-vector.html">특이벡터(singular vectors)</a
+          >란?
+        </p>
+
+        <hr />
+
+        <h3>
+          2. SVD와
+          <a href="pca.html">PCA(Principal component analysis)</a>의 비교
+        </h3>
+
+        <ul>
+          <li>
+            <strong>공통점</strong>: 둘 다 데이터의 차원 축소를 위해 사용되며,
+            데이터의 분산이 가장 큰 방향으로 투영하여 중요한 정보를 보존한다.
+          </li>
+          <li>
+            <strong>차이점</strong>:
+            <strong>PCA는 데이터의 공분산 행렬을 이용</strong>해
+            <a href="../sub/eigenvalue-decomposition.html"
+              >고유값 분해(eigenvalue decomposition)</a
+            >를 수행하는 반면,
+            <strong>SVD는 원본 데이터 행렬 자체를 분해</strong>한다. PCA의 경우
+            주성분 벡터가
+            <a href="../sub/eigen-vector.html">고유벡터(eigenvector)</a>인 반면,
+            SVD의 경우 U와 V는
+            <strong
+              ><a href="../sub/singular-vector.html"
+                >특이벡터(singular vectors)</a
+              ></strong
+            >로 이루어져 있다.
+          </li>
+        </ul>
+
+        <hr />
+
+        <h3>3. SVD를 통해 차원 축소하는 방법</h3>
+
+        <h4>예시</h4>
+
+        <p>아래와 같은 X라는 원본 행렬이 있다고 가정:</p>
+        <img
+          src="../imgs/Pasted image 20240925234104.png"
+          alt="Original Matrix X"
+        />
+
+        <p>이 행렬은 7개의 행(샘플)과 5개의 열(특성)으로 구성되어 있다.</p>
+
+        <h4>특이값 분해 과정</h4>
+
+        <p>
+          분해 기준은 다음과 같다. 우선 데이터 X와 XT의 곱과 XT와 X의 곱은
+          symmetric하다. symmetric하기에
+          <a href="../sub/eigenvalue-decomposition.html"
+            >고유값 분해(eigenvalue decomposition)</a
+          >가 가능하다.
+        </p>
+
+        <p><code>X = UΣVT</code> 라면, X와 XT의 곱은 다음과 같다:</p>
+        <img
+          src="../imgs/Pasted image 20240926002820.png"
+          alt="Multiplication of X and XT"
+        />
+        <p>
+          UT와 U는 직교 행렬이기에 사라진다. 이 값은 고유값 분해에 의해
+          <code>QλQT</code>와 같은 값이 된다. 즉 <code>U = Q</code>,
+          <code>Σ(ΣT) = λ</code>, <code>UT = QT</code>가 성립한다.
+        </p>
+
+        <p>반대로 XT와 X의 곱은 다음과 같다:</p>
+        <img
+          src="../imgs/Pasted image 20240926002912.png"
+          alt="Multiplication of XT and X"
+        />
+
+        <p>
+          특이값 행렬 <code>Σ</code>는 <code>XT*X</code>와 <code>X*XT</code>의
+          고유값의 <strong>양의 제곱근</strong>으로 이루어져 있다.
+          <code>λ</code>도 <code>Q</code>와 <code>QT</code>의 고유값을 나타내는
+          대각행렬이다(<code>VΣ(ΣT)VT = QλQT</code>). 따라서 다음과 같다 :
+        </p>
+        <img
+          src="../imgs/Pasted image 20240926003418.png"
+          alt="Resultant Matrix Representation"
+        />
+
+        <p>
+          그리고 애초에
+          <strong
+            ><code>Σ</code>는 위에서 설명했듯이 대각 행렬이기에 transpose한
+            <code>ΣT</code>와 자기 자신 <code>Σ</code>의 곱은 결국 제곱</strong
+          >이다. 이 곱은 <code>QλQT</code>에서의 <code>λ</code>가 된다.
+        </p>
+
+        <ol>
+          <li>
+            먼저, XT, X 곱과 X, XT 곱을 계산한다.
+            <ul>
+              <li>XT, X 곱: 결과는 5×5 행렬이 된다.</li>
+              <li>X, XT 곱: 결과는 7×7 행렬이 된다.</li>
+            </ul>
+          </li>
+          <li>
+            XT, X 곱 행렬의 고유값과 고유벡터를 구한다.
+            <ul>
+              <li>
+                이 고유값들은 행렬 X의 <strong>특이값의 제곱</strong>에
+                해당한다. 즉, λi가 XT, X 곱 행렬의 고유값이면 특이값
+                <strong>σi=루트λi</strong>이다.
+              </li>
+              <li>이 고유벡터들은 행렬 V의 열을 구성</li>
+            </ul>
+          </li>
+          <li>
+            X, XT 곱 행렬의 고유값과 고유벡터를 구한다. 여기서 얻은 고유벡터들은
+            U 행렬의 열을 구성한다.
+          </li>
+          <li>
+            모든 고유값을 정렬하고 제곱근을 취하여 특이값을 구한다. 이 값들을
+            대각선에 배치하여 Σ 행렬을 만든다.
+          </li>
+        </ol>
+
+        <h4>SVD를 수행</h4>
+
+        <ol>
+          <li>
+            <strong>U 행렬</strong>: 7×7 크기의 행렬로, 원본 행렬 X의 행 방향에
+            대한 정보를 담고 있다. 즉, U의 각 열은 데이터 행의 패턴을 나타내는
+            <strong>좌측 특이벡터</strong>로 구성된다.
+          </li>
+          <li>
+            <strong>Σ 행렬</strong>: 7×5 크기의 <strong>대각 행렬</strong>로, 이
+            행렬의 <strong>대각선에는 X의 특이값(singular values)</strong> 이
+            나타난다. 특이값은 데이터의 변동성을 나타내며, 값이 클수록 해당 축이
+            데이터의 분산을 많이 설명한다.
+          </li>
+          <li>
+            <strong>VT 행렬</strong>: 5×5 크기의 행렬로, 원본 행렬 X의 열 방향에
+            대한 정보를 담고 있다. V의 열들은 데이터의 특성 방향을 나타내는
+            <strong>우측 특이벡터</strong>로 구성되어 있다.
+          </li>
+        </ol>
+
+        <hr />
+
+        <h3>4. thin SVD</h3>
+
+        <p>
+          위에서처럼 SVD를 수행한 후 <code>Σ</code>는 대각행렬로 나올 수도 있다.
+          위에서는 7x5 행렬로 예를 들었기 때문에 <code>Σ</code>는 7×5 크기가
+          되었다. <code>Σ</code>는 대각행렬이기에 아래 6, 7번째 샘플의 데이터는
+          0이 된다. 따라서 이 부분을 과감히 버려도 손실이 없다. 이렇게
+          <strong><code>Σ</code>를 정사각형 형태의 매트릭스로</strong> 만들고,
+          그에 따라 U와 VT도 줄이게 된다면 이는 <strong>thin SVD</strong> 이다.
+        </p>
+
+        <hr />
+
+        <h3>5. Compact SVD</h3>
+
+        <p>
+          위에서처럼 SVD를 수행해도 그렇게 축소된 느낌을 받지는 않는다. 따라서
+          데이터가 0인 부분은 과감히 버리며 행렬의 크기를 줄일 수 있다. 0인 값을
+          지웠기 때문에 손실이 발생하지 않는다.
+        </p>
+
+        <hr />
+
+        <h3>6. Truncated SVD</h3>
+
+        <p>
+          <code>Σ</code> 대각 행렬에서 0이 아닌 데이터들만 남았지만 값이 가장
+          작은 일부를 버리고, 그에 맞춰서 U, VT를 축소 시킨 SVD이다. 이때 0이
+          아닌 값을 버렸기에 손실이 발생한다.
+        </p>
+
+        <hr />
+
+        <h3>요약</h3>
+
+        <p>
+          특이값 분해(SVD)는 모든 행렬을 <code>U</code>, <code>Σ</code>,
+          <code>VT</code> 세 개의 행렬로 분해하는 방법으로, 이를 통해 차원 축소,
+          데이터 압축, 노이즈 제거에 활용할 수 있다. PCA와 SVD는 모두 차원
+          축소를 위해 사용되지만, PCA는 데이터의 공분산 행렬을 사용해 고유값
+          분해를 수행하는 반면, SVD는 원본 행렬 자체를 분해한다. SVD를 수행하면
+          <code>U</code>와 <code>V</code>는 각각 좌측 특이벡터와 우측 특이벡터로
+          구성되며, 특이값은 <code>XT*X</code> 또는 <code>X*XT</code>의 고유값의
+          제곱근이 된다.
+        </p>
+
+        <p>
+          SVD에는 차원 축소 방법으로 thin SVD, compact SVD, truncated SVD가
+          있다. thin SVD는 <code>Σ</code>의 대각선에 0인 부분을 제거하고, 이에
+          따라 <code>U</code>와 <code>VT</code>의 크기를 줄이는 방식이다.
+          compact SVD는 불필요한 0 값을 제거하여 행렬의 크기를 줄이고, 손실 없이
+          데이터를 축소한다. truncated SVD는 특이값 중 작은 일부를 버려
+          <code>U</code>, <code>Σ</code>, <code>VT</code>를 더 작은 크기로
+          축소하지만 이때 약간의 정보 손실이 발생한다.
+        </p>
+
+        <p>
+          이렇게 SVD를 통해 원본 데이터의 핵심적인 정보를 유지하면서도 효율적인
+          데이터 표현을 가능하게 한다.
+        </p>
       </section>
     </div>
   </body>
