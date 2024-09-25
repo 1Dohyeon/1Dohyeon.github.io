@@ -116,6 +116,10 @@ header {
   align-items: end;
 }
 
+header {
+  font-family: "Times New Roman", Times, serif;
+}
+
 .header-logo {
   cursor: pointer;
 }

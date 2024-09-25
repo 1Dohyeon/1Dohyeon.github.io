@@ -1,3 +1,7 @@
+header {
+  font-family: "Times New Roman", Times, serif;
+}
+
 .header-menu-item-project a {
   color: #2d2d2d;
   font-weight: bold;

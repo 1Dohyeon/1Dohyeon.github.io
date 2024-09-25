@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 h1,
@@ -19,6 +20,10 @@ li {
   padding: 0;
   color: #2d2d2d;
   text-decoration: none;
+}
+
+header {
+  font-family: "Times New Roman", Times, serif;
 }
 
 /* 여기서부터는 markdown 게시글을 위한 css */
