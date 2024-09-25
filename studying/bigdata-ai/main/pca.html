@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PCA(Principal component analysis)</title>
+    <link rel="stylesheet" href="../../studying-sub-sample.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <header>
+        <h1 class="header-logo">
+          <a href="/" class="header-logo-a">1Dohyeon</a>
+        </h1>
+        <ul class="header-menu">
+          <li class="header-menu-item">
+            <a href="../../../about-me/about-me.html">About me</a>
+          </li>
+          <li class="header-menu-item header-menu-item-studying">
+            <a href="../../../studying/studying.html">Studying</a>
+          </li>
+          <li class="header-menu-item">
+            <a href="../../../projects/projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <section class="studying-section1">
+        <div class="studying-section1-header">
+          <h3>PCA(Principal component analysis)</h3>
+        </div>
+        <h3>주성분 분석 (Principal Component Analysis, PCA) 개요:</h3>
+
+        <h4>1. PCA의 목적</h4>
+        <p>
+          PCA는 차원 축소 방법 중 가장 널리 사용되는 기법으로, 입력 데이터의
+          변동성을 설명하는 소수의 "방향"을 찾고 데이터를 해당 방향으로 투영하는
+          것에 초점이 있다.
+        </p>
+        <ul>
+          <li>가정: 데이터의 변동(분산)이 정보를 담고 있음.</li>
+          <li>데이터와 학습된 표현 간에 선형 관계가 존재한다고 가정.</li>
+        </ul>
+
+        <h4>2. PCA의 특징과 활용</h4>
+        <ul>
+          <li>
+            <strong>고차원 데이터 처리</strong>: 데이터의 과적합을 방지하고 계산
+            속도를 높이며 메모리 사용량을 줄일 수 있음.
+          </li>
+          <li>
+            <strong>비지도 학습 알고리즘</strong>: 데이터의 레이블 없이
+            작동하며, 데이터 시각화, 전처리, 일반화, 손실 압축 등의 목적으로
+            사용.
+          </li>
+        </ul>
+
+        <h4>3. PCA의 기본 아이디어</h4>
+        <p>
+          고차원 데이터(d차원)를 저차원(k차원)으로 투영해 정보 손실을 최소화하는
+          것이 목표.
+        </p>
+        <ul>
+          <li>
+            예: 단어 10,000개를 사용한 공간을 3차원으로 투영하거나, 3차원 공간을
+            2차원으로 투영.
+          </li>
+          <li>최대 분산을 가지는 투영을 선택하여 재구성 오류를 최소화.</li>
+        </ul>
+
+        <h4>4. PCA의 직관</h4>
+        <p>
+          데이터를 더 낮은 차원의 공간으로 투영하면서 데이터의 분산을 최대한
+          유지하는 방법. 주성분 방향으로 데이터를 투영하면 해당 방향의 분산이
+          가장 커짐.
+        </p>
+
+        <h3>Principal Component Analysis(PCA) 예시</h3>
+
+        <p>
+          아래와 같이 <code>n x d</code> 크기의 데이터 행렬 <code>X</code>가
+          있다고 가정하자. 이때
+          <strong>n은 샘플의 수, d는 차원의 수</strong>이다. 따라서 아래
+          데이터의 차원의 수는 <code>d = 5</code> 이다.
+        </p>
+        <img
+          src="../imgs/Pasted image 20240923202129.png"
+          alt="데이터 행렬 예시"
+        />
+
+        <p>
+          <code>μ</code>는 각 열의 평균값을 나타내는 벡터이다. 차원 축소를
+          수행하기 전에
+          <strong>데이터의 각 특성(열)에 대한 평균을 계산</strong>하고, 이
+          <strong>평균을 빼는 과정을 '중심화(centered)'라고 한다.</strong>
+          이렇게 하면 각 특성의 값이 <strong>0을 중심으로 분포</strong>되게 되어
+          데이터의 분산을 보다 정확하게 분석할 수 있다.
+        </p>
+        <img
+          src="../imgs/Pasted image 20240923201843.png"
+          alt="데이터의 중심화"
+        />
+
+        <p>
+          위 행렬 <code>(X-μ)Q</code>를 알기 위해서는 공분산 행렬을 알아야 한다.
+          <strong
+            >공분산 행렬은 각 특성 간의 상관관계를 나타내며, 데이터의 분산과
+            함께 그들 간의 관계를 분석하는 데 사용</strong
+          >된다. 공분산 행렬은 <code>cov(X)</code> 이며 이를 구하는 과정은
+          다음과 같다:
+        </p>
+
+        <h4>1. 데이터 중심화</h4>
+        <p>
+          각 열의 평균을 계산하고, 각 데이터 값에서 해당 평균을 뺀다. 이 과정이
+          위에서 언급된 <code>X-μ</code> 형태의 행렬이다.
+        </p>
+
+        <h4>2. 공분산 행렬 계산</h4>
+        <img
+          src="../imgs/Pasted image 20240923204353.png"
+          alt="공분산 행렬 계산"
+        />
+        <p>
+          여기서 <code>n</code>은 샘플의 수이다. <code>(X−μ)^T</code>는 중심화된
+          데이터 행렬의 전치 행렬이다.
+        </p>
+        <p>
+          즉, 위 예제에서는 <code>행:7, 열:5</code> 이었다면,
+          <code>(X−μ)^T</code>를 하게 되면 <code>행:5, 열:7</code>의 행렬이
+          된다. 따라서 위 예제를 <code>cov(X)</code> 계산한 행렬은 아래와
+          같아진다.
+        </p>
+        <img
+          src="../imgs/Pasted image 20240923205120.png"
+          alt="공분산 행렬 예시"
+        />
+
+        <p>
+          공분산 행렬은 대각선을 기준으로 값이 대칭인 것을 알 수 있다. 자기
+          자신과 자기 자신의 Transpose 행렬을 곱한 것이기 때문이다. 대칭 행렬은
+          <a href="../sub/eigenvalue-decomposition.html"
+            >고윱값 분해(eigenvalue decomposition)</a
+          >을 통해 분리할 수 있다.
+        </p>
+
+        <h4>3. 공분산 행렬을 통해 Q를 도출</h4>
+        <p><code>cov(X)</code>는 다음과 같이 다시 표현할 수 있다:</p>
+        <img
+          src="../imgs/Pasted image 20240923205159.png"
+          alt="공분산 행렬 표현"
+        />
+        <p>
+          <code>Q</code>는 공분산 행렬의
+          <strong>고유벡터(eigenvectors)</strong>들로 이루어진 행렬이다. 이
+          행렬의 각 열은 하나의 고유벡터를 나타내며, 데이터의 변동이 가장 큰
+          방향을 가리킨다.
+        </p>
+
+        <p>
+          <code>Λ</code>(람다)는 고유값들을 대각선에 가진
+          <strong>대각행렬(diagonal matrix)</strong>이다. 고유값은 데이터가
+          고유벡터 방향으로 얼마나 많이 변동하는지를 나타낸다. 고유값이 클수록
+          그 방향으로의 데이터의 변동성이 더 크다는 것을 의미한다. 위 과정을
+          통해 구한 <code>Q</code>와 <code>Λ</code>는 아래와 같다:
+        </p>
+        <img src="../imgs/Pasted image 20240923223452.png" alt="Q와 Λ" />
+
+        <h4>4. PCA를 통해 차원 축소</h4>
+        <p>
+          <code>Q</code>와 <code>X-μ</code>를 곱하고, 그 행렬의 공분산을 구한
+          결과는 아래와 같다:
+        </p>
+        <img
+          src="../imgs/Pasted image 20240923223738.png"
+          alt="차원 축소 결과"
+        />
+        <p>
+          위 식을 통해
+          <strong>손실 없이 5차원 데이터를 3차원으로 줄일 수 있다</strong>는
+          것을 알 수 있다.
+        </p>
+
+        <h4>5. 차원 복구</h4>
+        <p>
+          아래 이미지에서 알 수 있듯이 <code>Q</code>를 Transpose한 행렬을 다시
+          곱하고 <code>μ</code>를 더하면 다시 데이터를 복구할 수 있다. 그렇다면
+          5에서 2차원으로 축소하고, 복구한다면 어떻게 될까? PC3에는 데이터가
+          있는 것을 알 수 있다. 따라서 손실은 발생할 것이다.
+        </p>
+        <img src="../imgs/Pasted image 20240923223940.png" alt="차원 복구" />
+
+        <h4>6. 2차원으로 축소 & 복구</h4>
+        <p>2차원으로 축소한다면 <code>Q</code>는 아래와 같아진다:</p>
+        <img src="../imgs/Pasted image 20240923224321.png" alt="2차원 축소 Q" />
+
+        <p><code>(X-μ)Q</code> 데이터는 아래와 같아진다:</p>
+        <img
+          src="../imgs/Pasted image 20240923224232.png"
+          alt="2차원 축소 데이터"
+        />
+
+        <p>
+          이제 <code>Q</code> Transpose하고 두 행렬의 곱을 계산하면 아래와
+          같아진다.
+        </p>
+        <img
+          src="../imgs/Pasted image 20240923224645.png"
+          alt="2차원 복구 결과"
+        />
+
+        <p>
+          이제 위 행렬에 <code>μ</code>를 더하면 복구한 행렬을 구할 수 있고,
+          약간의 손실이 있는 것을 확인할 수 있다.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
