@@ -42,6 +42,8 @@
           alt="SVD decomposition"
         />
 
+        <img src="../imgs/Pasted image 20240927160343.png" alt="SVD" />
+
         <p>X = 7x5 행렬일 경우 :</p>
         <ul>
           <li>
@@ -202,11 +204,21 @@
             <strong>우측 특이벡터</strong>로 구성되어 있다.
           </li>
         </ol>
+        <br />
+
+        <p>
+          다른 예제를 들자면, 아래 이미지의 좌측 데이터를 우측 행렬들로 분해한
+          것이다.
+        </p>
+        <img src="../imgs/Pasted image 20240927161552.png" alt="SVD" />
+        <br />
+        <small>User-to-concept factor matrix (Stanford CS246)</small>
 
         <hr />
 
         <h3>4. thin SVD</h3>
 
+        <img src="../imgs/Pasted image 20240927160434.png" alt="SVD" />
         <p>
           위에서처럼 SVD를 수행한 후 <code>Σ</code>는 대각행렬로 나올 수도 있다.
           위에서는 7x5 행렬로 예를 들었기 때문에 <code>Σ</code>는 7×5 크기가
@@ -219,7 +231,7 @@
         <hr />
 
         <h3>5. Compact SVD</h3>
-
+        <img src="../imgs/Pasted image 20240927160522.png" alt="SVD" />
         <p>
           위에서처럼 SVD를 수행해도 그렇게 축소된 느낌을 받지는 않는다. 따라서
           데이터가 0인 부분은 과감히 버리며 행렬의 크기를 줄일 수 있다. 0인 값을
@@ -230,6 +242,7 @@
 
         <h3>6. Truncated SVD</h3>
 
+        <img src="../imgs/Pasted image 20240927160543.png" alt="SVD" />
         <p>
           <code>Σ</code> 대각 행렬에서 0이 아닌 데이터들만 남았지만 값이 가장
           작은 일부를 버리고, 그에 맞춰서 U, VT를 축소 시킨 SVD이다. 이때 0이

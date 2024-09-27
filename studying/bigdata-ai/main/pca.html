@@ -151,17 +151,23 @@
         />
         <p>
           <code>Q</code>는 공분산 행렬의
-          <strong>고유벡터(eigenvectors)</strong>들로 이루어진 행렬이다. 이
-          행렬의 각 열은 하나의 고유벡터를 나타내며, 데이터의 변동이 가장 큰
-          방향을 가리킨다.
+          <strong
+            ><a href="../sub/eigen-vector.html"
+              >고유벡터(eigenvectors)</a
+            ></strong
+          >들로 이루어진 행렬이다. 이 행렬의 각 열은 하나의 고유벡터를 나타내며,
+          데이터의 변동이 가장 큰 방향을 가리킨다.
         </p>
 
         <p>
           <code>Λ</code>(람다)는 고유값들을 대각선에 가진
           <strong>대각행렬(diagonal matrix)</strong>이다. 고유값은 데이터가
           고유벡터 방향으로 얼마나 많이 변동하는지를 나타낸다. 고유값이 클수록
-          그 방향으로의 데이터의 변동성이 더 크다는 것을 의미한다. 위 과정을
-          통해 구한 <code>Q</code>와 <code>Λ</code>는 아래와 같다:
+          그 방향으로의 데이터의 변동성이 더 크다는 것을 의미한다.
+          <a href="../sub/eigenvalue-decomposition.html"
+            >Eigenvalue Decomposition(고유값 분해)</a
+          >
+          를 통해 구한 <code>Q</code>와 <code>Λ</code>는 아래와 같다:
         </p>
         <img src="../imgs/Pasted image 20240923223452.png" alt="Q와 Λ" />
 
@@ -183,9 +189,11 @@
         <h4>5. 차원 복구</h4>
         <p>
           아래 이미지에서 알 수 있듯이 <code>Q</code>를 Transpose한 행렬을 다시
-          곱하고 <code>μ</code>를 더하면 다시 데이터를 복구할 수 있다. 그렇다면
-          5에서 2차원으로 축소하고, 복구한다면 어떻게 될까? PC3에는 데이터가
-          있는 것을 알 수 있다. 따라서 손실은 발생할 것이다.
+          곱하고 <code>μ</code>를 더하면 다시 데이터를 복구할 수 있다.
+          <strong
+            >그렇다면 5에서 2차원으로 축소하고, 복구한다면 어떻게 될까?</strong
+          >
+          PC3에는 데이터가 있는 것을 알 수 있다. 따라서 손실은 발생할 것이다.
         </p>
         <img src="../imgs/Pasted image 20240923223940.png" alt="차원 복구" />
 
@@ -203,10 +211,58 @@
           이제 <code>Q</code> Transpose하고 두 행렬의 곱을 계산하면 아래와
           같아진다.
         </p>
-        <img
-          src="../imgs/Pasted image 20240923224645.png"
-          alt="2차원 복구 결과"
-        />
+
+        <table border="1">
+          <tr>
+            <td>0.91</td>
+            <td>1.18</td>
+            <td>0.91</td>
+            <td>-0.02</td>
+            <td>-0.02</td>
+          </tr>
+          <tr>
+            <td>2.96</td>
+            <td>3.08</td>
+            <td>2.96</td>
+            <td>-0.02</td>
+            <td>-0.02</td>
+          </tr>
+          <tr>
+            <td>3.98</td>
+            <td>4.02</td>
+            <td>3.98</td>
+            <td>-0.02</td>
+            <td>-0.02</td>
+          </tr>
+          <tr>
+            <td>5.0</td>
+            <td>4.98</td>
+            <td>5.0</td>
+            <td>-0.02</td>
+            <td>-0.02</td>
+          </tr>
+          <tr>
+            <td>0.31</td>
+            <td>1.26</td>
+            <td>0.31</td>
+            <td>4.01</td>
+            <td>4.01</td>
+          </tr>
+          <tr>
+            <td>-0.32</td>
+            <td>0.75</td>
+            <td>-0.32</td>
+            <td>4.97</td>
+            <td>4.97</td>
+          </tr>
+          <tr>
+            <td>0.13</td>
+            <td>0.75</td>
+            <td>0.13</td>
+            <td>2.02</td>
+            <td>2.02</td>
+          </tr>
+        </table>
 
         <p>
           이제 위 행렬에 <code>μ</code>를 더하면 복구한 행렬을 구할 수 있고,
