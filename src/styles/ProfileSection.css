@@ -1,0 +1,68 @@
+.profile-section {
+    width: 100%;
+    padding-top: 160px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.8);
+}
+
+.image-area {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ddd;
+}
+
+.image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.contact-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.contact-area p {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-area a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+.contact-area a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ 반응형 처리 */
+@media (max-width: 600px) {
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .image-area {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-area {
+        align-items: center;
+        gap: 8px;
+    }
+}

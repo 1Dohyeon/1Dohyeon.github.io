@@ -1,0 +1,11 @@
+.intro-section {
+    width: 100%;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.8);
+    padding-bottom: 30px;
+}
+
+.intro-section h2 {
+    margin-top: 30px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
