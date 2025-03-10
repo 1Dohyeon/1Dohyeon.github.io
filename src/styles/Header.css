@@ -7,6 +7,10 @@ header {
     border-bottom: 1px solid #888;
 }
 
+header h2 {
+    cursor: pointer;
+}
+
 .menu-section {
     display: flex;
 }
@@ -18,15 +22,21 @@ header {
     justify-content: center;
 }
 
-.menu-section p {
+.menu-section a {
     font-size: 16px;
     cursor: pointer;
     font-weight: 500;
     color: #888;
+    text-decoration: none;
 }
 
-.menu-section p:hover {
+.menu-section a:hover {
     color: #000;
+}
+
+.menu-section a.active {
+    color: #000;
+    font-weight: bold;
 }
 
 @media (max-width: 600px) {
@@ -34,7 +44,7 @@ header {
         width: 70px;
     }
 
-    .menu-section p {
+    .menu-section a {
         font-size: 12px;
     }
 }
