@@ -1,7 +1,7 @@
 .app {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
+    background-color: #fff;
 }
 
 h1,
@@ -41,9 +41,6 @@ h6 {
 }
 
 @media (max-width: 600px) {
-    .app {
-        padding: 0.875rem;
-    }
     h1 {
         font-size: 2rem; /* 32px */
     }
