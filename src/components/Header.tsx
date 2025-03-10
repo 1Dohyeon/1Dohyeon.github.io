@@ -7,7 +7,9 @@ const Header = () => {
 
     return (
         <header className="header">
-            <h2>Dohyeon</h2>
+            <Link to="/#" className="logo">
+                Dohyeon
+            </Link>
             <div className="menu-section">
                 <div>
                     <Link to="/about-me" className={location.pathname === "/about-me" ? "active" : ""}>
