@@ -1,15 +1,15 @@
-.intro-section {
+.project-section {
     width: 100%;
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.8);
     padding-bottom: 30px;
 }
 
-.intro-section h3 {
+.project-section h3 {
     margin-top: 30px;
     margin-bottom: 5px;
 }
 
-.intro-section h5 {
+.project-section h5 {
     margin-top: 20px;
     margin-bottom: 5px;
 }

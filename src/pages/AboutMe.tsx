@@ -5,6 +5,8 @@ import "../App.css";
 import "../styles/AboutMe.css";
 import ProfileSection from "../components/ProfileSection.tsx";
 import IntroSection from "../components/IntroSection.tsx";
+import SkillSection from "../components/SkillSection.tsx";
+import ProjectSection from "../components/ProjectSection.tsx";
 
 function AboutMe() {
     return (
@@ -12,6 +14,8 @@ function AboutMe() {
             <Header />
             <ProfileSection />
             <IntroSection />
+            <SkillSection />
+            <ProjectSection />
             <Footer />
         </div>
     );
