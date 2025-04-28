@@ -1,21 +1,27 @@
 .profile-section {
     width: 100%;
-    padding-top: 160px;
-    padding-bottom: 60px;
+    padding-top: 120px;
+    padding-bottom: 50px;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 36px;
     flex-wrap: wrap;
-    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.8);
+    background: #fff;
+    border-radius: 12px;
+    margin-top: 50px;
 }
 
 .image-area {
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid #ddd;
+    box-shadow: 0 4px 16px rgba(79, 140, 255, 0.1);
+    border: 3px solid #4f8cff;
+    background: #f7faff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-area img {
@@ -23,6 +29,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    border: none;
 }
 
 .contact-area {
@@ -30,22 +37,52 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
+    gap: 14px;
+}
+
+.contact-area h2 {
+    font-size: 1.7rem;
+    color: #2d3a4b;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
 .contact-area p {
     font-weight: 500;
     font-size: 1rem;
-    color: #333;
+    color: #444;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .contact-area a {
-    color: #0077cc;
+    color: #4f8cff;
     text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
 }
 
 .contact-area a:hover {
     text-decoration: underline;
+    color: #005fa3;
+}
+
+/* 아이콘 추가 효과 */
+.contact-area p::before {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+.contact-area p:nth-child(2)::before {
+    content: "✉️";
+}
+.contact-area p:nth-child(3)::before {
+    content: "💻";
+}
+.contact-area p:nth-child(4)::before {
+    content: "🔗";
 }
 
 /* ✅ 반응형 처리 */
@@ -54,15 +91,22 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding-top: 60px;
+        padding-bottom: 30px;
+        gap: 18px;
     }
 
     .image-area {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
 
     .contact-area {
         align-items: center;
         gap: 8px;
+    }
+
+    .contact-area h2 {
+        font-size: 1.2rem;
     }
 }
