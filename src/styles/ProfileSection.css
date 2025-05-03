@@ -7,8 +7,8 @@
     gap: 36px;
     flex-wrap: wrap;
     background: #fff;
-    border-radius: 12px;
     margin-top: 50px;
+    border-bottom: 1px solid #666;
 }
 
 .image-area {

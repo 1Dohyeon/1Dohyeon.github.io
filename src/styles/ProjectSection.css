@@ -2,7 +2,7 @@
     width: 100%;
     padding: 30px 24px 30px 24px;
     background: #fff;
-    border-radius: 12px;
+    border-bottom: 1px solid #666;
 }
 
 .project-section h3 {
