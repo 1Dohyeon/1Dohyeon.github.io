@@ -5,7 +5,7 @@ const Footer = () => {
         <footer
             style={{ marginTop: "5rem", textAlign: "center", fontSize: "0.9rem", color: "#aaa", marginBottom: "3rem" }}
         >
-            ⓒ 2025 Dohyeon's Blog. All rights reserved.
+            ⓒ 2025 Dohyeon's Portfolio. All rights reserved.
         </footer>
     );
 };

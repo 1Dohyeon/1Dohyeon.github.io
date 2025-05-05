@@ -1,8 +1,12 @@
 .app {
-    max-width: 800px;
-    padding: 0 1.5rem;
+    max-width: 860px;
     margin: 0 auto;
     background-color: #fff;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
 }
 
 h1,
@@ -20,6 +24,7 @@ li,
 ul {
     margin: 0;
     padding: 0;
+    color: #020403;
 }
 
 h1 {
