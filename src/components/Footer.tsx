@@ -2,9 +2,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer
-            style={{ marginTop: "5rem", textAlign: "center", fontSize: "0.9rem", color: "#aaa", marginBottom: "3rem" }}
-        >
+        <footer style={{ padding: "5rem 0rem", textAlign: "center", fontSize: "0.9rem", color: "#aaa" }}>
             ⓒ 2025 Dohyeon's Portfolio. All rights reserved.
         </footer>
     );
