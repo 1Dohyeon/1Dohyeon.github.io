@@ -14,23 +14,76 @@
     font-weight: 700;
 }
 
-.skill-section h5 {
+.skill-section h6 {
     margin-top: 24px;
     margin-bottom: 6px;
-    font-size: 1.15rem;
     display: flex;
     align-items: center;
     gap: 8px;
     font-weight: 600;
+    color: #fff;
 }
 
-.skill-section h5::before {
+/* .skill-section h5::before {
     content: "💡";
     font-size: 1.1em;
-}
+} */
 
 .skill-section p {
     font-size: 1rem;
     border-radius: 6px;
     padding: 10px 14px;
+}
+
+.dual-skill {
+    display: flex;
+    gap: 10px;
+}
+
+/* Python */
+.skill-section h6:first-of-type {
+    background: #3776ab;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* JavaScript & TypeScript */
+.skill-section h6.javascript {
+    background: #f7df1e;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.skill-section h6.typescript {
+    background: #3178c6;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* NestJS & React */
+.skill-section h6.nestjs {
+    background: #e0234e;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.skill-section h6.react {
+    background: #61dafb;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* MySQL & TypeORM */
+.skill-section h6.mysql {
+    background: #4479a1;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.skill-section h6.typeorm {
+    background: #e83524;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
