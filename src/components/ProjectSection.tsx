@@ -5,33 +5,48 @@ const ProjectSection = () => {
     return (
         <section className="project-section">
             <h3>Projects</h3>
-            <h5>{">"} 1Dohyeon.github.io (React / Github)</h5>
-            <p>깃허브 블로그(프로젝트에 대한 정리는 이곳에서 자세하게 확인할 수 있습니다.)</p>
-            <h5>{">"} RentEase ( NestJS / React / MySQL / Github ) - 개인</h5>
+            <h5>1Dohyeon.github.io ( React )</h5>
+            <p>깃허브 페이지( 해당 페이지 )</p>
+            <h5>
+                <a href="https://github.com/1Dohyeon/RentEase" target="_blank" rel="noopener noreferrer">
+                    RentEase ( NestJS / React / MySQL ) - 개인
+                </a>
+            </h5>
             <p>
-                - C2C 플랫폼으로 개인이 서로에게 상품을 대여해 줄 수 있는 플랫폼입니다. NestJS 프레임워크를 공부 후 처음
-                진행 한 프로젝트이기에 배포 단계까지 진행하지 않았고, 여러 기능을 접하는 것에 중점을 두었습니다.
+                - 현대인의 다양한 취미 활동에 필요한 장비들을 개인 간 대여할 수 있는 C2C 플랫폼입니다. 경제적, 공간적
+                제약을 해결하고자 기존 업체 중심이 아닌, 개인 간 장비 대여 서비스를 기획하였습니다.
             </p>
             <br></br>
             <p>
-                - HTTP와 WebSocket을 이용하여 여러 기능 개발을 접하고 공부하였습니다. 또한 예외처리 및 웹에 대해서
-                이해할 수 있는 좋은 경험이었습니다.
+                - WebSocket을 활용한 실시간 1:1 채팅, 이미지 업로드가 포함된 물품 관리 시스템 등을 구현하였습니다.
+                NestJS 학습을 목표로 실전 적용을 위해 RESTful API 설계, 관계형 데이터베이스 설계, 사용자 인증 및 권한
+                관리 등을 학습하고 적용하였습니다.
             </p>
-            <h5>{">"} TripWith ( NestJS / React / MySQL / Github / AWS-EC2 ) - 개인</h5>
+            <h5>
+                <a
+                    href="https://github.com/tripwith-dev/What_is_the_tripwith"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    TripWith ( NestJS / React / MySQL / AWS-EC2 ) - 개인
+                </a>
+            </h5>
             <p>
-                - 엑셀(또는 스프레드시트)과 지도 웹을 동시에 띄운 후 계획을 세우는 것이 불편해서 시작한 프로젝트입니다.
-                지도와 계획을 동시에 보여주는 플래너 서비스가 있지만, 테이블 스타일의 플래너는 찾기 힘들었기에 직접
-                플래너를 개발하기로 하였습니다.
+                - 테이블 형태의 UI와 지도를 한 화면에서 동시에 볼 수 있는 여행 플래너 서비스입니다. 30분 단위로 고정된
+                테이블 UI를 통해 효율적이고 여유로운 여행 계획 수립이 가능하며, 사용자들과 계획을 공유하고 피드백을 받을
+                수 있습니다.
             </p>
             <br></br>
             <p>
-                - 플래너 기능뿐만 아니라 다른 사용자의 플랜 조회, 각 플랜마다 댓글 및 좋아요 기능과 커뮤니티 공간 등
-                여러 기능을 추가하였습니다.
+                - 여행 계획 공유 기능을 통해 다른 사용자의 플랜을 참고할 수 있으며, 좋아요와 댓글 기능으로 상호작용이
+                가능합니다. 또한 태그 기반 커뮤니티 공간을 제공하여 실시간 여행 정보 공유 및 여행자들 간의 소통이
+                가능합니다.
             </p>
             <br></br>
             <p>
-                - 다른 사용자의 플랜들을 조회할 때, 머신러닝을 활용하여 사용자가 현재 계획 중인 플랜과 유사한 플랜들을
-                우선적으로 노출되도록 하였습니다.
+                - AWS-EC2를 활용한 서비스 배포, MySQL을 이용한 데이터베이스 설계, NestJS의 RESTful API 구현 등 실제
+                서비스 운영에 필요한 기술들을 경험하였습니다. 특히 코로나 이후 증가한 혼자 여행 트렌드를 고려하여 여행자
+                간 소통 기능을 강화하였습니다.
             </p>
         </section>
     );
