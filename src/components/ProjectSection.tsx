@@ -57,7 +57,13 @@ const ProjectSection = () => {
                 </a>
             </h5>
             <p>- TripWith-0.1.0 에서 다음 기능을 추가였습니다.</p>
-            <p style={{ marginLeft: "30px" }}>- 추천 검색 기능 / 테이블 UI를 컴포넌트 형태로 변환 가능</p>
+            <p style={{ marginLeft: "30px" }}>
+                - Google OAuth 2.0 기반 소셜 로그인 통합 / 기존 이메일 인증과 통합된 인증 체계 구현
+            </p>
+            <p style={{ marginLeft: "30px" }}>
+                - 유연한 일정 관리를 위한 박스형 UI 도입 / 테이블 UI ⟶ 박스형 UI 전환 기능 구현
+            </p>
+            <p style={{ marginLeft: "30px" }}>- 태그 기반 플랜 관리 시스템 도입 / AI 기반 태그 추천 시스템 적용</p>
         </section>
     );
 };
