@@ -24,11 +24,11 @@ const ProjectSection = () => {
             </p>
             <h5>
                 <a
-                    href="https://github.com/tripwith-dev/What_is_the_tripwith"
+                    href="https://github.com/tripwith-dev/tripwith/blob/main/v-0.1.0.md"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    TripWith ( NestJS / React / MySQL / AWS-EC2 ) - 개인
+                    TripWith-0.1.0 ( NestJS / React / MySQL / AWS-EC2 ) - 개인
                 </a>
             </h5>
             <p>
@@ -38,7 +38,7 @@ const ProjectSection = () => {
             </p>
             <br></br>
             <p>
-                - 여행 계획 공유 기능을 통해 다른 사용자의 플랜을 참고할 수 있으며, 좋아요와 댓글 기능으로 상호작용이
+                - 여행 계획 검색 기능을 통해 다른 사용자의 플랜을 참고할 수 있으며, 좋아요와 댓글 기능으로 상호작용이
                 가능합니다. 또한 태그 기반 커뮤니티 공간을 제공하여 실시간 여행 정보 공유 및 여행자들 간의 소통이
                 가능합니다.
             </p>
@@ -48,6 +48,17 @@ const ProjectSection = () => {
                 서비스 운영에 필요한 기술들을 경험하였습니다. 특히 코로나 이후 증가한 혼자 여행 트렌드를 고려하여 여행자
                 간 소통 기능을 강화하였습니다.
             </p>
+            <h5>
+                <a
+                    href="https://github.com/tripwith-dev/tripwith/blob/main/v-0.2.0.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    TripWith-0.2.0 ( NestJS / React / MySQL / AWS-EC2 ) - 4인(백엔드2/프론트1/디자이너1)
+                </a>
+            </h5>
+            <p>- TripWith-0.1.0 에서 다음 기능을 추가였습니다.</p>
+            <p style={{ marginLeft: "30px" }}>- 추천 검색 기능 / 테이블 UI를 컴포넌트 형태로 변환 가능</p>
         </section>
     );
 };
