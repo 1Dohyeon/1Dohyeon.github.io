@@ -146,3 +146,16 @@
     background-color: #111;
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .study-card {
+        border-right: none;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #dfe4ea;
+    }
+
+    .study-card:last-child {
+        border-bottom: none;
+        padding-bottom: none;
+    }
+}
