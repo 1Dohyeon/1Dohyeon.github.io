@@ -31,7 +31,7 @@ const WhatIStudySection = () => {
                                 <p className="tech-category-title">UI</p>
                                 <ul>
                                     <li>React</li>
-                                    <li>Vue.js</li>
+                                    {/* <li>Vue.js</li> */}
                                 </ul>
                             </div>
                             <div className="tech-category">
@@ -79,7 +79,7 @@ const WhatIStudySection = () => {
                                 <h3>CS Knowledge</h3>
                                 <p>자료구조, 알고리즘, AI/ML/DL 등 컴퓨터 과학의 핵심 지식을 정기적으로 학습합니다.</p>
                                 <a
-                                    href="https://github.com/DOforTU/note-cs"
+                                    href="https://github.com/DOforTU/note-cs/tree/dohyeon"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="repo-link"
@@ -92,7 +92,7 @@ const WhatIStudySection = () => {
                                 <h3>Problem Solving</h3>
                                 <p>알고리즘 문제를 함께 풀고 다양한 풀이 방법을 공유하며 실력을 향상시킵니다. </p>
                                 <a
-                                    href="https://github.com/DOforTU/problem-solving"
+                                    href="https://github.com/DOforTU/problem-solving/tree/dohyeon/dohyeon"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="repo-link"

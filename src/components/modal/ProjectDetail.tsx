@@ -38,62 +38,228 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
     const renderMarkdown = (content: string) => {
         // 텍스트 내 마크다운 처리 함수
         const processInlineMarkdown = (text: string): (string | React.ReactElement)[] => {
+            // 코드 처리: ``inline code``
+            const inlineCodeRegex = /`([^`]+)`/g;
+            let codeParts: (string | React.ReactElement)[] = [];
+            let lastCodeIdx = 0;
+            let codeMatch;
+            while ((codeMatch = inlineCodeRegex.exec(text)) !== null) {
+                if (codeMatch.index > lastCodeIdx) {
+                    codeParts.push(text.slice(lastCodeIdx, codeMatch.index));
+                }
+                codeParts.push(
+                    <code
+                        key={`inlinecode-${codeMatch.index}`}
+                        style={{ background: "#f5f5f5", borderRadius: "4px", padding: "2px 4px", fontSize: "0.95em" }}
+                    >
+                        {codeMatch[1]}
+                    </code>
+                );
+                lastCodeIdx = inlineCodeRegex.lastIndex;
+            }
+            if (lastCodeIdx < text.length) {
+                codeParts.push(text.slice(lastCodeIdx));
+            }
+
             // 이미지 처리 ![alt](src)
             const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
-            const parts = text.split(imageRegex);
+            const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
 
-            const elements: (string | React.ReactElement)[] = [];
-            for (let i = 0; i < parts.length; i += 3) {
-                // 일반 텍스트 부분
-                if (parts[i]) {
-                    // **bold** 처리
-                    const boldParts = parts[i].split(/(\*\*.*?\*\*)/g);
-                    const processedText = boldParts.map((part, idx) => {
-                        if (part.startsWith("**") && part.endsWith("**")) {
-                            return <strong key={`${i}-${idx}`}>{part.slice(2, -2)}</strong>;
-                        }
-                        return part;
-                    });
-                    elements.push(...processedText);
+            // 이미지 먼저 처리
+            let parts: (string | React.ReactElement)[] = [];
+            codeParts.forEach((segment, segIdx) => {
+                if (typeof segment !== "string") {
+                    parts.push(segment);
+                    return;
                 }
-
-                // 이미지 부분
-                if (parts[i + 1] !== undefined && parts[i + 2]) {
-                    const alt = parts[i + 1];
-                    const src = parts[i + 2];
-                    elements.push(
+                let lastIndex = 0;
+                let match;
+                while ((match = imageRegex.exec(segment)) !== null) {
+                    if (match.index > lastIndex) {
+                        parts.push(segment.slice(lastIndex, match.index));
+                    }
+                    parts.push(
                         <img
-                            key={`img-${i}`}
-                            src={src}
-                            alt={alt}
+                            key={`img-${segIdx}-${match.index}`}
+                            src={match[2]}
+                            alt={match[1]}
                             className="markdown-image"
                             style={{ maxWidth: "100%", height: "auto", margin: "10px 0" }}
                         />
                     );
+                    lastIndex = imageRegex.lastIndex;
                 }
-            }
+                if (lastIndex < segment.length) {
+                    parts.push(segment.slice(lastIndex));
+                }
+            });
 
-            return elements.length > 0 ? elements : [text];
+            // 링크 처리
+            parts = parts.flatMap((part, idx) => {
+                if (typeof part !== "string") return [part];
+                const linkParts: (string | React.ReactElement)[] = [];
+                let lastIdx = 0;
+                let linkMatch;
+                while ((linkMatch = linkRegex.exec(part)) !== null) {
+                    if (linkMatch.index > lastIdx) {
+                        linkParts.push(part.slice(lastIdx, linkMatch.index));
+                    }
+                    linkParts.push(
+                        <a
+                            key={`link-${idx}-${linkMatch.index}`}
+                            href={linkMatch[2]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: "#4f8cff" }}
+                        >
+                            {linkMatch[1]}
+                        </a>
+                    );
+                    lastIdx = linkRegex.lastIndex;
+                }
+                if (lastIdx < part.length) {
+                    linkParts.push(part.slice(lastIdx));
+                }
+                return linkParts;
+            });
+
+            // bold 처리
+            parts = parts.flatMap((part, idx) => {
+                if (typeof part !== "string") return [part];
+                const boldParts = part.split(/(\*\*.*?\*\*)/g);
+                return boldParts.map((b, bidx) =>
+                    b.startsWith("**") && b.endsWith("**") ? (
+                        <strong key={`bold-${idx}-${bidx}`}>{b.slice(2, -2)}</strong>
+                    ) : (
+                        b
+                    )
+                );
+            });
+
+            return parts.length > 0 ? parts : [text];
         };
 
-        // 간단한 마크다운 렌더링 (제목, 단락, 리스트 등)
-        return content.split("\n").map((line, index) => {
-            if (line.startsWith("# ")) {
-                return <h1 key={index}>{processInlineMarkdown(line.slice(2))}</h1>;
-            } else if (line.startsWith("## ")) {
-                return <h2 key={index}>{processInlineMarkdown(line.slice(3))}</h2>;
-            } else if (line.startsWith("### ")) {
-                return <h3 key={index}>{processInlineMarkdown(line.slice(4))}</h3>;
-            } else if (line.startsWith("- ") || line.startsWith("-   ")) {
-                const listText = line.startsWith("-   ") ? line.slice(4) : line.slice(2);
-                return <li key={index}>{processInlineMarkdown(listText)}</li>;
-            } else if (line.trim() === "") {
-                return <br key={index} />;
-            } else if (line.trim() !== "") {
-                return <p key={index}>{processInlineMarkdown(line)}</p>;
+        // 여러 줄 인용문, 중첩 리스트, 코드블럭 지원
+        const lines = content.split("\n");
+        const elements: React.ReactNode[] = [];
+        let quoteBuffer: string[] = [];
+        let listBuffer: { text: string; sub: string[] }[] = [];
+        let codeBlockBuffer: string[] = [];
+        let inCodeBlock = false;
+
+        const flushQuote = () => {
+            if (quoteBuffer.length > 0) {
+                elements.push(
+                    <blockquote
+                        key={`quote-${elements.length}`}
+                        style={{ color: "#888", borderLeft: "4px solid #eee", paddingLeft: "12px", margin: "8px 0" }}
+                    >
+                        {quoteBuffer.map((line, idx) => (
+                            <div key={idx}>{processInlineMarkdown(line.replace(/^>\s?/, ""))}</div>
+                        ))}
+                    </blockquote>
+                );
+                quoteBuffer = [];
             }
-            return null;
+        };
+
+        const flushList = () => {
+            if (listBuffer.length > 0) {
+                elements.push(
+                    <ul key={`ul-${elements.length}`} style={{ margin: "8px 0 8px 20px" }}>
+                        {listBuffer.map((item, idx) => (
+                            <li key={idx}>
+                                {processInlineMarkdown(item.text)}
+                                {item.sub.length > 0 && (
+                                    <ul style={{ marginLeft: "18px", marginTop: "8px" }}>
+                                        {item.sub.map((sub, subIdx) => (
+                                            <li key={subIdx}>{processInlineMarkdown(sub)}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                );
+                listBuffer = [];
+            }
+        };
+
+        const flushCodeBlock = () => {
+            if (codeBlockBuffer.length > 0) {
+                elements.push(
+                    <pre
+                        key={`codeblock-${elements.length}`}
+                        style={{
+                            background: "#222",
+                            color: "#f8f8f2",
+                            borderRadius: "6px",
+                            padding: "12px",
+                            overflowX: "auto",
+                            margin: "12px 0",
+                        }}
+                    >
+                        <code>{codeBlockBuffer.join("\n")}</code>
+                    </pre>
+                );
+                codeBlockBuffer = [];
+            }
+        };
+
+        lines.forEach((line, index) => {
+            // 코드블럭 시작/끝
+            const codeBlockStart = /^```(\w*)/.exec(line);
+            if (codeBlockStart) {
+                if (!inCodeBlock) {
+                    flushQuote();
+                    flushList();
+                    inCodeBlock = true;
+                } else {
+                    // 코드블럭 종료
+                    flushCodeBlock();
+                    inCodeBlock = false;
+                }
+                return;
+            }
+            if (inCodeBlock) {
+                codeBlockBuffer.push(line);
+                return;
+            }
+
+            const mainListMatch = /^- (.*)/.exec(line);
+            const subListMatch = /^ {2,}- (.*)/.exec(line);
+
+            if (line.startsWith(">")) {
+                flushList();
+                quoteBuffer.push(line);
+            } else if (mainListMatch) {
+                flushQuote();
+                flushList();
+                listBuffer.push({ text: mainListMatch[1], sub: [] });
+            } else if (subListMatch && listBuffer.length > 0) {
+                // 하위 리스트를 마지막 리스트 항목의 sub에 추가
+                listBuffer[listBuffer.length - 1].sub.push(subListMatch[1]);
+            } else {
+                flushQuote();
+                flushList();
+                if (line.startsWith("# ")) {
+                    elements.push(<h1 key={index}>{processInlineMarkdown(line.slice(2))}</h1>);
+                } else if (line.startsWith("## ")) {
+                    elements.push(<h2 key={index}>{processInlineMarkdown(line.slice(3))}</h2>);
+                } else if (line.startsWith("### ")) {
+                    elements.push(<h3 key={index}>{processInlineMarkdown(line.slice(4))}</h3>);
+                } else if (line.trim() === "") {
+                    elements.push(<br key={index} />);
+                } else if (line.trim() !== "") {
+                    elements.push(<p key={index}>{processInlineMarkdown(line)}</p>);
+                }
+            }
         });
+        flushQuote();
+        flushList();
+        flushCodeBlock();
+
+        return elements;
     };
 
     if (!isOpen) return null;

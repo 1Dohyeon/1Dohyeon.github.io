@@ -13,7 +13,7 @@
 
 .modal-content {
     background: #fff;
-    padding: 40px 30px;
+    padding: 30px 30px;
     border-radius: 8px;
     max-width: 800px;
     max-height: 80vh;
@@ -24,13 +24,15 @@
 }
 
 .modal-close {
-    position: absolute;
-    top: 14px;
-    right: 18px;
+    position: sticky;
+    top: 0px;
+    right: 0;
+    float: right;
     font-size: 24px;
     border: none;
     background: none;
     cursor: pointer;
+    z-index: 10;
 }
 
 .modal-body {
@@ -48,25 +50,30 @@
 .markdown-content h2 {
     font-size: 1.5rem;
     color: #444;
-    margin: 24px 0 12px 0;
+    margin: 20px 0 6px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #eee;
 }
 
 .markdown-content h3 {
     font-size: 1.25rem;
     color: #555;
-    margin: 20px 0 10px 0;
 }
 
 .markdown-content p {
     line-height: 1.6;
-    margin-bottom: 12px;
     color: #666;
 }
 
+.markdown-content ul {
+    margin-left: 24px;
+    padding-left: 0;
+}
+
 .markdown-content li {
+    list-style: disc;
     margin-bottom: 6px;
     color: #666;
-    margin-left: 20px;
 }
 
 .markdown-image {
