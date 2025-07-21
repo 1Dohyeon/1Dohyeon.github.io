@@ -41,7 +41,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
             // 이미지 처리 ![alt](src)
             const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
             const parts = text.split(imageRegex);
-            
+
             const elements: (string | React.ReactElement)[] = [];
             for (let i = 0; i < parts.length; i += 3) {
                 // 일반 텍스트 부분
@@ -56,23 +56,23 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                     });
                     elements.push(...processedText);
                 }
-                
+
                 // 이미지 부분
                 if (parts[i + 1] !== undefined && parts[i + 2]) {
                     const alt = parts[i + 1];
                     const src = parts[i + 2];
                     elements.push(
-                        <img 
-                            key={`img-${i}`} 
-                            src={src} 
-                            alt={alt} 
+                        <img
+                            key={`img-${i}`}
+                            src={src}
+                            alt={alt}
                             className="markdown-image"
-                            style={{ maxWidth: '100%', height: 'auto', margin: '10px 0' }}
+                            style={{ maxWidth: "100%", height: "auto", margin: "10px 0" }}
                         />
                     );
                 }
             }
-            
+
             return elements.length > 0 ? elements : [text];
         };
 
