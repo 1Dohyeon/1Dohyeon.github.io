@@ -1,12 +1,7 @@
-.app {
-    max-width: 860px;
-    margin: 0 auto;
-    background-color: #fff;
-}
-
 .wrapper {
     width: 90%;
     margin: 0 auto;
+    max-width: 1440px;
 }
 
 h1,
@@ -25,6 +20,8 @@ ul {
     margin: 0;
     padding: 0;
     color: #020403;
+    list-style: none;
+    text-decoration: none;
 }
 
 h1 {
@@ -49,7 +46,7 @@ h6 {
     font-size: 0.875rem; /* 14px */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .app {
         /* padding: 0rem 0.875rem; */
     }

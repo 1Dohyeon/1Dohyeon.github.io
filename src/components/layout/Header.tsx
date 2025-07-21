@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../styles/Header.css";
+import "../../styles/Header.css";
 
 const Header = () => {
     const location = useLocation();
@@ -14,7 +14,8 @@ const Header = () => {
         <header className="header">
             <div className="wrapper" id="header-wrapper">
                 <Link to="/#" className="logo">
-                    Dohyeon
+                    {/* <img src="/dotu_text_logo_white.png" alt="DOforTU Logo" /> */}
+                    <h2>1Dohyeon</h2>
                 </Link>
                 <button className="hamburger" onClick={toggleMenu}>
                     <span></span>
@@ -23,14 +24,17 @@ const Header = () => {
                 </button>
                 <div className={`menu-section ${isMenuOpen ? "open" : ""}`}>
                     <div>
-                        <Link to="/about-me" className={location.pathname === "/about-me" ? "active" : ""}>
-                            About me
+                        <Link
+                            to="https://ehgusdev.tistory.com/"
+                            className={location.pathname === "/about-me" ? "active" : ""}
+                        >
+                            Blog
                         </Link>
                     </div>
                     <div>
-                        <Link to="/blogs" className={location.pathname === "/blogs" ? "active" : ""}>
-                            Blogs
-                        </Link>
+                        <a href="https://github.com/1Dohyeon" target="_blank" rel="noopener noreferrer">
+                            GitHub
+                        </a>
                     </div>
                 </div>
             </div>

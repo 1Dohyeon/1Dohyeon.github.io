@@ -1,38 +1,141 @@
-.intro-section {
-    width: 100%;
-    padding: 30px 0px;
-    background: #fff;
-    margin-bottom: 50px;
-    border-bottom: 1px solid #666;
-}
-
-.intro-section h3 {
-    margin-top: 10px;
-    margin-bottom: 18px;
-    font-size: 2rem;
-    border-left: 5px solid #4f8cff;
-    padding-left: 12px;
-    font-weight: 700;
-}
-
-.intro-section h5 {
-    margin-top: 24px;
-    margin-bottom: 6px;
-    font-size: 1.1rem;
+#intro-section {
+    padding-top: 60px;
+    height: 100vh;
+    height: calc(100vh - 90px);
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 600;
 }
 
-.intro-section h5::before {
-    /* content: "📌"; */
-    font-size: 1.1em;
+#intro-wrapper {
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
 }
 
-.intro-section p {
+.intro-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    transform: translateY(-30px);
+}
+
+.main-text {
+    margin-bottom: 40px;
+}
+
+#intro-section h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+#intro-section h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+}
+
+.intro-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    opacity: 0.7;
+}
+
+.contact-info p {
     font-size: 1rem;
-    border-radius: 6px;
-    padding: 8px 14px;
-    box-shadow: 0 1px 2px rgba(79, 140, 255, 0.04);
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+.github-link {
+    margin-top: 12px;
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.email-icon {
+    width: 16px;
+    height: 16px;
+    color: #666;
+    opacity: 0.8;
+}
+
+.email {
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    #intro-section {
+        padding-top: 50px;
+        height: auto;
+        min-height: calc(100vh - 90px);
+    }
+
+    #intro-wrapper {
+        padding: 40px 20px;
+    }
+
+    #intro-section h1 {
+        font-size: 2.5rem;
+    }
+
+    #intro-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .intro-description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .main-text {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    #intro-section h1 {
+        font-size: 2rem;
+    }
+
+    #intro-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .intro-description {
+        font-size: 1rem;
+    }
 }

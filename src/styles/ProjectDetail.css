@@ -1,0 +1,85 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    max-height: 80vh;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 20px;
+}
+
+.markdown-content h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+}
+
+.markdown-content h2 {
+    font-size: 1.5rem;
+    color: #444;
+    margin: 24px 0 12px 0;
+}
+
+.markdown-content h3 {
+    font-size: 1.25rem;
+    color: #555;
+    margin: 20px 0 10px 0;
+}
+
+.markdown-content p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #666;
+}
+
+.markdown-content li {
+    margin-bottom: 6px;
+    color: #666;
+    margin-left: 20px;
+}
+
+.markdown-image {
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+}
