@@ -17,8 +17,10 @@ const IntroSection = () => {
                     </div>
                     <div className="contact-info">
                         <p>원도현</p>
-                        <p className="github-link">
-                            <Link to="https://github.com/1Dohyeon">Github: Dohyeon Won</Link>
+                        <p>
+                            <Link className="github-link" to="https://github.com/1Dohyeon">
+                                Github: Dohyeon Won
+                            </Link>
                         </p>
                         <div className="email-container">
                             <svg
