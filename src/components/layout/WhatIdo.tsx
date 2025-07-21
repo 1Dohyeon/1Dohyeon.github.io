@@ -66,13 +66,17 @@ const WhatIDo = () => {
                         </div>
                     </div>
                 ))}
-                {!showAll && (
-                    <div style={{ textAlign: "center", marginTop: "20px" }}>
-                        <button className="project-more-button" onClick={() => setShowAll(true)}>
-                            more projects
+                <div style={{ textAlign: "center", marginTop: "20px" }}>
+                    {!showAll ? (
+                        <button className="project-more-or-hide-button" onClick={() => setShowAll(true)}>
+                            더보기
                         </button>
-                    </div>
-                )}
+                    ) : (
+                        <button className="project-more-or-hide-button" onClick={() => setShowAll(false)}>
+                            숨기기
+                        </button>
+                    )}
+                </div>
                 <ProjectDetail isOpen={modalOpen} onClose={closeModal} projectTitle={selectedProjectTitle} />
             </div>
         </section>
