@@ -10,7 +10,7 @@
     -   기후/경제 데이터 가공
     -   해당 데이터를 학습하여 예측하는 모델의 설계/리뷰에 참여
 
-> **GitHub**
+> **GitHub Repository URL**
 >
 > -   [서버 Repository](https://github.com/MJU-Capstone-2025/model-server)
 > -   [UI Repository](https://github.com/MJU-Capstone-2025/web-ui)
