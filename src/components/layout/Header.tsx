@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../../styles/Header.css";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
