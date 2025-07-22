@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <header className="header">
             <div className="wrapper" id="header-wrapper">
-                <Link to="/#" className="logo">
+                <Link to="https://1dohyeon.github.io/#/" className="logo">
                     {/* <img src="/dotu_text_logo_white.png" alt="DOforTU Logo" /> */}
                     <h2>1Dohyeon</h2>
                 </Link>
@@ -26,9 +26,9 @@ const Header = () => {
                 </button>
                 <div className={`menu-section ${isMenuOpen ? "open" : ""}`}>
                     <div>
-                        <a href="/blogs/category/TULOG" className="go-blog">
+                        <Link to="/blogs/category/TULOG" className="logo">
                             Blog
-                        </a>
+                        </Link>
                     </div>
                     <div>
                         <Link
