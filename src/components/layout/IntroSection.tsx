@@ -14,6 +14,9 @@ const IntroSection = () => {
                             개발한 서비스가 세상에 나와 사용자들에게 가치를 전달하는 순간을 가장 즐거워하며, 새로운
                             기술과 도전을 통해 성장하는 것을 즐깁니다.
                         </p>
+                        <a href="/Dohyeon Won CV.pdf" download className="download-cv-button">
+                            Download CV
+                        </a>
                     </div>
                     <div className="contact-info">
                         <p>원도현</p>

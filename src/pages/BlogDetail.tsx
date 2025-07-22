@@ -1,63 +1,29 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/ProjectDetail.css";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import "../styles/BlogDetail.css";
+import { useParams, Link } from "react-router-dom";
+// react-markdown, remarkGfm 제거
+import Header from "../components/layout/Header.tsx";
 
-interface ProjectDetailProps {
-    isOpen: boolean;
-    onClose: () => void;
-    projectTitle: string;
-}
-
-const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectTitle }) => {
-    const [markdownContent, setMarkdownContent] = useState("");
-    const [loading, setLoading] = useState(false);
+const BlogDetail: React.FC = () => {
+    const { category, filename } = useParams<{ category: string; filename: string }>();
+    const [content, setContent] = useState("");
     const [error, setError] = useState("");
 
     useEffect(() => {
-        if (isOpen && projectTitle) {
-            fetchMarkdown(projectTitle);
-        }
-    }, [isOpen, projectTitle]);
+        if (!category || !filename) return;
+        fetch(`/projects/category/${category}/${filename}`)
+            .then((res) => {
+                if (!res.ok) throw new Error("파일을 불러올 수 없습니다.");
+                return res.text();
+            })
+            .then(setContent)
+            .catch((e) => setError(e.message));
+    }, [category, filename]);
 
-    const fetchMarkdown = async (title: string) => {
-        setLoading(true);
-        setError("");
-        try {
-            const response = await fetch(`/projects/${title}.md`);
-            if (!response.ok) {
-                throw new Error(`마크다운 파일을 찾을 수 없습니다: ${title}.md`);
-            }
-            const content = await response.text();
-            setMarkdownContent(content);
-        } catch (err) {
-            setError(err instanceof Error ? err.message : "파일을 불러오는데 실패했습니다.");
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const navigate = useNavigate();
-
-    // 프로젝트명 -> 카테고리명 매핑 (수동)
-    const projectToCategory: Record<string, string> = {
-        TULOG: "TULOG",
-        TRIPWITH: "TRIPWITH",
-        RENTEASE: "RENTEASE",
-        CoffeePricePredictor: "CoffeePricePredictor",
-        DiseasePrediction: "DiseasePrediction",
-    };
-
-    const handleGoToBlog = () => {
-        const category = projectToCategory[projectTitle] || projectTitle;
-        navigate(`/blogs/category/${category}`);
-    };
-
-    const category = projectToCategory[projectTitle] || projectTitle;
-
+    // 커스텀 마크다운 렌더링 함수 (ProjectDetail 참고)
     const renderMarkdown = (content: string) => {
-        // 텍스트 내 마크다운 처리 함수
         const processInlineMarkdown = (text: string): (string | React.ReactElement)[] => {
-            // 코드 처리: ``inline code``
+            // 인라인 코드
             const inlineCodeRegex = /`([^`]+)`/g;
             let codeParts: (string | React.ReactElement)[] = [];
             let lastCodeIdx = 0;
@@ -69,7 +35,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 codeParts.push(
                     <code
                         key={`inlinecode-${codeMatch.index}`}
-                        style={{ background: "#f5f5f5", borderRadius: "4px", padding: "2px 4px", fontSize: "0.95em" }}
+                        style={{
+                            background: "#222",
+                            color: "#f8f8f2",
+                            borderRadius: "4px",
+                            padding: "2px 4px",
+                            fontSize: "0.95em",
+                        }}
                     >
                         {codeMatch[1]}
                     </code>
@@ -80,11 +52,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 codeParts.push(text.slice(lastCodeIdx));
             }
 
-            // 이미지 처리 ![alt](src)
+            // 이미지
             const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
             const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-
-            // 이미지 먼저 처리
             let parts: (string | React.ReactElement)[] = [];
             codeParts.forEach((segment, segIdx) => {
                 if (typeof segment !== "string") {
@@ -112,8 +82,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                     parts.push(segment.slice(lastIndex));
                 }
             });
-
-            // 링크 처리
+            // 링크
             parts = parts.flatMap((part, idx) => {
                 if (typeof part !== "string") return [part];
                 const linkParts: (string | React.ReactElement)[] = [];
@@ -134,15 +103,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                             {linkMatch[1]}
                         </a>
                     );
-                    lastIdx = linkRegex.lastIndex;
+                    lastIdx = linkMatch.lastIndex;
                 }
                 if (lastIdx < part.length) {
                     linkParts.push(part.slice(lastIdx));
                 }
                 return linkParts;
             });
-
-            // bold 처리
+            // bold
             parts = parts.flatMap((part, idx) => {
                 if (typeof part !== "string") return [part];
                 const boldParts = part.split(/(\*\*.*?\*\*)/g);
@@ -154,11 +122,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                     )
                 );
             });
-
             return parts.length > 0 ? parts : [text];
         };
 
-        // 여러 줄 인용문, 중첩 리스트, 코드블럭 지원
+        // 여러 줄 인용문, 리스트, 코드블럭 지원
         const lines = content.split("\n");
         const elements: React.ReactNode[] = [];
         let quoteBuffer: string[] = [];
@@ -181,7 +148,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 quoteBuffer = [];
             }
         };
-
         const flushList = () => {
             if (listBuffer.length > 0) {
                 elements.push(
@@ -203,7 +169,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 listBuffer = [];
             }
         };
-
         const flushCodeBlock = () => {
             if (codeBlockBuffer.length > 0) {
                 elements.push(
@@ -226,15 +191,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
         };
 
         lines.forEach((line, index) => {
-            // 코드블럭 시작/끝
             const codeBlockStart = /^```(\w*)/.exec(line);
+            if (/^\s*-{3,}\s*$/.test(line)) {
+                flushQuote();
+                flushList();
+                flushCodeBlock();
+                elements.push(
+                    <hr key={`hr-${index}`} style={{ border: 0, borderTop: "2px solid #222", margin: "18px 0" }} />
+                );
+                return;
+            }
             if (codeBlockStart) {
                 if (!inCodeBlock) {
                     flushQuote();
                     flushList();
                     inCodeBlock = true;
                 } else {
-                    // 코드블럭 종료
                     flushCodeBlock();
                     inCodeBlock = false;
                 }
@@ -244,10 +216,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 codeBlockBuffer.push(line);
                 return;
             }
-
             const mainListMatch = /^- (.*)/.exec(line);
             const subListMatch = /^ {2,}- (.*)/.exec(line);
-
             if (line.startsWith(">")) {
                 flushList();
                 quoteBuffer.push(line);
@@ -256,7 +226,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 flushList();
                 listBuffer.push({ text: mainListMatch[1], sub: [] });
             } else if (subListMatch && listBuffer.length > 0) {
-                // 하위 리스트를 마지막 리스트 항목의 sub에 추가
                 listBuffer[listBuffer.length - 1].sub.push(subListMatch[1]);
             } else {
                 flushQuote();
@@ -277,31 +246,21 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
         flushQuote();
         flushList();
         flushCodeBlock();
-
         return elements;
     };
 
-    if (!isOpen) return null;
-
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <button className="modal-close" onClick={onClose}>
-                    ×
-                </button>
-                <button className="go-to-blog-button" onClick={handleGoToBlog}>
-                    {category} 블로그 이동
-                </button>
-                {loading && <p>로딩 중...</p>}
-                {error && <p className="error-message">{error}</p>}
-                {!loading && !error && markdownContent && (
-                    <>
-                        <div className="markdown-content">{renderMarkdown(markdownContent)}</div>
-                    </>
-                )}
-            </div>
+        <div>
+            <Header />
+            <section className="section" id="blog-detail-section">
+                <Link to={`/blogs/category/${category}`}>← 목록으로</Link>
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                <div className="blog-markdown-content" style={{ marginTop: 24 }}>
+                    {renderMarkdown(content)}
+                </div>
+            </section>
         </div>
     );
 };
 
-export default ProjectDetail;
+export default BlogDetail;
