@@ -1,7 +1,7 @@
 #blog-detail-section {
     max-width: 700px;
     margin: 0 auto;
-    padding: 32px 0;
+    padding: 32px 16px;
 }
 #blog-detail-section a {
     color: #4f8cff;
@@ -14,7 +14,7 @@
 .blog-markdown-content {
     background: #fff;
     border-radius: 8px;
-    padding: 24px 20px;
+    padding: 24px 0px;
     font-size: 1.08rem;
     line-height: 1.7;
     margin-bottom: 32px;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/BlogList.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Header from "../components/layout/Header.tsx";
+import Footer from "../components/layout/Footer.tsx"; // Assuming you have a Footer component
 
 interface BlogMeta {
     filename: string;
@@ -82,6 +83,7 @@ const BlogList: React.FC = () => {
                     ))}
                 </ul>
             </section>
+            <Footer />
         </div>
     );
 };

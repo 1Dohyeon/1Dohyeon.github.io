@@ -3,6 +3,7 @@ import "../styles/BlogDetail.css";
 import { useParams, Link } from "react-router-dom";
 // react-markdown, remarkGfm 제거
 import Header from "../components/layout/Header.tsx";
+import Footer from "../components/layout/Footer.tsx";
 
 const BlogDetail: React.FC = () => {
     const { category, filename } = useParams<{ category: string; filename: string }>();
@@ -259,6 +260,7 @@ const BlogDetail: React.FC = () => {
                     {renderMarkdown(content)}
                 </div>
             </section>
+            <Footer />
         </div>
     );
 };
