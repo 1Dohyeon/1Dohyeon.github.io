@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../../styles/Header.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -24,11 +26,16 @@ const Header = () => {
                 </button>
                 <div className={`menu-section ${isMenuOpen ? "open" : ""}`}>
                     <div>
+                        <a href="/blogs/category/TULOG" className="go-blog">
+                            Blog
+                        </a>
+                    </div>
+                    <div>
                         <Link
                             to="https://ehgusdev.tistory.com/"
                             className={location.pathname === "/about-me" ? "active" : ""}
                         >
-                            Blog
+                            Tistory
                         </Link>
                     </div>
                     <div>

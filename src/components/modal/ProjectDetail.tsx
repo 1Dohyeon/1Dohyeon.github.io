@@ -52,6 +52,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
         navigate(`/blogs/category/${category}`);
     };
 
+    const category = projectToCategory[projectTitle] || projectTitle;
+
     const renderMarkdown = (content: string) => {
         // 텍스트 내 마크다운 처리 함수
         const processInlineMarkdown = (text: string): (string | React.ReactElement)[] => {
@@ -287,31 +289,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 <button className="modal-close" onClick={onClose}>
                     ×
                 </button>
-                <button
-                    className="go-to-blog-button"
-                    style={{
-                        marginTop: 24,
-                        background: "#4f8cff",
-                        color: "#fff",
-                        border: 0,
-                        borderRadius: 6,
-                        padding: "10px 20px",
-                        fontWeight: 600,
-                        cursor: "pointer",
-                    }}
-                    onClick={handleGoToBlog}
-                >
-                    블로그로 이동
+                <button className="go-to-blog-button" onClick={handleGoToBlog}>
+                    {category} 블로그 이동
                 </button>
-                <div className="modal-body">
-                    {loading && <p>로딩 중...</p>}
-                    {error && <p className="error-message">{error}</p>}
-                    {!loading && !error && markdownContent && (
-                        <>
-                            <div className="markdown-content">{renderMarkdown(markdownContent)}</div>
-                        </>
-                    )}
-                </div>
+                {loading && <p>로딩 중...</p>}
+                {error && <p className="error-message">{error}</p>}
+                {!loading && !error && markdownContent && (
+                    <>
+                        <div className="markdown-content">{renderMarkdown(markdownContent)}</div>
+                    </>
+                )}
             </div>
         </div>
     );

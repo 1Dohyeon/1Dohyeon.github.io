@@ -63,6 +63,7 @@ const BlogList: React.FC = () => {
                     {Object.keys(categoryMap).map((cat) => (
                         <button
                             key={cat}
+                            className={cat === category ? "active" : ""}
                             style={{ marginRight: 8, fontWeight: cat === category ? 700 : 400 }}
                             onClick={() => navigate(`/blogs/category/${cat}`)}
                         >
