@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../../styles/WhatIDo.css";
 import ProjectDetail from "../modal/ProjectDetail.tsx";
+import "../../styles/WhatIDo.css";
 
 const projects = [
     {
@@ -54,7 +54,7 @@ const WhatIDo = () => {
             <div className="timeline-wrapper">
                 <h2 className="project-section-title"> Projects</h2>
                 {visibleProjects.map((project, idx) => (
-                    <div className="timeline-item" key={idx}>
+                    <div className={`timeline-item${idx === 0 ? " first" : ""}`} key={idx}>
                         <div className="timeline-dot" />
                         <div className="timeline-content">
                             <span className="timeline-date">{project.date}</span>
