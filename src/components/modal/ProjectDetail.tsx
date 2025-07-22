@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/ProjectDetail.css";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectDetailProps {
     isOpen: boolean;
@@ -33,6 +34,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
         } finally {
             setLoading(false);
         }
+    };
+
+    const navigate = useNavigate();
+
+    // 프로젝트명 -> 카테고리명 매핑 (수동)
+    const projectToCategory: Record<string, string> = {
+        TULOG: "TULOG",
+        TRIPWITH: "TRIPWITH",
+        RENTEASE: "RENTEASE",
+        CoffeePricePredictor: "CoffeePricePredictor",
+        DiseasePrediction: "DiseasePrediction",
+    };
+
+    const handleGoToBlog = () => {
+        const category = projectToCategory[projectTitle] || projectTitle;
+        navigate(`/blogs/category/${category}`);
     };
 
     const renderMarkdown = (content: string) => {
@@ -270,11 +287,29 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 <button className="modal-close" onClick={onClose}>
                     ×
                 </button>
+                <button
+                    className="go-to-blog-button"
+                    style={{
+                        marginTop: 24,
+                        background: "#4f8cff",
+                        color: "#fff",
+                        border: 0,
+                        borderRadius: 6,
+                        padding: "10px 20px",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                    }}
+                    onClick={handleGoToBlog}
+                >
+                    블로그로 이동
+                </button>
                 <div className="modal-body">
                     {loading && <p>로딩 중...</p>}
                     {error && <p className="error-message">{error}</p>}
                     {!loading && !error && markdownContent && (
-                        <div className="markdown-content">{renderMarkdown(markdownContent)}</div>
+                        <>
+                            <div className="markdown-content">{renderMarkdown(markdownContent)}</div>
+                        </>
                     )}
                 </div>
             </div>
