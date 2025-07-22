@@ -9,6 +9,12 @@
     -   API 및 ERD 설계
     -   백엔드(사용자/플래너 모듈 위주), 프론트엔드 전체
 
+> **GitHub Repository URL**
+>
+> -   [서버 Repository](https://github.com/tripwith-dev/rest-nestjs)
+> -   [UI Repository](https://github.com/tripwith-dev/ui-react)
+> -   [서비스 설명 Repository](https://github.com/tripwith-dev/tripwith)
+
 ## 2. 프로젝트 배경
 
 여행 애호가로서 다양한 플래너 서비스를 경험하며 발견한 불편사항을 개선하고, 필수적인 기능을 보완하고자 본 프로젝트를 시작하게 되었다. 현재 시중의 플래너들은 테이블 형태의 계획 수립과 지도 확인을 동시에 할 수 없다는 한계가 있었다. 이에 **통합형 인터페이스**를 구현하여 사용자 경험을 향상시키고자 하였다.
