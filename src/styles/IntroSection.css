@@ -22,7 +22,7 @@
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    transform: translateY(-30px);
+    transform: translateY(-50px);
 }
 
 .main-text {
@@ -91,6 +91,7 @@
     color: #666;
     font-weight: 300;
     letter-spacing: 0.02em;
+    text-decoration: underline;
 }
 
 .email-container {
@@ -115,6 +116,16 @@
     margin: 0;
 }
 
+.triangle-indicator {
+    display: block;
+    margin: 50px auto 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    animation: triangle-bounce 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     #intro-section {
@@ -157,5 +168,23 @@
 
     .intro-description {
         font-size: 1rem;
+    }
+}
+
+@keyframes triangle-bounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    75% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }

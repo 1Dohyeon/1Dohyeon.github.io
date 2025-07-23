@@ -49,6 +49,28 @@ const IntroSection = () => {
                             </svg>
                             <p className="email">dh1072005@gmail.com</p>
                         </div>
+
+                        <button
+                            className="triangle-indicator"
+                            type="button"
+                            onClick={() => {
+                                const el = document.getElementById("what-i-study-section");
+                                if (el) {
+                                    el.scrollIntoView({ behavior: "smooth" });
+                                }
+                            }}
+                            aria-label="아래로 스크롤"
+                        >
+                            <svg
+                                width="60"
+                                height="30"
+                                viewBox="0 0 32 18"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <polygon points="16,18 0,0 32,0" fill="#111" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
