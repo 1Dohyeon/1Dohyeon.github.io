@@ -55,6 +55,25 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
     const category = projectToCategory[projectTitle] || projectTitle;
 
     const renderMarkdown = (content: string) => {
+        // 프로젝트 개요 섹션 처리
+        const overviewRegex =
+            /\*\*PROJECT_OVERVIEW_START\*\*([\s\S]*?)\*\*PROJECT_OVERVIEW_IMAGE\*\*([\s\S]*?)\*\*PROJECT_OVERVIEW_END\*\*/;
+        const overviewMatch = content.match(overviewRegex);
+
+        let processedContent = content;
+
+        if (overviewMatch) {
+            // 프로젝트 개요 섹션을 특별한 플레이스홀더로 교체
+            processedContent = content.replace(overviewRegex, "__PROJECT_OVERVIEW_PLACEHOLDER__");
+        }
+
+        // 여러 줄 인용문, 중첩 리스트, 코드블럭 지원
+        const lines = processedContent.split("\n");
+        const elements: React.ReactNode[] = [];
+        let quoteBuffer: string[] = [];
+        let listBuffer: { text: string; sub: string[] }[] = [];
+        let codeBlockBuffer: string[] = [];
+        let inCodeBlock = false;
         // 텍스트 내 마크다운 처리 함수
         const processInlineMarkdown = (text: string): (string | React.ReactElement)[] => {
             // 코드 처리: ``inline code``
@@ -158,14 +177,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
             return parts.length > 0 ? parts : [text];
         };
 
-        // 여러 줄 인용문, 중첩 리스트, 코드블럭 지원
-        const lines = content.split("\n");
-        const elements: React.ReactNode[] = [];
-        let quoteBuffer: string[] = [];
-        let listBuffer: { text: string; sub: string[] }[] = [];
-        let codeBlockBuffer: string[] = [];
-        let inCodeBlock = false;
-
         const flushQuote = () => {
             if (quoteBuffer.length > 0) {
                 elements.push(
@@ -246,18 +257,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
             }
 
             const mainListMatch = /^- (.*)/.exec(line);
-            const subListMatch = /^ {2,}- (.*)/.exec(line);
+            const subListMatch = /^[\s\t]*- (.*)/.exec(line);
 
             if (line.startsWith(">")) {
                 flushList();
                 quoteBuffer.push(line);
-            } else if (mainListMatch) {
+            } else if (mainListMatch && !line.match(/^[\s\t]/)) {
+                // 메인 리스트 (앞에 공백이나 탭이 없는 경우)
                 flushQuote();
                 flushList();
                 listBuffer.push({ text: mainListMatch[1], sub: [] });
-            } else if (subListMatch && listBuffer.length > 0) {
-                // 하위 리스트를 마지막 리스트 항목의 sub에 추가
-                listBuffer[listBuffer.length - 1].sub.push(subListMatch[1]);
+            } else if (subListMatch && line.match(/^[\s\t]/) && listBuffer.length > 0) {
+                // 서브 리스트 (앞에 공백이나 탭이 있는 경우)
+                const subMatch = /^[\s\t]*- (.*)/.exec(line);
+                if (subMatch) {
+                    listBuffer[listBuffer.length - 1].sub.push(subMatch[1]);
+                }
             } else {
                 flushQuote();
                 flushList();
@@ -269,6 +284,98 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                     elements.push(<h3 key={index}>{processInlineMarkdown(line.slice(4))}</h3>);
                 } else if (line.trim() === "") {
                     elements.push(<br key={index} />);
+                } else if (line.trim() === "__PROJECT_OVERVIEW_PLACEHOLDER__") {
+                    if (overviewMatch) {
+                        const overviewText = overviewMatch[1].trim();
+                        const overviewImage = overviewMatch[2].trim();
+
+                        // Flex 레이아웃으로 렌더링
+                        elements.push(
+                            <div
+                                key="project-overview"
+                                style={{
+                                    display: "flex",
+                                    gap: "30px",
+                                    alignItems: "flex-start",
+                                    marginBottom: "30px",
+                                    flexWrap: "wrap",
+                                }}
+                            >
+                                <div style={{ flex: "1", minWidth: "300px" }}>
+                                    {(() => {
+                                        const overviewLines = overviewText.split("\n");
+                                        const processedItems: React.ReactNode[] = [];
+                                        type MainItem = { text: string; subs: string[] };
+                                        let currentMainItem: MainItem | null = null;
+
+                                        overviewLines.forEach((textLine, idx) => {
+                                            const trimmedLine = textLine.trim();
+
+                                            if (trimmedLine.startsWith("- ") && !textLine.match(/^\s/)) {
+                                                // 메인 리스트 항목 (앞에 공백이 없는 경우)
+                                                if (currentMainItem) {
+                                                    // 이전 메인 항목을 완성
+                                                    processedItems.push(
+                                                        <li
+                                                            key={`main-${processedItems.length}`}
+                                                            style={{ marginBottom: "8px" }}
+                                                        >
+                                                            {processInlineMarkdown(currentMainItem.text)}
+                                                            {currentMainItem.subs.length > 0 && (
+                                                                <ul style={{ marginLeft: "20px", marginTop: "4px" }}>
+                                                                    {currentMainItem.subs.map((sub, subIdx) => (
+                                                                        <li
+                                                                            key={subIdx}
+                                                                            style={{ marginBottom: "2px" }}
+                                                                        >
+                                                                            {processInlineMarkdown(sub)}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                        </li>
+                                                    );
+                                                }
+                                                currentMainItem = { text: trimmedLine.slice(2), subs: [] };
+                                            } else if (trimmedLine.startsWith("- ") && textLine.match(/^\s/)) {
+                                                // 서브 리스트 항목 (앞에 공백이 있는 경우)
+                                                if (currentMainItem) {
+                                                    currentMainItem.subs.push(trimmedLine.slice(2));
+                                                }
+                                            }
+                                        });
+
+                                        // 마지막 메인 항목 처리
+                                        if (currentMainItem) {
+                                            const item = currentMainItem;
+                                            processedItems.push(
+                                                <li
+                                                    key={`main-${processedItems.length}`}
+                                                    style={{ marginBottom: "8px" }}
+                                                >
+                                                    {processInlineMarkdown(item.text)}
+                                                    {item.subs.length > 0 && (
+                                                        <ul style={{ marginLeft: "20px", marginTop: "4px" }}>
+                                                            {item.subs.map((sub, subIdx) => (
+                                                                <li key={subIdx} style={{ marginBottom: "2px" }}>
+                                                                    {processInlineMarkdown(sub)}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+                                                </li>
+                                            );
+                                        }
+
+                                        return <ul style={{ margin: "8px 0 8px 20px" }}>{processedItems}</ul>;
+                                    })()}
+                                </div>
+                                <div style={{ flex: "1", minWidth: "250px" }}>
+                                    {processInlineMarkdown(overviewImage)}
+                                </div>
+                            </div>
+                        );
+                    }
                 } else if (line.trim() !== "") {
                     elements.push(<p key={index}>{processInlineMarkdown(line)}</p>);
                 }

@@ -2,7 +2,7 @@
     padding-top: 60px;
     height: 100vh;
     height: calc(100vh - 90px);
-    background-color: #fff;
+    background-color: #fcfcfc;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -11,10 +11,10 @@
 
 #intro-wrapper {
     max-width: 1200px;
+    padding: 0 20px;
     position: relative;
     z-index: 1;
     margin: 0 auto;
-    padding: 0 20px;
     width: 100%;
 }
 
@@ -59,7 +59,7 @@
     display: inline-block;
     margin-top: 18px;
     padding: 10px 24px;
-    background: #fff;
+    background: #ffffff;
     border: 1px solid #111;
     color: #111;
     border-radius: 6px;

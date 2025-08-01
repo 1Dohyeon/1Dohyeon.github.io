@@ -28,7 +28,10 @@ const BlogList: React.FC = () => {
         // 실제 배포 환경에서는 불가능하므로, 개발 환경에서 미리 파일 목록을 생성해두고 import
         // 아래는 자동화 예시 (실제 배포시에는 json import 필요)
         const fileMap: Record<string, string[]> = {
-            TULOG: ["2025.07.22 JWT vs 세션, 어떤 로그인 방식을 선택할까.md"],
+            TULOG: [
+                "2025.07.22 JWT vs 세션, 어떤 로그인 방식을 선택할까.md",
+                "2025.07.14 Google Auth 다중 계정 로그인 문제 해결 기록.md",
+            ],
             TRIPWITH: [
                 "2025.07.14 Docker를 왜 사용할까.md",
                 "2025.07.11 데이터베이스에서 인덱스(Index)는 어떻게 작동할까.md",

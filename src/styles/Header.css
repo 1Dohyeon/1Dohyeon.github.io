@@ -1,5 +1,5 @@
 header {
-    background-color: rgba(var(--color-background-rgb), 0.9);
+    background-color: rgb(252, 252, 252, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #ccc;
     position: sticky;

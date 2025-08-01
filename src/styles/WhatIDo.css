@@ -1,14 +1,33 @@
 #what-i-do-section {
-    background-color: #fff;
+    background-color: #fcfcfc;
+}
+
+#what-i-do-wrapper {
+    max-width: 1440px;
     padding: 100px 0;
+    margin: 0 auto;
+}
+
+.what-i-do-section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 60px;
 }
 
 .project-section-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #111;
     text-align: start;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .timeline-wrapper {
@@ -36,6 +55,16 @@
     gap: 20px;
     padding-top: 60px;
     padding-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item.representative {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 16px;
+    padding: 40px 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.08);
 }
 
 .timeline-item::before {
@@ -47,6 +76,11 @@
     height: 1px;
     background-color: #ccc;
     opacity: 0.8;
+}
+
+.timeline-item.representative::before {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+    height: 2px;
 }
 
 .timeline-item.first::before {
@@ -62,11 +96,47 @@
     top: 6px;
     flex-shrink: 0;
     margin-left: 18px;
+    transition: all 0.3s ease;
+}
+
+.timeline-dot.representative-dot {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    }
 }
 
 .timeline-content {
     padding-left: 20px;
     flex: 1;
+}
+
+.representative-badge {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.representative-badge span {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 .timeline-date {
@@ -81,6 +151,15 @@
     font-weight: 600;
     margin-bottom: 10px;
     color: #111;
+}
+
+.timeline-item.representative .project-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .project-description {
@@ -106,15 +185,28 @@
     color: #fff;
 }
 
+.project-detail-button.representative-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.project-detail-button.representative-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+}
+
 .project-more-or-hide-button {
     padding: 10px 24px;
     font-size: 1rem;
-    background: #fff;
+    background: #ffffff;
     color: #111;
     border: 1px solid #111;
     cursor: pointer;
     transition: background 0.2s;
 }
 .project-more-or-hide-button:hover {
-    background: #f0f0f0;
+    background: #f5f6f7;
 }
