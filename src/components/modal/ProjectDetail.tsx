@@ -88,7 +88,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 codeParts.push(
                     <code
                         key={`inlinecode-${codeMatch.index}`}
-                        style={{ background: "#f5f5f5", borderRadius: "4px", padding: "2px 4px", fontSize: "0.95em" }}
+                        style={{
+                            background: "#222",
+                            color: "#f8f8f2",
+                            borderRadius: "4px",
+                            padding: "2px 4px",
+                            fontSize: "0.95em",
+                        }}
                     >
                         {codeMatch[1]}
                     </code>
@@ -182,7 +188,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                 elements.push(
                     <blockquote
                         key={`quote-${elements.length}`}
-                        style={{ color: "#888", borderLeft: "4px solid #eee", paddingLeft: "12px", margin: "8px 0" }}
+                        style={{
+                            color: "#888",
+                            borderLeft: "4px solid #eee",
+                            paddingLeft: "12px",
+                            margin: "8px 0",
+                            backgroundColor: "#f9f9f9",
+                        }}
                     >
                         {quoteBuffer.map((line, idx) => (
                             <div key={idx}>{processInlineMarkdown(line.replace(/^>\s?/, ""))}</div>
@@ -223,8 +235,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                         style={{
                             background: "#222",
                             color: "#f8f8f2",
-                            borderRadius: "6px",
-                            padding: "12px",
+                            borderRadius: "4px",
+                            padding: "2px 4px",
+                            fontSize: "0.95em",
                             overflowX: "auto",
                             margin: "12px 0",
                         }}
@@ -297,6 +310,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, projectT
                                     display: "flex",
                                     gap: "30px",
                                     alignItems: "flex-start",
+                                    marginTop: "30px",
                                     marginBottom: "30px",
                                     flexWrap: "wrap",
                                 }}

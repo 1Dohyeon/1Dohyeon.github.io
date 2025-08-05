@@ -70,11 +70,11 @@ const WhatIDo = () => {
                         >
                             <div className={`timeline-dot${project.isRepresentative ? " representative-dot" : ""}`} />
                             <div className="timeline-content">
-                                {project.isRepresentative && (
+                                {/* {project.isRepresentative && (
                                     <div className="representative-badge">
                                         <span>🌟 대표 프로젝트</span>
                                     </div>
-                                )}
+                                )} */}
                                 <span className="timeline-date">{project.date}</span>
                                 <h3 className="project-title">{project.title}</h3>
                                 <p className="project-description">{project.desc}</p>
