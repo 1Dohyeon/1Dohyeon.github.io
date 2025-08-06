@@ -4,7 +4,7 @@
 
 **PROJECT_OVERVIEW_START**
 
--   **개발 기간**: 2025.07 ~ 2025.08(예상)
+-   **개발 기간**: 2025.07 ~ 진행중
 -   **기술 스택**:
     -   Next.js, NestJS, PostgreSQL, Docker, EC2, RDS, S3
 -   **프로젝트 유형**: 개인 및 팀 블로그3인 프로젝트
