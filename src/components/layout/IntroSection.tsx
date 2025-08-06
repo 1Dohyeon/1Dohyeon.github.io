@@ -9,7 +9,8 @@ const IntroSection = () => {
                 <div className="intro-content">
                     <div className="main-text">
                         <h1>Dohyeon Won</h1>
-                        <h2 className="position-title">Fullstack & ML Engineer</h2>
+                        {/* <h2 className="position-title">Fullstack & ML Engineer</h2> */}
+                        <h2 className="position-title">Backend Developer & ML Engineer</h2>
                         <p className="intro-description">
                             개발한 서비스가 세상에 나와 사용자들에게 가치를 전달하는 순간을 가장 즐거워하며, 새로운
                             기술과 도전을 통해 성장하는 것을 즐깁니다.
@@ -54,13 +55,14 @@ const IntroSection = () => {
                             className="triangle-indicator"
                             type="button"
                             onClick={() => {
-                                const el = document.getElementById("what-i-study-section");
+                                const el = document.getElementById("what-i-do-section");
                                 if (el) {
                                     el.scrollIntoView({ behavior: "smooth" });
                                 }
                             }}
-                            aria-label="아래로 스크롤"
+                            aria-label="프로젝트로 스크롤"
                         >
+                            <span className="triangle-indicator-text">프로젝트 바로가기</span>
                             <svg
                                 width="60"
                                 height="30"

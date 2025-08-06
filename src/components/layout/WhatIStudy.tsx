@@ -54,8 +54,9 @@ const WhatIStudySection = () => {
 
                     <div className="activity-section">
                         <p className="activity-section-description">
-                            혼자가 아닌 함께 성장하는 것을 중요하게 생각합니다. 다양한 스터디와 활동을 통해 지식을
-                            공유하고 있습니다.
+                            혼자가 아닌 함께 성장하는 것을 중요하게 생각합니다. <br />
+                            컴퓨터 과학의 기초를 팀과 함께 학습하고, 알고리즘 문제 풀이 과정을 서로 공유하며 성장하고
+                            있습니다.
                         </p>
                         <div className="study-grid">
                             <div className="study-card">
@@ -68,14 +69,14 @@ const WhatIStudySection = () => {
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path
-                                            d="M21 2H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM11 4h2v2h-2V4zM7 4h2v2H7V4zm10 16H7v-1a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v1zm0-3H7V8h10v9z"
+                                            d="M12 20h9"
                                             stroke="currentColor"
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                         />
                                         <path
-                                            d="M9 10h6M9 12h6M9 14h3"
+                                            d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"
                                             stroke="currentColor"
                                             strokeWidth="2"
                                             strokeLinecap="round"
@@ -135,28 +136,15 @@ const WhatIStudySection = () => {
                             </div>
                             <div className="study-card">
                                 <div className="study-icon">
-                                    <svg
-                                        width="40"
-                                        height="40"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M10.325 4.317c.423-1.756 2.927-1.756 3.35 0a1.724 1.724 0 0 0 2.591 1.03c1.51-.87 3.177.797 2.308 2.308a1.724 1.724 0 0 0 1.03 2.59c1.756.424 1.756 2.928 0 3.352a1.724 1.724 0 0 0-1.03 2.59c.87 1.51-.798 3.177-2.308 2.308a1.724 1.724 0 0 0-2.591 1.03c-.423 1.756-2.927 1.756-3.35 0a1.724 1.724 0 0 0-2.59-1.03c-1.51.87-3.177-.797-2.308-2.308a1.724 1.724 0 0 0-1.03-2.59c-1.756-.424-1.756-2.928 0-3.352a1.724 1.724 0 0 0 1.03-2.59c-.87-1.51.797-3.177 2.308-2.308a1.724 1.724 0 0 0 2.59-1.03z"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
                                         <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-                                        <path
-                                            d="M12 1v6m0 6v6m11-7h-6m-6 0H1"
-                                            stroke="currentColor"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                        <path
-                                            d="M19.07 4.93l-4.24 4.24m0 5.66l4.24 4.24M4.93 4.93l4.24 4.24m0 5.66l-4.24 4.24"
-                                            stroke="currentColor"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
                                     </svg>
                                 </div>
                                 <h3>Problem Solving</h3>

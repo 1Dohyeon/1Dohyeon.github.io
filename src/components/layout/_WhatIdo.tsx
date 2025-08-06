@@ -4,9 +4,9 @@ import "../../styles/WhatIDo.css";
 
 const projects = [
     {
-        date: "2025.07 ~ 진행중",
+        date: "2025.07 ~ 2025.09( 약 8주 )",
         title: "TULOG: 개인 및 팀 블로그 - 3인",
-        desc: "개인 및 팀 블로그 서비스를 통해 일상을 기록하고 공유할 수 있는 플랫폼을 제공합니다. 서비스 운영을 목표로 진행하는 프로젝트입니다. 사용자 인증, 글 작성 및 관리 기능을 구현했습니다. 또한, 팀원들과 협업하여 UI/UX 개선 작업을 진행했습니다.",
+        desc: "개인 및 팀 블로그 서비스를 통해 일상을 기록하고 공유할 수 있는 플랫폼을 제공합니다. 풀스택 개발을 맡았으며, 사용자 인증, 글 작성 및 관리 기능을 구현했습니다. 또한, 팀원들과 협업하여 UI/UX 개선 작업을 진행했습니다.",
         modal: "TULOG",
         role: "Backend & Frontend",
         isRepresentative: true,
@@ -80,11 +80,11 @@ const WhatIDo = () => {
                         >
                             <div className={`timeline-dot${project.isRepresentative ? " representative-dot" : ""}`} />
                             <div className="timeline-content">
-                                {project.isRepresentative && (
+                                {/* {project.isRepresentative && (
                                     <div className="representative-badge">
-                                        <span>최근 진행 중인 프로젝트</span>
+                                        <span>🌟 대표 프로젝트</span>
                                     </div>
-                                )}
+                                )} */}
                                 <span className="timeline-date">{project.date}</span>
                                 <h3 className="project-title">{project.title}</h3>
                                 <p className="project-role">

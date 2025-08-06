@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import BlogList from "./pages/BlogList.tsx";
 import BlogDetail from "./pages/BlogDetail.tsx";
 import Home from "./pages/Home.tsx";
+import ScrollToTop from "./components/common/ScrollToTop.tsx";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/blogs/category/:category" element={<BlogList />} />
                 <Route path="/blogs/category/:category/:filename" element={<BlogDetail />} />
             </Routes>
+            <ScrollToTop />
         </Router>
     );
 }
