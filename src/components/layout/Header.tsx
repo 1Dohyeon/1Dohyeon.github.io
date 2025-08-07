@@ -24,7 +24,7 @@ const Header = () => {
                 </button>
                 <div className={`menu-section ${isMenuOpen ? "open" : ""}`}>
                     <div>
-                        <Link to="/blogs/category/TULOG" className="logo">
+                        <Link to="/blogs/category/ALL" className="logo">
                             Blog
                         </Link>
                     </div>
