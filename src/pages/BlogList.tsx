@@ -30,6 +30,7 @@ const BlogList: React.FC = () => {
         // 아래는 자동화 예시 (실제 배포시에는 json import 필요)
         const fileMap: Record<string, string[]> = {
             ALL: [
+                "2025.09.06 반복 일정의 복잡한 업데이트.md",
                 "2025.08.30 Google Cloud Storage를 사용하는 방법.md",
                 "2025.08.17 왜 Transaction이 필요하고 중요한가.md",
                 "2025.08.01 로그인 후 브라우저 쿠키에 유저 정보 저장 문제.md",
