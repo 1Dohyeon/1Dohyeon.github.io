@@ -28,6 +28,7 @@
     color: #111;
     text-align: start;
     margin-bottom: 40px;
+    margin-left: 20px;
 }
 
 .timeline-wrapper {
@@ -46,6 +47,11 @@
     width: 2px;
     background-color: #e5e5e5;
     margin-top: 20;
+}
+
+/* 분야별 뷰에서는 타임라인 선 숨기기 */
+.timeline-wrapper.field-view::before {
+    display: none;
 }
 
 .timeline-item {
@@ -216,4 +222,96 @@
 }
 .project-more-or-hide-button:hover {
     background: #f5f6f7;
+}
+
+/* 탭 전환 스타일 */
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.toggle-button {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.toggle-button:hover {
+    background: #f5f6f7;
+    border-color: #bbb;
+}
+
+.toggle-button.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* 벤다이어그램 스타일 */
+.venn-diagram-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.venn-diagram-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.field-label {
+    font-size: 18px;
+    font-weight: 700;
+    fill: #333;
+    pointer-events: none;
+}
+
+.field-label.web-label {
+    fill: #667eea;
+}
+
+.field-label.ml-label {
+    fill: #ff9f40;
+}
+
+.project-name {
+    font-size: 14px;
+    fill: #111;
+    cursor: pointer;
+    font-weight: 600;
+    transition: fill 0.2s ease;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.project-name:hover {
+    fill: #667eea;
+}
+
+.project-name.intersection-project {
+    fill: #764ba2;
+    font-weight: 700;
+}
+
+.project-name.intersection-project:hover {
+    fill: #5a4c96;
+}
+
+.project-name.representative-project {
+    fill: #667eea;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.project-name.representative-project:hover {
+    fill: #5a6fd8;
 }
