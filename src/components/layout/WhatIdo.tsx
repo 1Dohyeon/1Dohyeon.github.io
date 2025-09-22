@@ -4,12 +4,28 @@ import "../../styles/WhatIDo.css";
 
 const projects = [
     {
+        date: "2025.09 ~ 진행중",
+        title: "NewLearnNote: AI와 집단지성 기반 지식 관리 및 노트 앱 - 3인",
+        desc: "개인 및 팀 블로그 서비스를 통해 일상을 기록하고 공유할 수 있는 플랫폼을 제공합니다. 서비스 운영을 목표로 진행하는 프로젝트입니다. 사용자 인증, 글 작성 및 관리 기능을 구현했습니다. 또한, 팀원들과 협업하여 UI/UX 개선 작업을 진행했습니다.",
+        modal: "NewLearnNote",
+        role: "Fullstack & ML Engineer",
+        isRepresentative: true,
+    },
+    {
+        date: "2025.08 ~ 2025.09 ( 약 3주: 핵심 기능 구현 후 리소스 우선순위 조정으로 중단 )",
+        title: "Shilhouette: 일정 관리 및 소셜 미디어 - 3인",
+        desc: "처음에는 단순한 일정 관리 서비스로 기획했으나, 개발 과정에서 '조용한 소셜 미디어'라는 컨셉을 추가했습니다. 기존 소셜 미디어의 숫자 중심 경쟁 문화에서 벗어나, 사용자가 오늘 한 일을 사진이나 15초 이내 짧은 영상으로 하루 최대 2번만 공유할 수 있도록 제한했습니다. TODO 기능과 연계하여 일정 관리와 일상 기록을 자연스럽게 통합한 소셜 플랫폼입니다.",
+        modal: "Shilhouette",
+        role: "Backend & Frontend",
+        isRepresentative: false,
+    },
+    {
         date: "2025.07 ~ 2025.08 ( 약 6주 )",
         title: "TULOG: 개인 및 팀 블로그 - 3인",
         desc: "개인 및 팀 블로그 서비스를 통해 일상을 기록하고 공유할 수 있는 플랫폼을 제공합니다. 서비스 운영을 목표로 진행하는 프로젝트입니다. 사용자 인증, 글 작성 및 관리 기능을 구현했습니다. 또한, 팀원들과 협업하여 UI/UX 개선 작업을 진행했습니다.",
         modal: "TULOG",
         role: "Backend & Frontend",
-        isRepresentative: true,
+        isRepresentative: false,
     },
     {
         date: "2025.03 ~ 2025.06( 약 14주 )",

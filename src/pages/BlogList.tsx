@@ -12,6 +12,7 @@ interface BlogMeta {
 
 const categoryMap: Record<string, string> = {
     ALL: "ALL",
+    Shilhouette: "Shilhouette",
     TULOG: "TULOG",
     TRIPWITH: "TRIPWITH",
     RENTEASE: "RENTEASE",
@@ -30,6 +31,7 @@ const BlogList: React.FC = () => {
         // 아래는 자동화 예시 (실제 배포시에는 json import 필요)
         const fileMap: Record<string, string[]> = {
             ALL: [
+                // "2025.09.08 자기소개.md",
                 "2025.09.06 반복 일정의 복잡한 업데이트.md",
                 "2025.08.30 Google Cloud Storage를 사용하는 방법.md",
                 "2025.08.17 왜 Transaction이 필요하고 중요한가.md",
@@ -40,6 +42,11 @@ const BlogList: React.FC = () => {
                 "2025.02.11 Web Socket(웹 소켓)과 HTTP.md",
                 "2024.03.17 Database, AWS.md",
                 "2024.03.12 비동기 함수(async function), Promise.md",
+            ],
+            Shilhouette: [
+                "2025.09.06 반복 일정의 복잡한 업데이트.md",
+                "2025.08.30 Google Cloud Storage를 사용하는 방법.md",
+                "2025.08.17 왜 Transaction이 필요하고 중요한가.md",
             ],
             TULOG: [
                 "2025.08.17 왜 Transaction이 필요하고 중요한가.md",
