@@ -143,12 +143,16 @@ const Projects = () => {
                             </button>
                         </div>
 
-                        <div className="project-main-image">
-                            <div className="project-image-placeholder">&lt;MAIN IMAGE&gt;</div>
+                        <div className="project-image-description-wrapper">
+                            <div className="project-main-image">
+                                <div className="project-image-placeholder">&lt;MAIN IMAGE&gt;</div>
+                            </div>
+                            <div className="project-description-column">
+                                {project.description && <p className="project-description">{project.description}</p>}
+                            </div>
                         </div>
 
                         <div className="project-body">
-                            {project.description && <p className="project-description">{project.description}</p>}
                             <div className="project-info-row">
                                 <span className="info-label">Tech Stack:</span>
                                 <div className="tech-tags">
