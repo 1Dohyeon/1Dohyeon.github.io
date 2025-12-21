@@ -8,8 +8,14 @@ const mainProjects = [
         period: "2025.09 ~ 진행중",
         team: "3인",
         role: "Backend Lead (Full-stack)",
-        description:
-            "AI와 집단지성을 활용한 차세대 지식 관리 및 학습 플랫폼입니다. 사용자가 작성한 노트들이 상호 참조하는 네트워크를 형성하여, 개인의 지식 관리와 더불어 커뮤니티 기반의 학습 경험을 제공합니다. AI 코치가 학습을 지원하며, 사용자는 자신의 학습 여정을 기록하고 공유할 수 있습니다.",
+        description: (
+            <>
+                <strong>AI와 집단지성</strong>을 활용한 차세대 지식 관리 및 학습 플랫폼입니다. 사용자가 작성한 노트들이{" "}
+                <strong>상호 참조하는 네트워크</strong>를 형성하여, 개인의 지식 관리와 더불어{" "}
+                <strong>커뮤니티 기반의 학습 경험</strong>을 제공합니다. <strong>AI 코치</strong>가 학습을 지원하며,
+                사용자는 자신의 학습 여정을 기록하고 공유할 수 있습니다.
+            </>
+        ),
         tech: ["NestJS", "PostgreSQL", "GCP", "Next.js", "Electron.js"],
         modal: "NewLearnNote",
         responsibilities: [
@@ -28,8 +34,13 @@ const mainProjects = [
         period: "2025.12",
         team: "개인",
         role: "Backend & AI Developer",
-        description:
-            "NewLearn Note에 통합될 AI 문서 분석 기능의 독립 프로토타입으로 개발하여 RAG 파이프라인을 검증했습니다. LangChain과 ChromaDB를 활용한 문서 임베딩 및 유사도 검색, OpenAI API를 통한 질의응답 시스템을 구현했습니다.",
+        description: (
+            <>
+                NewLearn Note에 통합될 AI 문서 분석 기능의 독립 프로토타입으로 개발하여 <strong>RAG 파이프라인</strong>
+                을 검증했습니다. <strong>LangChain</strong>과 <strong>ChromaDB</strong>를 활용한{" "}
+                <strong>문서 임베딩 및 유사도 검색</strong>, OpenAI API를 통한 질의응답 시스템을 구현했습니다.
+            </>
+        ),
         tech: ["FastAPI", "PostgreSQL", "ChromaDB", "LangChain", "OpenAI API", "Next.js"],
         modal: "Nura",
         purpose: "NewLearn Note에 통합될 AI 문서 분석 기능의 독립 프로토타입 개발 및 RAG 파이프라인 검증",
