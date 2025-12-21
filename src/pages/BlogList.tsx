@@ -81,7 +81,7 @@ const BlogList: React.FC = () => {
     }, [category]);
 
     return (
-        <div>
+        <div className="app">
             <Header></Header>
             <section className="section" id="blog-list-section">
                 <h2>Blog List: {categoryMap[category || "ALL"]}</h2>

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/layout/Header.tsx";
 import IntroSection from "../components/layout/IntroSection.tsx";
+import Projects from "../components/layout/Projects.tsx";
 import WhatIStudy from "../components/layout/WhatIStudy.tsx";
 import "../App.css";
 import WhatIDo from "../components/layout/WhatIdo.tsx";
@@ -11,8 +12,9 @@ function Home() {
         <div className="app">
             <Header />
             <IntroSection />
-            <WhatIStudy />
-            <WhatIDo />
+            <Projects />
+            {/* <WhatIStudy />
+            <WhatIDo /> */}
             <Footer />
         </div>
     );

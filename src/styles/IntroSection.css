@@ -1,199 +1,184 @@
-#intro-section {
-    padding-top: 60px;
-    height: 100vh;
-    height: calc(100vh - 90px);
-    background-color: #fcfcfc;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+/* 2컬럼 레이아웃 */
+.intro-columns {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    border: 1px solid #333;
 }
 
-#intro-wrapper {
-    max-width: 1200px;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-    margin: 0 auto;
-    width: 100%;
+/* 왼쪽 컬럼 */
+.intro-left-column {
+    padding: 30px;
+    border-right: 1px solid #333;
 }
 
-.intro-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    transform: translateY(-50px);
+/* 오른쪽 컬럼 */
+.intro-right-column {
+    padding: 30px 25px;
 }
 
-.main-text {
-    margin-bottom: 40px;
+/* 섹션 헤더 */
+.section-header {
+    margin-bottom: 20px;
 }
 
-#intro-section h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
 }
 
-#intro-section h2 {
-    font-size: 2rem;
-    font-weight: 400;
-    color: #666;
+.section-divider {
+    width: 50px;
+    height: 2px;
+    background: #333;
+    margin-bottom: 0;
+}
+
+/* Summary 영역 */
+.summary-content {
     margin-bottom: 30px;
+}
+
+.summary-paragraph {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.summary-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+/* 링크 섹션 */
+.intro-links {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #ccc;
+}
+
+.link-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.links-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.intro-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.intro-link:hover {
+    background-color: #ebeadf;
+}
+
+.link-icon {
+    font-size: 1.1rem;
+}
+
+.link-text {
+    font-weight: 500;
+}
+
+/* Skills 영역 */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.skill-category {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 12px;
+}
+
+.skill-category:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.skill-category-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
     letter-spacing: 0.05em;
 }
 
-.intro-description {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #666;
-    line-height: 1.8;
-    letter-spacing: 0.01em;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.download-cv-button {
-    display: inline-block;
-    margin-top: 18px;
-    padding: 10px 24px;
-    background: #ffffff;
-    border: 1px solid #111;
-    color: #111;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-}
-
-.download-cv-button:hover {
-    background-color: #111;
-    color: #fff;
-}
-
-.contact-info {
-    opacity: 0.7;
-}
-
-.contact-info p {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin-bottom: 5px;
-}
-
-.github-link {
-    color: #666;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    text-decoration: underline;
-}
-
-.email-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 4px;
-}
-
-.email-icon {
-    width: 16px;
-    height: 16px;
-    color: #666;
-    opacity: 0.8;
-}
-
-.email {
-    color: #666;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin: 0;
-}
-
-.triangle-indicator {
-    display: block;
-    margin: 50px auto 0 auto;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    outline: none;
-    animation: triangle-bounce 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.triangle-indicator-text {
-    display: block;
+.skill-items {
     font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 8px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    line-height: 1.6;
 }
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-    #intro-section {
-        padding-top: 50px;
-        height: auto;
-        min-height: calc(100vh - 90px);
+    .intro-columns {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
-    #intro-wrapper {
-        padding: 40px 20px;
+    .intro-left-column {
+        border-right: none;
+        border-bottom: 1px solid #333;
+        padding: 25px 20px;
     }
 
-    #intro-section h1 {
-        font-size: 2.5rem;
+    .intro-right-column {
+        padding: 25px 20px;
     }
 
-    #intro-section h2 {
+    .section-title {
         font-size: 1.5rem;
-        margin-bottom: 20px;
     }
 
-    .intro-description {
-        font-size: 1.1rem;
-        line-height: 1.7;
+    .summary-paragraph {
+        font-size: 0.95rem;
+        text-align: left;
     }
 
-    .main-text {
-        margin-bottom: 30px;
+    .links-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .intro-link {
+        width: 90%;
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
-    #intro-section h1 {
-        font-size: 2rem;
+    .intro-left-column,
+    .intro-right-column {
+        padding: 20px 15px;
     }
 
-    #intro-section h2 {
+    .section-title {
         font-size: 1.3rem;
     }
 
-    .intro-description {
-        font-size: 1rem;
+    .summary-paragraph {
+        font-size: 0.9rem;
     }
-}
 
-@keyframes triangle-bounce {
-    0% {
-        transform: translateY(0);
+    .skill-category-title {
+        font-size: 0.9rem;
     }
-    25% {
-        transform: translateY(-5px);
-    }
-    50% {
-        transform: translateY(0px);
-    }
-    75% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0);
+
+    .skill-items {
+        font-size: 0.85rem;
     }
 }

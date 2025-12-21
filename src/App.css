@@ -1,71 +1,48 @@
-.wrapper {
-    width: 90%;
+.app {
+    padding: 0rem 1.5rem;
+    max-width: 1024px;
     margin: 0 auto;
-    max-width: 1440px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-strong,
-span,
-hr,
-li,
-ul {
-    margin: 0;
-    padding: 0;
-    color: #020403;
-    list-style: none;
-    text-decoration: none;
+.section {
+    padding: 30px 0;
 }
 
-h1 {
-    font-size: 2.5rem; /* 40px */
-    font-weight: 700;
+/* 스크롤바 디자인 - 신문 스타일 */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
 }
-h2 {
-    font-size: 2rem; /* 32px */
-    font-weight: 700;
+
+::-webkit-scrollbar-track {
+    background: #f4f3ee;
+    border-left: 1px solid #d4c5a9;
 }
-h3 {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 600;
+
+::-webkit-scrollbar-thumb {
+    background: #a89575;
+    border: 3px solid #f4f3ee;
+    border-radius: 0px;
 }
-h4 {
-    font-size: 1.25rem; /* 20px */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b7a5e;
 }
-h5 {
-    font-size: 1rem; /* 16px */
-}
-h6 {
-    font-size: 0.875rem; /* 14px */
+
+/* Firefox 스크롤바 */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #a89575 #f4f3ee;
 }
 
 @media (max-width: 768px) {
     .app {
-        /* padding: 0rem 0.875rem; */
+        padding: 0rem 1rem;
     }
-    h1 {
-        font-size: 2rem; /* 32px */
-    }
-    h2 {
-        font-size: 1.5rem; /* 24px */
-    }
-    h3 {
-        font-size: 1.25rem; /* 20px */
-    }
-    h4 {
-        font-size: 1rem; /* 16px */
-    }
-    h5 {
-        font-size: 0.875rem; /* 14px */
-    }
-    h6 {
-        font-size: 0.8rem; /* 12px */
+}
+
+@media (max-width: 480px) {
+    .app {
+        padding: 0rem 0.5rem;
     }
 }
