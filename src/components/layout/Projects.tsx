@@ -9,6 +9,7 @@ const mainProjects = [
         team: "3인",
         role: "Backend Lead (Full-stack)",
         githubUrl: "https://github.com/newlearnnote/newlearnnote.github.io/blob/main/README.md",
+        imageUrl: "/nln-main-img.png",
         description: (
             <>
                 <strong>AI와 집단지성</strong>을 활용한 차세대 지식 관리 및 학습 플랫폼입니다. 사용자가 작성한 노트들이{" "}
@@ -172,12 +173,14 @@ const Projects = () => {
                                         </svg>
                                     </a>
                                 )}
-                                <button
-                                    className="project-detail-button-header"
-                                    onClick={() => openModal(project.modal)}
-                                >
-                                    자세히 보기
-                                </button>
+                                {project.modal !== "Nura" && (
+                                    <button
+                                        className="project-detail-button-header"
+                                        onClick={() => openModal(project.modal)}
+                                    >
+                                        자세히 보기
+                                    </button>
+                                )}
                             </div>
                         </div>
 
