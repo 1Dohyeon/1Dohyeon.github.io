@@ -38,6 +38,31 @@
     flex: 1;
 }
 
+.project-header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.github-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 2px solid #333;
+    background: transparent;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.github-icon-button:hover {
+    background: #333;
+    color: #fff;
+}
+
 /* 이미지 + Description 2컬럼 래퍼 */
 .project-image-description-wrapper {
     display: grid;
@@ -49,6 +74,13 @@
 .project-main-image {
     padding: 1rem 1rem 0.5rem 1rem;
     /* border-right: 1px solid #ddd; */
+}
+
+.project-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border: 1px solid #ddd;
 }
 
 .project-image-placeholder {
