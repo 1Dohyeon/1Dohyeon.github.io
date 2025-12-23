@@ -299,4 +299,10 @@
         padding: 10px 1rem;
         font-size: 0.9rem;
     }
+
+    /* 이미지와 설명을 상하로 배치 */
+    .project-image-description-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
 }
