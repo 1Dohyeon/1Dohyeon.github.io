@@ -5,19 +5,19 @@
 > 프로젝트 정보
 >
 > - 프로젝트명: Nura
-> - 목적: NewLearn Note에 통합될 AI 문서 분석 기능의 독립 프로토타입 구축 및 RAG 파이프라인 검증
+> - 목적: [NewLearn Note](https://1dohyeon.github.io/#/projects/newlearnnote)에 통합될 AI 문서 분석 기능의 독립 프로토타입 구축 및 RAG 파이프라인 검증
 > - 개발 기간: 2025.12
 > - 개발 인원: 1인 (개인 프로젝트)
 
 ### 왜 이 프로젝트를 시작했는가?
 
-NewLearn Note의 핵심 기능 중 하나는 사용자가 작성한 노트를 AI가 분석하고 질문에 답변하는 것입니다. 하지만 메인 프로젝트에 바로 AI 기능을 통합하기에는 다음과 같은 우려가 있었습니다:
+[NewLearn Note](https://1dohyeon.github.io/#/projects/newlearnnote)의 핵심 기능 중 하나는 사용자가 작성한 노트를 AI가 분석하고 질문에 답변하는 것입니다. 하지만 메인 프로젝트에 바로 AI 기능을 통합하기에는 다음과 같은 우려가 있었습니다:
 
 - **기술적 불확실성**: RAG 파이프라인의 각 단계(문서 파싱, 청킹, 임베딩, 검색, 생성)를 처음 다뤄보는 것이라 어떤 문제가 생길지 예측하기 어려웠습니다.
 - **성능 검증 필요**: 문서 크기에 따른 응답 속도, 청킹 전략에 따른 답변 정확도 등을 미리 테스트해야 했습니다.
 - **독립적인 실험 환경**: 메인 프로젝트에 영향을 주지 않고 자유롭게 실험하고 싶었습니다.
 
-이러한 이유로 Nura를 독립 프로젝트로 개발하여 RAG 파이프라인을 먼저 검증하고, 이후 NewLearn Note에 안정적으로 통합하는 전략을 선택했습니다.
+이러한 이유로 Nura를 독립 프로젝트로 개발하여 RAG 파이프라인을 먼저 검증하고, 이후 [NewLearn Note](https://1dohyeon.github.io/#/projects/newlearnnote)에 안정적으로 통합하는 전략을 선택했습니다.
 
 ## 개발 내용
 
@@ -136,7 +136,7 @@ OpenAI API 호출
 **데이터 영속성:**
 - GCS (Google Cloud Storage)를 활용한 문서 저장
 - 서버 재시작이나 재배포 시에도 문서 보존
-- NewLearn Note 프로젝트와 통합 용이
+- [NewLearn Note](https://1dohyeon.github.io/#/projects/newlearnnote) 프로젝트와 통합 용이
 
 ## 프로젝트를 통해 배운 점
 
@@ -144,4 +144,4 @@ OpenAI API 호출
 
 프로토타입 우선 접근 방식을 통해 메인 프로젝트에 바로 통합하지 않고 독립적으로 검증함으로써 실패 비용을 낮추고 빠르게 학습할 수 있었습니다. 또한 익숙한 NestJS 대신 프로젝트에 적합한 FastAPI를 선택하면서, 도구는 목적에 맞게 선택해야 한다는 교훈을 얻었습니다.
 
-향후 Nura에서 검증한 RAG 파이프라인을 NewLearn Note에 통합하여, Next.js 웹/Electron 데스크톱 앱에서 AI 어시스턴스 UI를 구현할 예정입니다.
+향후 Nura에서 검증한 RAG 파이프라인을 [NewLearn Note](https://1dohyeon.github.io/#/projects/newlearnnote)에 통합하여, Next.js 웹/Electron 데스크톱 앱에서 AI 어시스턴스 UI를 구현할 예정입니다.
