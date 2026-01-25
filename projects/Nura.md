@@ -1,7 +1,5 @@
 # Nura: RAG 기반 AI 문서 분석 및 질의응답 시스템
 
-이 문서는 프로젝트를 시작한 이유부터 배운 점까지 프로젝트 경험을 중심으로 작성되었습니다. **코드 구현 세부사항, 아키텍처 설계, 사용 방법 등** 기술 문서는 [GitHub README](https://github.com/newlearnnote/Nura-server/blob/main/README.md)에서 확인하실 수 있습니다.
-
 ## 프로젝트 개요
 
 > 프로젝트 정보
