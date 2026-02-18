@@ -1,6 +1,6 @@
 # Nura
 
-![]()
+![nura-main-img](./imgs/nura-main-img.png)
 
 ## 개발 동기
 
