@@ -152,7 +152,7 @@ POST /articles/senti (tickers)
 
 #### Common Context: 데이터 수집은 분리되어 있다
 
-아티클 생성 시점에 데이터를 새로 수집하지 않습니다. [데이터 수집 파이프라인](./data-collection-pipeline.md)이 미리 쌓아둔 주가와 뉴스 데이터를 DB에서 읽어오는 구조입니다.
+아티클 생성 시점에 데이터를 새로 수집하지 않습니다. 데이터 수집 파이프라인이 미리 쌓아둔 주가와 뉴스 데이터를 DB에서 읽어오는 구조입니다.
 
 이 조회 레이어를 **Common Context**라고 부릅니다. 모든 crow type이 공통으로 사용하는 데이터 조회 담당자입니다. AI 분석도, 크롤링도 하지 않습니다. 순수하게 DB에서 읽고 `ArticleContext(tickers, prices, news_items)`를 반환할 뿐입니다.
 
