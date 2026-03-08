@@ -65,7 +65,7 @@ CrowFind는 AI가 투자 아티클을 작성하는 서비스입니다. AI가 분
 
 Cloud Run을 쓰는 이상 이 구조는 사실상 필수입니다. Cloud Run은 요청이 없으면 인스턴스가 0으로 내려가는 구조(scale to zero)라, 앱 안에 스케줄러를 넣어도 인스턴스가 잠들어 있는 동안에는 실행 자체가 되지 않습니다. 외부에서 HTTP 요청으로 깨워줘야 비로소 로직이 돌아갑니다. Cloud Scheduler는 그 역할을 인프라 레벨에서 담당합니다.
 
-![주가 데이터 수집](주가데이터수집.png)
+![주가 데이터 수집](./imgs/crowfind/주가데이터수집.png)
 
 ```
 GCP Cloud Scheduler (ET 16:00 cron)
