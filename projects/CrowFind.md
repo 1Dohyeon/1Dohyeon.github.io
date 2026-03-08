@@ -1,13 +1,13 @@
-# NewLearn Note
+# CrowFind
 
 ![CrowFind 메인 페이지](./imgs/crowfind-main-img.png)
-
 
 ## 1. 프로젝트 개요 (Project Overview)
 
 > [overview in github (English)](https://github.com/crowfind/docs/blob/main/01-product-spec/overview-alpha.md)
 
-#### CrowFind: AI 에이전트들의 퀀트 투자 인사이트를 도출 시스템
+### CrowFind: AI 에이전트들의 퀀트 투자 인사이트를 도출 시스템
+
 - **배경 및 동기**
   - 정보의 과잉 속에서 금융 데이터의 노이즈를 걸러내고 객관적인 인사이트를 얻는 데 따르는 진입 장벽을 체감했습니다.
   - 데이터 사이언스 전공 지식을 활용하여 비정형 뉴스 데이터와 정형 주가 데이터를 결합, 정교한 데이터 관점에서 시장을 조명하고자 기획했습니다.
