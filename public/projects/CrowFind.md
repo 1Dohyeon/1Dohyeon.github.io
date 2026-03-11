@@ -59,9 +59,13 @@ CrowFind는 AI가 투자 아티클을 작성하는 서비스입니다. AI가 분
 
 그래서 나스닥 장 마감 시간(ET 기준 16:00, 한국 시간 새벽 5시)에 맞춰 자동으로 수집하도록 했습니다. 매일 장이 끝나면 그날의 OHLCV(시가, 고가, 저가, 종가, 거래량) 데이터를 가져와 저장합니다.
 
+![cloud schedular request fastapi](./imgs/crowfind/cloud-schedular-request-fastapi.png)
+
 타이밍 제어는 Python 로직 안에 스케줄러를 넣는 방식이 아니라, GCP Cloud Scheduler가 지정된 시간에 Cloud Run 서비스로 HTTP 요청을 보내는 방식으로 처리했습니다. 애플리케이션은 요청이 들어오면 수집 로직을 실행하기만 하면 되고, "언제 실행할지"는 인프라가 전담합니다.
 
 Cloud Run을 쓰는 이상 이 구조는 사실상 필수입니다. Cloud Run은 요청이 없으면 인스턴스가 0으로 내려가는 구조(scale to zero)라, 앱 안에 스케줄러를 넣어도 인스턴스가 잠들어 있는 동안에는 실행 자체가 되지 않습니다. 외부에서 HTTP 요청으로 깨워줘야 비로소 로직이 돌아갑니다. Cloud Scheduler는 그 역할을 인프라 레벨에서 담당합니다.
+
+![주가 데이터 수집](./imgs/crowfind/주가데이터수집.png)
 
 ```
 GCP Cloud Scheduler (ET 16:00 cron)
@@ -115,12 +119,11 @@ AI 에이전트 분석 요청
 
 CrowFind의 AI 분석은 단일 에이전트가 담당하지 않습니다. 4가지 분석 방법론으로 총 4개의 특화 에이전트가 운용됩니다.
 
-| 에이전트 | 역할 |
-| -------- | ---- |
-| **Quant-Crow** | 과거 패턴 매칭과 통계적 확률 계산 |
-| **Trend-Crow** | RSI, MACD, 거래량 등 기술적 지표 분석 |
-| **Value-Crow** | PER, PBR, EPS 등 펀더멘탈 가치 평가 |
-| **Senti-Crow** | 뉴스 감성과 시장 심리 분석 |
+- **에이전트 | 역할** :
+- **Quant-Crow** | 과거 패턴 매칭과 통계적 확률 계산
+- **Trend-Crow** | RSI, MACD, 거래량 등 기술적 지표 분석
+- **Value-Crow** | PER, PBR, EPS 등 펀더멘탈 가치 평가
+- **Senti-Crow** | 뉴스 감성과 시장 심리 분석
 
 각 에이전트는 같은 데이터 소스를 공유하지만, 데이터를 해석하는 프레임워크가 다릅니다.
 
@@ -149,7 +152,7 @@ POST /articles/senti (tickers)
 
 #### Common Context: 데이터 수집은 분리되어 있다
 
-아티클 생성 시점에 데이터를 새로 수집하지 않습니다. [데이터 수집 파이프라인](./data-collection-pipeline.md)이 미리 쌓아둔 주가와 뉴스 데이터를 DB에서 읽어오는 구조입니다.
+아티클 생성 시점에 데이터를 새로 수집하지 않습니다. 데이터 수집 파이프라인이 미리 쌓아둔 주가와 뉴스 데이터를 DB에서 읽어오는 구조입니다.
 
 이 조회 레이어를 **Common Context**라고 부릅니다. 모든 crow type이 공통으로 사용하는 데이터 조회 담당자입니다. AI 분석도, 크롤링도 하지 않습니다. 순수하게 DB에서 읽고 `ArticleContext(tickers, prices, news_items)`를 반환할 뿐입니다.
 

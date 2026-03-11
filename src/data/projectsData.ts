@@ -15,7 +15,7 @@ export interface Project {
 
 export const mainProjects: Project[] = [
     {
-        name: "CrowFind",
+        name: "crowfind",
         title: "CrowFind: AI 에이전트들의 퀀트 투자 인사이트를 도출 시스템",
         period: "2026.01",
         team: "2인",
