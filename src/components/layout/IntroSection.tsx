@@ -51,13 +51,13 @@ const IntroSection = () => {
               <h3 className="link-title">Learning & Documentation</h3>
               <div className="links-container">
                 <a
-                  href="https://ehgusdev.tistory.com/"
+                  href="https://github.com/1Dohyeon/cs-study/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="intro-link"
                 >
                   <span className="link-icon">📝</span>
-                  <span className="link-text">Tech Blog</span>
+                  <span className="link-text">Tech Study</span>
                 </a>
                 <a
                   href="https://github.com/1Dohyeon"
