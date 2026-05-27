@@ -14,12 +14,19 @@ const ProjectDetailPage: React.FC = () => {
     const allProjects = [...mainProjects, ...otherProjects];
     const project = allProjects.find((p) => p.name === name);
 
+    const isReload = React.useRef(
+        (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type === "reload"
+    );
+
     useEffect(() => {
+        if (isReload.current && location.hash) {
+            window.history.replaceState(null, "", window.location.pathname);
+        }
         if (!location.hash) window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
-        if (!loading && markdownContent && location.hash) {
+        if (!loading && markdownContent && location.hash && !isReload.current) {
             const id = location.hash.slice(1);
             setTimeout(() => {
                 const el = document.getElementById(id);
