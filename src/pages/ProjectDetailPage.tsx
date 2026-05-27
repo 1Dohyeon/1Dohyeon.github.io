@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { mainProjects, otherProjects } from "../data/projectsData.ts";
 import "../styles/ProjectDetail.css";
 
 const ProjectDetailPage: React.FC = () => {
     const { name } = useParams<{ name: string }>();
     const navigate = useNavigate();
+    const location = useLocation();
     const [markdownContent, setMarkdownContent] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -14,8 +15,18 @@ const ProjectDetailPage: React.FC = () => {
     const project = allProjects.find((p) => p.name === name);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        if (!location.hash) window.scrollTo(0, 0);
     }, []);
+
+    useEffect(() => {
+        if (!loading && markdownContent && location.hash) {
+            const id = location.hash.slice(1);
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        }
+    }, [loading, markdownContent]);
 
     useEffect(() => {
         if (project) {
@@ -271,7 +282,9 @@ const ProjectDetailPage: React.FC = () => {
                 if (line.startsWith("# ")) {
                     elements.push(<h1 key={index}>{processInlineMarkdown(line.slice(2))}</h1>);
                 } else if (line.startsWith("## ")) {
-                    elements.push(<h2 key={index}>{processInlineMarkdown(line.slice(3))}</h2>);
+                    const h2Text = line.slice(3);
+                    const h2Id = h2Text.includes("Nura") ? "nura" : undefined;
+                    elements.push(<h2 key={index} id={h2Id}>{processInlineMarkdown(h2Text)}</h2>);
                 } else if (line.startsWith("### ")) {
                     elements.push(<h3 key={index}>{processInlineMarkdown(line.slice(4))}</h3>);
                 } else if (line.startsWith("#### ")) {
