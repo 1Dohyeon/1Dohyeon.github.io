@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { mainProjects, otherProjects } from "../data/projectsData.ts";
+import SmartHeader from "../components/layout/SmartHeader.tsx";
 import "../styles/ProjectDetail.css";
 
 const ProjectDetailPage: React.FC = () => {
@@ -401,6 +402,8 @@ const ProjectDetailPage: React.FC = () => {
     if (!project) {
         return (
             <div className="project-detail-page">
+                <SmartHeader />
+                <div className="smart-header-spacer" />
                 <div className="project-detail-container">
                     <p>프로젝트를 찾을 수 없습니다.</p>
                     <button className="back-button" onClick={handleGoBack}>
@@ -413,6 +416,8 @@ const ProjectDetailPage: React.FC = () => {
 
     return (
         <div className="project-detail-page">
+            <SmartHeader />
+            <div className="smart-header-spacer" />
             <div className="project-detail-container">
                 <div className="project-detail-header">
                     <button className="back-button" onClick={handleGoBack}>

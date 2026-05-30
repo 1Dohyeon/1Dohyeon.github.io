@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "../styles/BlogList.css";
-import Header from "../components/layout/Header.tsx";
+import SmartHeader from "../components/layout/SmartHeader.tsx";
 import Footer from "../components/layout/Footer.tsx";
 
 interface PostMeta {
@@ -52,7 +52,8 @@ const BlogList: React.FC = () => {
 
     return (
         <div className="app">
-            <Header />
+            <SmartHeader />
+            <div className="smart-header-spacer" />
             <section className="section" id="blog-list-section">
                 <div className="blog-list-header">
                     <h2 className="blog-list-title">Blog</h2>

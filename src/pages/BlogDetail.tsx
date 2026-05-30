@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/BlogDetail.css";
 import { useParams, Link } from "react-router-dom";
 // react-markdown, remarkGfm 제거
-import Header from "../components/layout/Header.tsx";
+import SmartHeader from "../components/layout/SmartHeader.tsx";
 import Footer from "../components/layout/Footer.tsx";
 
 const BlogDetail: React.FC = () => {
@@ -250,8 +250,9 @@ const BlogDetail: React.FC = () => {
     };
 
     return (
-        <div>
-            <Header />
+        <div className="app">
+            <SmartHeader />
+            <div className="smart-header-spacer" />
             <section className="section" id="blog-detail-section">
                 <Link to="/blog">← 목록으로</Link>
                 {error && <p style={{ color: "red" }}>{error}</p>}

@@ -76,20 +76,12 @@
 }
 
 .skills-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
 }
 
-.skill-category {
-    border-bottom: 1px solid #e8e8e8;
-    padding-bottom: 12px;
-}
-
-.skill-category:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
+.skill-category {}
 
 .skill-category-title {
     font-size: 0.72rem;
@@ -139,5 +131,10 @@
     .intro-left-column,
     .intro-right-column {
         padding: 20px 15px;
+    }
+
+    .skills-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 }

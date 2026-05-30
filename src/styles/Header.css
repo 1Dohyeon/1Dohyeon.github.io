@@ -37,12 +37,11 @@ header {
 }
 
 .header-position {
-    font-size: 0.82rem;
+    font-size: 1.05rem;
     font-weight: 400;
-    color: #999999;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 6px 0 14px;
+    color: #777777;
+    letter-spacing: 0.01em;
+    margin: 6px 0 16px;
 }
 
 .header-contact-info {
@@ -53,37 +52,59 @@ header {
 }
 
 .contact-line {
-    font-size: 0.85rem;
-    color: #555555;
+    font-size: 0.84rem;
+    font-weight: 400;
+    color: #888888;
     line-height: 1.8;
 }
 
 .contact-label {
-    font-weight: 600;
-    color: #111111;
-    margin-right: 4px;
+    font-size: 0.84rem;
+    font-weight: 400;
+    color: #888888;
+    margin-right: 3px;
 }
 
 .header-contact-info a {
-    color: #111111;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #888888;
     text-decoration: none;
-    border-bottom: 1px solid #cccccc;
-    transition: border-color 0.15s;
+    border-bottom: 1px solid #dddddd;
+    transition:
+        color 0.15s,
+        border-color 0.15s;
 }
 
 .header-contact-info a:hover {
-    border-bottom-color: #111111;
+    color: #444444;
+    border-bottom-color: #444444;
 }
 
 @media (max-width: 768px) {
-    .header-name { font-size: 1.4rem; }
-    .contact-line { font-size: 0.8rem; }
-    .header-contact-info { gap: 2px 14px; }
+    .header-name {
+        font-size: 1.4rem;
+    }
+    .contact-line {
+        font-size: 0.8rem;
+    }
+    .header-contact-info {
+        gap: 2px 14px;
+    }
 }
 
 @media (max-width: 480px) {
-    .header-name { font-size: 1.2rem; }
-    .header-name-link { margin-bottom: 0; }
-    .header-position { font-size: 0.75rem; margin: 5px 0 12px; }
-    .contact-line { font-size: 0.75rem; }
+    .header-name {
+        font-size: 1.2rem;
+    }
+    .header-name-link {
+        margin-bottom: 0;
+    }
+    .header-position {
+        font-size: 0.75rem;
+        margin: 5px 0 12px;
+    }
+    .contact-line {
+        font-size: 0.75rem;
+    }
 }

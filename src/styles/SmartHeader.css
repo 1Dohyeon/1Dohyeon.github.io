@@ -1,0 +1,90 @@
+.smart-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    padding: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 100;
+    transform: translateY(0);
+    transition: transform 0.25s ease;
+}
+
+.smart-header--hidden {
+    transform: translateY(-100%);
+}
+
+.smart-header-inner {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.smart-header-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    color: #111111;
+    border-bottom: none;
+}
+
+.smart-header-home:hover .smart-header-name {
+    color: #555555;
+}
+
+.smart-header-home svg {
+    color: #888888;
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.smart-header-home:hover svg {
+    color: #555555;
+}
+
+.smart-header-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #111111;
+    transition: color 0.15s;
+}
+
+.smart-header-blog {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #555555;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s;
+}
+
+.smart-header-blog:hover {
+    color: #111111;
+}
+
+.smart-header-spacer {
+    height: 44px;
+}
+
+@media (max-width: 768px) {
+    .smart-header-inner {
+        padding: 0 1rem;
+    }
+
+    .smart-header-name {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .smart-header-inner {
+        padding: 0 0.75rem;
+    }
+}
