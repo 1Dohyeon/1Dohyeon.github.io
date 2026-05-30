@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/Header.css";
 
 const Header = () => {
@@ -8,7 +8,10 @@ const Header = () => {
       <div className="header-top-border"></div>
 
       <div className="header-masthead">
-        <h1 className="header-name">원도현(Dohyeon Won) / Backend Developer</h1>
+        <Link to="/" className="header-name-link">
+          <h1 className="header-name">원도현 Dohyeon Won</h1>
+        </Link>
+        <p className="header-position">ML Backend Developer</p>
 
         <div className="header-contact-info">
           <p className="contact-line">
@@ -35,6 +38,10 @@ const Header = () => {
             >
               cs study (github)
             </a>
+          </p>
+          <p className="contact-line">
+            <span className="contact-label">Blog:</span>
+            <Link to="/blog">posts</Link>
           </p>
         </div>
       </div>

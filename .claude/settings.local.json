@@ -3,7 +3,10 @@
     "allow": [
       "mcp__ide__getDiagnostics",
       "Bash(dir:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(npx tsc *)",
+      "Bash(npx react-scripts *)",
+      "PowerShell(Remove-Item *)"
     ]
   }
 }

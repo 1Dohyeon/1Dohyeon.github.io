@@ -1,108 +1,88 @@
-/* 2컬럼 레이아웃 */
 .intro-columns {
     display: grid;
     grid-template-columns: 70% 30%;
-    border: 1px solid #333;
+    border: 1px solid #e8e8e8;
 }
 
-/* 왼쪽 컬럼 */
 .intro-left-column {
     padding: 30px;
-    border-right: 1px solid #333;
+    border-right: 1px solid #e8e8e8;
 }
 
-/* 오른쪽 컬럼 */
 .intro-right-column {
     padding: 30px 25px;
 }
 
-/* 섹션 헤더 */
 .section-header {
     margin-bottom: 20px;
 }
 
 .section-title {
-    font-size: 1.8rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 8px;
-    letter-spacing: 0.02em;
+    color: #111111;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .section-divider {
-    width: 50px;
+    width: 32px;
     height: 2px;
-    background: #333;
-    margin-bottom: 0;
+    background: #111111;
 }
 
-/* Summary 영역 */
 .summary-content {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .summary-paragraph {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.8;
-    margin-bottom: 16px;
-    text-align: justify;
+    color: #333333;
+    margin-bottom: 14px;
 }
 
 .summary-paragraph:last-child {
     margin-bottom: 0;
 }
 
-/* 링크 섹션 */
 .intro-links {
-    margin-top: 30px;
-    padding-top: 25px;
-    border-top: 1px solid #ccc;
-}
-
-.link-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-.links-container {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #e8e8e8;
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .intro-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border: 1px solid #333;
+    font-size: 0.85rem;
+    color: #555555;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.2s;
+    border-bottom: 1px solid #cccccc;
+    transition: color 0.15s, border-bottom-color 0.15s;
 }
 
 .intro-link:hover {
-    background-color: #ebeadf;
+    color: #111111;
+    border-bottom-color: #111111;
 }
 
-.link-icon {
-    font-size: 1.1rem;
+.intro-link-sep {
+    font-size: 0.85rem;
+    color: #cccccc;
 }
 
-.link-text {
-    font-weight: 500;
-}
-
-/* Skills 영역 */
 .skills-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 }
 
 .skill-category {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e8e8e8;
     padding-bottom: 12px;
 }
 
@@ -112,51 +92,46 @@
 }
 
 .skill-category-title {
-    font-size: 0.95rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #999999;
+    margin-bottom: 5px;
 }
 
 .skill-items {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.88rem;
+    color: #333333;
+    line-height: 1.5;
 }
 
-/* 반응형 디자인 */
 @media (max-width: 768px) {
     .intro-columns {
         grid-template-columns: 1fr;
-        gap: 0;
     }
 
     .intro-left-column {
         border-right: none;
-        border-bottom: 1px solid #333;
-        padding: 25px 20px;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 24px 20px;
     }
 
     .intro-right-column {
-        padding: 25px 20px;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
+        padding: 24px 20px;
     }
 
     .summary-paragraph {
-        font-size: 0.95rem;
-        text-align: left;
+        font-size: 0.9rem;
     }
 
     .links-container {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
     }
 
     .intro-link {
-        width: 90%;
-        justify-content: center;
+        width: fit-content;
     }
 }
 
@@ -164,21 +139,5 @@
     .intro-left-column,
     .intro-right-column {
         padding: 20px 15px;
-    }
-
-    .section-title {
-        font-size: 1.3rem;
-    }
-
-    .summary-paragraph {
-        font-size: 0.9rem;
-    }
-
-    .skill-category-title {
-        font-size: 0.9rem;
-    }
-
-    .skill-items {
-        font-size: 0.85rem;
     }
 }

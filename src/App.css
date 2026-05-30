@@ -1,5 +1,5 @@
 .app {
-    padding: 0rem 1.5rem;
+    padding: 0 1.5rem;
     max-width: 1024px;
     margin: 0 auto;
 }
@@ -8,41 +8,31 @@
     padding: 30px 0;
 }
 
-/* 스크롤바 디자인 - 신문 스타일 */
 ::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f4f3ee;
-    border-left: 1px solid #d4c5a9;
+    background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #a89575;
-    border: 3px solid #f4f3ee;
-    border-radius: 0px;
+    background: #cccccc;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #8b7a5e;
+    background: #999999;
 }
 
-/* Firefox 스크롤바 */
 * {
-    scrollbar-width: auto;
-    scrollbar-color: #a89575 #f4f3ee;
+    scrollbar-width: thin;
+    scrollbar-color: #cccccc #f0f0f0;
 }
 
 @media (max-width: 768px) {
-    .app {
-        padding: 0rem 1rem;
-    }
+    .app { padding: 0 1rem; }
 }
 
 @media (max-width: 480px) {
-    .app {
-        padding: 0rem 0.5rem;
-    }
+    .app { padding: 0 0.5rem; }
 }

@@ -13,8 +13,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects/:name" element={<ProjectDetailPage />} />
-                <Route path="/blogs/category/:category" element={<BlogList />} />
-                <Route path="/blogs/category/:category/:filename" element={<BlogDetail />} />
+                <Route path="/blog" element={<BlogList />} />
+                <Route path="/blog/:slug" element={<BlogDetail />} />
             </Routes>
             <ScrollToTop />
         </Router>

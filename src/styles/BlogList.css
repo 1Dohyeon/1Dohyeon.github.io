@@ -1,58 +1,123 @@
-#blog-list-section {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 32px 16px;
-    min-height: calc(100vh - 50px);
-}
-#blog-list-section h2 {
-    font-size: 2rem;
-    margin-bottom: 18px;
+.blog-list-header {
+    margin-bottom: 28px;
 }
 
-#blog-list-section button {
-    background: #fcfcfc;
-    border: 2px solid #111;
-    border-radius: 5px;
-    padding: 6px 12px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: background 0.2s, color 0.2s, border 0.2s;
+.blog-list-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-#blog-list-section button.active,
-#blog-list-section button:active,
-#blog-list-section button:hover {
-    background: #111;
-    color: #fff;
-    border-color: #111;
+.blog-title-divider {
+    width: 32px;
+    height: 2px;
+    background: #111111;
 }
 
-#blog-list-section button:hover {
-    background: #111;
-    color: #fff;
-    border-color: #111;
-}
-
-#blog-list-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-#blog-list-section li {
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 1.08rem;
+/* 태그 필터 */
+.tag-filter-row {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
 }
 
-#blog-list-section a {
-    color: #4f8cff;
+.tag-chip {
+    padding: 4px 11px;
+    border: 1px solid #e8e8e8;
+    background: transparent;
+    color: #555555;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tag-chip:hover {
+    border-color: #111111;
+    color: #111111;
+}
+
+.tag-chip.active {
+    background: #111111;
+    border-color: #111111;
+    color: #ffffff;
+}
+
+/* 포스트 수 */
+.post-count {
+    font-size: 0.78rem;
+    color: #999999;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+}
+
+/* 포스트 목록 */
+.post-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-item {
+    display: block;
+    padding: 18px 0;
+    border-bottom: 1px solid #e8e8e8;
     text-decoration: none;
-    font-weight: 500;
+    color: inherit;
 }
 
-#blog-list-section a:hover {
-    text-decoration: underline;
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-date {
+    display: block;
+    font-size: 0.78rem;
+    color: #999999;
+    margin-bottom: 5px;
+    letter-spacing: 0.02em;
+}
+
+.post-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    transition: color 0.15s;
+}
+
+.post-item:hover .post-title {
+    color: #555555;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.post-tag {
+    padding: 2px 7px;
+    border: 1px solid #e8e8e8;
+    font-size: 0.72rem;
+    color: #888888;
+    background: #f8f8f8;
+    font-family: inherit;
+}
+
+@media (max-width: 768px) {
+    .tag-chip { font-size: 0.78rem; padding: 3px 9px; }
+    .post-title { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+    .tag-filter-row { gap: 5px; }
+    .tag-chip { font-size: 0.75rem; padding: 3px 8px; }
+    .post-item { padding: 14px 0; }
 }

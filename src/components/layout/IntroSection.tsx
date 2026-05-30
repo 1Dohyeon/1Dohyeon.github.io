@@ -29,33 +29,11 @@ const IntroSection = () => {
           </div>
 
           <div className="intro-links">
-            <div className="link-section">
-              <h3 className="link-title">Learning & Documentation</h3>
-              <div className="links-container">
-                <a
-                  href="https://github.com/1Dohyeon/cs-study/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="intro-link"
-                >
-                  <span className="link-icon">📝</span>
-                  <span className="link-text">Tech Study</span>
-                </a>
-                <a
-                  href="https://github.com/1Dohyeon"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="intro-link"
-                >
-                  <span className="link-icon">💻</span>
-                  <span className="link-text">GitHub</span>
-                </a>
-                <a href="/Dohyeon Won CV.pdf" download className="intro-link">
-                  <span className="link-icon">📄</span>
-                  <span className="link-text">Download CV</span>
-                </a>
-              </div>
-            </div>
+            <a href="https://github.com/1Dohyeon/cs-study/" target="_blank" rel="noopener noreferrer" className="intro-link">Tech Study</a>
+            <span className="intro-link-sep">·</span>
+            <a href="https://github.com/1Dohyeon" target="_blank" rel="noopener noreferrer" className="intro-link">GitHub</a>
+            <span className="intro-link-sep">·</span>
+            <a href="/Dohyeon Won CV.pdf" download className="intro-link">Download CV</a>
           </div>
         </div>
 

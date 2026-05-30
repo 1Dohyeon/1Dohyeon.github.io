@@ -1,37 +1,42 @@
-/* 헤더 */
 .projects-header {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 .projects-title {
-    font-size: 2rem;
+    font-size: 1.1rem;
     font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     margin-bottom: 10px;
-    letter-spacing: 0.02em;
 }
 
 .title-divider {
-    width: 80px;
+    width: 32px;
     height: 2px;
-    background: #333;
+    background: #111111;
 }
 
-/* 프로젝트 카드 공통 */
+/* 프로젝트 카드 */
 .project-card {
-    margin-bottom: 1rem;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 16px;
 }
 
 .main-project {
-    border-width: 2px;
+    border-color: #111111;
 }
 
 .project-header {
-    padding: 1rem 1rem;
-    border-bottom: 1px solid #ddd;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e8e8e8;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 15px;
+}
+
+.main-project .project-header {
+    border-bottom-color: #e8e8e8;
 }
 
 .header-content {
@@ -41,65 +46,64 @@
 .project-header-buttons {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .github-icon-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border: 2px solid #333;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #111111;
     background: transparent;
-    color: #333;
+    color: #111111;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.15s, color 0.15s;
     text-decoration: none;
 }
 
 .github-icon-button:hover {
-    background: #333;
-    color: #fff;
+    background: #111111;
+    color: #ffffff;
 }
 
-/* 이미지 + Description 2컬럼 래퍼 */
+/* 이미지 + Description */
 .project-image-description-wrapper {
     display: grid;
     grid-template-columns: 50% 50%;
-    /* border-bottom: 1px solid #ddd; */
 }
 
-/* 프로젝트 메인 이미지 - 왼쪽 50% */
 .project-main-image {
-    padding: 1rem 1rem 0.5rem 1rem;
-    /* border-right: 1px solid #ddd; */
+    padding: 16px 20px 12px;
+    border-right: 1px solid #e8e8e8;
 }
 
 .project-image {
     width: 100%;
-    height: 240px;
+    height: 220px;
     object-fit: cover;
-    border: 1px solid #ddd;
+    border: 1px solid #e8e8e8;
+    display: block;
 }
 
 .project-image-placeholder {
     width: 100%;
-    height: 240px;
-    background: linear-gradient(135deg, #e8e6e0 0%, #f4f3ee 100%);
-    border: 2px dashed #999;
+    height: 220px;
+    background: #f8f8f8;
+    border: 1px dashed #cccccc;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #999;
-    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cccccc;
+    letter-spacing: 0.1em;
 }
 
-/* Description 컬럼 - 오른쪽 50% */
 .project-description-column {
-    padding: 1rem 1rem 0.5rem 1rem;
+    padding: 16px 20px 12px;
     display: flex;
     align-items: center;
 }
@@ -107,29 +111,30 @@
 .project-description-column .project-description {
     margin: 0;
     line-height: 1.8;
-    color: #333;
-    text-align: justify;
+    color: #444444;
+    font-size: 0.92rem;
 }
 
 .project-name {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 8px;
+    color: #111111;
+    margin-bottom: 6px;
     line-height: 1.4;
 }
 
 .other-project .project-name {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
 }
 
 .project-meta {
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.82rem;
+    color: #888888;
 }
 
 .meta-separator {
-    margin: 0 8px;
+    margin: 0 6px;
+    color: #cccccc;
 }
 
 .project-period {
@@ -137,204 +142,187 @@
 }
 
 .project-team {
-    font-style: italic;
+    font-style: normal;
 }
 
 /* 프로젝트 본문 */
 .project-body {
-    padding: 1rem 1rem;
-    border-bottom: 3px double #ddd;
+    padding: 16px 20px;
+    border-top: 1px solid #e8e8e8;
 }
 
 .project-description {
-    margin-bottom: 15px;
+    margin-bottom: 14px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #444444;
 }
 
 .project-info-row {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
 }
 
 .info-label {
+    font-size: 0.78rem;
     font-weight: 700;
-    color: #020403;
-    min-width: 90px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #999999;
+    min-width: 80px;
     flex-shrink: 0;
+    padding-top: 3px;
 }
 
 .info-value {
-    font-weight: 700;
-    color: #020403;
+    font-weight: 600;
+    color: #111111;
+    font-size: 0.9rem;
 }
 
 /* 기술 스택 */
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .tech-tag {
-    padding: 4px 10px;
-    border: 1px solid #333;
-    font-size: 0.85rem;
-    color: #1a1a1a;
-    background-color: #fcfbfa;
+    padding: 3px 9px;
+    border: 1px solid #e8e8e8;
+    font-size: 0.78rem;
+    color: #444444;
+    background-color: #f8f8f8;
 }
 
 /* 목적 */
 .project-purpose {
-    margin-bottom: 15px;
-    padding: 15px;
-    border-left: 3px solid #333;
-    background-color: #fcfbfa;
+    margin-bottom: 14px;
+    padding: 12px 16px;
+    border-left: 2px solid #111111;
+    background-color: #f8f8f8;
 }
 
 .project-purpose p {
-    margin-top: 5px;
+    margin-top: 4px;
     line-height: 1.7;
-    color: #333;
+    color: #444444;
+    font-size: 0.9rem;
 }
 
 /* 주요 업무 */
 .project-responsibilities {
-    margin-top: 1rem;
+    margin-top: 14px;
 }
 
 .project-responsibilities ul {
-    margin-top: 10px;
+    margin-top: 8px;
     padding-left: 1rem;
 }
 
 .project-responsibilities li {
     list-style-type: disc;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     line-height: 1.6;
-    color: #333;
+    color: #444444;
+    font-size: 0.9rem;
 }
 
-/* 프로젝트 설명 */
-.project-description {
-    margin-top: 10px;
-    line-height: 1.7;
-    color: #333;
-}
-
-/* 자세히 보기 버튼 - 헤더용 */
+/* 자세히 보기 버튼 */
 .project-detail-button-header {
     padding: 6px 14px;
-    border: 2px solid #d4534f;
+    border: 1px solid #111111;
     background: transparent;
-    color: #d4534f;
-    font-size: 0.8rem;
-    font-weight: 700;
+    color: #111111;
+    font-size: 0.78rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.15s, color 0.15s;
     white-space: nowrap;
     letter-spacing: 0.02em;
     flex-shrink: 0;
 }
 
 .project-detail-button-header:hover {
-    background: #d4534f;
-    color: #fff;
+    background: #111111;
+    color: #ffffff;
 }
 
 /* Others 버튼 */
 .others-toggle {
     text-align: center;
-    margin: 30px 0;
+    margin: 28px 0;
 }
 
 .others-button {
-    padding: 12px 30px;
-    border: 2px solid #333;
+    padding: 10px 28px;
+    border: 1px solid #111111;
     background: transparent;
-    color: #1a1a1a;
-    font-size: 1rem;
+    color: #111111;
+    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
 }
 
 .others-button:hover {
-    background: #333;
-    color: #f4f3ee;
+    background: #111111;
+    color: #ffffff;
 }
 
 /* Other Projects */
 .other-projects {
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 2px solid #333;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e8e8e8;
 }
 
 /* 반응형 */
 @media (max-width: 768px) {
-    #projects-wrapper {
-        padding: 0 1rem;
-    }
+    .projects-title { font-size: 1rem; }
 
-    .projects-title {
-        font-size: 1.7rem;
-    }
-
-    .project-name {
-        font-size: 1.1rem;
-    }
-
-    .other-project .project-name {
-        font-size: 1rem;
-    }
+    .project-name { font-size: 0.95rem; }
 
     .project-header,
     .project-body {
-        padding: 15px 18px;
+        padding: 14px 16px;
     }
 
     .project-info-row {
         flex-direction: column;
-        gap: 5px;
+        gap: 4px;
     }
 
-    .info-label {
-        min-width: auto;
-    }
-
-    .tech-tags {
-        gap: 6px;
-    }
+    .info-label { min-width: auto; }
 
     .tech-tag {
-        font-size: 0.8rem;
-        padding: 3px 8px;
+        font-size: 0.75rem;
+        padding: 2px 7px;
     }
 }
 
 @media (max-width: 480px) {
-    .projects-title {
-        font-size: 1.5rem;
-    }
-
     .project-header,
     .project-body {
-        padding: 12px 15px;
+        padding: 12px 14px;
     }
 
-    .project-meta {
+    .project-meta { font-size: 0.78rem; }
+
+    .others-button {
+        padding: 8px 20px;
         font-size: 0.85rem;
     }
 
-    .others-button {
-        padding: 10px 1rem;
-        font-size: 0.9rem;
-    }
-
-    /* 이미지와 설명을 상하로 배치 */
     .project-image-description-wrapper {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
+    }
+
+    .project-main-image {
+        border-right: none;
+        border-bottom: 1px solid #e8e8e8;
     }
 }

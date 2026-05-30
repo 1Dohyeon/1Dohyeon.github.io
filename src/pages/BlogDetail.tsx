@@ -6,20 +6,20 @@ import Header from "../components/layout/Header.tsx";
 import Footer from "../components/layout/Footer.tsx";
 
 const BlogDetail: React.FC = () => {
-    const { category, filename } = useParams<{ category: string; filename: string }>();
+    const { slug } = useParams<{ slug: string }>();
     const [content, setContent] = useState("");
     const [error, setError] = useState("");
 
     useEffect(() => {
-        if (!category || !filename) return;
-        fetch(`/projects/category/${category}/${filename}`)
+        if (!slug) return;
+        fetch(`/posts/${slug}.md`)
             .then((res) => {
                 if (!res.ok) throw new Error("파일을 불러올 수 없습니다.");
                 return res.text();
             })
             .then(setContent)
             .catch((e) => setError(e.message));
-    }, [category, filename]);
+    }, [slug]);
 
     // 커스텀 마크다운 렌더링 함수 (ProjectDetail 참고)
     const renderMarkdown = (content: string) => {
@@ -99,7 +99,6 @@ const BlogDetail: React.FC = () => {
                             href={linkMatch[2]}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ color: "#4f8cff" }}
                         >
                             {linkMatch[1]}
                         </a>
@@ -254,7 +253,7 @@ const BlogDetail: React.FC = () => {
         <div>
             <Header />
             <section className="section" id="blog-detail-section">
-                <Link to={`/blogs/category/${category}`}>← 목록으로</Link>
+                <Link to="/blog">← 목록으로</Link>
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <div className="blog-markdown-content" style={{ marginTop: 24 }}>
                     {renderMarkdown(content)}
