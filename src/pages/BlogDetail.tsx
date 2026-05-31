@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../styles/BlogDetail.css";
 import { useParams, Link } from "react-router-dom";
 import SmartHeader from "../components/layout/SmartHeader.tsx";
-import Footer from "../components/layout/Footer.tsx";
 import { renderMarkdown } from "../utils/renderMarkdown.tsx";
 
 const BlogDetail: React.FC = () => {
@@ -32,7 +31,6 @@ const BlogDetail: React.FC = () => {
                     {renderMarkdown(content)}
                 </div>
             </section>
-            <Footer />
         </div>
     );
 };

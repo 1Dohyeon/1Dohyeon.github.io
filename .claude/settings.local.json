@@ -6,7 +6,8 @@
       "Bash(tree:*)",
       "Bash(npx tsc *)",
       "Bash(npx react-scripts *)",
-      "PowerShell(Remove-Item *)"
+      "PowerShell(Remove-Item *)",
+      "Bash(Remove-Item *)"
     ]
   }
 }

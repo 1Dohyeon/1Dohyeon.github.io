@@ -92,22 +92,13 @@ export const otherProjects: Project[] = [
             "처음에는 단순한 일정 관리 서비스로 기획했으나, 개발 과정에서 '조용한 소셜 미디어'라는 컨셉을 추가했습니다. 기존 소셜 미디어의 숫자 중심 경쟁 문화에서 벗어나, 사용자가 오늘 한 일을 사진이나 15초 이내 짧은 영상으로 하루 최대 2번만 공유할 수 있도록 제한했습니다.",
     },
     {
-        name: "tulog",
-        title: "TULOG: 개인 및 팀 블로그",
-        period: "2025.07 ~ 2025.08 (약 6주)",
-        team: "3인",
-        role: "Backend & Frontend",
-        markdownFile: "TULOG",
-        description:
-            "개인 및 팀 블로그 서비스를 통해 일상을 기록하고 공유할 수 있는 플랫폼을 제공합니다. 서비스 운영을 목표로 진행하는 프로젝트입니다.",
-    },
-    {
         name: "coffee-price-predictor",
         title: "커피 생두 가격 예측 시스템",
         period: "2025.03 ~ 2025.06 (약 14주)",
         team: "6인",
         role: "Backend & Frontend & Data Engineer (ML Ops)",
         markdownFile: "CoffeePricePredictor",
+        githubUrl: "https://github.com/MJU-Capstone-2025/Coffee_Price_Prediction",
         description:
             "커피 재배 지역의 기후 데이터, 거시 경제 지표, 뉴스 기사 데이터를 복합적으로 분석하여 1주/2주 커피 선물(Coffee C) 가격을 예측하는 시스템입니다.",
     },
@@ -118,6 +109,7 @@ export const otherProjects: Project[] = [
         team: "2인",
         role: "Frontend & Model Design",
         markdownFile: "DiseasePrediction",
+        githubUrl: "https://github.com/leejucheol/DP-disease_prediction",
         description:
             "질병 예측을 위한 웹 서비스로, 사용자 입력 데이터를 기반으로 머신러닝 모델을 통해 질병을 예측하고 관련 정보를 제공합니다.",
     },

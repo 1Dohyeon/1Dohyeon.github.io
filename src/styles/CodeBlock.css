@@ -1,0 +1,93 @@
+.markdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.92rem;
+}
+
+.markdown-table th,
+.markdown-table td {
+    border: 1px solid #e8e8e8;
+    padding: 8px 14px;
+    text-align: left;
+}
+
+.markdown-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+    color: #111111;
+}
+
+.markdown-table td {
+    color: #333333;
+}
+
+.markdown-table tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+.code-block-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 16px 0;
+    border: 1px solid #2d2d2d;
+}
+
+.code-block-header {
+    background: #2d2d2d;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.code-dot-red    { background: #ff5f57; }
+.code-dot-yellow { background: #ffbd2e; }
+.code-dot-green  { background: #28c840; }
+
+.code-copy-button {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #555555;
+    color: #999999;
+    padding: 4px 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.code-copy-button:hover {
+    color: #ffffff;
+    border-color: #888888;
+}
+
+
+.code-block-wrapper pre {
+    margin: 0;
+    border-radius: 0;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 16px 20px;
+    overflow-x: auto;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    border: none;
+}
+
+.code-block-wrapper pre code {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+}

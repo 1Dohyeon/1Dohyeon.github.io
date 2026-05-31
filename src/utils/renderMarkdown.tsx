@@ -1,8 +1,46 @@
 import React from "react";
+import "../styles/CodeBlock.css";
 
 interface RenderOptions {
     enableOverview?: boolean;
 }
+
+const CopyIcon = () => (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" />
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+);
+
+const CheckIcon = () => (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+    </svg>
+);
+
+const CodeBlock: React.FC<{ code: string }> = ({ code }) => {
+    const [copied, setCopied] = React.useState(false);
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    return (
+        <div className="code-block-wrapper">
+            <div className="code-block-header">
+                <span className="code-dot code-dot-red" />
+                <span className="code-dot code-dot-yellow" />
+                <span className="code-dot code-dot-green" />
+                <button className="code-copy-button" onClick={handleCopy} title={copied ? "Copied!" : "Copy"}>
+                    {copied ? <CheckIcon /> : <CopyIcon />}
+                </button>
+            </div>
+            <pre><code>{code}</code></pre>
+        </div>
+    );
+};
 
 function toId(text: string): string {
     return text
@@ -139,7 +177,43 @@ export function renderMarkdown(content: string, options: RenderOptions = {}): Re
     let quoteBuffer: string[] = [];
     let listBuffer: { text: string; sub: string[] }[] = [];
     let codeBlockBuffer: string[] = [];
+    let tableBuffer: string[] = [];
     let inCodeBlock = false;
+
+    const isTableRow = (line: string) => /^\|.+\|$/.test(line.trim());
+    const isSeparatorRow = (line: string) => /^\|[\s|:\-]+\|$/.test(line.trim());
+
+    const parseTableCells = (row: string) =>
+        row.trim().split("|").slice(1, -1).map((c) => c.trim());
+
+    const flushTable = () => {
+        if (!tableBuffer.length) return;
+        const sepIdx = tableBuffer.findIndex(isSeparatorRow);
+        if (sepIdx < 1) { tableBuffer = []; return; }
+
+        const headers = parseTableCells(tableBuffer[0]);
+        const bodyRows = tableBuffer.slice(sepIdx + 1);
+
+        elements.push(
+            <table key={`table-${elements.length}`} className="markdown-table">
+                <thead>
+                    <tr>
+                        {headers.map((h, i) => <th key={i}>{processInlineMarkdown(h)}</th>)}
+                    </tr>
+                </thead>
+                <tbody>
+                    {bodyRows.map((row, ri) => (
+                        <tr key={ri}>
+                            {parseTableCells(row).map((cell, ci) => (
+                                <td key={ci}>{processInlineMarkdown(cell)}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+        tableBuffer = [];
+    };
 
     const flushQuote = () => {
         if (!quoteBuffer.length) return;
@@ -176,11 +250,8 @@ export function renderMarkdown(content: string, options: RenderOptions = {}): Re
 
     const flushCodeBlock = () => {
         if (!codeBlockBuffer.length) return;
-        elements.push(
-            <pre key={`code-${elements.length}`}>
-                <code>{codeBlockBuffer.join("\n")}</code>
-            </pre>
-        );
+        const code = codeBlockBuffer.join("\n");
+        elements.push(<CodeBlock key={`code-${elements.length}`} code={code} />);
         codeBlockBuffer = [];
     };
 
@@ -198,6 +269,14 @@ export function renderMarkdown(content: string, options: RenderOptions = {}): Re
         }
 
         if (inCodeBlock) { codeBlockBuffer.push(line); return; }
+
+        if (isTableRow(line)) {
+            flushQuote(); flushList(); flushCodeBlock();
+            tableBuffer.push(line);
+            return;
+        } else if (tableBuffer.length > 0) {
+            flushTable();
+        }
 
         if (line.startsWith(">")) {
             flushList();
@@ -227,6 +306,6 @@ export function renderMarkdown(content: string, options: RenderOptions = {}): Re
         }
     });
 
-    flushQuote(); flushList(); flushCodeBlock();
+    flushQuote(); flushList(); flushCodeBlock(); flushTable();
     return elements;
 }

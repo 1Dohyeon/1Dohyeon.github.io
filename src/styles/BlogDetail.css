@@ -1,7 +1,7 @@
 #blog-detail-section {
     max-width: 720px;
     margin: 0 auto;
-    padding: 32px 0;
+    padding: 32px 0 160px;
 }
 
 #blog-detail-section > a {

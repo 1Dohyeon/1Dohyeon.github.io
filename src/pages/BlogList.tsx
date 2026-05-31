@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "../styles/BlogList.css";
 import SmartHeader from "../components/layout/SmartHeader.tsx";
-import Footer from "../components/layout/Footer.tsx";
 
 interface PostMeta {
     slug: string;
@@ -100,7 +99,6 @@ const BlogList: React.FC = () => {
                     ))}
                 </div>
             </section>
-            <Footer />
         </div>
     );
 };

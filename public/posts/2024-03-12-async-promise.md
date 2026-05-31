@@ -1,101 +1,151 @@
-# 비동기 함수(async function), Promise
+# 비동기 함수(async function)와 Promise
 
-자바스크립트를 공부하다 보면 비동기함수, Promise 라는 단어를 많이 들어봤을 것이다. 나는 NestJS를 공부하면서 비동기 함수를 접하게 되었는 되었는데, 이때 "백그라운드에서 실행되는 메서드" 라는 간단한 개념만 인지한채로 공부하였다.
+서버 개발을 시작하면 `async`, `await`, `Promise`를 금방 마주치게 됩니다. 처음엔 "백그라운드에서 실행된다" 정도로 넘어가기 쉽지만, 비동기의 작동 방식을 제대로 이해하지 못하면 코드가 예상과 다른 순서로 실행되거나, 에러가 어디서 났는지 추적하기 어려운 상황을 겪게 됩니다.
 
-그러다가 DB에서 데이터를 요청하는 repository 파일에 코드를 작성하던 중 `async existsByEmail(email: string): Promise<boolean> ~` 와 같은 비동기 함수를 많이 접하게 되었다. 이때부터 비동기 함수와 이 함수를 따라다니는 Promise가 무엇인지 제대로 파악할 필요를 느꼈다.
+비동기 처리는 콜백 → Promise → async/await 순서로 발전해 왔습니다. 각 방식이 이전 방식의 어떤 단점을 해결했는지, 그 흐름대로 설명합니다.
 
 ---
 
-## 비동기란?
+## 동기(Synchronous): 한 번에 하나씩
 
-비동기에 대해 알기 전에 "동기"의 뜻을 먼저 설명하자면, 동기란 프로그램이 직렬적으로 수행되는 과정이라고 보면 된다. 요청이 오면 요청에 대한 응답을 받은 후에 다음 동작이 이루어진다. 이때 다른 프로그램은 대기하게 되는데 이러한 방식을 동기라고 한다.
-
-비동기는 위와 반대로 병렬로 프로그램이 실행된다고 보면 된다. 요청의 응답 여부와는 상관없이 다른 프로그램이 동작한다. 이렇게 이론적인 설명만 들으면 비동기 방식이 동기적인 패턴에 비해서 시간면으로도 이득 같아 보인다.
-
-하지만 비동기 함수도 이에 따른 단점이 존재한다. 비동기 처리를 위해서 콜백 패턴을 사용하게 된다면, 처리 순서 보장을 위해서 여러개의 콜백 함수가 중첩되는 현상인 콜백 헬(Callback Hell) 이 발생하게 된다.
+동기 방식은 코드가 위에서 아래로, 순서대로 실행됩니다. 하나가 끝나야 다음이 시작됩니다.
 
 ```js
-console.log("1");
-
-setTimeout(function () {
-    console.log("2");
-}, 2000);
-
-console.log("3");
+console.log("(1) 유저 조회 시작");
+// DB 조회... 1초 걸린다고 가정
+console.log("(2) 유저 조회 완료");
+console.log("(3) 다음 작업");
 ```
 
-위 코드는 단순히 1, 2, 3을 출력하는 코드이다. 하지만 2를 출력하는 부분은 `setTimeout`이라는 함수를 통해 비동기 처리를 하여 2를 2초 뒤에 출력시킨다. 이런 비동기 함수의 매개변수에 다른 콜백 함수를 중첩해서 사용한다면 콜백 헬에 걸리게 될 것이다.
+순서는 보장되지만, DB 조회가 끝날 때까지 서버 전체가 멈춥니다. 그 1초 동안 다른 사용자의 요청은 모두 대기 상태가 됩니다. 사용자가 많아질수록 치명적입니다.
 
 ---
 
-## Promise
+## 비동기(Asynchronous): 기다리지 않고 다음으로
 
-Promise는 위에서 이야기한 콜백 헬로 인해 발생한 에러 처리에 대한 문제점을 해결하기 위해 비동기 처리를 위한 또 다른 패턴이다. Promise가 어떻게 비동기 패턴의 콜백 헬 단점을 보완할 수 있는 것일까?
+비동기 방식은 작업이 끝날 때까지 기다리지 않고, 일단 다음 코드를 실행합니다.
 
-Promise는 비동기 처리 시점을 "표현"할 수 있다. romise는 상태(state) 정보를 가지고 있고, 이 상태를 표현하여 비동기 처리 성공, 실패 여부를 알려준다. Promise 생성자 함수를 통해 인스턴스화 하며, 작업을 수행할 콜백 함수를 인자로 전달받는다. 이때 콜백 함수는 resolve와 reject 함수를 인자로 받는다.
+```js
+console.log("(1) 시작");
 
-이때 resolve, reject는 비동기 작업의 수행이 성공했느냐 실패했느냐에의 차이이다. 위에서 언급했듯 Promise는 상태(state) 정보를 가지고 있고, 이 상태에 따라 resolve 또는 reject가 실행된다. 상태는 다음과 같다 :
+setTimeout(function () {
+  console.log("(2) 2초 후 실행");
+}, 2000);
 
--   `pending`: 비동기 처리가 아직 수행되지 않은 상태
--   `fulfilled`: 비동기 처리가 수행된 상태 (성공)
--   `rejected`: 비동기 처리가 수행된 상태 (실패)
--   `settled`: 비동기 처리가 수행된 상태 (성공 또는 실패)
+console.log("(3) 즉시 실행");
+```
 
-또한 Promise 는 다음과 같이 사용할 수 있다 :
+실행 결과는 `(1) → (3) → (2)` 순서입니다. `setTimeout`이 2초를 기다리는 동안, 나머지 코드가 먼저 실행됩니다.
 
-```javascript
-// Promise 객체 생성
-const promise = new Promise((resolve, reject) => {
-  if (/* 성공 */) {
-    resolve('result');
-  }
-  else { // 실패
-    reject('failure reason');
-  }
+서버에 적용하면, DB 조회가 진행되는 동안 다른 요청을 처리할 수 있습니다. Node.js / NestJS가 적은 리소스로 높은 동시성을 처리할 수 있는 이유입니다.
+
+---
+
+## 문제: 콜백 헬(Callback Hell)
+
+비동기 처리의 순서를 보장하려면 "이게 끝나면 이걸 실행해"라는 콜백 함수를 넘겨야 합니다. 그런데 단계가 쌓이면 이렇게 됩니다.
+
+실제 서버에서 흔히 볼 수 있는 흐름을 콜백으로 작성하면:
+
+```js
+// 로그인 처리: 유저 조회 → 비밀번호 확인 → 권한 조회 → 토큰 발급
+db.findUser(email, function (err, user) {
+  if (err) return handleError(err);
+
+  auth.checkPassword(user, password, function (err, isValid) {
+    if (err) return handleError(err);
+
+    db.getPermissions(user.id, function (err, permissions) {
+      if (err) return handleError(err);
+
+      token.generate(user, permissions, function (err, token) {
+        if (err) return handleError(err);
+
+        res.send({ token }); // 4단계를 거쳐서야 응답
+      });
+    });
+  });
 });
 ```
 
-또한 Promise는 `.then` 을 이용하여 체이닝(chaining)을 할 수 있는데, 체이닝은 아래 예제처럼 여러개의 Promise를 이을 수 있다.
-
-```js
-new Promise(function (resolve, reject) {
-    setTimeout(function () {
-        resolve(0);
-    }, 1000);
-})
-    .then(function (val) {
-        console.log(val); // output: 1
-        return val + 1;
-    })
-    .then(function (val) {
-        console.log(val); // output: 2
-    });
-```
+단계가 4개뿐인데 코드가 오른쪽으로 계속 밀려납니다. 에러 처리도 각 단계마다 반복해야 하고, 어디서 에러가 났는지 추적하기도 어렵습니다. 이게 **콜백 헬**입니다.
 
 ---
 
-## async await
+## 해결 1: Promise
 
-async와 await도 콜백 헬을 없애줄 수 있는 비동기 방식이다. 보통 아래처럼 함수 앞에 `async`를 붙이고 비동기 처리를 할 코드 앞 부분에 `await`를 사용한다 :
+Promise는 "나중에 값을 돌려줄게"라는 약속을 객체로 표현합니다. 콜백을 중첩하는 대신, `.then()`으로 수평하게 연결합니다.
+
+Promise는 세 가지 상태를 가집니다.
+
+- `pending`: 아직 결과가 없는 상태 (대기 중)
+- `fulfilled`: 성공적으로 완료 → `resolve()` 호출
+- `rejected`: 실패 → `reject()` 호출
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  db.findUser(email, (err, user) => {
+    if (err) reject(err);
+    else resolve(user);
+  });
+});
+```
+
+위 콜백 헬 코드를 Promise 체이닝으로 바꾸면:
 
 ```js
-const asyncFunc = async () => {
-    try {
-        console.log("1");
-        await setTimeout(() => console.log("2"), 2000);
-    } catch (err) {
-        console.log(err);
-    }
-    console.log("finish");
+db.findUser(email)
+  .then((user) => auth.checkPassword(user, password))
+  .then((isValid) => db.getPermissions(user.id))
+  .then((permissions) => token.generate(user, permissions))
+  .then((token) => res.send({ token }))
+  .catch((err) => handleError(err)); // 에러 처리는 한 곳에서
+```
+
+중첩이 사라지고, 에러 처리도 맨 끝 `.catch()` 하나로 통합됩니다. 훨씬 읽기 쉬워졌습니다.
+
+---
+
+## 해결 2: async/await
+
+`.then()` 체이닝도 단계가 많아지면 길어집니다. async/await는 Promise를 마치 동기 코드처럼 쓸 수 있게 해주는 문법입니다.
+
+`async` 함수 안에서 `await`를 쓰면, Promise가 처리될 때까지 기다린 뒤 결과값을 바로 받아옵니다.
+
+```js
+const login = async (email, password) => {
+  try {
+    const user = await db.findUser(email); // (1) 완료될 때까지 대기
+    const isValid = await auth.checkPassword(user, password); // (2) 대기
+    const permissions = await db.getPermissions(user.id); // (3) 대기
+    const token = await token.generate(user, permissions); // (4) 대기
+
+    return { token };
+  } catch (err) {
+    handleError(err);
+  }
 };
-
-asyncFunc();
 ```
 
-위 코드는 1이 먼저 찍히고 finish가 찍힌 후 2초 후에 2가 찍히는 비동기 함수임을 알 수 있다.
+내부적으로는 여전히 비동기로 동작하지만, 코드는 동기처럼 읽힙니다. NestJS에서 DB 조회나 외부 API 호출에 async/await가 사실상 표준인 이유입니다.
+
+```ts
+// NestJS Repository 예시
+async findByEmail(email: string): Promise<User | null> {
+    return await this.userRepository.findOne({ where: { email } });
+}
+```
 
 ---
 
-## 마무리
+## 정리
 
-블로그에 작성된 글은 공식문서를 포함한 여러 웹 사이트에서 공부한 것을 저만의 방식으로 이해하여 쓴 글입니다. 따라서 틀린 정보가 공유될 수도 있으니 **꼭 공식문서를 통해서 공부하시길 바랍니다!**
+콜백 → Promise → async/await, 세 가지 모두 비동기 처리를 위한 방법입니다. 등장 순서가 곧 단점을 보완해온 역사입니다.
+
+|           | 콜백        | Promise          | async/await       |
+| --------- | ----------- | ---------------- | ----------------- |
+| 가독성    | ✗ 중첩 구조 | △ 체이닝         | ✓ 선형 코드       |
+| 에러 처리 | 각 단계마다 | `.catch()` 한 곳 | `try/catch` 한 곳 |
+| 직관성    | ✗           | △                | ✓                 |
+
+현재 Node.js / NestJS 생태계에서는 async/await가 표준입니다. 다만 `Promise.all()`처럼 여러 비동기 작업을 **병렬로** 실행할 때는 Promise를 직접 다루는 경우가 여전히 남아 있습니다.

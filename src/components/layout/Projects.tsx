@@ -39,15 +39,6 @@ const otherProjects = [
       "처음에는 단순한 일정 관리 서비스로 기획했으나, 개발 과정에서 '조용한 소셜 미디어' 컨셉을 추가했습니다.",
   },
   {
-    name: "tulog",
-    title: "TULOG: 개인 및 팀 블로그",
-    period: "2025.07",
-    team: "3인",
-    role: "Backend & Frontend",
-    description:
-      "개인 및 팀 블로그 서비스를 통해 일상을 기록하고 공유할 수 있는 플랫폼입니다.",
-  },
-  {
     name: "coffee-price-predictor",
     title: "커피 생두 가격 예측 시스템",
     period: "2025.03",
