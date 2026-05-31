@@ -1,5 +1,11 @@
 [
   {
+    "slug": "2026-05-26-claude-md-guidelines",
+    "title": "많은 사람들에게 star를 받은 CLAUDE.md를 읽고",
+    "date": "2026.05.26",
+    "tags": ["TIL", "AI"]
+  },
+  {
     "slug": "2025-09-06-recurring-schedule-update",
     "title": "반복 일정의 복잡한 업데이트",
     "date": "2025.09.06",
@@ -48,21 +54,123 @@
     "tags": ["CS", "Database"]
   },
   {
+    "slug": "2025-05-28-vibe-coding",
+    "title": "Vibe Coding: 개발 방식이 바뀌고 있다",
+    "date": "2025.05.28",
+    "tags": ["TIL", "AI"]
+  },
+  {
+    "slug": "2025-04-23-mcp",
+    "title": "MCP(Model Context Protocol): AI 에이전트의 표준화",
+    "date": "2025.04.23",
+    "tags": ["TIL", "AI", "MCP"]
+  },
+  {
+    "slug": "2025-03-07-claude-3-7-extended-thinking",
+    "title": "Claude 3.7 Sonnet과 Extended Thinking",
+    "date": "2025.03.07",
+    "tags": ["TIL", "AI"]
+  },
+  {
     "slug": "2025-02-11-websocket-http",
     "title": "Web Socket(웹 소켓)과 HTTP",
     "date": "2025.02.11",
     "tags": ["CS", "Network"]
   },
   {
+    "slug": "2025-02-01-deepseek-r1",
+    "title": "DeepSeek R1: 오픈소스 LLM이 바꾼 AI 경쟁 구도",
+    "date": "2025.02.01",
+    "tags": ["TIL", "AI"]
+  },
+  {
+    "slug": "2025-01-18-transformer-paper",
+    "title": "Attention Is All You Need — Transformer 논문 리뷰",
+    "date": "2025.01.18",
+    "tags": ["CS", "AI", "Paper"]
+  },
+  {
+    "slug": "2024-12-17-react-19",
+    "title": "React 19: 무엇이 달라졌나",
+    "date": "2024.12.17",
+    "tags": ["TIL", "React"]
+  },
+  {
+    "slug": "2024-10-27-deno-2",
+    "title": "Deno 2.0: Node.js와의 호환성을 선택한 이유",
+    "date": "2024.10.27",
+    "tags": ["TIL", "JavaScript"]
+  },
+  {
+    "slug": "2024-09-22-openai-o1",
+    "title": "OpenAI o1: 추론하는 AI의 등장",
+    "date": "2024.09.22",
+    "tags": ["TIL", "AI", "OpenAI"]
+  },
+  {
+    "slug": "2024-07-29-crowdstrike",
+    "title": "CrowdStrike 사태: 소프트웨어 업데이트는 왜 위험한가",
+    "date": "2024.07.29",
+    "tags": ["TIL", "DevOps"]
+  },
+  {
+    "slug": "2024-05-23-gpt-4o",
+    "title": "GPT-4o: 멀티모달 AI의 일상화",
+    "date": "2024.05.23",
+    "tags": ["TIL", "AI", "OpenAI"]
+  },
+  {
+    "slug": "2024-04-20-langchain-rag",
+    "title": "LangChain과 RAG 패턴: 왜 이 조합인가",
+    "date": "2024.04.20",
+    "tags": ["TIL", "AI", "LangChain"]
+  },
+  {
+    "slug": "2024-03-28-claude-3-benchmark",
+    "title": "Claude 3 출시: LLM 벤치마크를 어떻게 읽어야 하나",
+    "date": "2024.03.28",
+    "tags": ["TIL", "AI"]
+  },
+  {
     "slug": "2024-03-17-database-aws",
-    "title": "Database, AWS",
+    "title": "Database와 AWS 기초 개념 정리",
     "date": "2024.03.17",
     "tags": ["CS", "Database", "AWS"]
   },
   {
     "slug": "2024-03-12-async-promise",
-    "title": "비동기 함수(async function), Promise",
+    "title": "비동기 함수(async function)와 Promise",
     "date": "2024.03.12",
     "tags": ["CS", "JavaScript"]
+  },
+  {
+    "slug": "2024-01-22-nextjs-app-router",
+    "title": "Next.js App Router: Pages Router와 무엇이 다른가",
+    "date": "2024.01.22",
+    "tags": ["TIL", "Next.js"]
+  },
+  {
+    "slug": "2023-11-14-openai-devday",
+    "title": "OpenAI DevDay: GPT-4 Turbo와 Assistants API",
+    "date": "2023.11.14",
+    "tags": ["TIL", "AI", "OpenAI"]
+  },
+  {
+    "slug": "2023-09-18-bun-1-0",
+    "title": "Bun 1.0: Node.js 생태계의 도전자",
+    "date": "2023.09.18",
+    "tags": ["TIL", "JavaScript", "Bun"]
+  },
+  {
+    "slug": "2023-03-22-typescript-5-0",
+    "title": "TypeScript 5.0: 무엇이 달라졌나",
+    "date": "2023.03.22",
+    "tags": ["TIL", "TypeScript"]
+  },
+  {
+    "slug": "2023-03-01-typescript-types-and-generics",
+    "title": "TypeScript 핵심 개념: 리터럴 타입, 타입 추론, 제네릭",
+    "date": "2023.03.01",
+    "tags": ["CS", "TypeScript"]
   }
 ]
