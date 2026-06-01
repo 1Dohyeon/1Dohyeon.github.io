@@ -36,7 +36,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              cs study (github)
+              ps study (github)
             </a>
           </p>
           <p className="contact-line">

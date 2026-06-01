@@ -29,7 +29,9 @@ const IntroSection = () => {
           </div>
 
           <div className="intro-links">
-            <a href="https://github.com/1Dohyeon/cs-study/" target="_blank" rel="noopener noreferrer" className="intro-link">Tech Study</a>
+            <a href="https://github.com/1Dohyeon/cs-study/" target="_blank" rel="noopener noreferrer" className="intro-link">Study</a>
+            <span className="intro-link-sep">·</span>
+            <a href="/blog" className="intro-link">Blog</a>
             <span className="intro-link-sep">·</span>
             <a href="https://github.com/1Dohyeon" target="_blank" rel="noopener noreferrer" className="intro-link">GitHub</a>
             <span className="intro-link-sep">·</span>
