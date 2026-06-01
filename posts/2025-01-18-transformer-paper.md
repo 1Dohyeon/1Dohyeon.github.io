@@ -1,4 +1,4 @@
-# Attention Is All You Need — Transformer 논문 리뷰
+# Attention Is All You Need - Transformer 논문 리뷰
 
 GPT, BERT, Claude 같은 현대 LLM의 기반이 되는 논문입니다. [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017). AI 공부를 하다 보니 계속 언급돼서 직접 읽어봤습니다.
 
@@ -65,6 +65,4 @@ PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))
 
 ## 왜 혁신적이었나
 
-RNN의 순차 처리를 버리고 전체 시퀀스를 한 번에 병렬 처리할 수 있게 됐습니다. GPU의 병렬 연산 능력을 최대한 활용할 수 있어 학습 속도가 크게 빨라졌고, 훨씬 더 큰 모델을 훈련할 수 있게 됐습니다.
-
-지금의 LLM 시대가 이 논문에서 시작됐다고 해도 과언이 아닙니다. 논문 제목 "Attention Is All You Need"가 지금 돌아보면 예언처럼 느껴집니다.
+RNN의 순차 처리를 버리고 전체 시퀀스를 한 번에 병렬 처리할 수 있게 됐습니다. GPU의 병렬 연산 능력을 최대한 활용할 수 있어 학습 속도가 크게 빨라졌고, 훨씬 더 큰 모델을 훈련할 수 있게 됐습니다. 지금의 LLM 시대가 이 논문에서 시작됐다고 해도 과언이 아니라고 생각합니다.
