@@ -102,10 +102,28 @@
     "tags": ["TIL", "React"]
   },
   {
+    "slug": "2024-12-02-dns",
+    "title": "DNS (Domain Name System)",
+    "date": "2024.12.02",
+    "tags": ["CS", "Network"]
+  },
+  {
+    "slug": "2024-11-04-http-versions",
+    "title": "HTTP 버전별 비교",
+    "date": "2024.11.04",
+    "tags": ["CS", "Network"]
+  },
+  {
     "slug": "2024-10-27-deno-2",
     "title": "Deno 2.0: Node.js와의 호환성을 선택한 이유",
     "date": "2024.10.27",
     "tags": ["TIL", "JavaScript"]
+  },
+  {
+    "slug": "2024-10-07-http-basics",
+    "title": "HTTP 기초",
+    "date": "2024.10.07",
+    "tags": ["CS", "Network"]
   },
   {
     "slug": "2024-09-22-openai-o1",
@@ -114,10 +132,58 @@
     "tags": ["TIL", "AI", "OpenAI"]
   },
   {
+    "slug": "2024-09-03-tcp-udp",
+    "title": "TCP vs UDP",
+    "date": "2024.09.03",
+    "tags": ["CS", "Network"]
+  },
+  {
+    "slug": "2024-08-05-osi-model",
+    "title": "OSI 7계층 vs TCP/IP 4계층",
+    "date": "2024.08.05",
+    "tags": ["CS", "Network"]
+  },
+  {
     "slug": "2024-07-29-crowdstrike",
     "title": "CrowdStrike 사태: 소프트웨어 업데이트는 왜 위험한가",
     "date": "2024.07.29",
     "tags": ["TIL", "DevOps"]
+  },
+  {
+    "slug": "2024-07-15-minimum-spanning-tree",
+    "title": "Minimum Spanning Tree (최소 스패닝 트리, MST)",
+    "date": "2024.07.15",
+    "tags": ["CS", "Algorithm"]
+  },
+  {
+    "slug": "2024-07-10-dijkstra",
+    "title": "Dijkstra (다익스트라 알고리즘)",
+    "date": "2024.07.10",
+    "tags": ["CS", "Algorithm"]
+  },
+  {
+    "slug": "2024-07-05-two-pointers-sliding-window",
+    "title": "Two Pointers (투 포인터)",
+    "date": "2024.07.05",
+    "tags": ["CS", "Algorithm"]
+  },
+  {
+    "slug": "2024-07-01-backtracking",
+    "title": "Backtracking (백트래킹)",
+    "date": "2024.07.01",
+    "tags": ["CS", "Algorithm"]
+  },
+  {
+    "slug": "2024-06-27-graph-dfs",
+    "title": "Graph DFS",
+    "date": "2024.06.27",
+    "tags": ["CS", "Algorithm"]
+  },
+  {
+    "slug": "2024-06-23-graph-bfs",
+    "title": "Graph BFS",
+    "date": "2024.06.23",
+    "tags": ["CS", "Algorithm"]
   },
   {
     "slug": "2024-05-23-gpt-4o",
@@ -154,6 +220,60 @@
     "title": "Next.js App Router: Pages Router와 무엇이 다른가",
     "date": "2024.01.22",
     "tags": ["TIL", "Next.js"]
+  },
+  {
+    "slug": "2024-01-17-trie",
+    "title": "Trie (접두사 트리)",
+    "date": "2024.01.17",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2024-01-14-heapq",
+    "title": "Min Heap 구현 (Array 기반 Complete Binary Tree)",
+    "date": "2024.01.14",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2024-01-10-binary-search-tree",
+    "title": "이진 탐색 트리 (Binary Search Tree, BST)",
+    "date": "2024.01.10",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2024-01-06-binary-tree",
+    "title": "이진 트리와 인덱스 증명 (Binary Tree & Index Proof)",
+    "date": "2024.01.06",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2024-01-02-deque",
+    "title": "Deque 구현 (Doubly Linked List 기반)",
+    "date": "2024.01.02",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2023-12-29-queue",
+    "title": "큐 (Queue)",
+    "date": "2023.12.29",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2023-12-27-stack",
+    "title": "스택 (Stack)",
+    "date": "2023.12.27",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2023-12-25-linked-list",
+    "title": "연결 리스트 (Linked List)",
+    "date": "2023.12.25",
+    "tags": ["CS", "DataStructure"]
+  },
+  {
+    "slug": "2023-12-23-array-and-list",
+    "title": "배열(Array)과 동적 배열(Dynamic Array)",
+    "date": "2023.12.23",
+    "tags": ["CS", "DataStructure"]
   },
   {
     "slug": "2023-11-14-openai-devday",
