@@ -8,7 +8,11 @@
       "Bash(npx react-scripts *)",
       "PowerShell(Remove-Item *)",
       "Bash(Remove-Item *)",
-      "WebFetch(domain:devowen.com)"
+      "WebFetch(domain:devowen.com)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\user\\\\workspace\\\\projects\\\\personal\\\\1Dohyeon.github.io\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(Format-Table -AutoSize)",
+      "WebFetch(domain:en.wikipedia.org)"
     ]
   }
 }

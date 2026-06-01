@@ -6,6 +6,12 @@
     "tags": ["TIL", "AI"]
   },
   {
+    "slug": "2026-02-27-openclaw",
+    "title": "OpenClaw: 오픈소스 AI 에이전트, 그리고 보안 문제",
+    "date": "2026.02.27",
+    "tags": ["TIL", "AI", "Security"]
+  },
+  {
     "slug": "2025-09-06-recurring-schedule-update",
     "title": "반복 일정의 복잡한 업데이트",
     "date": "2025.09.06",
@@ -85,7 +91,7 @@
   },
   {
     "slug": "2025-01-18-transformer-paper",
-    "title": "Attention Is All You Need — Transformer 논문 리뷰",
+    "title": "Attention Is All You Need - Transformer 논문 리뷰",
     "date": "2025.01.18",
     "tags": ["CS", "AI", "Paper"]
   },
