@@ -16,25 +16,29 @@ const BlogDetail: React.FC = () => {
     const [content, setContent] = useState("");
     const [meta, setMeta] = useState<PostMeta | null>(null);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!slug) return;
+        setLoading(true);
+        setError("");
 
-        fetch(`/posts/${slug}.md`)
-            .then((res) => {
-                if (!res.ok) throw new Error("파일을 불러올 수 없습니다.");
-                return res.text();
-            })
-            .then(setContent)
-            .catch((e) => setError(e.message));
-
-        fetch("/posts/index.json")
-            .then((res) => res.json())
-            .then((posts: PostMeta[]) => {
-                const post = posts.find((p) => p.slug === slug);
-                if (post) setMeta(post);
-            })
-            .catch(() => {});
+        Promise.all([
+            fetch(`/posts/${slug}.md`)
+                .then((res) => {
+                    if (!res.ok) throw new Error("포스트를 불러올 수 없습니다.");
+                    return res.text();
+                })
+                .then(setContent),
+            fetch("/posts/index.json")
+                .then((res) => res.json())
+                .then((posts: PostMeta[]) => {
+                    const post = posts.find((p) => p.slug === slug);
+                    if (post) setMeta(post);
+                }),
+        ])
+            .catch((e) => setError(e.message))
+            .finally(() => setLoading(false));
     }, [slug]);
 
     const contentWithoutTitle = useMemo(() => {
@@ -51,6 +55,7 @@ const BlogDetail: React.FC = () => {
             <section className="section" id="blog-detail-section">
                 <Link to="/blog">← 목록으로</Link>
                 {error && <p style={{ color: "red" }}>{error}</p>}
+                {loading && <p style={{ color: "#888", marginTop: 24 }}>Loading...</p>}
                 <div className="blog-markdown-content" style={{ marginTop: 24 }}>
                     {meta && (
                         <>

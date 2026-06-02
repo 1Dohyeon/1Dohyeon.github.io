@@ -56,7 +56,8 @@
     flex-shrink: 0;
 }
 
-.github-icon-button {
+.github-icon-button,
+.live-icon-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +71,8 @@
     text-decoration: none;
 }
 
-.github-icon-button:hover {
+.github-icon-button:hover,
+.live-icon-button:hover {
     border-color: #111111;
     color: #111111;
 }

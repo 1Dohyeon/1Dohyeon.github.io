@@ -1,80 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { mainProjects, otherProjects } from "../../data/projectsData.ts";
 import "../../styles/Projects.css";
-
-const mainProjects = [
-  {
-    name: "crowfind",
-    title: "CrowFind: AI 에이전트들의 퀀트 투자 인사이트 도출 시스템",
-    period: "2026.01",
-    team: "2인",
-    role: "기획 · 백엔드 API · AI 서버 개발 · 인프라 구축 및 운영 전담",
-    githubUrl: "https://github.com/crowfind/docs",
-    description:
-      "AI들이 토론을 통해 노이즈를 걸러낸 투자 인사이트를 제공하는 시스템입니다. 금융 데이터 분석의 높은 진입 장벽을 직접 경험했고, 이를 해결하고자 개발했습니다.",
-    tech: ["NestJS", "FastAPI", "PostgreSQL", "GCP", "Next.js"],
-  },
-  {
-    name: "newlearnnote",
-    title: "NewLearn Note: AI와 집단지성 기반 지식 관리 및 노트 앱",
-    period: "2025.09 – 2025.12",
-    team: "3인",
-    role: "기획 및 프로토타입 개발 / 백엔드 API 및 UI 풀스택 개발",
-    githubUrl:
-      "https://github.com/newlearnnote/newlearnnote.github.io/blob/main/README.md",
-    description:
-      "노트 작성, 클라우드 동기화, 공개 공유, 타인의 학습 자료 참조까지 하나의 앱에서 해결하는 집단지성 기반 지식 관리 플랫폼입니다. AI 기능은 별도 프로토타입(Nura)으로 독립 검증했습니다.",
-    tech: ["NestJS", "PostgreSQL", "GCP", "Next.js", "Electron.js"],
-  },
-];
-
-const otherProjects = [
-  {
-    name: "shilhouette",
-    title: "Shilhouette: 일정 관리 및 소셜 미디어",
-    period: "2025.08",
-    team: "3인",
-    role: "Backend & Frontend",
-    description:
-      "처음에는 단순한 일정 관리 서비스로 기획했으나, 개발 과정에서 '조용한 소셜 미디어' 컨셉을 추가했습니다.",
-  },
-  {
-    name: "coffee-price-predictor",
-    title: "커피 생두 가격 예측 시스템",
-    period: "2025.03",
-    team: "6인",
-    role: "Backend & Frontend & Data Engineer (ML Ops)",
-    description:
-      "기후 데이터, 거시 경제 지표, 뉴스 기사 데이터를 복합 분석하여 1주/2주 커피 선물 가격을 예측하는 시스템입니다.",
-  },
-  {
-    name: "disease-prediction",
-    title: "DP(Disease Prediction): 단백질 서열 기반 질병 예측",
-    period: "2025.03",
-    team: "2인",
-    role: "Frontend & Model Design",
-    description:
-      "미지의 단백질 서열을 입력받아 머신러닝 모델로 질병을 예측하고 관련 정보를 제공하는 웹 서비스입니다.",
-  },
-  {
-    name: "tripwith",
-    title: "TripWith: 여행 플래너 서비스",
-    period: "2024.12",
-    team: "3인",
-    role: "Backend & Frontend",
-    description:
-      "엑셀형 UI와 지도 기반 추천을 결합한 여행 일정 플래너로, 플래너 공유와 커뮤니티 기능을 제공합니다.",
-  },
-  {
-    name: "rentease",
-    title: "RentEase: C2C 렌탈 플랫폼",
-    period: "2024.07",
-    team: "개인",
-    role: "Backend & Frontend",
-    description:
-      "사용자 간 물품 대여를 연결해주는 플랫폼으로, 직관적인 UI와 다양한 필터링 기능을 제공합니다.",
-  },
-];
 
 const GitHubIcon = () => (
   <svg
@@ -85,6 +12,24 @@ const GitHubIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
   </svg>
 );
 
@@ -110,6 +55,17 @@ const Projects = () => {
                 </p>
               </div>
               <div className="project-header-buttons">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="live-icon-button"
+                    title="라이브 서비스"
+                  >
+                    <ExternalLinkIcon />
+                  </a>
+                )}
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -133,8 +89,10 @@ const Projects = () => {
             <div className="project-body">
               <p className="project-description">{project.description}</p>
               <div className="tech-tags">
-                {project.tech.map((tech, i) => (
-                  <span className="tech-tag" key={i}>{tech}</span>
+                {(project.tech ?? []).map((tech, i) => (
+                  <span className="tech-tag" key={i}>
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>

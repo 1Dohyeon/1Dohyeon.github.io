@@ -54,7 +54,7 @@ const IntroSection = () => {
 
             <div className="skill-category">
               <h4 className="skill-category-title">Database</h4>
-              <p className="skill-items">PostgreSQL, MySQL</p>
+              <p className="skill-items">PostgreSQL, Supabase</p>
             </div>
 
             <div className="skill-category">
@@ -64,7 +64,7 @@ const IntroSection = () => {
 
             <div className="skill-category">
               <h4 className="skill-category-title">Frontend</h4>
-              <p className="skill-items">Next.js, React</p>
+              <p className="skill-items">Next.js, React, Flutter</p>
             </div>
 
             <div className="skill-category">

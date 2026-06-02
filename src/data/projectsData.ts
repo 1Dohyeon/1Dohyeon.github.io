@@ -5,8 +5,9 @@ export interface Project {
     team: string;
     role: string;
     markdownFile: string;
-    description: string | React.ReactNode;
+    description: string;
     githubUrl?: string;
+    liveUrl?: string;
     imageUrl?: string;
     tech?: string[];
     purpose?: string;
@@ -16,13 +17,14 @@ export interface Project {
 export const mainProjects: Project[] = [
     {
         name: "crowfind",
-        title: "CrowFind: AI 에이전트들의 퀀트 투자 인사이트를 도출 시스템",
-        period: "2026.01",
+        title: "CrowFind: AI 에이전트들의 퀀트 투자 인사이트 도출 시스템",
+        period: "2026.01 - Now",
         team: "2인",
-        role: "기획, 백엔드 아키텍처 설계 및 인프라 운영 전담",
+        role: "기획 · 백엔드 API · AI 서버 개발 · 인프라 구축 및 운영 전담",
         githubUrl: "https://github.com/crowfind/docs",
+        liveUrl: "https://alpha.crowfind.com",
         imageUrl: "projects/imgs/crowfind-main-img.png",
-        description: "",
+        description: "AI들이 토론을 통해 노이즈를 걸러낸 투자 인사이트를 제공하는 시스템입니다. 4개의 특화 AI 에이전트(Quant, Trend, Value, Senti)가 같은 데이터를 서로 다른 관점으로 분석하고 상호 반박해, 정제된 퀀터멘털 인사이트만 사용자에게 전달합니다.",
         tech: ["NestJS", "FastAPI", "PostgreSQL", "GCP", "Next.js"],
         markdownFile: "CrowFind",
         responsibilities: [
@@ -38,12 +40,12 @@ export const mainProjects: Project[] = [
     {
         name: "newlearnnote",
         title: "NewLearn Note: AI와 집단지성 기반 지식 관리 및 노트 앱",
-        period: "2025.09 ~ 진행중",
+        period: "2025.09 - 2025.12",
         team: "3인",
-        role: "Backend Lead (Full-stack)",
+        role: "기획 및 프로토타입 개발 · 백엔드 API 및 UI 풀스택 개발",
         githubUrl: "https://github.com/newlearnnote/newlearnnote.github.io/blob/main/README.md",
         imageUrl: "/nln-main-img.png",
-        description: "",
+        description: "노트 작성, 클라우드 동기화, 공개 공유, 타인의 학습 자료 참조까지 하나의 앱에서 해결하는 집단지성 기반 지식 관리 플랫폼입니다. AI 기능은 별도 프로토타입(Nura)으로 독립 검증했습니다.",
         tech: ["NestJS", "PostgreSQL", "GCP", "Next.js", "Electron.js"],
         markdownFile: "NewLearnNote",
         responsibilities: [
@@ -58,13 +60,13 @@ export const mainProjects: Project[] = [
     },
     {
         name: "nura",
-        title: "Nura - AI 기반 문서 분석 및 질의응답 시스템",
+        title: "Nura: AI 기반 문서 분석 및 질의응답 시스템",
         period: "2025.12",
         team: "개인",
-        role: "Backend & AI Developer",
+        role: "Backend & AI Developer (기획 · 설계 · 구현 전담)",
         githubUrl: "https://github.com/newlearnnote/Nura-server/blob/main/README.md",
         imageUrl: "/nura-main-img.png",
-        description: "",
+        description: "NewLearn Note의 AI 문서 분석 기능을 메인 프로젝트에 통합하기 전, RAG 파이프라인을 독립 환경에서 먼저 검증한 FastAPI 기반 프로토타입입니다. 청킹 전략 최적화, 프롬프트 분기 설계, 비동기 문서 처리 구조를 실험하고 기술적 타당성을 검증했습니다.",
         tech: ["FastAPI", "PostgreSQL", "ChromaDB", "LangChain", "OpenAI API", "Next.js"],
         markdownFile: "Nura",
         purpose: "NewLearn Note에 통합될 AI 문서 분석 기능의 독립 프로토타입 개발 및 RAG 파이프라인 검증",

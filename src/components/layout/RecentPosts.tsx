@@ -11,12 +11,14 @@ interface PostMeta {
 
 const RecentPosts = () => {
     const [posts, setPosts] = useState<PostMeta[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("/posts/index.json")
             .then((res) => res.json())
             .then((data: PostMeta[]) => setPosts(data.slice(0, 3)))
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => setLoading(false));
     }, []);
 
     return (
@@ -27,7 +29,9 @@ const RecentPosts = () => {
             </div>
 
             <div className="recent-post-list">
-                {posts.map((post) => (
+                {loading ? (
+                    <p className="recent-posts-loading">Loading...</p>
+                ) : posts.map((post) => (
                     <Link
                         key={post.slug}
                         to={`/blog/${post.slug}`}
