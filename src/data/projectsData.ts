@@ -18,7 +18,7 @@ export const mainProjects: Project[] = [
     {
         name: "crowfind",
         title: "CrowFind: AI 에이전트들의 퀀트 투자 인사이트 도출 시스템",
-        period: "2026.01 - Now",
+        period: "2026.01 - 2026.04",
         team: "2인",
         role: "기획 · 백엔드 API · AI 서버 개발 · 인프라 구축 및 운영 전담",
         githubUrl: "https://github.com/crowfind/docs",
