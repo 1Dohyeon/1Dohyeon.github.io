@@ -11,8 +11,8 @@ function Home() {
         <div className="app">
             <Header />
             <IntroSection />
-            <RecentPosts />
             <Projects />
+            <RecentPosts />
             {/* <WhatIStudy />
             <WhatIDo /> */}
             <Footer />
