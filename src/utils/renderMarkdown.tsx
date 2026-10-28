@@ -161,8 +161,11 @@ function renderOverview(
     );
 }
 
-export function renderMarkdown(content: string, options: RenderOptions = {}): React.ReactNode[] {
+const stripFrontmatter = (text: string) => text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n+/, "");
+
+export function renderMarkdown(rawContent: string, options: RenderOptions = {}): React.ReactNode[] {
     const { enableOverview = false } = options;
+    const content = stripFrontmatter(rawContent);
 
     const overviewRegex =
         /\*\*PROJECT_OVERVIEW_START\*\*([\s\S]*?)\*\*PROJECT_OVERVIEW_IMAGE\*\*([\s\S]*?)\*\*PROJECT_OVERVIEW_END\*\*/;

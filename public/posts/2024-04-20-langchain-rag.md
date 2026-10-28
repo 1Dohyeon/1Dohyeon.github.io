@@ -1,3 +1,7 @@
+---
+tags: [TIL, AI, LangChain]
+---
+
 # LangChain과 RAG 패턴: 왜 이 조합인가
 
 LLM 기반 애플리케이션을 공부하다 보면 두 단어를 피할 수 없습니다. **LangChain**과 **RAG**입니다. [LangChain 0.1.0](https://blog.langchain.dev/langchain-v0-1-0/)이 출시되면서 API가 안정화됐고, 직접 써보기 훨씬 수월해졌습니다. 이 두 가지가 왜 함께 언급되는지, 그리고 실제로 어떤 문제를 해결하는지 정리합니다.

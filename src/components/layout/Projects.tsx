@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { mainProjects, otherProjects } from "../../data/projectsData.ts";
+import { fetchProjects, Project } from "../../utils/content.ts";
 import "../../styles/Projects.css";
 
 const GitHubIcon = () => (
@@ -35,7 +35,15 @@ const ExternalLinkIcon = () => (
 
 const Projects = () => {
   const [showOthers, setShowOthers] = useState(false);
+  const [projects, setProjects] = useState<Project[]>([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchProjects().then(setProjects).catch(console.error);
+  }, []);
+
+  const mainProjects = projects.filter((project) => project.featured);
+  const otherProjects = projects.filter((project) => !project.featured);
 
   return (
     <section className="section" id="projects-section">

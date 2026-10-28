@@ -1,3 +1,16 @@
+---
+name: "newlearnnote"
+title: "NewLearn Note: AI와 집단지성 기반 지식 관리 및 노트 앱"
+period: "2025.09 - 2025.12"
+team: "3인"
+role: "기획 및 프로토타입 개발 · 백엔드 API 및 UI 풀스택 개발"
+description: "노트 작성, 클라우드 동기화, 공개 공유, 타인의 학습 자료 참조까지 하나의 앱에서 해결하는 집단지성 기반 지식 관리 플랫폼입니다. AI 기능은 별도 프로토타입(Nura)으로 독립 검증했습니다."
+tech: ["NestJS","PostgreSQL","GCP","Next.js","Electron.js"]
+githubUrl: "https://github.com/newlearnnote/newlearnnote.github.io/blob/main/README.md"
+featured: true
+order: 3
+---
+
 # NewLearn Note
 
 ![앱 실행 화면](./imgs/nln-main-img.png)

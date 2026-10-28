@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/RecentPosts.css";
-
-interface PostMeta {
-    slug: string;
-    title: string;
-    date: string;
-    tags: string[];
-}
+import { fetchPosts, PostMeta } from "../../utils/content.ts";
 
 const RecentPosts = () => {
     const [posts, setPosts] = useState<PostMeta[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/posts/index.json")
-            .then((res) => res.json())
-            .then((data: PostMeta[]) => setPosts(data.slice(0, 3)))
+        fetchPosts()
+            .then((data) => setPosts(data.slice(0, 3)))
             .catch(console.error)
             .finally(() => setLoading(false));
     }, []);

@@ -2,13 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "../styles/BlogList.css";
 import SmartHeader from "../components/layout/SmartHeader.tsx";
-
-interface PostMeta {
-    slug: string;
-    title: string;
-    date: string;
-    tags: string[];
-}
+import { fetchPosts, PostMeta } from "../utils/content.ts";
 
 const BlogList: React.FC = () => {
     const [posts, setPosts] = useState<PostMeta[]>([]);
@@ -16,10 +10,7 @@ const BlogList: React.FC = () => {
     const selectedTags = searchParams.getAll("tag");
 
     useEffect(() => {
-        fetch("/posts/index.json")
-            .then((res) => res.json())
-            .then(setPosts)
-            .catch(console.error);
+        fetchPosts().then(setPosts).catch(console.error);
     }, []);
 
     const allTags = Array.from(

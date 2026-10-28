@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { mainProjects, otherProjects } from "../data/projectsData.ts";
+import { fetchProjects, Project } from "../utils/content.ts";
 import SmartHeader from "../components/layout/SmartHeader.tsx";
 import { renderMarkdown } from "../utils/renderMarkdown.tsx";
 import "../styles/ProjectDetail.css";
@@ -19,9 +19,9 @@ const ProjectDetailPage: React.FC = () => {
     const [markdownContent, setMarkdownContent] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [projects, setProjects] = useState<Project[] | null>(null);
 
-    const allProjects = [...mainProjects, ...otherProjects];
-    const project = allProjects.find((p) => p.name === name);
+    const project = projects?.find((p) => p.name === name);
 
     const isReload = React.useRef(
         (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type === "reload"
@@ -45,7 +45,11 @@ const ProjectDetailPage: React.FC = () => {
     }, [loading, markdownContent]);
 
     useEffect(() => {
-        if (project) fetchMarkdown(project.markdownFile);
+        fetchProjects().then(setProjects).catch(console.error);
+    }, []);
+
+    useEffect(() => {
+        if (project) fetchMarkdown(project.file);
     }, [project]);
 
     const fetchMarkdown = async (filename: string) => {
@@ -61,6 +65,18 @@ const ProjectDetailPage: React.FC = () => {
             setLoading(false);
         }
     };
+
+    if (!projects) {
+        return (
+            <div className="app">
+                <SmartHeader />
+                <div className="smart-header-spacer" />
+                <section className="section" id="project-detail-section">
+                    <p>로딩 중...</p>
+                </section>
+            </div>
+        );
+    }
 
     if (!project) {
         return (

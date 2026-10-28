@@ -3,13 +3,7 @@ import "../styles/BlogDetail.css";
 import { useParams, Link } from "react-router-dom";
 import SmartHeader from "../components/layout/SmartHeader.tsx";
 import { renderMarkdown } from "../utils/renderMarkdown.tsx";
-
-interface PostMeta {
-    slug: string;
-    title: string;
-    date: string;
-    tags: string[];
-}
+import { fetchPosts, PostMeta } from "../utils/content.ts";
 
 const BlogDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
@@ -30,12 +24,10 @@ const BlogDetail: React.FC = () => {
                     return res.text();
                 })
                 .then(setContent),
-            fetch("/posts/index.json")
-                .then((res) => res.json())
-                .then((posts: PostMeta[]) => {
-                    const post = posts.find((p) => p.slug === slug);
-                    if (post) setMeta(post);
-                }),
+            fetchPosts().then((posts) => {
+                const post = posts.find((p) => p.slug === slug);
+                if (post) setMeta(post);
+            }),
         ])
             .catch((e) => setError(e.message))
             .finally(() => setLoading(false));

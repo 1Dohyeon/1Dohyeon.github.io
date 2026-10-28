@@ -1,3 +1,7 @@
+---
+tags: [TIL, DevOps]
+---
+
 # CrowdStrike 사태: 소프트웨어 업데이트는 왜 위험한가
 
 2024년 7월 19일, 전 세계 850만 대 이상의 Windows 시스템이 블루스크린(BSOD)으로 다운됐습니다. 공항, 병원, 방송사까지 영향을 받은 대규모 장애였습니다. [CrowdStrike 공식 분석](https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/)을 읽어봤습니다.

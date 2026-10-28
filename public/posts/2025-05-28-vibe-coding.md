@@ -1,3 +1,7 @@
+---
+tags: [TIL, AI]
+---
+
 # Vibe Coding: 개발 방식이 바뀌고 있다
 
 Andrej Karpathy(전 OpenAI)가 [Vibe Coding](https://x.com/karpathy/status/1886192184808149383)이라는 개념을 소개했습니다. "코드를 직접 작성하지 않고, 원하는 것을 설명하면 AI가 코드를 만든다"는 방식입니다.
