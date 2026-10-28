@@ -1,3 +1,7 @@
+---
+tags: [TIL, AI, OpenAI]
+---
+
 # OpenAI DevDay: GPT-4 Turbo와 Assistants API
 
 2023년 11월 6일, OpenAI의 첫 개발자 컨퍼런스 DevDay가 열렸습니다. [공식 발표 내용](https://openai.com/blog/new-models-and-developer-products-announced-at-devday)을 바탕으로, 실제 개발에 영향을 줄 것들 위주로 정리합니다.

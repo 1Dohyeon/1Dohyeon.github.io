@@ -1,3 +1,7 @@
+---
+tags: [CS, DataStructure]
+---
+
 # 이진 탐색 트리 (Binary Search Tree, BST)
 
 정렬된 배열에서 이진 탐색을 하면 O(log N)이 나옵니다. 이진 탐색 트리는 이 원리를 트리 구조에 적용해 삽입·삭제도 빠르게 처리합니다. [이진 트리(Binary Tree)](/blog/2024-01-06-binary-tree)를 기반으로 하며, 탐색 성능이 트리의 균형에 따라 달라지는 이유도 함께 정리합니다.

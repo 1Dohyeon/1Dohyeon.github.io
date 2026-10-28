@@ -1,3 +1,14 @@
+---
+name: "rentease"
+title: "RentEase: C2C 렌탈 플랫폼"
+period: "2024.07 ~ 2024.08 (약 6주)"
+team: "개인"
+role: "Backend & Frontend"
+description: "사용자 간의 물품 대여를 쉽게 연결해주는 플랫폼입니다. 직관적인 UI와 다양한 필터링 기능을 제공하여 원하는 물품을 쉽게 찾고 대여할 수 있습니다."
+featured: false
+order: 6
+---
+
 # RentEase
 
 ## 프로젝트 개요

@@ -1,3 +1,7 @@
+---
+tags: [CS, Network]
+---
+
 # HTTP 기초
 
 브라우저에 URL을 입력하면 무슨 일이 일어날까요? 그 과정의 핵심이 **HTTP(HyperText Transfer Protocol)**입니다. 클라이언트와 서버가 데이터를 주고받는 규칙으로, 요청 메시지 구조부터 주요 상태 코드까지 정리합니다.

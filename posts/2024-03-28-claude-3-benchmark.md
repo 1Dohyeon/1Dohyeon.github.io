@@ -1,3 +1,7 @@
+---
+tags: [TIL, AI]
+---
+
 # Claude 3 출시: LLM 벤치마크를 어떻게 읽어야 하나
 
 Anthropic이 [Claude 3 패밀리](https://www.anthropic.com/news/claude-3-family)를 출시했습니다. Haiku, Sonnet, Opus 세 가지 모델로 구성되며, 발표 자료에 GPT-4를 능가한다는 벤치마크 수치가 가득했습니다. 그런데 보다 보니 수치보다 수치를 읽는 방법이 더 중요하다는 생각이 들었습니다.

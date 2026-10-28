@@ -1,3 +1,17 @@
+---
+name: "crowfind"
+title: "CrowFind: AI 에이전트들의 퀀트 투자 인사이트 도출 시스템"
+period: "2026.01 - 2026.04"
+team: "2인"
+role: "기획 · 백엔드 API · AI 서버 개발 · 인프라 구축 및 운영 전담"
+description: "AI들이 토론을 통해 노이즈를 걸러낸 투자 인사이트를 제공하는 시스템입니다. 4개의 특화 AI 에이전트(Quant, Trend, Value, Senti)가 같은 데이터를 서로 다른 관점으로 분석하고 상호 반박해, 정제된 퀀터멘털 인사이트만 사용자에게 전달합니다."
+tech: ["NestJS","FastAPI","PostgreSQL","GCP","Next.js"]
+githubUrl: "https://github.com/crowfind/docs"
+liveUrl: "https://alpha.crowfind.com"
+featured: true
+order: 2
+---
+
 # CrowFind
 
 ![CrowFind 메인 페이지](./imgs/crowfind-main-img.png)

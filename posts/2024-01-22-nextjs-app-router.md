@@ -1,3 +1,7 @@
+---
+tags: [TIL, Next.js]
+---
+
 # Next.js App Router: Pages Router와 무엇이 다른가
 
 Next.js 13부터 등장한 App Router가 Next.js 14에서 안정화됐습니다. [공식 문서](https://nextjs.org/docs/app)를 보면서 기존 Pages Router와 어떻게 다른지 정리해봤습니다.

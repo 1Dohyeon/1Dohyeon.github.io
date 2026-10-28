@@ -1,3 +1,16 @@
+---
+name: "nura"
+title: "Nura: AI 기반 문서 분석 및 질의응답 시스템"
+period: "2025.12"
+team: "개인"
+role: "Backend & AI Developer (기획 · 설계 · 구현 전담)"
+description: "NewLearn Note의 AI 문서 분석 기능을 메인 프로젝트에 통합하기 전, RAG 파이프라인을 독립 환경에서 먼저 검증한 FastAPI 기반 프로토타입입니다. 청킹 전략 최적화, 프롬프트 분기 설계, 비동기 문서 처리 구조를 실험하고 기술적 타당성을 검증했습니다."
+tech: ["FastAPI","PostgreSQL","ChromaDB","LangChain","OpenAI API","Next.js"]
+githubUrl: "https://github.com/newlearnnote/Nura-server/blob/main/README.md"
+featured: false
+order: 1
+---
+
 # Nura
 
 ![nura-main-img](./imgs/nura-main-img.png)

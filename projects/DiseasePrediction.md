@@ -1,3 +1,15 @@
+---
+name: "disease-prediction"
+title: "DP(Disease Prediction): 미지의 단백질 서열을 기반으로 한 질병 예측"
+period: "2025.03 ~ 2025.06 (약 14주)"
+team: "2인"
+role: "Frontend & Model Design"
+description: "질병 예측을 위한 웹 서비스로, 사용자 입력 데이터를 기반으로 머신러닝 모델을 통해 질병을 예측하고 관련 정보를 제공합니다."
+githubUrl: "https://github.com/leejucheol/DP-disease_prediction"
+featured: false
+order: 4
+---
+
 # DP(Disease Prediction)
 
 ## 프로젝트 개요

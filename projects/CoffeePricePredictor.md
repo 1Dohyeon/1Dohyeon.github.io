@@ -1,3 +1,15 @@
+---
+name: "coffee-price-predictor"
+title: "커피 생두 가격 예측 시스템"
+period: "2025.03 ~ 2025.06 (약 14주)"
+team: "6인"
+role: "Backend & Frontend & Data Engineer (ML Ops)"
+description: "커피 재배 지역의 기후 데이터, 거시 경제 지표, 뉴스 기사 데이터를 복합적으로 분석하여 1주/2주 커피 선물(Coffee C) 가격을 예측하는 시스템입니다."
+githubUrl: "https://github.com/MJU-Capstone-2025/Coffee_Price_Prediction"
+featured: false
+order: 3
+---
+
 # 커피 생두 가격 예측 시스템
 
 ## 프로젝트 개요

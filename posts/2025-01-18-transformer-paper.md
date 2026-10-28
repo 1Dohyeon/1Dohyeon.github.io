@@ -1,3 +1,7 @@
+---
+tags: [CS, AI, Paper]
+---
+
 # Attention Is All You Need - Transformer 논문 리뷰
 
 GPT, BERT, Claude 같은 현대 LLM의 기반이 되는 논문입니다. [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017). AI 공부를 하다 보니 계속 언급돼서 직접 읽어봤습니다.

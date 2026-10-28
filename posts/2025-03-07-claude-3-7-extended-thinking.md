@@ -1,3 +1,7 @@
+---
+tags: [TIL, AI]
+---
+
 # Claude 3.7 Sonnet과 Extended Thinking
 
 Anthropic이 [Claude 3.7 Sonnet](https://www.anthropic.com/news/claude-3-7-sonnet)을 출시했습니다. 가장 주목할 점은 **Extended Thinking** 기능입니다.

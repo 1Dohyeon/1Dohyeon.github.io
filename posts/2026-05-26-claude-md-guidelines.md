@@ -1,3 +1,7 @@
+---
+tags: [TIL, AI]
+---
+
 # 많은 사람들에게 star를 받은 CLAUDE.md를 읽고
 
 GitHub에서 [엄청난 수의 star를 받은 CLAUDE.md](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/CLAUDE.md)를 발견했습니다. AI에게 코딩 실수를 줄이는 행동 지침을 적어둔 파일입니다. 읽으면서 공감되는 부분이 많았습니다.

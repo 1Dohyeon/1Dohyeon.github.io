@@ -1,3 +1,14 @@
+---
+name: "tripwith"
+title: "TripWith: 여행 플래너 서비스"
+period: "2024.12 ~ 2025.02 (약 12주)"
+team: "3인"
+role: "Backend & Frontend"
+description: "엑셀처럼 계획을 짤 수 있는 UI와 지도 기반 추천 기능을 결합한 웹 기반 여행 일정 플래너. 사용자끼리 플래너를 공유할 수 있고, 커뮤니티 기능, 장소 검색, 카테고리 및 태그별 관리 기능 등이 있습니다."
+featured: false
+order: 5
+---
+
 # TripWith
 
 ## 프로젝트 개요
