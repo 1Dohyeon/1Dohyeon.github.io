@@ -18,7 +18,7 @@
     },
     "scripts": {
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
+        "deploy": "gh-pages -d build --dotfiles",
         "index": "node scripts/build-content-index.mjs",
         "prestart": "npm run index",
         "start": "react-scripts start",
