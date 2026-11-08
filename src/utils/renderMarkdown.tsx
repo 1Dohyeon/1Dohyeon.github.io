@@ -1,5 +1,42 @@
 import React from "react";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
+import docker from "react-syntax-highlighter/dist/esm/languages/prism/docker";
+import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
+import json from "react-syntax-highlighter/dist/esm/languages/prism/json";
+import python from "react-syntax-highlighter/dist/esm/languages/prism/python";
+import sql from "react-syntax-highlighter/dist/esm/languages/prism/sql";
+import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
+import typescript from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
 import "../styles/CodeBlock.css";
+import { resolveCodeLanguage } from "./codeLanguage.ts";
+
+// 등록 목록은 codeLanguage.ts의 CODE_LANGUAGES와 같다.
+SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage("docker", docker);
+SyntaxHighlighter.registerLanguage("javascript", javascript);
+SyntaxHighlighter.registerLanguage("json", json);
+SyntaxHighlighter.registerLanguage("python", python);
+SyntaxHighlighter.registerLanguage("sql", sql);
+SyntaxHighlighter.registerLanguage("tsx", tsx);
+SyntaxHighlighter.registerLanguage("typescript", typescript);
+
+// 테마의 pre 여백과 글자 크기 대신 기존 코드 블록 치수를 쓴다.
+const PRE_STYLE: React.CSSProperties = {
+    margin: 0,
+    borderRadius: 0,
+    padding: "16px 20px",
+    fontSize: "0.88rem",
+    lineHeight: 1.6,
+};
+
+// codeTagProps를 주면 테마의 code 스타일이 빠지므로 테마 값을 깔고 크기만 pre를 따르게 한다.
+const CODE_STYLE: React.CSSProperties = {
+    ...vscDarkPlus['code[class*="language-"]'],
+    fontSize: "inherit",
+    lineHeight: "inherit",
+};
 
 interface RenderOptions {
     enableOverview?: boolean;
@@ -18,7 +55,7 @@ const CheckIcon = () => (
     </svg>
 );
 
-const CodeBlock: React.FC<{ code: string }> = ({ code }) => {
+const CodeBlock: React.FC<{ code: string; lang: string }> = ({ code, lang }) => {
     const [copied, setCopied] = React.useState(false);
 
     const handleCopy = () => {
@@ -37,7 +74,14 @@ const CodeBlock: React.FC<{ code: string }> = ({ code }) => {
                     {copied ? <CheckIcon /> : <CopyIcon />}
                 </button>
             </div>
-            <pre><code>{code}</code></pre>
+            <SyntaxHighlighter
+                language={resolveCodeLanguage(lang)}
+                style={vscDarkPlus}
+                customStyle={PRE_STYLE}
+                codeTagProps={{ style: CODE_STYLE }}
+            >
+                {code}
+            </SyntaxHighlighter>
         </div>
     );
 };
@@ -180,6 +224,7 @@ export function renderMarkdown(rawContent: string, options: RenderOptions = {}):
     let quoteBuffer: string[] = [];
     let listBuffer: { text: string; sub: string[] }[] = [];
     let codeBlockBuffer: string[] = [];
+    let codeBlockLang = "";
     let tableBuffer: string[] = [];
     let inCodeBlock = false;
 
@@ -254,7 +299,7 @@ export function renderMarkdown(rawContent: string, options: RenderOptions = {}):
     const flushCodeBlock = () => {
         if (!codeBlockBuffer.length) return;
         const code = codeBlockBuffer.join("\n");
-        elements.push(<CodeBlock key={`code-${elements.length}`} code={code} />);
+        elements.push(<CodeBlock key={`code-${elements.length}`} code={code} lang={codeBlockLang} />);
         codeBlockBuffer = [];
     };
 
@@ -266,7 +311,7 @@ export function renderMarkdown(rawContent: string, options: RenderOptions = {}):
         }
 
         if (/^```/.test(line)) {
-            if (!inCodeBlock) { flushQuote(); flushList(); inCodeBlock = true; }
+            if (!inCodeBlock) { flushQuote(); flushList(); inCodeBlock = true; codeBlockLang = line.slice(3).trim(); }
             else { flushCodeBlock(); inCodeBlock = false; }
             return;
         }
