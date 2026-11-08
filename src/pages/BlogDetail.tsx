@@ -15,6 +15,7 @@ const BlogDetail: React.FC = () => {
 
     useEffect(() => {
         if (!slug) return;
+        window.scrollTo(0, 0);
         setLoading(true);
         setError("");
 
