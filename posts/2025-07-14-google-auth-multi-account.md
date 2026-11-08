@@ -1,5 +1,5 @@
 ---
-tags: [Project, Auth]
+tags: [Project, Backend]
 ---
 
 # Google OAuth 다중 계정 로그인 문제 해결

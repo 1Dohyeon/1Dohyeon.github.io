@@ -1,5 +1,5 @@
 ---
-tags: [TIL, DevOps]
+tags: [TIL, Infra]
 ---
 
 # CrowdStrike 사태: 소프트웨어 업데이트는 왜 위험한가

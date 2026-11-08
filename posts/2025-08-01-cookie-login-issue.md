@@ -1,5 +1,5 @@
 ---
-tags: [Project, Auth]
+tags: [Project, Backend]
 ---
 
 # 로그인 후 브라우저 쿠키에 userInfo가 저장되어 있던 문제
