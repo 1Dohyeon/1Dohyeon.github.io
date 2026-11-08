@@ -1,5 +1,5 @@
 ---
-tags: [TIL, AI, LangChain]
+tags: [TIL, AI]
 ---
 
 # LangChain과 RAG 패턴: 왜 이 조합인가

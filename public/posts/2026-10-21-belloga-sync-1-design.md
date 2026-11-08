@@ -1,5 +1,5 @@
 ---
-tags: [Project, Database]
+tags: [Project, Backend]
 ---
 
 # Belloga 동기화 (1) 계획 문서 저장 설계: 해시 주소 저장과 철회한 충돌 판본 저장

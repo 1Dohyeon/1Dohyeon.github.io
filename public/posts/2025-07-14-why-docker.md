@@ -1,5 +1,5 @@
 ---
-tags: [TIL, Docker]
+tags: [TIL, Infra]
 ---
 
 # Docker를 왜 사용할까?

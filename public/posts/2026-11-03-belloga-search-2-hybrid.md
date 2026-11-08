@@ -1,5 +1,5 @@
 ---
-tags: [Project, Database]
+tags: [Project, Backend]
 ---
 
 # Belloga 검색 (2) pgvector와 pg_trgm을 RRF로 합친 하이브리드 검색, 그리고 MCP 대신 CLI

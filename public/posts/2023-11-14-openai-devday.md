@@ -1,5 +1,5 @@
 ---
-tags: [TIL, AI, OpenAI]
+tags: [TIL, AI]
 ---
 
 # OpenAI DevDay: GPT-4 Turbo와 Assistants API

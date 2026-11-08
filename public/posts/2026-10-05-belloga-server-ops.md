@@ -1,5 +1,5 @@
 ---
-tags: [Project, GCP]
+tags: [Project, Infra]
 ---
 
 # Belloga 서버 운영: 직접 호출 차단, RLS, 대상을 강제하는 마이그레이션

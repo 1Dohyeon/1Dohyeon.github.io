@@ -1,5 +1,5 @@
 ---
-tags: [TIL, GCP]
+tags: [TIL, Infra]
 ---
 
 # NestJS에서 Google Cloud Storage로 파일 업로드 구현하기

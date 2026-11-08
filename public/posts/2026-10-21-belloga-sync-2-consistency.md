@@ -1,5 +1,5 @@
 ---
-tags: [Project, Database, GCP]
+tags: [Project, Backend, Infra]
 ---
 
 # Belloga 동기화 (2) 쓰기 판정, 사용자별 직렬화, 그리고 GCS와 Postgres의 일관성

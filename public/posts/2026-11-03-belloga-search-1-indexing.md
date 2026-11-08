@@ -1,5 +1,5 @@
 ---
-tags: [Project, GCP]
+tags: [Project, Infra]
 ---
 
 # Belloga 검색 (1) 응답 뒤 CPU가 없는 Cloud Run에서 색인하기: 앱이 부르는 pull 방식

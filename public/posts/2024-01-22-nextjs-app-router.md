@@ -1,5 +1,5 @@
 ---
-tags: [TIL, Next.js]
+tags: [TIL, JavaScript]
 ---
 
 # Next.js App Router: Pages Router와 무엇이 다른가
