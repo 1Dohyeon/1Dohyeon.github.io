@@ -1,5 +1,75 @@
 [
   {
+    "slug": "2026-11-03-belloga-search-2-hybrid",
+    "title": "Belloga 검색 (2) pgvector와 pg_trgm을 RRF로 합친 하이브리드 검색, 그리고 MCP 대신 CLI",
+    "date": "2026.11.03",
+    "tags": [
+      "Project",
+      "Database"
+    ]
+  },
+  {
+    "slug": "2026-11-03-belloga-search-1-indexing",
+    "title": "Belloga 검색 (1) 응답 뒤 CPU가 없는 Cloud Run에서 색인하기: 앱이 부르는 pull 방식",
+    "date": "2026.11.03",
+    "tags": [
+      "Project",
+      "GCP"
+    ]
+  },
+  {
+    "slug": "2026-10-21-belloga-sync-2-consistency",
+    "title": "Belloga 동기화 (2) 쓰기 판정, 사용자별 직렬화, 그리고 GCS와 Postgres의 일관성",
+    "date": "2026.10.21",
+    "tags": [
+      "Project",
+      "Database",
+      "GCP"
+    ]
+  },
+  {
+    "slug": "2026-10-21-belloga-sync-1-design",
+    "title": "Belloga 동기화 (1) 계획 문서 저장 설계: 해시 주소 저장과 철회한 충돌 판본 저장",
+    "date": "2026.10.21",
+    "tags": [
+      "Project",
+      "Database"
+    ]
+  },
+  {
+    "slug": "2026-10-08-belloga-orca",
+    "title": "Belloga가 오픈소스 Orca에서 가져온 것과 가져오지 않은 것",
+    "date": "2026.10.08",
+    "tags": [
+      "Project"
+    ]
+  },
+  {
+    "slug": "2026-10-05-belloga-server-ops",
+    "title": "Belloga 서버 운영: 직접 호출 차단, RLS, 대상을 강제하는 마이그레이션",
+    "date": "2026.10.05",
+    "tags": [
+      "Project",
+      "GCP"
+    ]
+  },
+  {
+    "slug": "2026-09-30-belloga-harness",
+    "title": "Belloga 하네스: 에이전트에게 규칙을 넣되, 앱 안에서만 그리고 강제하지 않게",
+    "date": "2026.09.30",
+    "tags": [
+      "Project"
+    ]
+  },
+  {
+    "slug": "2026-09-28-belloga-module-boundary",
+    "title": "Belloga 모듈 경계: 평평한 45개 파일을 층 표와 eslint로 나누기",
+    "date": "2026.09.28",
+    "tags": [
+      "Project"
+    ]
+  },
+  {
     "slug": "2026-05-26-claude-md-guidelines",
     "title": "많은 사람들에게 star를 받은 CLAUDE.md를 읽고",
     "date": "2026.05.26",
@@ -63,21 +133,21 @@
     ]
   },
   {
-    "slug": "2025-07-14-google-auth-multi-account",
-    "title": "Google OAuth 다중 계정 로그인 문제 해결",
-    "date": "2025.07.14",
-    "tags": [
-      "Project",
-      "Auth"
-    ]
-  },
-  {
     "slug": "2025-07-14-why-docker",
     "title": "Docker를 왜 사용할까?",
     "date": "2025.07.14",
     "tags": [
       "TIL",
       "Docker"
+    ]
+  },
+  {
+    "slug": "2025-07-14-google-auth-multi-account",
+    "title": "Google OAuth 다중 계정 로그인 문제 해결",
+    "date": "2025.07.14",
+    "tags": [
+      "Project",
+      "Auth"
     ]
   },
   {
