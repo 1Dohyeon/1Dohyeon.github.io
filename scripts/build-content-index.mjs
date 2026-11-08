@@ -31,7 +31,7 @@ const buildPosts = () => {
 
             return { slug, title, date: dateMatch.slice(1, 4).join("."), tags: data.tags };
         })
-        .sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date)));
+        .sort((a, b) => (a.date === b.date ? b.slug.localeCompare(a.slug) : b.date.localeCompare(a.date)));
 };
 
 const requiredProjectFields = ["name", "title", "period", "team", "role", "description"];
