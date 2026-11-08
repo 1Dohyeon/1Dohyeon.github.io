@@ -131,9 +131,51 @@
   border: 1px solid #e8e8e8;
 }
 
+.post-adjacent {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.post-adjacent a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 48%;
+  font-size: 0.92rem;
+  color: #333333;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.post-adjacent a:hover {
+  color: #111111;
+}
+
+.post-adjacent span {
+  font-size: 0.8rem;
+  color: #999999;
+}
+
+.post-adjacent .post-adjacent-next {
+  margin-left: auto;
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   #blog-detail-section {
     padding: 24px 0;
+  }
+
+  .post-adjacent {
+    flex-direction: column;
+  }
+
+  .post-adjacent a {
+    max-width: 100%;
   }
 
   .blog-markdown-content h1 {

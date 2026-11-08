@@ -3,12 +3,13 @@ import "../styles/BlogDetail.css";
 import { useParams, Link } from "react-router-dom";
 import SmartHeader from "../components/layout/SmartHeader.tsx";
 import { renderMarkdown } from "../utils/renderMarkdown.tsx";
-import { fetchPosts, PostMeta } from "../utils/content.ts";
+import { fetchPosts, findAdjacentPosts, PostMeta } from "../utils/content.ts";
 
 const BlogDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const [content, setContent] = useState("");
     const [meta, setMeta] = useState<PostMeta | null>(null);
+    const [adjacent, setAdjacent] = useState<{ prev?: PostMeta; next?: PostMeta }>({});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
@@ -27,6 +28,7 @@ const BlogDetail: React.FC = () => {
             fetchPosts().then((posts) => {
                 const post = posts.find((p) => p.slug === slug);
                 if (post) setMeta(post);
+                setAdjacent(findAdjacentPosts(posts, slug));
             }),
         ])
             .catch((e) => setError(e.message))
@@ -57,6 +59,22 @@ const BlogDetail: React.FC = () => {
                     )}
                     {renderMarkdown(contentWithoutTitle)}
                 </div>
+                {!loading && !error && (adjacent.prev || adjacent.next) && (
+                    <nav className="post-adjacent">
+                        {adjacent.prev && (
+                            <Link to={`/blog/${adjacent.prev.slug}`} className="post-adjacent-prev">
+                                <span>← 이전 글</span>
+                                {adjacent.prev.title}
+                            </Link>
+                        )}
+                        {adjacent.next && (
+                            <Link to={`/blog/${adjacent.next.slug}`} className="post-adjacent-next">
+                                <span>다음 글 →</span>
+                                {adjacent.next.title}
+                            </Link>
+                        )}
+                    </nav>
+                )}
             </section>
         </div>
     );
